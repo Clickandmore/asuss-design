@@ -36,7 +36,7 @@
     --as-radius-sm: 4px; --as-radius-md: 6px; --as-radius-lg: 8px; --as-radius-xl: 16px;
     --as-shadow-btn: 0 1px 2px rgba(16, 24, 40, .08);
     --as-shadow-card: 0 1px 2px rgba(16, 24, 40, .04), 0 8px 24px rgba(16, 24, 40, .06);
-    --as-font: "Readex Pro", "Segoe UI", Tahoma, sans-serif;
+    --as-font: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
     --as-rail-w: 76px;
     --as-sidebar-w: 336px;
     --as-topbar-h: 64px;

@@ -30,7 +30,7 @@ html, body { height: 100%; }
 
 body {
     margin: 0;
-    font-family: "Readex Pro", "Segoe UI", Tahoma, sans-serif;
+    font-family: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
     font-size: 16px;
     line-height: 1.6;
     color: var(--text);
