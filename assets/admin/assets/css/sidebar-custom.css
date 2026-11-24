@@ -1,0 +1,317 @@
+/* =========================================================
+   Admin sidebar — restyled (loaded after luno-style.css)
+   Brand palette taken from the logo: #1d70b7 → #191936
+   ========================================================= */
+:root {
+    --sb-blue: #1d70b7;
+    --sb-navy: #191936;
+    --sb-tint: #eef5fb;
+    --sb-text: #4b5563;
+    --sb-muted: #9aa4b2;
+}
+
+/* ── shell ── */
+.layout-1 .sidebar {
+    width: 320px;
+    /* NO min-width here: the mini sidebar collapses via width:70px, and a
+       min-width would outrank it and freeze the sidebar open. flex-shrink:0
+       is what actually keeps it from being squeezed by the content area. */
+    flex-shrink: 0;
+    background: #fff;
+    border-inline-end: 1px solid rgba(29, 112, 183, 0.1);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(29, 112, 183, 0.35) transparent;
+}
+
+/* the sidebar logo comes from CSS (the blade's sidebar-title is empty) */
+.layout-1 .sidebar .title-text::before {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 52px;
+    margin-bottom: 1rem;
+    padding: 0.5rem;
+    background-image: url("/web/assets/images/logoh.svg");
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 52px;
+}
+
+/* clear the fixed header once the sidebar becomes an off-canvas panel */
+@media (max-width: 1200px) {
+    .layout-1 .sidebar {
+        margin-top: 100px;
+    }
+}
+
+@media (max-width: 576px) {
+    .layout-1 .sidebar {
+        margin-top: 66px;
+    }
+}
+
+.layout-1 .sidebar::-webkit-scrollbar {
+    width: 6px;
+}
+
+.layout-1 .sidebar::-webkit-scrollbar-thumb {
+    background: rgba(29, 112, 183, 0.3);
+    border-radius: 99px;
+}
+
+.layout-1 .sidebar::-webkit-scrollbar-thumb:hover {
+    background: rgba(29, 112, 183, 0.55);
+}
+
+.layout-1 .sidebar .title-text {
+    padding-bottom: 14px;
+    border-bottom: 1px solid rgba(29, 112, 183, 0.1);
+}
+
+.layout-1 .sidebar .more-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    border-radius: 10px;
+    background: var(--sb-tint);
+    color: var(--sb-blue);
+    transition: background 0.25s ease, color 0.25s ease;
+}
+
+.layout-1 .sidebar .more-icon:hover {
+    background: var(--sb-blue);
+    color: #fff;
+}
+
+/* ── the dashed box + dotted row separators go away ── */
+.layout-1 .sidebar .menu-list {
+    border: 0;
+    border-radius: 0;
+    padding: 0;
+}
+
+.layout-1 .sidebar .menu-list > li {
+    border-bottom: 0;
+}
+
+/* ── section label ── */
+.layout-1 .sidebar .menu-list .divider {
+    margin: 18px 0 8px;
+    padding: 0 12px !important;
+    color: var(--sb-muted);
+}
+
+.layout-1 .sidebar .menu-list .divider .small,
+.layout-1 .sidebar .menu-list .divider small {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* ── menu item ── */
+.layout-1 .sidebar .menu-list .m-link {
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 3px;
+    padding: 9px 10px;
+    border-radius: 12px;
+    color: var(--sb-text);
+    font-size: 14.5px;
+    font-weight: 600;
+    line-height: 1.6;
+    transition: background 0.22s ease, color 0.22s ease, transform 0.22s ease;
+}
+
+/* The label. Bootstrap's ms-2/mx-2 in the markup duplicate the flex gap and
+   steal 16px per row — on a nested parent (icon + label + arrow) that is the
+   difference between one line and the label collapsing to one word per line,
+   because a flex item's default min-width:auto refuses to shrink past its
+   longest word. Drop those margins and let the label own the free space. */
+.layout-1 .sidebar .menu-list .m-link > span:not(.arrow):not(.badge) {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-inline: 0 !important;
+}
+
+.layout-1 .sidebar .menu-list .m-link > i {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    margin: 0 !important;
+    border-radius: 10px;
+    background: var(--sb-tint);
+    color: var(--sb-blue);
+    font-size: 15px;
+    line-height: 1;
+    transition: background 0.22s ease, color 0.22s ease;
+}
+
+.layout-1 .sidebar .menu-list .m-link:hover {
+    background: var(--sb-tint);
+    color: var(--sb-blue);
+}
+
+/* active item: filled with the logo gradient */
+.layout-1 .sidebar .menu-list .m-link.active {
+    background: linear-gradient(135deg, var(--sb-navy), var(--sb-blue));
+    color: #fff;
+    box-shadow: 0 8px 20px rgba(25, 25, 54, 0.22);
+}
+
+.layout-1 .sidebar .menu-list .m-link.active > i {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+}
+
+/* an open parent stays highlighted but never looks like the active leaf */
+.layout-1 .sidebar .menu-list a[aria-expanded="true"].m-link {
+    background: var(--sb-tint);
+    color: var(--sb-blue);
+}
+
+/* ── expand arrow ── */
+.layout-1 .sidebar .menu-list .m-link .arrow {
+    flex: 0 0 auto;
+    width: 12px;
+    margin: 0 !important;
+    color: var(--sb-muted);
+    font-size: 13px;
+    text-align: center;
+    transition: color 0.22s ease;
+}
+
+.layout-1 .sidebar .menu-list .m-link:hover .arrow,
+.layout-1 .sidebar .menu-list a[aria-expanded="true"] .arrow {
+    color: var(--sb-blue);
+}
+
+.layout-1 .sidebar .menu-list .m-link.active .arrow {
+    color: rgba(255, 255, 255, 0.85);
+}
+
+/* ── badges ── */
+.layout-1 .sidebar .menu-list .m-link .badge {
+    flex: 0 0 auto;
+    margin-inline-start: 4px;
+    padding: 0.32em 0.6em;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+.layout-1 .sidebar .menu-list .m-link.active .badge {
+    background: rgba(255, 255, 255, 0.22) !important;
+    color: #fff;
+}
+
+/* ── sub menus ── */
+.layout-1 .sidebar .menu-list .sub-menu,
+.layout-1.rtl_mode .sidebar .menu-list .sub-menu {
+    position: relative;
+    margin: 2px 0 8px;
+    padding-inline-start: 12px;
+    padding-inline-end: 0;
+}
+
+/* the guide rail down the side of a nested group */
+.layout-1 .sidebar .menu-list .sub-menu::before,
+.layout-1.rtl_mode .sidebar .menu-list .sub-menu::before {
+    inset-inline-start: 13px;
+    inset-inline-end: auto;
+    left: auto;
+    right: auto;
+    top: 4px;
+    width: 2px;
+    height: calc(100% - 12px);
+    border-radius: 2px;
+    background: linear-gradient(to bottom, rgba(29, 112, 183, 0.45), rgba(29, 112, 183, 0.08));
+}
+
+.layout-1 .sidebar .menu-list .sub-menu li:last-child {
+    padding-bottom: 4px;
+}
+
+.layout-1 .sidebar .menu-list .sub-menu .m-link {
+    padding: 7px 8px;
+    font-size: 13.5px;
+    font-weight: 500;
+}
+
+.layout-1 .sidebar .menu-list .sub-menu .m-link > i {
+    width: 26px;
+    height: 26px;
+    border-radius: 9px;
+    font-size: 13px;
+    background: transparent;
+    color: var(--sb-muted);
+}
+
+.layout-1 .sidebar .menu-list .sub-menu .m-link:hover > i {
+    background: var(--sb-tint);
+    color: var(--sb-blue);
+}
+
+.layout-1 .sidebar .menu-list .sub-menu .m-link.active > i {
+    background: rgba(255, 255, 255, 0.18);
+    color: #fff;
+}
+
+/* leaf items get a lighter active treatment than top-level ones */
+.layout-1 .sidebar .menu-list .sub-menu .m-link.active {
+    box-shadow: 0 6px 16px rgba(25, 25, 54, 0.18);
+}
+
+/* ── collapsed (mini) sidebar ── */
+.layout-1 .sidebar.sidebar-mini {
+    width: 70px;
+    min-width: 0;
+}
+
+.layout-1 .sidebar.sidebar-mini .menu-list .m-link {
+    justify-content: center;
+    padding: 9px 0;
+}
+
+/* labels/arrows/badges collapse away; only the icon tile stays */
+.layout-1 .sidebar.sidebar-mini .menu-list .m-link > span:not(.arrow):not(.badge),
+.layout-1 .sidebar.sidebar-mini .menu-list .m-link .arrow,
+.layout-1 .sidebar.sidebar-mini .menu-list .m-link .badge,
+.layout-1 .sidebar.sidebar-mini .menu-list .divider {
+    display: none;
+}
+
+/* mini header: just the mark, centred — the logo lockup and the quick-links
+   dropdown do not fit in a 70px rail */
+.layout-1 .sidebar.sidebar-mini .title-text {
+    padding-bottom: 8px;
+    border-bottom: 0;
+}
+
+.layout-1 .sidebar.sidebar-mini .title-text::before {
+    height: 36px;
+    padding: 0;
+    margin-bottom: 0.5rem;
+    background-size: contain;
+}
+
+.layout-1 .sidebar.sidebar-mini .title-text .dropdown {
+    display: none;
+}
+
+/* the theme turns .sm-txt into a 40px avatar with display:inline-flex !important,
+   but the blade leaves that span empty — so it renders as a blank blue disc */
+.layout-1 .sidebar.sidebar-mini .sidebar-title .sm-txt {
+    display: none !important;
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .layout-1 .sidebar .menu-list .m-link {
+        transition: none;
+    }
+}

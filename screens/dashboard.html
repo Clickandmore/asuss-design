@@ -1,0 +1,5205 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="IE=Edge" http-equiv="X-UA-Compatible"/>
+<meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport"/>
+<meta content="Responsive Bootstrap 5 admin dashboard template &amp; web App ui kit." name="description"/>
+<meta content="LUNO, Bootstrap 5, ReactJs, Angular, Laravel, VueJs, ASP .Net, Admin Dashboard, Admin Theme, HRMS, Projects, Hospital Admin, CRM Admin, Events, Fitness, Music, Inventory, Job Portal" name="keyword"/>
+<meta content="design-kit" name="csrf-token"/>
+<link href="../assets/admin/assets/img/favicon.ico" rel="icon" type="image/x-icon"/>
+<title>لوحة التحكم
+</title>
+<!------------------------ bundle -------------------------------------------------->
+<link href="../assets/admin/assets/cssbundle/select2.min.css" rel="stylesheet"/>
+<!------------------------ vendor -------------------------------------------------->
+<link href="../assets/admin/assets/vendor/toster/css/jquery.toast.css" rel="stylesheet"/>
+<!------------------------ Font Awesome -------------------------------------------------->
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<!------------------------ main -------------------------------------------------->
+<link href="../assets/admin/assets/css/luno-style.css" rel="stylesheet"/>
+<!------------------------ custom -------------------------------------------------->
+<link href="../assets/admin/assets/css/custom.css" rel="stylesheet"/>
+<!------------------------ sidebar -------------------------------------------------->
+<link href="../assets/admin/assets/css/sidebar-custom.css" rel="stylesheet"/>
+<!------------------------ dropify -------------------------------------------------->
+<link href="../assets/admin/assets/cssbundle/dropify.min.css" rel="stylesheet"/>
+<!------------------------ loader -------------------------------------------------->
+<style>
+    .lds-grid {
+        display: inline-block;
+        position: relative;
+        width: 80px;
+        height: 80px;
+    }
+    .lds-grid div {
+        position: absolute;
+        width: 16px;
+        height: 16px;
+        border-radius: 50%;
+        background: #fff;
+        animation: lds-grid 1.2s linear infinite;
+    }
+    .lds-grid div:nth-child(1) {
+        top: 8px;
+        left: 8px;
+        animation-delay: 0s;
+    }
+    .lds-grid div:nth-child(2) {
+        top: 8px;
+        left: 32px;
+        animation-delay: -0.4s;
+    }
+    .lds-grid div:nth-child(3) {
+        top: 8px;
+        left: 56px;
+        animation-delay: -0.8s;
+    }
+    .lds-grid div:nth-child(4) {
+        top: 32px;
+        left: 8px;
+        animation-delay: -0.4s;
+    }
+    .lds-grid div:nth-child(5) {
+        top: 32px;
+        left: 32px;
+        animation-delay: -0.8s;
+    }
+    .lds-grid div:nth-child(6) {
+        top: 32px;
+        left: 56px;
+        animation-delay: -1.2s;
+    }
+    .lds-grid div:nth-child(7) {
+        top: 56px;
+        left: 8px;
+        animation-delay: -0.8s;
+    }
+    .lds-grid div:nth-child(8) {
+        top: 56px;
+        left: 32px;
+        animation-delay: -1.2s;
+    }
+    .lds-grid div:nth-child(9) {
+        top: 56px;
+        left: 56px;
+        animation-delay: -1.6s;
+    }
+    @keyframes  lds-grid {
+        0%, 100% {
+            opacity: 1;
+        }
+        50% {
+            opacity: 0.5;
+        }
+    }
+
+    .loader-ajax{
+        width: 100vw;
+        height: 100%;
+        background: #555656e6;
+        position: fixed;
+        display: flex;
+        align-items: center;
+        z-index: 1112;
+        justify-content: center;
+    }
+
+
+</style>
+<style>
+    .lds-hourglass {
+        width: 100vw;
+        height: 100%;
+        background: #555656e6;
+        position: fixed;
+        display: flex;
+        align-items: center;
+        z-index: 1112;
+        justify-content: center;
+    }
+    .lds-hourglass:after {
+        content: " ";
+        display: block;
+        border-radius: 50%;
+        width: 0;
+        height: 0;
+        margin: 8px;
+        box-sizing: border-box;
+        border: 32px solid #fff;
+        border-color: #fff transparent #fff transparent;
+        animation: lds-hourglass 1.2s infinite;
+    }
+    @keyframes  lds-hourglass {
+        0% {
+            transform: rotate(0);
+            animation-timing-function: cubic-bezier(0.55, 0.055, 0.675, 0.19);
+        }
+        50% {
+            transform: rotate(900deg);
+            animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        }
+        100% {
+            transform: rotate(1800deg);
+        }
+    }
+
+</style>
+<style>
+    @keyframes  placeHolderShimmer{
+        0%{
+            background-position: -468px 0
+        }
+        100%{
+            background-position: 468px 0
+        }
+    }
+
+    .linear-background {
+        animation-duration: 1s;
+        animation-fill-mode: forwards;
+        animation-iteration-count: infinite;
+        animation-name: placeHolderShimmer;
+        animation-timing-function: linear;
+        background: #f6f7f8;
+        background: linear-gradient(to right, #eeeeee 8%, #dddddd 18%, #eeeeee 33%);
+        background-size: 1000px 104px;
+        height: 200px;
+        position: relative;
+        overflow: hidden;
+    }
+    .inter-draw{
+        background: #FFF;
+        width: 100%;
+        height: 100px;
+        position: absolute;
+        top: 100px;
+    }
+    .inter-right--top{
+        background: #FFF;
+        width: 100%;
+        height: 20px;
+        position: absolute;
+        top: 20px;
+        left: 100px;
+    }
+    .inter-right--bottom{
+        background: #FFF;
+        width: 100%;
+        height: 50px;
+        position: absolute;
+        top: 60px;
+        left: 100px;
+    }
+    .inter-crop{
+        background: #FFF;
+        width: 20px;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 100px;
+    }
+</style>
+<style>
+    .tox-notification,
+    .tox .tox-statusbar {
+        display: none !important;
+    }
+</style>
+<link href="../assets/admin/custom/style.css" rel="stylesheet" type="text/css"/>
+<link href="../assets/admin/custom/style-rtl.css" rel="stylesheet" type="text/css"/>
+<!-- Admin Tables & Sidebar Design System -->
+<link href="../assets/admin/custom/admin-tables.css" rel="stylesheet" type="text/css"/>
+<link href="../assets/admin/assets/cssbundle/dataTables.min.css" rel="stylesheet"/>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet"/>
+<style>
+    .dashboard-shell {
+        --dashboard-radius: 22px;
+        --dashboard-shadow: 0 25px 60px rgba(15, 23, 42, 0.15);
+        background: radial-gradient(circle at top right, rgba(78, 115, 223, 0.08), transparent 45%);
+        border-radius: 24px;
+        padding-bottom: 2rem;
+    }
+
+    .dashboard-shell .dashboard-hero {
+        background: linear-gradient(120deg, #283e51, #4b79a1 70%, #6078ea);
+        color: #fff;
+        border-radius: 26px;
+        padding: 35px;
+        position: relative;
+        overflow: hidden;
+        box-shadow: var(--dashboard-shadow);
+        margin-bottom: 30px;
+    }
+
+    .dashboard-shell .dashboard-hero::after,
+    .dashboard-shell .dashboard-hero::before {
+        content: '';
+        position: absolute;
+        border-radius: 50%;
+        background: rgba(255, 255, 255, 0.08);
+        z-index: 0;
+    }
+
+    .dashboard-shell .dashboard-hero::after {
+        width: 260px;
+        height: 260px;
+        top: -80px;
+        left: -60px;
+    }
+
+    .dashboard-shell .dashboard-hero::before {
+        width: 200px;
+        height: 200px;
+        bottom: -90px;
+        right: -40px;
+    }
+
+    .dashboard-shell .hero-content {
+        position: relative;
+        z-index: 2;
+    }
+
+    .dashboard-shell .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-top: 15px;
+    }
+
+    .dashboard-shell .hero-kpis {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+        gap: 18px;
+        margin-top: 30px;
+    }
+
+    .dashboard-shell .hero-kpis div {
+        background: rgba(255, 255, 255, 0.12);
+        border-radius: 18px;
+        padding: 16px;
+        text-align: center;
+    }
+
+    .dashboard-shell .hero-kpis small {
+        display: block;
+        opacity: 0.8;
+        margin-bottom: 6px;
+    }
+
+    .dashboard-shell .hero-kpis strong {
+        font-size: 24px;
+    }
+
+    .insight-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 20px;
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+        border: 1px solid #f0f2ff;
+        height: 100%;
+    }
+
+    .insight-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 18px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+    }
+
+    .insight-card .label {
+        font-size: 13px;
+        letter-spacing: 0.4px;
+        color: #8b97b1;
+        text-transform: uppercase;
+    }
+
+    .insight-card .value {
+        font-size: 30px;
+        font-weight: 700;
+        color: #2b2e4a;
+    }
+
+    .insight-card.insight-primary .insight-icon {
+        background: rgba(78, 115, 223, 0.15);
+        color: #4e73df;
+    }
+
+    .insight-card.insight-success .insight-icon {
+        background: rgba(28, 200, 138, 0.15);
+        color: #1cc88a;
+    }
+
+    .insight-card.insight-warning .insight-icon {
+        background: rgba(246, 194, 62, 0.15);
+        color: #f6c23e;
+    }
+
+    .insight-card.insight-info .insight-icon {
+        background: rgba(54, 185, 204, 0.15);
+        color: #36b9cc;
+    }
+
+    .department-wrapper .card-header {
+        border-bottom: none;
+        padding: 24px 24px 0;
+    }
+
+    .department-card {
+        background: #fff;
+        border-radius: 24px;
+        padding: 24px;
+        border: 1px solid #eff2fb;
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+        min-height: 100%;
+    }
+
+    .department-card .dept-head {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        margin-bottom: 12px;
+    }
+
+    .department-card .dept-icon {
+        width: 58px;
+        height: 58px;
+        border-radius: 16px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 24px;
+        color: #fff;
+    }
+
+    .department-card .department-metrics {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+        gap: 12px 18px;
+        margin: 18px 0;
+    }
+
+    .department-card .department-metrics span {
+        display: block;
+    }
+
+    .department-card .metric-label {
+        color: #98a1bd;
+        font-size: 13px;
+    }
+
+    .department-card .metric-value {
+        font-weight: 600;
+        font-size: 18px;
+    }
+
+    .dept-progress {
+        height: 7px;
+        border-radius: 999px;
+        background: #eef1ff;
+        overflow: hidden;
+        margin-bottom: 8px;
+    }
+
+    .dept-progress span {
+        display: block;
+        height: 100%;
+        border-radius: inherit;
+    }
+
+    .dept-operations .dept-icon,
+    .dept-operations .dept-progress span {
+        background: linear-gradient(135deg, #4e73df, #1b55d4);
+    }
+
+    .dept-recruitment .dept-icon,
+    .dept-recruitment .dept-progress span {
+        background: linear-gradient(135deg, #36b9cc, #2fa8c9);
+    }
+
+    .dept-sales .dept-icon,
+    .dept-sales .dept-progress span {
+        background: linear-gradient(135deg, #f97316, #fb923c);
+    }
+
+    .dept-clients .dept-icon,
+    .dept-clients .dept-progress span {
+        background: linear-gradient(135deg, #1cc88a, #0fb981);
+    }
+
+    .dept-team .dept-icon,
+    .dept-team .dept-progress span {
+        background: linear-gradient(135deg, #8b5cf6, #6366f1);
+    }
+
+    .dept-housing .dept-icon,
+    .dept-housing .dept-progress span {
+        background: linear-gradient(135deg, #f472b6, #ec4899);
+    }
+
+    .chart-card {
+        background: #fff;
+        border-radius: 24px;
+        padding: 24px;
+        border: 1px solid #edf0ff;
+        box-shadow: 0 20px 40px rgba(15, 23, 42, 0.08);
+        height: 100%;
+    }
+
+    .chart-card-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        gap: 16px;
+        margin-bottom: 18px;
+    }
+
+    .chart-area {
+        height: 280px;
+        direction: ltr;
+    }
+
+    .chart-area canvas {
+        width: 100% !important;
+        height: 100% !important;
+    }
+
+    .chart-foot {
+        margin-top: 20px;
+        padding: 16px;
+        border-radius: 18px;
+        background: #f7f9ff;
+    }
+
+    .performance-grid .performance-card {
+        background: #fff;
+        border-radius: 20px;
+        padding: 18px;
+        border: 1px solid #edf0ff;
+        box-shadow: 0 15px 35px rgba(15, 23, 42, 0.07);
+        height: 100%;
+    }
+
+    .performance-card h6 {
+        font-size: 13px;
+        color: #98a1bd;
+        margin-bottom: 6px;
+    }
+
+    .performance-card h3 {
+        font-size: 26px;
+        margin-bottom: 0;
+    }
+
+    .timeline-item {
+        display: flex;
+        gap: 14px;
+        padding: 16px 0;
+        border-bottom: 1px solid #f1f2f9;
+    }
+
+    .timeline-item:last-child {
+        border-bottom: 0;
+    }
+
+    .timeline-icon {
+        width: 50px;
+        height: 50px;
+        border-radius: 14px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 20px;
+        background: rgba(78, 115, 223, 0.12);
+        color: #4e73df;
+    }
+
+    .timeline-body .title {
+        font-weight: 600;
+        color: #2b2e4a;
+    }
+
+    .timeline-body small {
+        color: #98a1bd;
+    }
+
+    .quick-action-card {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 18px 12px;
+        border-radius: 18px;
+        text-decoration: none;
+        color: #1f2937;
+        background: #f7f9ff;
+        border: 1px dashed #d9e0ff;
+        transition: all 0.2s ease;
+        height: 100%;
+    }
+
+    .quick-action-card:hover {
+        background: #fff;
+        border-color: #4e73df;
+        box-shadow: 0 15px 35px rgba(15, 23, 42, 0.1);
+        transform: translateY(-4px);
+    }
+
+    .quick-action-card.disabled {
+        cursor: not-allowed;
+        opacity: 0.6;
+        border-style: solid;
+    }
+
+    .quick-action-card .icon {
+        width: 48px;
+        height: 48px;
+        border-radius: 14px;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #4e73df;
+        box-shadow: inset 0 0 0 1px #edf0ff;
+    }
+
+    .orders-snapshot {
+        border-radius: 18px;
+        border: 1px solid #edf0ff;
+        padding: 20px;
+        margin-top: 22px;
+        background: linear-gradient(145deg, #f7f9ff, #fff);
+    }
+
+    .orders-snapshot .orders-metric {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px dashed #e2e6f5;
+    }
+
+    .orders-snapshot .orders-metric:last-child {
+        border-bottom: 0;
+    }
+
+    .orders-snapshot .value {
+        font-weight: 600;
+        font-size: 20px;
+    }
+
+    #calendar {
+        min-height: 430px;
+    }
+
+    @media (max-width: 991px) {
+        .dashboard-shell .dashboard-hero {
+            padding: 25px;
+        }
+        .department-card {
+            padding: 18px;
+        }
+    }
+</style>
+<script class="flasher-js" type="text/javascript">(function() {    var rootScript = 'https://cdn.jsdelivr.net/npm/@flasher/user@example.com/dist/flasher.min.js';    var FLASHER_FLASH_BAG_PLACE_HOLDER = {};    var options = mergeOptions([], FLASHER_FLASH_BAG_PLACE_HOLDER);    function mergeOptions(first, second) {        return {            context: merge(first.context || {}, second.context || {}),            envelopes: merge(first.envelopes || [], second.envelopes || []),            options: merge(first.options || {}, second.options || {}),            scripts: merge(first.scripts || [], second.scripts || []),            styles: merge(first.styles || [], second.styles || []),        };    }    function merge(first, second) {        if (Array.isArray(first) && Array.isArray(second)) {            return first.concat(second).filter(function(item, index, array) {                return array.indexOf(item) === index;            });        }        return Object.assign({}, first, second);    }    function renderOptions(options) {        if(!window.hasOwnProperty('flasher')) {            console.error('Flasher is not loaded');            return;        }        requestAnimationFrame(function () {            window.flasher.render(options);        });    }    function render(options) {        if ('loading' !== document.readyState) {            renderOptions(options);            return;        }        document.addEventListener('DOMContentLoaded', function() {            renderOptions(options);        });    }    if (1 === document.querySelectorAll('script.flasher-js').length) {        document.addEventListener('flasher:render', function (event) {            render(event.detail);        });            }    if (window.hasOwnProperty('flasher') || !rootScript || document.querySelector('script[src="' + rootScript + '"]')) {        render(options);    } else {        var tag = document.createElement('script');        tag.setAttribute('src', rootScript);        tag.setAttribute('type', 'text/javascript');        tag.onload = function () {            render(options);        };        document.head.appendChild(tag);    }})();</script>
+</head>
+<body class="layout-1 rtl_mode" data-luno="theme-blue"> <!-- h-menu  -->
+<div class="sidebar p-2 py-md-3 @cardClass">
+<div class="container-fluid">
+<div class="title-text d-flex align-items-center mb-4 mt-1">
+<h4 class="sidebar-title mb-0 flex-grow-1"><span class="sm-txt"></span>
+</h4>
+<div class="dropdown morphing scale-right">
+<a class="dropdown-toggle more-icon" data-bs-toggle="dropdown" href="#" role="button"><i class="fa fa-ellipsis-h"></i></a>
+<ul class="dropdown-menu shadow border-0 p-2 mt-2" data-bs-popper="none">
+<li class="fw-bold px-2">روابط سريعة</li>
+<li>
+<hr class="dropdown-divider"/>
+</li>
+<li><a aria-current="page" class="dropdown-item" data-route="/admin/settings" href="../screens/settings.html">
+                            الإعدادات</a>
+</li>
+<li>
+<hr class="dropdown-divider"/>
+</li>
+<li>
+<hr class="dropdown-divider"/>
+</li>
+</ul>
+</div>
+</div>
+<div class="main-menu flex-grow-1">
+<ul class="menu-list">
+<!-- Dashboard Section -->
+<li class="divider py-2 lh-sm"><span class="small">لوحة التحكم</span></li>
+<li>
+<a class="m-link active" data-route="/dashboard" href="../screens/dashboard.html">
+<i class="fa fa-home"></i>
+<span class="ms-2">الرئيسية</span>
+</a>
+</li>
+<!-- Clients Section -->
+<li>
+<a class="m-link" data-route="/admin/clients" href="../screens/clients.html">
+<i class="fa fa-user"></i>
+<span class="ms-2"> العملاء</span>
+</a>
+</li>
+<!-- Recruitment Section -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#recruitmentManagement" data-bs-toggle="collapse" href="#">
+<i class="fa fa-briefcase"></i>
+<span class="mx-2">الاستقدام</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="recruitmentManagement">
+<!-- CV Management Section -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#cvManagement" data-bs-toggle="collapse" href="#">
+<i class="fa fa-file-text"></i>
+<span class="mx-2">إدارة السير الذاتية</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="cvManagement">
+<li>
+<a class="m-link" data-route="/admin/maids/create" href="../screens/maid-create.html">
+<i class="fa fa-plus"></i>
+<span class="ms-2">إضافة سيرة ذاتية</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RecruitmentContract/short-cv" href="#">
+<i class="fa fa-file-lines"></i>
+<span class="ms-2">إضافة سيرة مختصرة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/maids" href="../screens/maids.html">
+<i class="fa fa-list"></i>
+<span class="ms-2">السير الذاتية</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/cv-center/recruitment/cvs" href="#">
+<i class="fas fa-th-large"></i>
+<span class="ms-2">سير الاستقدام المتاحة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/cv-center/recruitment/sessions" href="#">
+<i class="fas fa-paper-plane"></i>
+<span class="ms-2">جلسات الإرسال (الاستقدام)</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/cv-center/recruitment/bookings" href="#">
+<i class="fas fa-calendar-check"></i>
+<span class="ms-2">الحجوزات (الاستقدام)</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/maids-not-available" href="#">
+<i class="fa fa-times-circle"></i>
+<span class="ms-2">عاملات باك اوت</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/maids/deleted" href="#">
+<i class="fa fa-trash-restore"></i>
+<span class="ms-2">السير الذاتية المحذوفة</span>
+</a>
+</li>
+</ul>
+</li>
+<!-- Orders Section -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#my_dashboard2" data-bs-toggle="collapse" href="#">
+<i class="fa fa-shopping-cart"></i>
+<span class="mx-2"> طلبات الاستقدام </span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="my_dashboard2">
+<li>
+<a class="m-link active" data-route="/admin/orders" href="../screens/orders.html">
+<i class="fa fa-arrow-left"></i>
+<span class="ms-2">جميع الطلبات</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/orders" href="../screens/orders.html">
+<i class="fa fa-arrow-left"></i>
+<span class="ms-2">الطلبات الجديدة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/orders" href="../screens/orders.html">
+<i class="fa fa-arrow-left"></i>
+<span class="ms-2">طلبات تم التعاقد</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/return_requests" href="#">
+<i class="fa fa-times-circle"></i>
+<span class="ms-2">الطلبات الغير مكتملة</span>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#contracts" data-bs-toggle="collapse" href="#">
+<i class="fa fa-file"></i>
+<span class="mx-2"> عقود الاستقدام </span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="contracts">
+<li>
+<a class="m-link" data-route="/admin/RecruitmentContract/create" href="../screens/recruitment-contract-create.html">
+<i class="icon-star"></i>
+<span class="ms-2">اضافة عقد</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RecruitmentContract" href="../screens/recruitment-contracts.html">
+<i class="fa fa-list"></i>
+<span class="ms-2">جميع العقود</span>  
+                                        <span class="badge bg-primary">0</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RecruitmentContract" href="../screens/recruitment-contracts.html">
+<i class="fa fa-list"></i>
+<span class="ms-2">جميع العقود السارية</span>  
+                                        <span class="badge bg-primary">0</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RecruitmentContract" href="../screens/recruitment-contracts.html">
+<i class="fa fa-plus"></i>
+<span class="ms-2">بانتظار الاعتماد</span> 
+                                        <span class="badge bg-primary">0</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RecruitmentContract" href="../screens/recruitment-contracts.html">
+<i class="fa fa-clock-o"></i>
+<span class="ms-2">بانتظار اختيار العاملة</span> 
+                                        <span class="badge bg-warning">0</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RecruitmentContract" href="../screens/recruitment-contracts.html">
+<i class="fa fa-file-text-o"></i>
+<span class="ms-2">بانتظار إكمال البيانات</span> 
+                                        <span class="badge bg-info">0</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RecruitmentContract" href="../screens/recruitment-contracts.html">
+<i class="fa fa-plus"></i>
+<span class="ms-2">عقود مساند</span>  
+                                        <span class="badge bg-primary">0</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RecruitmentContract" href="../screens/recruitment-contracts.html">
+<i class="fa fa-clock-o"></i>
+<span class="ms-2">التفويض</span>  
+                                        <span class="badge bg-primary">0</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RecruitmentContract" href="../screens/recruitment-contracts.html">
+<i class="fa fa-clock-o"></i>
+<span class="ms-2">التفييز</span>  
+                                        <span class="badge bg-primary">0</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RecruitmentContract" href="../screens/recruitment-contracts.html">
+<i class="fa fa-clock-o"></i>
+<span class="ms-2">التذكرة</span>  
+                                        <span class="badge bg-primary">0</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/travel-rescheduling" href="#">
+<i class="fa fa-repeat"></i>
+<span class="ms-2">إعادة جدولة الرحلات</span>
+<span class="badge bg-warning text-dark">0</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RecruitmentContract" href="../screens/recruitment-contracts.html">
+<i class="fa fa-check"></i>
+<span class="ms-2">جميع العقود المكتملة</span>  
+                                        <span class="badge bg-success">0</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RecruitmentContract" href="../screens/recruitment-contracts.html">
+<i class="fa fa-shield"></i>
+<span class="ms-2"> تحت الضمان</span>  
+                                        <span class="badge bg-warning">0</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RecruitmentContract" href="../screens/recruitment-contracts.html">
+<i class="fa fa-check-circle"></i>
+<span class="ms-2">عقود مكتملة</span>  
+                                        <span class="badge bg-primary">0</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RecruitmentContract" href="../screens/recruitment-contracts.html">
+<i class="fa fa-exclamation-triangle"></i>
+<span class="ms-2"> بلاغات الهروب </span>  
+                                        <span class="badge bg-danger">0</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RecruitmentContract" href="../screens/recruitment-contracts.html">
+<i class="fa fa-undo"></i>
+<span class="ms-2">عقود مرتجعة</span> 
+                                        <span class="badge bg-danger">0</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RecruitmentContract/cancelled" href="#">
+<i class="fa fa-ban"></i>
+<span class="ms-2">العقود الملغية</span> 
+                                        <span class="badge bg-danger">0</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RecruitmentContract/deleted" href="#">
+<i class="fa fa-trash"></i>
+<span class="ms-2"> العقود المحذوفة </span>  
+                                        
+                                    </a>
+</li>
+</ul>
+</li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#assignedmaidrequests" data-bs-toggle="collapse" href="#">
+<i class="fa fa-id-card-o"></i>
+<span class="mx-2">المعينات</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="assignedmaidrequests">
+<li>
+<a class="m-link" data-route="/admin/AssignedMaidRequest/create" href="#">
+<i class="fa fa-plus-circle"></i>
+<span class="ms-2">إضافة طلب معينة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/AssignedMaidRequest" href="#">
+<i class="fa fa-list"></i>
+<span class="ms-2">طلبات المعينات</span>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<!-- Rental and Immediate Placement Section -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#rentalImmediateManagement" data-bs-toggle="collapse" href="#">
+<i class="fas fa-house-user"></i>
+<span class="mx-2">التأجير والاستلام الفوري</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="rentalImmediateManagement">
+<!-- Rent Contracts -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#rentcontracts" data-bs-toggle="collapse" href="#">
+<i class="fas fa-handshake"></i>
+<span class="mx-2"> عقود التأجير </span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="rentcontracts">
+<li>
+<a class="m-link" data-route="/admin/RentContract/create" href="#">
+<i class="fas fa-plus"></i>
+<span class="ms-2">إضافة عقد تأجير</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/maids/rental/create" href="#">
+<i class="fas fa-user-plus"></i>
+<span class="ms-2">إضافة سيرة إيجار</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/rental-orders" href="#">
+<i class="fas fa-shopping-cart"></i>
+<span class="ms-2">طلبات الإيجار</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/maids/rental" href="#">
+<i class="fas fa-id-card-alt"></i>
+<span class="ms-2">سير إيجار العاملات</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/cv-center/rental/cvs" href="#">
+<i class="fas fa-th-large"></i>
+<span class="ms-2">سير التأجير المتاحة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/cv-center/rental/sessions" href="#">
+<i class="fas fa-paper-plane"></i>
+<span class="ms-2">جلسات الإرسال (التأجير)</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/cv-center/rental/bookings" href="#">
+<i class="fas fa-calendar-check"></i>
+<span class="ms-2">الحجوزات (التأجير)</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/rental-worker-salaries" href="#">
+<i class="fa fa-money-bill-wave"></i>
+<span class="ms-2">رواتب عاملات التأجير</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/rental-human-resources" href="#">
+<i class="fa fa-users-gear"></i>
+<span class="ms-2">موارد بشرية التأجير</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RentContract" href="../screens/rent-contracts.html">
+<i class="fas fa-list"></i>
+<span class="ms-2">جميع عقود التأجير</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RentContract" href="../screens/rent-contracts.html">
+<i class="fas fa-file-plus text-primary"></i>
+<span class="ms-2">العقود الجديدة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RentContract" href="../screens/rent-contracts.html">
+<i class="fas fa-check-circle text-success"></i>
+<span class="ms-2">العقود النشطة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RentContract" href="../screens/rent-contracts.html">
+<i class="fas fa-exchange-alt text-warning"></i>
+<span class="ms-2">تم النقل</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RentContract" href="../screens/rent-contracts.html">
+<i class="fas fa-flag-checkered text-info"></i>
+<span class="ms-2">العقود المكتملة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RentContract" href="../screens/rent-contracts.html">
+<i class="fas fa-times-circle text-danger"></i>
+<span class="ms-2">العقود الملغية</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/contract_settings" href="#">
+<i class="fas fa-cog"></i>
+<span class="ms-2">إعدادات العقود</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/RentContract/deleted" href="#">
+<i class="fa fa-trash"></i>
+<span class="ms-2"> العقود المحذوفة </span>  
+                                    </a>
+</li>
+</ul>
+</li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#sponsorshipTransfer" data-bs-toggle="collapse" href="#">
+<i class="icon-directions"></i>
+<span class="mx-3">نقل الكفالة</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="sponsorshipTransfer">
+<li>
+<a class="m-link" data-route="/admin/SponsorshipTransfer" href="#">
+<i class="fa fa-list"></i>
+<span class="mx-3">طلبات نقل الكفالة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/SponsorshipTransfer/web-requests" href="#">
+<i class="fa fa-globe"></i>
+<span class="mx-3">طلبات الموقع الخارجي</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/SponsorshipTransfer/create" href="#">
+<i class="fa fa-plus"></i>
+<span class="mx-3">إضافة طلب نقل</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/ShelterContract/available-for-transfer" href="#">
+<i class="fa fa-check-circle"></i>
+<span class="mx-3">متاح للنقل</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/cv-center/transfer/cvs" href="#">
+<i class="fas fa-th-large"></i>
+<span class="ms-2">سير نقل الكفالة المتاحة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/cv-center/transfer/sessions" href="#">
+<i class="fas fa-paper-plane"></i>
+<span class="ms-2">جلسات الإرسال (نقل الكفالة)</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/cv-center/transfer/bookings" href="#">
+<i class="fas fa-calendar-check"></i>
+<span class="ms-2">الحجوزات (نقل الكفالة)</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/SponsorshipTransfer/status/trial" href="#">
+<i class="fa fa-clock-o"></i>
+<span class="mx-3">فترة التجربة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/SponsorshipTransfer/status/failed" href="#">
+<i class="fa fa-times-circle"></i>
+<span class="mx-3">فشل التجربة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/SponsorshipTransfer/status/transferred" href="#">
+<i class="fa fa-check"></i>
+<span class="mx-3">تم النقل</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/transfer-contract-terms" href="#">
+<i class="fa fa-file-text"></i>
+<span class="mx-3">بنود عقد نقل الكفالة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/rent-contract-terms" href="#">
+<i class="fa fa-file-contract"></i>
+<span class="mx-3">بنود عقد الإيجار</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/SponsorshipTransfer/deleted" href="#">
+<i class="fa fa-trash"></i>
+<span class="mx-3"> الطلبات المحذوفة </span>  
+                </a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<!-- Operations Management Section -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#operationsManagement" data-bs-toggle="collapse" href="#">
+<i class="fa fa-cogs"></i>
+<span class="mx-2">إدارة التشغيل</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="operationsManagement">
+<li class="collapsed">
+<a class="m-link" data-bs-target="#companyVisas" data-bs-toggle="collapse" href="#">
+<i class="fa fa-list"></i>
+<span class="mx-2">تأشيرات الشركة</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="companyVisas">
+<li>
+<a class="m-link" data-route="/admin/company-visas/create" href="#">
+<i class="fa fa-plus"></i>
+<span class="ms-2">إنشاء تأشيرة جديدة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/company-visas" href="#">
+<i class="fa fa-id-card"></i>
+<span class="ms-2">تأشيرات الشركة</span>
+</a>
+</li>
+</ul>
+</li>
+<!-- Shelter Contracts -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#sheltercontracts" data-bs-toggle="collapse" href="#">
+<i class="icon-home"></i>
+<span class="mx-2"> إدارة الإيواء </span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="sheltercontracts">
+<li>
+<a class="m-link" data-route="/admin/ShelterContract/create" href="#">
+<i class="icon-star"></i>
+<span class="ms-2">اضافة  للايواء</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/shelter-human-resources" href="#">
+<i class="fa fa-users-gear"></i>
+<span class="ms-2">موارد بشرية الإيواء</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/ShelterContract" href="../screens/shelter-contracts.html">
+<i class="icon-loop"></i>
+<span class="ms-2"> داخل الإيواء</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/ShelterContract/outside" href="#">
+<i class="fa fa-door-open"></i>
+<span class="ms-2">خارج الإيواء</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/ShelterContract/transferred-outside" href="#">
+<i class="fa fa-person-walking-arrow-right"></i>
+<span class="ms-2">منقولات خارج الإيواء</span>
+</a>
+</li>
+<li><a class="m-link" data-route="/admin/ShelterContract/archive" href="#">
+<i class="fa fa-archive"></i><span class="ms-2">أرشيف الإيواء</span>
+</a></li>
+<li>
+<a class="m-link" data-route="/admin/ShelterContract/document-drafts" href="#">
+<i class="fa fa-hourglass-half"></i>
+<span class="ms-2">مسودات الإيواء</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/shelter-document-templates" href="#">
+<i class="fa fa-file-lines"></i>
+<span class="ms-2">قوالب نماذج الإيواء</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/SalasikShelter" href="#">
+<i class="fa fa-building"></i>
+<span class="ms-2">إيواء سلسك</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/SalasikShelter/create" href="#">
+<i class="fa fa-plus-circle"></i>
+<span class="ms-2">إضافة إيواء سلسك</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/SalasikNotifications" href="#">
+<i class="fa fa-bell"></i>
+<span class="ms-2">إشعارات سلسك</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/SalasikDeportationLetter" href="#">
+<i class="fa fa-file-signature"></i>
+<span class="ms-2">خطابات الترحيل</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/SalasikDeportationLetter/create" href="#">
+<i class="fa fa-file-circle-plus"></i>
+<span class="ms-2">إضافة خطاب ترحيل</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/SalasikWorkExtensionLetter" href="#">
+<i class="fa fa-file-signature"></i>
+<span class="ms-2">خطابات تمديد العمل</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/SalasikWorkExtensionLetter/create" href="#">
+<i class="fa fa-file-circle-plus"></i>
+<span class="ms-2">إضافة خطاب تمديد عمل</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/ShelterContract/available-for-transfer" href="#">
+<i class="fa fa-user"></i>
+<span class="ms-2">متاح للنقل</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/ShelterContract/deportation-stage" href="#">
+<i class="fa fa-plane"></i>
+<span class="ms-2">مرحلة الترحيل</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/ShelterContract/deported" href="#">
+<i class="fa fa-check-circle"></i>
+<span class="ms-2">تم الترحيل</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/shelter-places" href="#">
+<i class="fa fa-building"></i>
+<span class="ms-2"> مقرات الايواء</span>
+</a>
+</li>
+</ul>
+</li>
+<!-- Electronic Archives Section -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#electronic_archive_menu" data-bs-toggle="collapse" href="#">
+<i class="fa fa-archive"></i>
+<span class="mx-2">الأرشيف الإلكتروني</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="electronic_archive_menu">
+<li>
+<a class="m-link" data-route="/admin/electronic-archives" href="#">
+<i class="fa fa-list"></i>
+<span class="ms-2">جميع الأرشيفات</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/electronic-archives/create" href="#">
+<i class="fa fa-plus"></i>
+<span class="ms-2">إضافة سجل جديد</span>
+</a>
+</li>
+</ul>
+</li>
+<!-- Tasks Section -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#tasks_menu" data-bs-toggle="collapse" href="#">
+<i class="fa fa-tasks"></i>
+<span class="mx-2">إدارة المهام</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="tasks_menu">
+<li>
+<a class="m-link" data-route="/admin/tasks" href="../screens/tasks.html">
+<i class="fa fa-list"></i>
+<span class="ms-2">جميع المهام</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/tasks/create" href="#">
+<i class="fa fa-plus"></i>
+<span class="ms-2">إضافة مهمة جديدة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/tasks" href="../screens/tasks.html">
+<i class="fa fa-user"></i>
+<span class="ms-2">مهامي</span>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#circularsMenu" data-bs-toggle="collapse" href="#">
+<i class="fa fa-bullhorn"></i>
+<span class="mx-2">التعاميم</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="circularsMenu">
+<li>
+<a class="m-link" data-route="/admin/circulars" href="#">
+<i class="fa fa-list"></i>
+<span class="ms-2">إدارة التعاميم</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/circulars/create" href="#">
+<i class="fa fa-plus"></i>
+<span class="ms-2">إنشاء تعميم</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/circulars/taxonomy" href="#">
+<i class="fa fa-tags"></i>
+<span class="ms-2">التصنيفات والفئات</span>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#objectsMenu" data-bs-toggle="collapse" href="#">
+<i class="fa fa-database"></i>
+<span class="mx-2">قواعد البيانات</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="objectsMenu">
+<li>
+<a class="m-link" data-route="/admin/object-authorizations" href="#">
+<i class="fa fa-stamp"></i>
+<span class="ms-2">تعميدات قواعد البيانات</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/object-authorizations/create" href="#">
+<i class="fa fa-plus"></i>
+<span class="ms-2">إنشاء تعميد</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/objects" href="#">
+<i class="fa fa-cog"></i>
+<span class="ms-2">إعدادات قواعد البيانات</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/object-tracks" href="#">
+<i class="fa fa-route"></i>
+<span class="ms-2">مسارات التعميد</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/objects/2" href="#">
+<i class="fa fa-house"></i>
+<span class="ms-2">السكن</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/objects/3" href="#">
+<i class="fa fa-car-side"></i>
+<span class="ms-2">السيارات</span>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#afterSalesService" data-bs-toggle="collapse" href="#">
+<i class="fa fa-headset"></i>
+<span class="mx-2">خدمة ما بعد البيع</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="afterSalesService">
+<li class="collapsed">
+<a class="m-link" data-bs-target="#customertransferrequests" data-bs-toggle="collapse" href="#">
+<i class="fa fa-random"></i>
+<span class="mx-2">تحويلات العملاء</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="customertransferrequests">
+<li>
+<a class="m-link" data-route="/admin/CustomerTransferRequest/create" href="#">
+<i class="fa fa-plus-circle"></i>
+<span class="ms-2">إضافة طلب تحويل عميل</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/CustomerTransferRequest" href="#">
+<i class="fa fa-list"></i>
+<span class="ms-2">عرض تحويلات العملاء</span>
+</a>
+</li>
+</ul>
+</li>
+<!-- Complaints Section -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#complaintsMenu" data-bs-toggle="collapse" href="#">
+<i class="fa fa-exclamation-triangle"></i>
+<span class="mx-3">إدارة الشكاوى</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="complaintsMenu">
+<li>
+<a class="m-link" data-route="/admin/complaints" href="../screens/complaints.html">
+<i class="fa fa-list"></i>
+<span class="mx-3">الشكاوى</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/complaints/create" href="#">
+<i class="fa fa-plus-circle"></i>
+<span class="mx-3">إضافة شكوى جديدة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/complaint-types" href="#">
+<i class="fa fa-tags"></i>
+<span class="mx-3">أنواع الشكاوى</span>
+</a>
+</li>
+</ul>
+</li>
+<!-- شكاوى الخارجية -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#foreignComplaintsMenu" data-bs-toggle="collapse" href="#">
+<i class="fa fa-globe"></i>
+<span class="mx-3">شكاوى الخارجية</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="foreignComplaintsMenu">
+<li>
+<a class="m-link" data-route="/admin/foreign-complaints" href="#">
+<i class="fa fa-list"></i>
+<span class="mx-3">كل شكاوى الخارجية</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/foreign-complaints/create" href="#">
+<i class="fa fa-plus-circle"></i>
+<span class="mx-3">إضافة شكوى خارجية</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/foreign-complaint-types" href="#">
+<i class="fa fa-tags"></i>
+<span class="mx-3">أنواع شكاوى الخارجية</span>
+</a>
+</li>
+</ul>
+</li>
+<!-- طلبات استرجاع العقود -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#returnRequestsMenu" data-bs-toggle="collapse" href="#">
+<i class="fa fa-undo"></i>
+<span class="mx-3">طلبات استرجاع العقود</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="returnRequestsMenu">
+<li>
+<a class="m-link" data-route="/admin/contract-return-requests" href="#">
+<i class="fa fa-list"></i>
+<span class="mx-3">جميع الطلبات</span>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<!-- Logistics Services Section -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#logisticsMenu" data-bs-toggle="collapse" href="#">
+<i class="fa fa-truck"></i>
+<span class="mx-2">الخدمات اللوجستية</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="logisticsMenu">
+<li><a class="m-link" data-route="/dashboard/logistics/transport-fares" href="#"><i class="fa fa-tags"></i><span class="ms-2">تسعير النقل</span></a></li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#groupTransportMenu" data-bs-toggle="collapse" href="#">
+<i class="fa fa-bus"></i>
+<span class="mx-2">النقل الجماعي</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="groupTransportMenu">
+<li>
+<a class="m-link" data-route="/dashboard/logistics" href="#">
+<i class="fa fa-chart-line"></i>
+<span class="ms-2">لوحة اللوجستيك</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/dashboard/logistics/offices" href="#">
+<i class="fa fa-building"></i>
+<span class="ms-2">المكاتب اللوجستية</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/dashboard/logistics/requests/create" href="#">
+<i class="fa fa-plus-circle"></i>
+<span class="ms-2">إضافة طلب لوجستي</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/dashboard/logistics/booking-drafts" href="#">
+<i class="fa fa-file-alt"></i><span class="ms-2">مسودة الحجوزات</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/dashboard/logistics/requests" href="#">
+<i class="fa fa-plane"></i>
+<span class="ms-2">طلبات الرحلات</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/dashboard/logistics/requests" href="#">
+<i class="fa fa-concierge-bell"></i>
+<span class="ms-2">الخدمات الإضافية</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/dashboard/logistics/whatsapp-templates" href="#">
+<i class="fab fa-whatsapp"></i>
+<span class="ms-2">رسائل واتساب اللوجستية</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/dashboard/logistics/offices/1/team" href="#">
+<i class="fa fa-users"></i>
+<span class="ms-2">فريق أسس للخدمات اللوجستية</span>
+<span class="badge bg-secondary ms-auto">7</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/dashboard/logistics/offices/2/team" href="#">
+<i class="fa fa-users"></i>
+<span class="ms-2">فريق مكتب سارة أحمد الرياض</span>
+<span class="badge bg-secondary ms-auto">1</span>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#medicalServices" data-bs-toggle="collapse" href="#">
+<i class="fa fa-heartbeat"></i>
+<span class="mx-2"> الخدمات الطبية </span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="medicalServices">
+<li>
+<a class="m-link" data-route="/admin/medical-service-requests" href="#">
+<i class="fa fa-heartbeat"></i>
+<span class="ms-2">الخدمات الطبية</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/medical-service-products" href="#">
+<i class="fa fa-cube"></i>
+<span class="ms-2">منتجات الخدمات الطبية</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/medical-service-hospitals" href="#">
+<i class="fa fa-hospital-o"></i>
+<span class="ms-2">المستشفيات</span>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#maidDeliveriesMenu" data-bs-toggle="collapse" href="#">
+<i class="fa fa-truck"></i>
+<span class="mx-2">توصيل العاملات</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="maidDeliveriesMenu">
+<li>
+<a class="m-link" data-route="/admin/maid-deliveries" href="#">
+<i class="fa fa-plane-departure"></i>
+<span class="ms-2">قبل الوصول</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/maid-deliveries/after-arrival" href="#">
+<i class="fa fa-plane-arrival"></i>
+<span class="ms-2">بعد الوصول</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/maid-deliveries/office-locations" href="#">
+<i class="fa fa-map-marker-alt"></i>
+<span class="ms-2">مواقع المكاتب</span>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#flightBookings" data-bs-toggle="collapse" href="#">
+<i class="fa fa-plane"></i>
+<span class="mx-2">حجوزات الطيران</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="flightBookings">
+<li>
+<a class="m-link" data-route="/admin/flight-booking-requests" href="#">
+<i class="fa fa-plane"></i>
+<span class="ms-2">طلبات حجوزات الطيران</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/flight-booking-companies" href="#">
+<i class="fa fa-building"></i>
+<span class="ms-2">شركات حجوزات الطيران</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/flight-booking-requests/charge-report" href="#">
+<i class="fa fa-chart-pie"></i>
+<span class="ms-2">تقرير تحميل تكاليف الطيران</span>
+</a>
+</li>
+</ul>
+</li>
+<li><a class="m-link" data-route="/admin/maid-deliveries/ticket-approvals" href="#">
+<i class="fa fa-check-circle"></i><span class="ms-2">اعتماد التذاكر</span>
+</a></li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#transferProceduresMenu" data-bs-toggle="collapse" href="#">
+<i class="fas fa-route"></i>
+<span class="mx-2">إجراءات نقل الكفالة</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="transferProceduresMenu">
+<li>
+<a class="m-link" data-route="/admin/TransferProcedure" href="#">
+<i class="fa fa-list"></i>
+<span class="ms-2">جميع عقود الإجراءات</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/TransferProcedure" href="#">
+<i class="fas fa-handshake"></i>
+<span class="ms-2">إجراءات عقود التأجير</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/TransferProcedure" href="#">
+<i class="fas fa-exchange-alt"></i>
+<span class="ms-2">إجراءات عقود نقل الكفالة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/TransferProcedure/durations" href="#">
+<i class="fas fa-clock"></i>
+<span class="ms-2">إدارة المُدد</span>
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a class="m-link" data-route="/DeportationTravel" href="#">
+<i class="fa fa-plane-departure"></i>
+<span class="ms-2">رحلات الترحيل</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/travel" href="#">
+<i class="fa fa-plane-arrival"></i>
+<span class="ms-2">رحلات الاستقدام</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/ingaz/cities" href="#">
+<i class="fa fa-city"></i>
+<span class="ms-2">المدن</span>
+</a>
+</li>
+</ul>
+</li>
+<!-- Settings Section -->
+<!-- Maids Settings Section -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#my_dashboard3" data-bs-toggle="collapse" href="#">
+<i class="fa fa-cog"></i>
+<span class="mx-2">إدارة بيانات السير</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="my_dashboard3">
+<li>
+<a class="m-link" data-route="/admin/nationalities" href="#">
+<i class="fa fa-arrow-left"></i>
+<span class="ms-2">الجنسيات</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/recruitment-offices" href="#">
+<i class="fa fa-building"></i>
+<span class="ms-2">
+                                مكاتب الاستقدام</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/job-titles" href="#">
+<i class="fa fa-arrow-left"></i>
+<span class="ms-2">المهن</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/packages" href="#">
+<i class="fa fa-arrow-left"></i>
+<span class="ms-2">باقات</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/religions" href="#">
+<i class="fa fa-arrow-left"></i>
+<span class="ms-2">الأديان</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/skills" href="#">
+<i class="fa fa-arrow-left"></i>
+<span class="ms-2">المهارات</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/ingaz/countries" href="#">
+<i class="fa fa-globe"></i>
+<span class="ms-2">الدول</span>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#paymentGatewaysMenu" data-bs-toggle="collapse" href="#">
+<i class="fa fa-credit-card"></i>
+<span class="mx-2">مدفوعات البوابات</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="paymentGatewaysMenu">
+<li>
+<a class="m-link" data-route="/admin/payment-gateways/moyasar" href="#">
+<i class="fa fa-credit-card"></i>
+<span class="ms-2">مدفوعات ميسر</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/payment-gateways/edaat" href="#">
+<i class="fa fa-file-invoice-dollar"></i>
+<span class="ms-2">مدفوعات إيداعات</span>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#financialAdministrationManagement" data-bs-toggle="collapse" href="#">
+<i class="fa fa-university"></i>
+<span class="mx-2">الإدارة المالية</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="financialAdministrationManagement">
+<li><a class="m-link" data-route="/admin/government-fees" href="#"><i class="fa fa-cog"></i><span class="ms-2">إدارة الرسوم الحكومية</span></a></li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#financeClaimsManagement" data-bs-toggle="collapse" href="#">
+<i class="fa fa-receipt"></i>
+<span class="mx-2">إدارة التعميدات المالية</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="financeClaimsManagement">
+<li>
+<a class="m-link" data-route="/admin/finance-claims" href="../screens/finance-claims.html">
+<i class="fa fa-list"></i>
+<span class="ms-2">كل التعميدات</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/finance-claims" href="../screens/finance-claims.html">
+<i class="fa fa-landmark"></i>
+<span class="ms-2">رسوم حكومية</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/finance-claims" href="../screens/finance-claims.html">
+<i class="fa fa-globe"></i>
+<span class="ms-2">خارجية</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/finance-claims" href="../screens/finance-claims.html">
+<i class="fa fa-users"></i>
+<span class="ms-2">عملاء</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/finance-claims" href="../screens/finance-claims.html">
+<i class="fa fa-folder-open"></i>
+<span class="ms-2">عامة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/finance-claims" href="../screens/finance-claims.html">
+<i class="fa fa-hospital"></i>
+<span class="ms-2">المستشفيات</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/finance-claims" href="../screens/finance-claims.html">
+<i class="fa fa-plane"></i>
+<span class="ms-2">شركات حجوزات الطيران</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/finance-banks" href="#">
+<i class="fa fa-bank"></i>
+<span class="ms-2">البنوك</span>
+</a>
+</li>
+</ul>
+</li>
+<!-- Finance Management Section -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#financeManagement" data-bs-toggle="collapse" href="#">
+<i class="fa fa-money"></i>
+<span class="mx-2">ادارة المالية والحسابات</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="financeManagement">
+<li>
+<a class="m-link" data-route="/admin/employee-deductions" href="#">
+<i class="fa fa-folder-open"></i>
+<span class="ms-2">أرشيف خصميات الموظفين</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/employee-rewards" href="#">
+<i class="fa fa-gift"></i><span class="ms-2">مكافآت الموظفين</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/external-finance/simple" href="#">
+<i class="fa fa-balance-scale"></i>
+<span class="ms-2">مالية الخارجية</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/finance/contracts" href="#">
+<i class="fa fa-file-invoice-dollar"></i>
+<span class="ms-2">مالية العقود</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/finance/sponsorship-transfers" href="#">
+<i class="fa fa-file-invoice-dollar"></i>
+<span class="ms-2">مالية النقل</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/finance/rental" href="#">
+<i class="fa fa-handshake"></i>
+<span class="ms-2">مالية التأجير</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/finance/salasik-shelter" href="#">
+<i class="fa fa-wallet"></i>
+<span class="ms-2">مالية سلسك</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/finance/deportations" href="#">
+<i class="fa fa-plane"></i>
+<span class="ms-2">مالية الترحيل</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/finance/deportations/trial-balance" href="#">
+<i class="fa fa-balance-scale"></i>
+<span class="ms-2">ميزان مراجعة الترحيل</span>
+</a>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<!-- Assets Management Section -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#assetsManagement" data-bs-toggle="collapse" href="#">
+<i class="fa fa-laptop"></i>
+<span class="mx-2">العهد والأصول</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="assetsManagement">
+<li>
+<a class="m-link" data-route="/admin/company-assets" href="#">
+<i class="fa fa-list"></i><span class="ms-2">قائمة العهد</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/asset-types" href="#">
+<i class="fa fa-cogs"></i><span class="ms-2">أنواع العهد</span>
+</a>
+</li>
+</ul>
+</li>
+<!-- Staff Management Section -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#staffManagement" data-bs-toggle="collapse" href="#">
+<i class="fa fa-users"></i>
+<span class="mx-2">إدارة طاقم العمل</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="staffManagement">
+<li>
+<a class="m-link" data-route="/admin/employees" href="../screens/employees.html">
+<i class="fa fa-id-badge"></i>
+<span class="ms-2">الموظفون</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/dashboard/admins" href="../screens/admins.html">
+<i class="fa fa-users"></i>
+<span class="ms-2">المستخدمين</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/dash/employee-types" href="#">
+<i class="fa fa-address-card"></i>
+<span class="ms-2">أنواع الموظفين</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/dash/roles" href="#">
+<i class="fa fa-user"></i>
+<span class="ms-2">الصلاحيات</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/dash/activity-log" href="#">
+<i class="fa fa-history"></i>
+<span class="ms-2">سجل النشاط</span>
+</a>
+</li>
+</ul>
+</li>
+<!-- Content Management Section -->
+<!-- Hourly Rental Section (hidden while the module is disabled) -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#hourlyRental" data-bs-toggle="collapse" href="#">
+<i class="fa fa-clock"></i>
+<span class="mx-2">التأجير بالساعة</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="hourlyRental">
+<li><a class="m-link" data-route="/admin/hourly/orders" href="#"><i class="fa fa-gauge-high"></i><span class="ms-2">لوحة الطلبات</span></a></li>
+<li><a class="m-link" data-route="/panel/add-order" href="#"><i class="fa fa-cart-plus"></i><span class="ms-2">إنشاء طلب</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/renewals" href="#"><i class="fa fa-rotate"></i><span class="ms-2">التجديدات</span></a></li>
+<li class="collapsed">
+<a aria-controls="hourlyOrdersVisits" aria-expanded="false" class="m-link" data-bs-target="#hourlyOrdersVisits" data-bs-toggle="collapse" href="#">
+<i class="fa fa-calendar-check"></i>
+<span class="mx-2">الزيارات والتشغيل</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="hourlyOrdersVisits">
+<li><a class="m-link" data-route="/admin/hourly/visits" href="../screens/hourly-visits.html"><i class="fa fa-calendar-check"></i><span class="ms-2">قائمة الزيارات</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/visits/unassigned" href="#"><i class="fa fa-user-clock"></i><span class="ms-2">الزيارات غير المخصصة</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/visits/past-uncompleted" href="#"><i class="fa fa-clock"></i><span class="ms-2">زيارات ماضية غير منتهية</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/visits/latest" href="#"><i class="fa fa-calendar-day"></i><span class="ms-2">آخر الزيارات للطلب</span></a></li>
+</ul>
+</li>
+<li><a class="m-link" data-route="/admin/hourly/staff-schedule" href="../screens/hourly-schedule.html"><i class="fa fa-table-columns"></i><span class="ms-2">جدول الموظفين</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/service-incidents" href="#"><i class="fa fa-notes-medical"></i><span class="ms-2">بلاغات تعذر التنفيذ</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/time-overruns" href="#"><i class="fa fa-clock"></i><span class="ms-2">تجاوز مدة الخدمة</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/early-finishes" href="#"><i class="fa fa-stopwatch"></i><span class="ms-2">الإنهاء المبكر</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/sos-alerts" href="#"><i class="fa fa-triangle-exclamation text-danger"></i><span class="ms-2">نداءات النجدة</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/routing" href="#"><i class="fa fa-route"></i><span class="ms-2">إدارة المسار</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/gps-tracking" href="#"><i class="fa fa-location-dot"></i><span class="ms-2">تتبع GPS</span></a></li>
+<li class="divider py-2 lh-sm"><span class="small">الإعدادات والبيانات</span></li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#hourlyAreas" data-bs-toggle="collapse" href="#">
+<i class="fa fa-map-marked-alt"></i>
+<span class="mx-2">إدارة المناطق</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="hourlyAreas">
+<li><a class="m-link" data-route="/admin/hourly/cities" href="#"><i class="fa fa-city"></i><span class="ms-2">المدن</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/districts" href="#"><i class="fa fa-map-marker-alt"></i><span class="ms-2">المناطق</span></a></li>
+</ul>
+</li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#hourlyWorkforce" data-bs-toggle="collapse" href="#">
+<i class="fa fa-people-group"></i>
+<span class="mx-2">فريق العمل</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="hourlyWorkforce">
+<li><a class="m-link" data-route="/admin/hourly/teams" href="#"><i class="fa fa-people-group"></i><span class="ms-2">الفرق</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/teams/map" href="#"><i class="fa fa-map-location-dot"></i><span class="ms-2">خريطة الفرق</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/drivers" href="#"><i class="fa fa-car"></i><span class="ms-2">السائقون</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/maids" href="#"><i class="fa fa-users"></i><span class="ms-2">الخادمات</span></a></li>
+</ul>
+</li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#hourlyServices" data-bs-toggle="collapse" href="#">
+<i class="fa fa-layer-group"></i>
+<span class="mx-2">الخدمات والباقات</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="hourlyServices">
+<li><a class="m-link" data-route="/admin/hourly/service-categories" href="#"><i class="fa fa-shapes"></i><span class="ms-2">فئات الخدمات</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/service-items" href="#"><i class="fa fa-box-open"></i><span class="ms-2">باقات الخدمات</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/package-tiers" href="#"><i class="fa fa-repeat"></i><span class="ms-2">أنماط التكرار</span></a></li>
+</ul>
+</li>
+<li class="collapsed">
+<a aria-controls="hourlyCustomers" aria-expanded="false" class="m-link" data-bs-target="#hourlyCustomers" data-bs-toggle="collapse" href="#">
+<i class="fa fa-address-book"></i>
+<span class="mx-2">العملاء</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="hourlyCustomers">
+<li><a class="m-link" data-route="/admin/hourly/customers" href="#"><i class="fa fa-users"></i><span class="ms-2">قائمة العملاء</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/customers/create" href="#"><i class="fa fa-user-plus"></i><span class="ms-2">إضافة عميل</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/customer-groups" href="#"><i class="fa fa-users-rectangle"></i><span class="ms-2">مجموعات العملاء</span></a></li>
+<li><a class="m-link" data-route="/admin/hourly/customers/duplicates" href="#"><i class="fa fa-clone"></i><span class="ms-2">الحسابات المكررة</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+<!-- Website Management Section -->
+<li class="collapsed">
+<a class="m-link" data-bs-target="#websiteManagement" data-bs-toggle="collapse" href="#">
+<i class="fa fa-globe"></i>
+<span class="mx-2">إدارة الموقع</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="websiteManagement">
+<li>
+<a class="m-link" data-route="/admin/settings" href="../screens/settings.html">
+<i class="fa fa-cogs"></i>
+<span class="ms-2">إعدادات الموقع</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/dash/settings" href="#">
+<i class="fa fa-cog"></i>
+<span class="ms-2">إعدادات إضافية</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/app-services-settings" href="#">
+<i class="fa fa-mobile-screen-button"></i>
+<span class="ms-2">خدمات التطبيق</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/storage-settings" href="#">
+<i class="fa fa-cloud"></i>
+<span class="ms-2">إعدادات التخزين والمساحة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/istiqdam" href="#">
+<i class="fa fa-building"></i>
+<span class="ms-2">منصة الاستقدام</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/about-us" href="#">
+<i class="fa fa-info"></i>
+<span class="ms-2">من نحن</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/sliders" href="#">
+<i class="fa fa-image"></i>
+<span class="ms-2"> الاسلايدر الرئيسي</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/partners" href="#">
+<i class="fa fa-handshake-o"></i>
+<span class="ms-2"> الشركاء</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/services" href="#">
+<i class="fa fa-image"></i>
+<span class="ms-2"> الخدمات</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/statistics" href="#">
+<i class="fa fa-bar-chart"></i>
+<span class="ms-2"> إحصائيات</span>
+</a>
+</li>
+<li><a class="m-link" data-route="/admin/training" href="#"><i class="fa fa-graduation-cap"></i><span class="ms-2">برامج التدريب</span></a></li>
+<li><a class="m-link" data-route="/admin/offers" href="#"><i class="fa fa-tags"></i><span class="ms-2">العروض</span></a></li>
+<li><a class="m-link" data-route="/admin/pages" href="#"><i class="fa fa-file-text"></i><span class="ms-2">صفحات التطبيق (الشروط والخصوصية)</span></a></li>
+<li>
+<a class="m-link" data-route="/admin/blogs" href="#">
+<i class="fa fa-newspaper"></i>
+<span class="ms-2"> المقالات</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/seo-pages" href="#">
+<i class="fa fa-search"></i>
+<span class="ms-2"> صفحات السيو</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/questions" href="#">
+<i class="fa fa-question"></i>
+<span class="ms-2">الأسئلة الشائعة</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/translations" href="#">
+<i class="fa fa-language"></i><span class="ms-2">إدارة الترجمة والنصوص</span>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#messageManagement" data-bs-toggle="collapse" href="#">
+<i class="fa fa-paper-plane"></i>
+<span class="mx-2">إدارة الرسائل</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="messageManagement">
+<li>
+<a class="m-link" data-route="/admin/messages" href="#">
+<i class="fa fa-inbox"></i>
+<span class="ms-2">سجل الرسائل</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/messages/create" href="#">
+<i class="fa fa-paper-plane"></i>
+<span class="ms-2">إرسال جديد</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/message-settings" href="#">
+<i class="fa fa-cog"></i>
+<span class="ms-2">إعدادات الرسائل النصية</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/sms-templates" href="#">
+<i class="fa fa-layer-group"></i>
+<span class="ms-2">قوالب الرسائل</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/firebase-settings" href="#">
+<i class="fa fa-bell"></i>
+<span class="ms-2">إشعارات Firebase</span>
+</a>
+</li>
+</ul>
+</li>
+<li class="collapsed">
+<a class="m-link" data-bs-target="#feedbackManagement" data-bs-toggle="collapse" href="#">
+<i class="fa fa-star-half-stroke"></i>
+<span class="mx-2">إدارة التقييمات</span>
+<span class="arrow fa fa-angle-left ms-auto text-end"></span>
+</a>
+<ul class="sub-menu collapse" id="feedbackManagement">
+<li>
+<a class="m-link" data-route="/admin/evaluations" href="#">
+<i class="fa fa-table-cells-large"></i>
+<span class="ms-2">الصفحة الرئيسية للتقييمات</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/contract-feedbacks" href="#">
+<i class="fa fa-list"></i>
+<span class="ms-2">تقييمات الموقع</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/contract-feedbacks/create" href="#">
+<i class="fa fa-link"></i>
+<span class="ms-2">إنشاء رابط تقييم</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/evaluations/campaigns" href="#">
+<i class="fa fa-bullhorn"></i>
+<span class="ms-2">إدارة الحملات</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/evaluations/branch" href="#">
+<i class="fa fa-building"></i>
+<span class="ms-2">إدارة الفرع</span>
+</a>
+</li>
+<li>
+<a class="m-link" data-route="/admin/evaluations/marketing" href="#">
+<i class="fa fa-share-nodes"></i>
+<span class="ms-2">إدارة التسويق</span>
+</a>
+</li>
+</ul>
+</li>
+<li>
+<a class="m-link" data-route="/admin/contact" href="#">
+<i class="fa fa-envelope"></i>
+<span class="ms-2"> اتصل بنا</span>
+</a>
+</li>
+</ul>
+</div>
+<ul class="menu-list nav navbar-nav flex-row text-center menu-footer-link">
+<li class="nav-item flex-fill p-2">
+<a class="d-inline-block w-100 color-400" data-route="/admin/settings" href="../screens/settings.html">
+<svg fill="currentColor" viewbox="0 0 16 16" width="18" xmlns="http://www.w3.org/2000/svg">
+<path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"></path>
+<path class="fill-secondary" d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"></path>
+</svg>
+</a>
+</li>
+<li class="nav-item flex-fill p-2">
+<a class="d-inline-block w-100 color-400" data-route="/dashboard/logout" href="#" title="sign-out">
+<svg fill="currentColor" viewbox="0 0 16 16" width="18" xmlns="http://www.w3.org/2000/svg">
+<path d="M7.5 1v7h1V1h-1z"></path>
+<path class="fill-secondary" d="M3 8.812a4.999 4.999 0 0 1 2.578-4.375l-.485-.874A6 6 0 1 0 11 3.616l-.501.865A5 5 0 1 1 3 8.812z"></path>
+</svg>
+</a>
+</li>
+</ul>
+</div>
+</div>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // تحسين انتقالات القوائم المنسدلة
+        const collapseElements = document.querySelectorAll('.collapse');
+        collapseElements.forEach(element => {
+            element.addEventListener('show.bs.collapse', function() {
+                const arrow = this.previousElementSibling.querySelector('.arrow');
+                if (arrow) {
+                    arrow.style.transform = 'rotate(0deg)';
+                }
+            });
+
+            element.addEventListener('hide.bs.collapse', function() {
+                const arrow = this.previousElementSibling.querySelector('.arrow');
+                if (arrow) {
+                    arrow.style.transform = 'rotate(-90deg)';
+                }
+            });
+        });
+
+        // إضافة تأثير نبض للعناصر النشطة
+        const activeLinks = document.querySelectorAll('.m-link.active');
+        activeLinks.forEach(link => {
+            link.style.animation = 'pulse 2s infinite';
+        });
+
+        // تحسين التمرير للعنصر النشط
+        const activeElement = document.querySelector('.menu-list .m-link.active');
+        if (activeElement) {
+            setTimeout(() => {
+                activeElement.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'center'
+                });
+            }, 300);
+        }
+    });
+
+    // إضافة تأثير pulse
+    const style = document.createElement('style');
+    style.textContent = `
+    @keyframes  pulse {
+        0% {
+            box-shadow: 0 2px 4px rgba(78, 115, 223, 0.25);
+        }
+        50% {
+            box-shadow: 0 2px 8px rgba(78, 115, 223, 0.4);
+        }
+        100% {
+            box-shadow: 0 2px 4px rgba(78, 115, 223, 0.25);
+        }
+    }
+`;
+    document.head.appendChild(style);
+</script>
+<div class="wrapper">
+<style>
+    .profile-dropdown-menu {
+        right: auto !important;
+        left: 0 !important;
+    }
+
+    /* admin-tables.css يفرض overflow:auto على كل .container-fluid، فيظهر شريط تمرير داخل الهيدر عند فتح نتائج البحث أو القوائم */
+    .page-header > .container-fluid { overflow: visible !important; }
+
+    /* أيقونات الهيدر: مقاس ومسافات ثابتة في كل المقاسات (الفراغ من gap لا من هوامش تتغير مع نقاط الكسر)،
+       وعناصر block حتى لا يضيف سطر النص فراغًا تحتها فتنزاح عموديًا */
+    .page-header .header-right { gap: .35rem; }
+    .page-header .header-right > li { display: flex; align-items: center; }
+    .page-header .header-right > li.d-inline-block { display: flex !important; }
+    .page-header .header-right > li.d-none { display: none !important; }
+    @media (min-width: 576px) { .page-header .header-right > li.d-sm-inline-block { display: flex !important; } }
+    @media (min-width: 1200px) {
+        .page-header .header-right > li.d-xl-inline-block { display: flex !important; }
+        .page-header .header-right > li.d-xl-none { display: none !important; }
+    }
+    .page-header .header-right .nav-link:not(.rounded-circle) { display: flex; align-items: center; justify-content: center; width: 38px; height: 38px; padding: 0; }
+    .page-header .header-right .avatar { display: block; }
+</style>
+<header class="page-header sticky-top px-xl-4 px-sm-2 px-0 py-lg-2 py-1">
+<div class="container-fluid">
+<nav class="navbar">
+<div class="d-flex">
+<button class="btn btn-link d-none d-xl-block sidebar-mini-btn p-0 text-primary" type="button">
+<span class="hamburger-icon">
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"></span>
+</span>
+</button>
+<button class="btn btn-link d-block d-xl-none menu-toggle p-0 text-primary" type="button">
+<span class="hamburger-icon">
+<span class="line"></span>
+<span class="line"></span>
+<span class="line"></span>
+</span>
+</button>
+</div>
+<div class="header-left flex-grow-1 d-none d-md-block">
+<div class="main-search px-3 flex-fill">
+<input class="form-control" placeholder="" type="text"/>
+<div class="card shadow rounded-4 search-result slidedown">
+<div class="card-body">
+<small class="text-uppercase text-muted">روابط سريعة </small>
+<div class="d-flex flex-wrap align-items-start mt-2 mb-4">
+</div>
+</div>
+</div>
+</div>
+</div>
+<ul class="header-right justify-content-end d-flex align-items-center mb-0">
+<li>
+<div class="dropdown morphing scale-right notifications">
+<a class="nav-link dropdown-toggle after-none" data-bs-toggle="dropdown" href="#" role="button">
+<i class="fa fa-bell"></i>
+<span class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger notification-badge" style="display: none;">
+                                0
+                            </span>
+</a>
+<div class="dropdown-menu shadow rounded-4 border-0 p-0 m-0" style="width: 300px; max-height: 400px; overflow-y: auto;">
+<div class="card">
+<div class="card-header p-3 d-flex justify-content-between align-items-center">
+<h6 class="card-title mb-0">آخر الإرسالات</h6>
+<a class="btn btn-sm btn-link" data-route="/admin/messages" href="#">عرض الكل</a>
+</div>
+<div class="card-body p-0">
+<div class="notification-list">
+<!-- Notifications will be loaded here -->
+</div>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li class="d-none d-xl-inline-block">
+<a class="nav-link fullscreen" href="#" onclick="toggleFullScreen(documentElement)">
+<svg fill="currentColor" viewbox="0 0 16 16" width="18px" xmlns="http://www.w3.org/2000/svg">
+<path clip-rule="evenodd" d="M5.8279 10.172C5.73414 10.0783 5.60698 10.0256 5.4744 10.0256C5.34182 10.0256 5.21467 10.0783 5.1209 10.172L1.0249 14.268V11.5C1.0249 11.3674 0.972224 11.2402 0.878456 11.1464C0.784688 11.0527 0.657511 11 0.524902 11C0.392294 11 0.265117 11.0527 0.171349 11.1464C0.0775808 11.2402 0.0249023 11.3674 0.0249023 11.5V15.475C0.0249023 15.6076 0.0775808 15.7348 0.171349 15.8285C0.265117 15.9223 0.392294 15.975 0.524902 15.975H4.4999C4.63251 15.975 4.75969 15.9223 4.85346 15.8285C4.94722 15.7348 4.9999 15.6076 4.9999 15.475C4.9999 15.3424 4.94722 15.2152 4.85346 15.1214C4.75969 15.0277 4.63251 14.975 4.4999 14.975H1.7319L5.8279 10.879C5.92164 10.7852 5.9743 10.6581 5.9743 10.5255C5.9743 10.3929 5.92164 10.2658 5.8279 10.172ZM10.1719 10.172C10.2657 10.0783 10.3928 10.0256 10.5254 10.0256C10.658 10.0256 10.7851 10.0783 10.8789 10.172L14.9749 14.268V11.5C14.9749 11.3674 15.0276 11.2402 15.1213 11.1464C15.2151 11.0527 15.3423 11 15.4749 11C15.6075 11 15.7347 11.0527 15.8285 11.1464C15.9222 11.2402 15.9749 11.3674 15.9749 11.5V15.475C15.9749 15.6076 15.9222 15.7348 15.8285 15.8285C15.7347 15.9223 15.6075 15.975 15.4749 15.975H11.4999C11.3673 15.975 11.2401 15.9223 11.1463 15.8285C11.0526 15.7348 10.9999 15.6076 10.9999 15.475C10.9999 15.3424 11.0526 15.2152 11.1463 15.1214C11.2401 15.0277 11.3673 14.975 11.4999 14.975H14.2679L10.1719 10.879C10.0782 10.7852 10.0255 10.6581 10.0255 10.5255C10.0255 10.3929 10.0782 10.2658 10.1719 10.172ZM5.8279 5.82799C5.73414 5.92173 5.60698 5.97439 5.4744 5.97439C5.34182 5.97439 5.21467 5.92173 5.1209 5.82799L1.0249 1.73199V4.49999C1.0249 4.6326 0.972224 4.75978 0.878456 4.85355C0.784688 4.94732 0.657511 4.99999 0.524902 4.99999C0.392294 4.99999 0.265117 4.94732 0.171349 4.85355C0.0775808 4.75978 0.0249023 4.6326 0.0249023 4.49999V0.524994C0.0249023 0.392386 0.0775808 0.265209 0.171349 0.17144C0.265117 0.0776723 0.392294 0.0249939 0.524902 0.0249939H4.4999C4.63251 0.0249939 4.75969 0.0776723 4.85346 0.17144C4.94722 0.265209 4.9999 0.392386 4.9999 0.524994C4.9999 0.657602 4.94722 0.784779 4.85346 0.878547C4.75969 0.972315 4.63251 1.02499 4.4999 1.02499H1.7319L5.8279 5.12099C5.92164 5.21476 5.9743 5.34191 5.9743 5.47449C5.9743 5.60708 5.92164 5.73423 5.8279 5.82799Z" fill-rule="evenodd"></path>
+<path class="fill-secondary" d="M10.5253 5.97439C10.3927 5.97439 10.2655 5.92173 10.1718 5.82799C10.078 5.73423 10.0254 5.60708 10.0254 5.47449C10.0254 5.34191 10.078 5.21476 10.1718 5.12099L14.2678 1.02499H11.4998C11.3672 1.02499 11.24 0.972315 11.1462 0.878547C11.0525 0.784779 10.9998 0.657602 10.9998 0.524994C10.9998 0.392386 11.0525 0.265209 11.1462 0.17144C11.24 0.0776723 11.3672 0.0249939 11.4998 0.0249939H15.4748C15.6074 0.0249939 15.7346 0.0776723 15.8283 0.17144C15.9221 0.265209 15.9748 0.392386 15.9748 0.524994V4.49999C15.9748 4.6326 15.9221 4.75978 15.8283 4.85355C15.7346 4.94732 15.6074 4.99999 15.4748 4.99999C15.3422 4.99999 15.215 4.94732 15.1212 4.85355C15.0275 4.75978 14.9748 4.6326 14.9748 4.49999V1.73199L10.8788 5.82799C10.785 5.92173 10.6579 5.97439 10.5253 5.97439Z"></path>
+</svg>
+</a>
+</li>
+<li class="d-inline-block">
+<div class="dropdown morphing scale-right Language">
+<a class="nav-link dropdown-toggle after-none" data-bs-toggle="dropdown" href="#" role="button">
+<svg fill="currentColor" viewbox="0 0 16 16" width="18px" xmlns="http://www.w3.org/2000/svg">
+<path class="fill-secondary" d="M4.545 6.714 4.11 8H3l1.862-5h1.284L8 8H6.833l-.435-1.286H4.545zm1.634-.736L5.5 3.956h-.049l-.679 2.022H6.18z"></path>
+<path d="M0 2a2 2 0 0 1 2-2h7a2 2 0 0 1 2 2v3h3a2 2 0 0 1 2 2v7a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2v-3H2a2 2 0 0 1-2-2V2zm2-1a1 1 0 0 0-1 1v7a1 1 0 0 0 1 1h7a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H2zm7.138 9.995c.193.301.402.583.63.846-.748.575-1.673 1.001-2.768 1.292.178.217.451.635.555.867 1.125-.359 2.08-.844 2.886-1.494.777.665 1.739 1.165 2.93 1.472.133-.254.414-.673.629-.89-1.125-.253-2.057-.694-2.82-1.284.681-.747 1.222-1.651 1.621-2.757H14V8h-3v1.047h.765c-.318.844-.74 1.546-1.272 2.13a6.066 6.066 0 0 1-.415-.492 1.988 1.988 0 0 1-.94.31z"></path>
+</svg>
+</a>
+<div class="dropdown-menu rounded-4 shadow border-0 p-0" data-bs-popper="none">
+<div class="card">
+<div class="list-group list-group-custom" style="width: 200px;">
+<a class="list-group-item" data-route="/en/dashboard" href="../screens/dashboard.html"><span class="flag-icon flag-icon-us me-2"></span>English</a>
+<a class="list-group-item" data-route="/ar/dashboard" href="../screens/dashboard.html"><span class="flag-icon flag-icon-sa me-2"></span>العربية</a>
+</div>
+</div>
+</div>
+</div>
+</li>
+<li class="d-none d-sm-inline-block d-xl-none">
+<a class="nav-link" data-bs-target="#MynotesModal" data-bs-toggle="modal" href="#">
+<svg fill="currentColor" viewbox="0 0 16 16" width="18px" xmlns="http://www.w3.org/2000/svg">
+<path class="fill-secondary" d="M1.5 0A1.5 1.5 0 0 0 0 1.5V13a1 1 0 0 0 1 1V1.5a.5.5 0 0 1 .5-.5H14a1 1 0 0 0-1-1H1.5z"></path>
+<path d="M3.5 2A1.5 1.5 0 0 0 2 3.5v11A1.5 1.5 0 0 0 3.5 16h6.086a1.5 1.5 0 0 0 1.06-.44l4.915-4.914A1.5 1.5 0 0 0 16 9.586V3.5A1.5 1.5 0 0 0 14.5 2h-11zM3 3.5a.5.5 0 0 1 .5-.5h11a.5.5 0 0 1 .5.5V9h-4.5A1.5 1.5 0 0 0 9 10.5V15H3.5a.5.5 0 0 1-.5-.5v-11zm7 11.293V10.5a.5.5 0 0 1 .5-.5h4.293L10 14.793z"></path>
+</svg>
+</a>
+</li>
+<li class="d-none d-xl-inline-block">
+<a class="nav-link" href="#">
+<svg class="avatar xs" fill="none" viewbox="0 0 16 16" xmlns="http://www.w3.org/2000/svg">
+<path d="M15.7469 6C15.9125 6.64062 16 7.30937 16 8C16 8.69063 15.9125 9.35938 15.7469 10H11.9C11.9656 9.35625 12 8.65938 12 8C12 7.3125 11.9656 6.64375 11.9 6H15.7469ZM15.4187 5H11.7719C11.4594 3.00437 10.8406 1.33188 10.0437 0.263813C12.4937 0.909063 14.4812 2.68563 15.4187 5ZM10.7594 5H5.24062C5.43125 3.8625 5.725 2.85562 6.08437 2.04219C6.4125 1.30437 6.77812 0.769063 7.13125 0.431563C7.48125 0.0993125 7.77187 0 8 0C8.22812 0 8.51875 0.0993125 8.86875 0.431563C9.22187 0.769063 9.5875 1.30437 9.91562 2.04219C10.275 2.85562 10.5687 3.8625 10.7594 5ZM0.581563 5C1.51844 2.68563 3.50625 0.909063 5.95625 0.263813C5.15938 1.33188 4.54063 3.00437 4.22813 5H0.581563ZM4.1 6C4.03437 6.64375 3.97187 7.3125 3.97187 8C3.97187 8.65938 4.03437 9.35625 4.1 10H0.252031C0.0875 9.35938 0 8.69063 0 8C0 7.30937 0.0875 6.64062 0.252031 6H4.1ZM6.08437 13.9563C5.725 13.1438 5.43125 12.1375 5.24062 11H10.7594C10.5687 12.1375 10.275 13.1438 9.91562 13.9563C9.5875 14.6969 9.22187 15.2313 8.86875 15.5688C8.51875 15.9 8.22813 16 7.97188 16C7.77188 16 7.48125 15.9 7.13125 15.5688C6.77812 15.2313 6.4125 14.6969 6.08437 13.9563ZM5.95625 15.7375C3.50625 15.0906 1.51844 13.3156 0.581563 11H4.22813C4.54063 12.9969 5.15938 14.6687 5.95625 15.7375ZM10.0437 15.7375C10.8406 14.6687 11.4594 12.9969 11.7719 11H15.4187C14.4812 13.3156 12.4937 15.0906 10.0437 15.7375Z" fill="black"></path>
+<path class="fill-secondary" d="M10.8969 10C10.9625 9.3625 11 8.69375 11 8C11 7.30625 10.9625 6.6375 10.8969 6H5.10317C5.03755 6.6375 4.97192 7.30625 4.97192 8C4.97192 8.69375 5.03755 9.3625 5.10317 10H10.8969Z" fill="black"></path>
+</svg>
+</a>
+</li>
+<li class="d-none d-sm-inline-block d-xl-none">
+<a class="nav-link" data-bs-target="#RecentChat" data-bs-toggle="modal" href="#">
+<svg fill="currentColor" viewbox="0 0 16 16" width="18px" xmlns="http://www.w3.org/2000/svg">
+<path d="M14 1a1 1 0 0 1 1 1v8a1 1 0 0 1-1 1H4.414A2 2 0 0 0 3 11.586l-2 2V2a1 1 0 0 1 1-1h12zM2 0a2 2 0 0 0-2 2v12.793a.5.5 0 0 0 .854.353l2.853-2.853A1 1 0 0 1 4.414 12H14a2 2 0 0 0 2-2V2a2 2 0 0 0-2-2H2z"></path>
+<path class="fill-secondary" d="M3 3.5a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9a.5.5 0 0 1-.5-.5zM3 6a.5.5 0 0 1 .5-.5h9a.5.5 0 0 1 0 1h-9A.5.5 0 0 1 3 6zm0 2.5a.5.5 0 0 1 .5-.5h5a.5.5 0 0 1 0 1h-5a.5.5 0 0 1-.5-.5z"></path>
+</svg>
+</a>
+</li>
+<li>
+<div class="dropdown morphing scale-right user-profile ms-2">
+<a class="nav-link dropdown-toggle rounded-circle after-none p-0" data-bs-toggle="dropdown" href="#" role="button">
+<img alt="" class="avatar img-thumbnail rounded-circle shadow" onerror="this.onerror=null;this.src='../assets/admin/assets/img/profile_av.png'" src="../assets/admin/assets/img/profile_av.png"/>
+</a>
+<div class="dropdown-menu border-0 rounded-4 shadow p-0 profile-dropdown-menu">
+<div class="card border-0 w240">
+<div class="card-body border-bottom d-flex">
+<img alt="" class="avatar rounded-circle" onerror="this.onerror=null;this.src='../assets/admin/assets/img/profile_av.png'" src="../assets/admin/assets/img/profile_av.png"/>
+<div class="flex-fill ms-3">
+<h6 class="card-title mb-0">مشرف</h6>
+<span class="text-muted">
+                                            
+                                            1000000000
+                                        </span>
+</div>
+</div>
+<div class="list-group m-2 mb-3">
+<a class="list-group-item list-group-item-action border-0" data-route="/dashboard/profile" href="#"><i class="w30 fa fa-user"></i>ملفي الشخصي</a>
+<a class="list-group-item list-group-item-action border-0" data-route="/admin/settings" href="../screens/settings.html"><i class="w30 fa fa-gear"></i>الإعدادات</a>
+<a class="list-group-item list-group-item-action border-0" data-route="/dashboard/admins" href="../screens/admins.html"><i class="w30 fa fa-users"></i>المستخدمين</a>
+</div>
+<a class="btn bg-secondary text-light text-uppercase rounded-0" data-route="/dashboard/logout" href="#">تسجيل الخروج</a>
+</div>
+</div>
+</div>
+</li>
+</ul>
+</nav>
+</div>
+</header>
+<div class="page-body px-xl-4 px-sm-2 px-0 py-lg-2 py-1">
+<div id="loading-wrapper">
+<div id="loading-text">LOADING</div>
+<div id="loading-content"></div>
+</div>
+<div class="container-fluid">
+<div class="card mb-3">
+<div class="card-body" style="min-height: calc(100vh - 196px);">
+<div class="dashboard-shell">
+<div class="dashboard-hero">
+<div class="hero-content">
+<div class="d-flex justify-content-between flex-wrap gap-2 align-items-center">
+<div>
+<h1 class="h3 mb-2">مرحباً مشرف 👋</h1>
+<p class="mb-0">لوحة القيادة الشاملة لتتبع أداء كل إدارة داخل النظام.</p>
+</div>
+<div class="hero-actions">
+<a class="btn btn-light text-dark fw-semibold" data-route="/admin/RecruitmentContract/create" href="../screens/recruitment-contract-create.html">
+<i class="fa fa-plus-circle ms-2"></i>بدء عقد جديد
+                    </a>
+<a class="btn btn-outline-light fw-semibold" data-route="/admin/orders" href="../screens/orders.html">
+<i class="fa fa-chart-column ms-2"></i>عرض الطلبات
+                    </a>
+</div>
+</div>
+<div class="hero-kpis">
+<div>
+<small>إجمالي العقود</small>
+<strong>218</strong>
+</div>
+<div>
+<small>إجمالي الطلبات</small>
+<strong>40</strong>
+</div>
+<div>
+<small>إجمالي العملاء</small>
+<strong>3,364</strong>
+</div>
+<div>
+<small>فريق العمل</small>
+<strong>39</strong>
+</div>
+</div>
+</div>
+</div>
+<div class="row g-4 quick-insights">
+<div class="col-12 col-md-6 col-xl-3">
+<div class="insight-card insight-primary">
+<div class="insight-icon">
+<i class="fa fa-calendar-week"></i>
+</div>
+<div>
+<span class="label">عقود هذا الأسبوع</span>
+<div class="value">0</div>
+<small class="text-muted">هذا الشهر: 1</small>
+</div>
+</div>
+</div>
+<div class="col-12 col-md-6 col-xl-3">
+<div class="insight-card insight-warning">
+<div class="insight-icon">
+<i class="fa fa-cart-shopping"></i>
+</div>
+<div>
+<span class="label">طلبات اليوم</span>
+<div class="value">0</div>
+<small class="text-muted">إجمالي الطلبات: 40</small>
+</div>
+</div>
+</div>
+<div class="col-12 col-md-6 col-xl-3">
+<div class="insight-card insight-success">
+<div class="insight-icon">
+<i class="fa fa-user-plus"></i>
+</div>
+<div>
+<span class="label">عملاء جدد</span>
+<div class="value">450</div>
+<small class="text-muted">النشطون: 127</small>
+</div>
+</div>
+</div>
+<div class="col-12 col-md-6 col-xl-3">
+<div class="insight-card insight-info">
+<div class="insight-icon">
+<i class="fa fa-users-gear"></i>
+</div>
+<div>
+<span class="label">موظفون نشطون</span>
+<div class="value">39</div>
+<small class="text-muted">إجمالي الفريق: 39</small>
+</div>
+</div>
+</div>
+</div>
+<div class="card border-0 shadow-sm department-wrapper mt-4">
+<div class="card-header bg-transparent">
+<div>
+<h5 class="mb-1"><i class="fa fa-diagram-project ms-2 text-primary"></i>خريطة الإدارات والأداء</h5>
+<p class="text-muted mb-0">نظرة متكاملة على مؤشرات كل إدارة للوصول السريع لنقاط القوة والاحتياج.</p>
+</div>
+</div>
+<div class="card-body">
+<div class="row g-4">
+<div class="col-12 col-lg-6 col-xl-4">
+<div class="department-card dept-operations">
+<div class="dept-head">
+<div class="dept-icon">
+<i class="fa fa-sitemap"></i>
+</div>
+<div>
+<h5 class="mb-1">إدارة العمليات</h5>
+<small class="text-muted">متابعة العقود والمراحل التشغيلية لكل إدارة.</small>
+</div>
+</div>
+<div class="department-metrics">
+<div>
+<span class="metric-label">إجمالي العقود</span>
+<span class="metric-value">218</span>
+</div>
+<div>
+<span class="metric-label">قيد التنفيذ</span>
+<span class="metric-value">0</span>
+</div>
+<div>
+<span class="metric-label">مكتملة</span>
+<span class="metric-value">102</span>
+</div>
+<div>
+<span class="metric-label">تحت الضمان</span>
+<span class="metric-value">89</span>
+</div>
+</div>
+<div class="dept-progress">
+<span style="width: 47%;"></span>
+</div>
+<small class="text-muted">مكتمل من إجمالي العقود</small>
+</div>
+</div>
+<div class="col-12 col-lg-6 col-xl-4">
+<div class="department-card dept-housing">
+<div class="dept-head">
+<div class="dept-icon">
+<i class="fa fa-house-signal"></i>
+</div>
+<div>
+<h5 class="mb-1">الإيجار والإيواء</h5>
+<small class="text-muted">صورة فورية لعقود الإيجار وسعة الإيواء.</small>
+</div>
+</div>
+<div class="department-metrics">
+<div>
+<span class="metric-label">عقود إيجار نشطة</span>
+<span class="metric-value">22</span>
+</div>
+<div>
+<span class="metric-label">عقود هذا الشهر</span>
+<span class="metric-value">0</span>
+</div>
+<div>
+<span class="metric-label">مقيمات الإيواء</span>
+<span class="metric-value">0</span>
+</div>
+<div>
+<span class="metric-label">جاهزات للترحيل</span>
+<span class="metric-value">0</span>
+</div>
+</div>
+<div class="dept-progress">
+<span style="width: 0%;"></span>
+</div>
+<small class="text-muted">قيمة العقود المفعلة: 127,148 ر.س</small>
+</div>
+</div>
+<div class="col-12 col-lg-6 col-xl-4">
+<div class="department-card dept-recruitment">
+<div class="dept-head">
+<div class="dept-icon">
+<i class="fa fa-id-card-clip"></i>
+</div>
+<div>
+<h5 class="mb-1">التوظيف والسير الذاتية</h5>
+<small class="text-muted">متابعة توفر السير الذاتية والطلبات المرتبطة.</small>
+</div>
+</div>
+<div class="department-metrics">
+<div>
+<span class="metric-label">السير الذاتية المتاحة</span>
+<span class="metric-value">578</span>
+</div>
+<div>
+<span class="metric-label">محجوزة</span>
+<span class="metric-value">242</span>
+</div>
+<div>
+<span class="metric-label">إجمالي السير الذاتية</span>
+<span class="metric-value">820</span>
+</div>
+<div>
+<span class="metric-label">الجدد هذا الشهر</span>
+<span class="metric-value">39</span>
+</div>
+</div>
+<div class="dept-progress">
+<span style="width: 70%;"></span>
+</div>
+<small class="text-muted">نسبة السير الذاتية الجاهزة للعمل</small>
+</div>
+</div>
+<div class="col-12 col-lg-6 col-xl-4">
+<div class="department-card dept-sales">
+<div class="dept-head">
+<div class="dept-icon">
+<i class="fa fa-chart-line"></i>
+</div>
+<div>
+<h5 class="mb-1">المبيعات والتحويل</h5>
+<small class="text-muted">الرؤية المالية لكل إدارات المبيعات الخارجية.</small>
+</div>
+</div>
+<div class="department-metrics">
+<div>
+<span class="metric-label">إجمالي المبيعات</span>
+<span class="metric-value">1,500,000 ر.س</span>
+</div>
+<div>
+<span class="metric-label">مبيعات الشهر</span>
+<span class="metric-value">250,000 ر.س</span>
+</div>
+<div>
+<span class="metric-label">نسبة النمو</span>
+<span class="metric-value">15%</span>
+</div>
+<div>
+<span class="metric-label">معدل التحويل</span>
+<span class="metric-value">68%</span>
+</div>
+</div>
+<div class="dept-progress">
+<span style="width: 68%;"></span>
+</div>
+<small class="text-muted">معدل التحويل الحالي</small>
+</div>
+</div>
+<div class="col-12 col-lg-6 col-xl-4">
+<div class="department-card dept-clients">
+<div class="dept-head">
+<div class="dept-icon">
+<i class="fa fa-people-group"></i>
+</div>
+<div>
+<h5 class="mb-1">العملاء وخدمة ما بعد البيع</h5>
+<small class="text-muted">التفاعل والطلبات حسب إدارات خدمة العملاء.</small>
+</div>
+</div>
+<div class="department-metrics">
+<div>
+<span class="metric-label">إجمالي العملاء</span>
+<span class="metric-value">3,364</span>
+</div>
+<div>
+<span class="metric-label">عملاء نشطون</span>
+<span class="metric-value">127</span>
+</div>
+<div>
+<span class="metric-label">طلبات معلقة</span>
+<span class="metric-value">0</span>
+</div>
+<div>
+<span class="metric-label">طلبات مكتملة</span>
+<span class="metric-value">0</span>
+</div>
+</div>
+<div class="dept-progress">
+<span style="width: 4%;"></span>
+</div>
+<small class="text-muted">عملاء نشطون من إجمالي القاعدة</small>
+</div>
+</div>
+<div class="col-12 col-lg-6 col-xl-4">
+<div class="department-card dept-team">
+<div class="dept-head">
+<div class="dept-icon">
+<i class="fa fa-user-tie"></i>
+</div>
+<div>
+<h5 class="mb-1">فريق العمل والأقسام</h5>
+<small class="text-muted">توزيع وإنتاجية أعضاء الفريق حسب الإدارة.</small>
+</div>
+</div>
+<div class="department-metrics">
+<div>
+<span class="metric-label">إجمالي الموظفين</span>
+<span class="metric-value">39</span>
+</div>
+<div>
+<span class="metric-label">النشطون</span>
+<span class="metric-value">39</span>
+</div>
+<div>
+<span class="metric-label">المبيعات</span>
+<span class="metric-value">0</span>
+</div>
+<div>
+<span class="metric-label">الدعم</span>
+<span class="metric-value">0</span>
+</div>
+</div>
+<div class="dept-progress">
+<span style="width: 100%;"></span>
+</div>
+<small class="text-muted">موظفين نشطين من الإجمالي</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row g-4 mt-1">
+<div class="col-xl-8">
+<div class="chart-card h-100">
+<div class="chart-card-header">
+<div>
+<h5 class="mb-1">إحصائيات العقود الشهرية</h5>
+<small class="text-muted">مقارنة بين العقود الجديدة والمكتملة لكل الإدارات</small>
+</div>
+<span class="badge bg-light text-primary border rounded-pill px-3">آخر 12 شهراً</span>
+</div>
+<div class="chart-area">
+<canvas id="contractsChart"></canvas>
+</div>
+<div class="chart-foot">
+<div class="row text-center">
+<div class="col-4">
+<small class="text-muted d-block">إجمالي العقود</small>
+<h5 class="mb-0 text-primary">218</h5>
+</div>
+<div class="col-4">
+<small class="text-muted d-block">متوسط شهري</small>
+<h5 class="mb-0 text-info">18</h5>
+</div>
+<div class="col-4">
+<small class="text-muted d-block">نسبة الإنجاز</small>
+<h5 class="mb-0 text-success">47%</h5>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-xl-4">
+<div class="chart-card h-100">
+<div class="chart-card-header">
+<div>
+<h5 class="mb-1">توزيع الجنسيات</h5>
+<small class="text-muted">أكثر الجنسيات طلباً في إدارات التوظيف</small>
+</div>
+</div>
+<div class="chart-area" style="height: 230px;">
+<canvas id="nationalitiesChart"></canvas>
+</div>
+<div class="mt-3" style="max-height: 180px; overflow-y: auto;">
+<div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+<span class="text-muted">اثيوبيا</span>
+<div class="d-flex align-items-center gap-2">
+<span class="badge bg-light text-dark border">530</span>
+<small class="text-muted">
+                                            (67%)
+                                        </small>
+</div>
+</div>
+<div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+<span class="text-muted">كينيا</span>
+<div class="d-flex align-items-center gap-2">
+<span class="badge bg-light text-dark border">112</span>
+<small class="text-muted">
+                                            (14%)
+                                        </small>
+</div>
+</div>
+<div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+<span class="text-muted">الفلبين</span>
+<div class="d-flex align-items-center gap-2">
+<span class="badge bg-light text-dark border">70</span>
+<small class="text-muted">
+                                            (9%)
+                                        </small>
+</div>
+</div>
+<div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+<span class="text-muted">اوغندة</span>
+<div class="d-flex align-items-center gap-2">
+<span class="badge bg-light text-dark border">64</span>
+<small class="text-muted">
+                                            (8%)
+                                        </small>
+</div>
+</div>
+<div class="d-flex justify-content-between align-items-center py-2 border-bottom">
+<span class="text-muted">بنجلاديش</span>
+<div class="d-flex align-items-center gap-2">
+<span class="badge bg-light text-dark border">19</span>
+<small class="text-muted">
+                                            (2%)
+                                        </small>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row g-3 performance-grid mt-1">
+<div class="col-6 col-md-3">
+<div class="performance-card text-center border-start border-4 border-primary">
+<h6>الشهر الحالي</h6>
+<h3 class="text-primary">1</h3>
+<small class="text-muted">عقد جديد</small>
+</div>
+</div>
+<div class="col-6 col-md-3">
+<div class="performance-card text-center border-start border-4 border-success">
+<h6>هذا الأسبوع</h6>
+<h3 class="text-success">0</h3>
+<small class="text-muted">عقد جديد</small>
+</div>
+</div>
+<div class="col-6 col-md-3">
+<div class="performance-card text-center border-start border-4 border-warning">
+<h6>اليوم</h6>
+<h3 class="text-warning">0</h3>
+<small class="text-muted">عقد مضاف</small>
+</div>
+</div>
+<div class="col-6 col-md-3">
+<div class="performance-card text-center border-start border-4 border-info">
+<h6>تحت الضمان</h6>
+<h3 class="text-info">89</h3>
+<small class="text-muted">عقد نشط</small>
+</div>
+</div>
+</div>
+<div class="row g-4 align-items-stretch mt-1">
+<div class="col-xl-8">
+<div class="card border-0 shadow-sm h-100">
+<div class="card-header bg-white border-0">
+<h5 class="mb-0">الأنشطة الأخيرة</h5>
+<small class="text-muted">متابعة آخر الحركات عبر الإدارات المختلفة</small>
+</div>
+<div class="card-body">
+<div class="timeline-item">
+<div class="timeline-icon">
+<i class="fa fa-file-contract"></i>
+</div>
+<div class="timeline-body flex-grow-1">
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+<div>
+<div class="title">عقد #248 - شركة اسس الانجاز للاستقدام</div>
+<small>منذ أسبوع</small>
+</div>
+<span class="badge bg-warning bg-opacity-10 text-warning">
+                                        shelter
+                                    </span>
+</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-icon">
+<i class="fa fa-file-contract"></i>
+</div>
+<div class="timeline-body flex-grow-1">
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+<div>
+<div class="title">عقد #247 - شركة اسس الانجاز للاستقدام</div>
+<small>منذ شهر</small>
+</div>
+<span class="badge bg-warning bg-opacity-10 text-warning">
+                                        shelter
+                                    </span>
+</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-icon">
+<i class="fa fa-file-contract"></i>
+</div>
+<div class="timeline-body flex-grow-1">
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+<div>
+<div class="title">عقد #246 - شركة اسس الانجاز للاستقدام</div>
+<small>منذ شهر</small>
+</div>
+<span class="badge bg-warning bg-opacity-10 text-warning">
+                                        shelter
+                                    </span>
+</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-icon">
+<i class="fa fa-file-contract"></i>
+</div>
+<div class="timeline-body flex-grow-1">
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+<div>
+<div class="title">عقد #215 - محمد العتيبي</div>
+<small>منذ شهرين</small>
+</div>
+<span class="badge bg-warning bg-opacity-10 text-warning">
+                                        new
+                                    </span>
+</div>
+</div>
+</div>
+<div class="timeline-item">
+<div class="timeline-icon">
+<i class="fa fa-file-contract"></i>
+</div>
+<div class="timeline-body flex-grow-1">
+<div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+<div>
+<div class="title">عقد #214 - نورة القحطاني</div>
+<small>منذ شهرين</small>
+</div>
+<span class="badge bg-warning bg-opacity-10 text-warning">
+                                        new
+                                    </span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="col-xl-4">
+<div class="card border-0 shadow-sm h-100">
+<div class="card-header bg-white border-0">
+<h5 class="mb-0">مركز الأوامر السريعة</h5>
+<small class="text-muted">تنقل أسرع بين أهم مهام الإدارات</small>
+</div>
+<div class="card-body">
+<div class="row g-3">
+<div class="col-6">
+<a class="quick-action-card" data-route="/admin/RecruitmentContract/create" href="../screens/recruitment-contract-create.html">
+<span class="icon"><i class="fa fa-plus-circle"></i></span>
+<div class="fw-semibold text-center">عقد جديد</div>
+</a>
+</div>
+<div class="col-6">
+<a class="quick-action-card" data-route="/admin/orders" href="../screens/orders.html">
+<span class="icon"><i class="fa fa-bag-shopping"></i></span>
+<div class="fw-semibold text-center">الطلبات</div>
+</a>
+</div>
+<div class="col-6">
+<a class="quick-action-card" data-route="/admin/clients/create" href="../screens/client-create.html">
+<span class="icon"><i class="fa fa-user-plus"></i></span>
+<div class="fw-semibold text-center">عميل جديد</div>
+</a>
+</div>
+<div class="col-6">
+<a class="quick-action-card" data-route="/admin/maids/create" href="../screens/maid-create.html">
+<span class="icon"><i class="fa fa-id-card"></i></span>
+<div class="fw-semibold text-center">سيرة ذاتية</div>
+</a>
+</div>
+<div class="col-6">
+<a class="quick-action-card" data-route="/admin/complaints/create" href="#">
+<span class="icon"><i class="fa fa-circle-exclamation"></i></span>
+<div class="fw-semibold text-center">شكوى جديدة</div>
+</a>
+</div>
+<div class="col-6">
+<a class="quick-action-card disabled" href="#" onclick="return false;">
+<span class="icon"><i class="fa fa-chart-pie"></i></span>
+<div class="fw-semibold text-center">التقارير</div>
+</a>
+</div>
+</div>
+<div class="orders-snapshot">
+<h6 class="mb-3"><i class="fa fa-chart-simple ms-2 text-primary"></i>مؤشرات الطلبات</h6>
+<div class="orders-metric">
+<span>طلبات اليوم</span>
+<span class="value text-info">0</span>
+</div>
+<div class="orders-metric">
+<span>طلبات قيد المعالجة</span>
+<span class="value text-warning">0</span>
+</div>
+<div class="orders-metric">
+<span>طلبات مكتملة</span>
+<span class="value text-success">0</span>
+</div>
+<div class="orders-metric">
+<span>إجمالي الطلبات</span>
+<span class="value text-primary">40</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="row g-4 mt-1">
+<div class="col-xl-7">
+<div class="chart-card h-100">
+<div class="chart-card-header">
+<div>
+<h5 class="mb-1">الطلبات والرحلات اللوجستية</h5>
+<small class="text-muted">توزيع شهري لأداء أوامر الإدارات وفريق اللوجستيات</small>
+</div>
+<span class="badge bg-success bg-opacity-10 text-success">نطاق 12 شهراً</span>
+</div>
+<div class="chart-area">
+<canvas id="operationsChart"></canvas>
+</div>
+<div class="chart-foot">
+<div class="d-flex flex-wrap gap-3 justify-content-between text-muted">
+<span>إجمالي الطلبات السنوي: <strong class="text-dark">40</strong></span>
+<span>إجمالي الرحلات: <strong class="text-dark">153</strong></span>
+<span>آخر شهر - طلبات: <strong class="text-primary">0</strong></span>
+<span>آخر شهر - رحلات: <strong class="text-warning">0</strong></span>
+</div>
+</div>
+</div>
+</div>
+<div class="col-xl-5">
+<div class="card border-0 shadow-sm h-100">
+<div class="card-header bg-white border-0">
+<h5 class="mb-1"><i class="fa fa-calendar-alt ms-2 text-primary"></i>التقويم والمواعيد</h5>
+<small class="text-muted">متابعة العقود المنتهية والشكاوى قيد المتابعة</small>
+</div>
+<div class="card-body">
+<div id="calendar"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<style>
+    #loading-wrapper {
+        position: fixed;
+        background-color: rgba(236, 236, 236, 0.5);
+        width: 100%;
+        height: 100%;
+        left: 0;
+        top: 0;
+        z-index: 10000;
+    }
+
+    #loading-text {
+        display: block;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        color: #999;
+        width: 100px;
+        height: 30px;
+        margin: -7px 0 0 -45px;
+        text-align: center;
+        font-family: 'PT Sans Narrow', sans-serif;
+        font-size: 20px;
+    }
+
+    #loading-content {
+        display: block;
+        position: inherit;
+        left: 50%;
+        top: 50%;
+        width: 170px;
+        height: 170px;
+        margin: -85px 0 0 -85px;
+        border: 3px solid #F00;
+    }
+
+    #loading-content:after {
+        content: "";
+        position: absolute;
+        border: 3px solid #0F0;
+        left: 15px;
+        right: 15px;
+        top: 15px;
+        bottom: 15px;
+    }
+
+    #loading-content:before {
+        content: "";
+        position: absolute;
+        border: 3px solid #00F;
+        left: 5px;
+        right: 5px;
+        top: 5px;
+        bottom: 5px;
+    }
+
+    #loading-content {
+        border: 3px solid transparent;
+        border-top-color: #4D658D;
+        border-bottom-color: #4D658D;
+        border-radius: 50%;
+        -webkit-animation: loader 2s linear infinite;
+        -moz-animation: loader 2s linear infinite;
+        -o-animation: loader 2s linear infinite;
+        animation: loader 2s linear infinite;
+    }
+
+    #loading-content:before {
+        border: 3px solid transparent;
+        border-top-color: #D4CC6A;
+        border-bottom-color: #D4CC6A;
+        border-radius: 50%;
+        -webkit-animation: loader 3s linear infinite;
+        -moz-animation: loader 2s linear infinite;
+        -o-animation: loader 2s linear infinite;
+        animation: loader 3s linear infinite;
+    }
+
+    #loading-content:after {
+        border: 3px solid transparent;
+        border-top-color: #84417C;
+        border-bottom-color: #84417C;
+        border-radius: 50%;
+        -webkit-animation: loader 1.5s linear infinite;
+        animation: loader 1.5s linear infinite;
+        -moz-animation: loader 2s linear infinite;
+        -o-animation: loader 2s linear infinite;
+    }
+
+    @-webkit-keyframes loaders {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    @keyframes  loader {
+        0% {
+            -webkit-transform: rotate(0deg);
+            -ms-transform: rotate(0deg);
+            transform: rotate(0deg);
+        }
+        100% {
+            -webkit-transform: rotate(360deg);
+            -ms-transform: rotate(360deg);
+            transform: rotate(360deg);
+        }
+    }
+
+    #content-wrapper {
+        color: #FFF;
+        position: fixed;
+        left: 0;
+        top: 20px;
+        width: 100%;
+        height: 100%;
+    }
+
+    #header
+    {
+        width: 800px;
+        margin: 0 auto;
+        text-align: center;
+        height: 100px;
+        background-color: #666;
+    }
+
+    #content
+    {
+        width: 800px;
+        height: 1000px;
+        margin: 0 auto;
+        text-align: center;
+        background-color: #888;
+    }
+</style>
+<footer class="page-footer px-xl-4 px-sm-2 px-0 py-3">
+<div class="container-fluid d-flex flex-wrap justify-content-center align-items-center">
+<p class="text-muted d-flex align-items-center gap-1">
+            جميع الحقوق محفوظة
+            <a class="namiFotter" href="#" target="_blank" title="Assus">
+                اسس الإنجاز للاستقدام
+            </a>
+            © 2026
+            ❤️
+        </p>
+</div>
+</footer>
+</div>
+<div aria-hidden="true" aria-labelledby="exampleModalLgLabel" class="modal fade" data-bs-backdrop="static" id="createModal" style="display: none;" tabindex="-1">
+<div class="modal-dialog modal-dialog-scrollable modal-xl">
+<div class="modal-content">
+<div class="modal-header">
+<h5 class="modal-title h4" id="exampleModalLgLabel"></h5>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body custom_scroll"></div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="CreateNew" tabindex="-1">
+<div class="modal-dialog modal-dialog-vertical modal-dialog-scrollable">
+<div class="modal-content rounded-0">
+<div class="modal-header">
+<h5 class="modal-title">Setup new project</h5>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="progress bg-transparent" style="height: 3px;">
+<div aria-valuemax="5" aria-valuemin="1" aria-valuenow="1" class="progress-bar bg-primary" role="progressbar" style="width: 20%;"></div>
+</div>
+<div class="modal-body custom_scroll">
+<ul class="nav nav-tabs tab-card border-0 fs-6" role="tablist">
+<li class="nav-item flex-fill text-center"><a class="nav-link active" data-bs-step="1" data-bs-toggle="tab" href="#step1">1. Project</a>
+</li>
+<li class="nav-item flex-fill text-center"><a class="nav-link" data-bs-step="3" data-bs-toggle="tab" href="#step2">2. Team</a></li>
+<li class="nav-item flex-fill text-center"><a class="nav-link" data-bs-step="4" data-bs-toggle="tab" href="#step3">3. File</a></li>
+<li class="nav-item flex-fill text-center"><a class="nav-link" data-bs-step="5" data-bs-toggle="tab" href="#step4">4. Completed</a></li>
+</ul>
+<div class="tab-content">
+<div class="tab-pane fade show active" id="step1">
+<div class="card mb-2">
+<div class="card-body">
+<h6 class="card-title mb-1">Project Type</h6>
+<p class="text-muted small">If you need more info, please check out <a href="#">FAQ
+                                        Page</a></p>
+<div class="c_radio d-flex flex-md-wrap">
+<label class="m-1 w-100" for="Personal">
+<input checked="" id="Personal" name="plan" type="radio"/>
+<span class="card">
+<span class="card-body d-flex p-3">
+<svg class="avatar" viewbox="0 0 16 16">
+<path class="fill-muted" d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+</svg>
+<span class="ms-3">
+<span class="h6 d-flex mb-1">Personal Project</span>
+<span class="text-muted">For smaller business, with simple salaries and pay schedules.</span>
+</span>
+</span>
+</span>
+</label>
+<label class="m-1 w-100" for="Team">
+<input id="Team" name="plan" type="radio"/>
+<span class="card">
+<span class="card-body d-flex p-3">
+<svg class="avatar" viewbox="0 0 16 16">
+<path class="fill-muted" d="M7 14s-1 0-1-1 1-4 5-4 5 3 5 4-1 1-1 1H7zm4-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"></path>
+<path class="fill-muted" d="M5.216 14A2.238 2.238 0 0 1 5 13c0-1.355.68-2.75 1.936-3.72A6.325 6.325 0 0 0 5 9c-4 0-5 3-5 4s1 1 1 1h4.216z" fill-rule="evenodd"></path>
+<path class="fill-muted" d="M4.5 8a2.5 2.5 0 1 0 0-5 2.5 2.5 0 0 0 0 5z"></path>
+</svg>
+<span class="ms-3">
+<span class="h6 d-flex mb-1">Team Project</span>
+<span class="text-muted">For growing business who wants to create a rewarding place to work.</span>
+</span>
+</span>
+</span>
+</label>
+</div>
+</div>
+</div>
+<div class="card mb-2">
+<div class="card-body">
+<h6 class="card-title mb-1">Project Details</h6>
+<p class="text-muted small">It is a long established fact that a reader will be
+                                    distracted by Luno.</p>
+<div class="form-floating mb-2">
+<select class="form-select">
+<option selected="">Open this select menu</option>
+<option value="1">Lucid</option>
+<option value="2">LUNO</option>
+<option value="3">Luno</option>
+</select>
+<label>Choose a Customer *</label>
+</div>
+<div class="form-floating mb-2">
+<input class="form-control" placeholder="Project name" type="text"/>
+<label>Project name *</label>
+</div>
+<div class="form-floating mb-2">
+<textarea class="form-control" placeholder="Add project details" style="height: 100px"></textarea>
+<label>Add project details</label>
+</div>
+<div class="form-floating mb-2">
+<input class="form-control" type="date"/>
+<label>Enter release Date *</label>
+</div>
+<div class="d-flex justify-content-between">
+<div class="text-muted">Allow Notifications *</div>
+<div>
+<div class="form-check form-check-inline">
+<input class="form-check-input" id="allow_phone" type="checkbox" value="option1"/>
+<label class="form-check-label" for="allow_phone">Phone</label>
+</div>
+<div class="form-check form-check-inline">
+<input class="form-check-input" id="allow_email" type="checkbox" value="option2"/>
+<label class="form-check-label" for="allow_email">Email</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="text-center">
+<button class="btn btn-lg bg-secondary text-light next text-uppercase">Add People</button>
+</div>
+</div>
+<div class="tab-pane fade" id="step2">
+<div class="card mb-3">
+<div class="card-body">
+<h6 class="card-title mb-1">Build a Team</h6>
+<p class="text-muted small">If you need more info, please check out <a href="#">Project
+                                        Guidelines</a></p>
+<div class="form-floating mb-4">
+<input class="form-control" placeholder="Invite Teammates" type="text"/>
+<label>Invite Teammates</label>
+</div>
+<h6 class="card-title mb-1">Team Members</h6>
+<div class="form-check form-switch">
+<input checked="" class="form-check-input" id="list-group6" type="checkbox"/>
+<label class="form-check-label text-muted" for="list-group6">Adding Users by Team
+                                        Members</label>
+</div>
+</div>
+<ul class="list-group list-group-flush list-group-custom custom_scroll mb-0" style="height: 300px;">
+<li class="list-group-item d-flex align-items-center">
+<img alt="" class="avatar rounded" src="../assets/admin/assets/img/xs/avatar1.jpg"/>
+<div class="flex-fill ms-2">
+<div class="h6 mb-0">Chris Fox</div>
+<small class="text-muted">Angular Developer</small>
+</div>
+<select class="form-select rounded-pill form-select-sm w120">
+<option value="1">Owner</option>
+<option value="2">Can Edit</option>
+<option value="3">Guest</option>
+</select>
+</li>
+<li class="list-group-item d-flex align-items-center">
+<img alt="" class="avatar rounded" src="../assets/admin/assets/img/xs/avatar2.jpg"/>
+<div class="flex-fill ms-2">
+<div class="h6 mb-0">Joge Lucky</div>
+<small class="text-muted">ReactJs Developer</small>
+</div>
+<select class="form-select rounded-pill form-select-sm w120">
+<option value="1">Owner</option>
+<option value="2">Can Edit</option>
+<option value="3">Guest</option>
+</select>
+</li>
+<li class="list-group-item d-flex align-items-center">
+<img alt="" class="avatar rounded" src="../assets/admin/assets/img/xs/avatar3.jpg"/>
+<div class="flex-fill ms-2">
+<div class="h6 mb-0">Chris Fox</div>
+<small class="text-muted">NodeJs Developer</small>
+</div>
+<select class="form-select rounded-pill form-select-sm w120">
+<option value="1">Owner</option>
+<option value="2">Can Edit</option>
+<option value="3">Guest</option>
+</select>
+</li>
+<li class="list-group-item d-flex align-items-center">
+<img alt="" class="avatar rounded" src="../assets/admin/assets/img/xs/avatar4.jpg"/>
+<div class="flex-fill ms-2">
+<div class="h6 mb-0">Chris Fox</div>
+<small class="text-muted">Sr. Designer</small>
+</div>
+<select class="form-select rounded-pill form-select-sm w120">
+<option value="1">Owner</option>
+<option value="2">Can Edit</option>
+<option value="3">Guest</option>
+</select>
+</li>
+<li class="list-group-item d-flex align-items-center">
+<img alt="" class="avatar rounded" src="../assets/admin/assets/img/xs/avatar5.jpg"/>
+<div class="flex-fill ms-2">
+<div class="h6 mb-0">Chris Fox</div>
+<small class="text-muted">Designer</small>
+</div>
+<select class="form-select rounded-pill form-select-sm w120">
+<option value="1">Owner</option>
+<option value="2">Can Edit</option>
+<option value="3">Guest</option>
+</select>
+</li>
+<li class="list-group-item d-flex align-items-center">
+<img alt="" class="avatar rounded" src="../assets/admin/assets/img/xs/avatar6.jpg"/>
+<div class="flex-fill ms-2">
+<div class="h6 mb-0">Chris Fox</div>
+<small class="text-muted">Front-End Developer</small>
+</div>
+<select class="form-select rounded-pill form-select-sm w120">
+<option value="1">Owner</option>
+<option value="2">Can Edit</option>
+<option value="3">Guest</option>
+</select>
+</li>
+<li class="list-group-item d-flex align-items-center">
+<img alt="" class="avatar rounded" src="../assets/admin/assets/img/xs/avatar7.jpg"/>
+<div class="flex-fill ms-2">
+<div class="h6 mb-0">Chris Fox</div>
+<small class="text-muted">QA</small>
+</div>
+<select class="form-select rounded-pill form-select-sm w120">
+<option value="1">Owner</option>
+<option value="2">Can Edit</option>
+<option value="3">Guest</option>
+</select>
+</li>
+<li class="list-group-item d-flex align-items-center">
+<img alt="" class="avatar rounded" src="../assets/admin/assets/img/xs/avatar8.jpg"/>
+<div class="flex-fill ms-2">
+<div class="h6 mb-0">Chris Fox</div>
+<small class="text-muted">Laravel Developer</small>
+</div>
+<select class="form-select rounded-pill form-select-sm w120">
+<option value="1">Owner</option>
+<option value="2">Can Edit</option>
+<option value="3">Guest</option>
+</select>
+</li>
+</ul>
+</div>
+<div class="text-center">
+<button class="btn btn-lg bg-secondary text-light next text-uppercase">Select Files</button>
+</div>
+</div>
+<div class="tab-pane fade" id="step3">
+<div class="card mb-3">
+<div class="card-body">
+<h6 class="card-title mb-1">Upload Files</h6>
+<div class="mb-4">
+<label class="form-label small">Upload up to 10 files</label>
+<input class="form-control" multiple="" type="file"/>
+</div>
+<span>Already Uploaded File</span>
+</div>
+<ul class="list-group list-group-flush list-group-custom custom_scroll mb-0" style="height: 300px;">
+<li class="list-group-item py-3">
+<div class="d-flex align-items-center">
+<div class="avatar rounded no-thumbnail"><i class="fa fa-file-pdf-o text-danger"></i></div>
+<div class="flex-fill ms-3 text-truncate">
+<p class="mb-0 color-800">Annual Sales Report 2018-19</p>
+<small class="text-muted">.pdf, 5.3 MB</small>
+</div>
+</div>
+</li>
+<li class="list-group-item py-3">
+<div class="d-flex align-items-center">
+<div class="avatar rounded no-thumbnail"><i class="fa fa-file-excel-o text-success"></i></div>
+<div class="flex-fill ms-3 text-truncate">
+<p class="mb-0 color-800">Complete Product Sheet</p>
+<small class="text-muted">.xls, 2.1 MB</small>
+</div>
+</div>
+</li>
+<li class="list-group-item py-3">
+<div class="d-flex align-items-center">
+<div class="avatar rounded no-thumbnail"><i class="fa fa-file-word-o text-info"></i></div>
+<div class="flex-fill ms-3 text-truncate">
+<p class="mb-0 color-800">Marketing Guidelines</p>
+<small class="text-muted">.doc, 2.3 MB</small>
+</div>
+</div>
+</li>
+<li class="list-group-item py-3">
+<div class="d-flex align-items-center">
+<div class="avatar rounded no-thumbnail"><i class="fa fa-file-zip-o"></i></div>
+<div class="flex-fill ms-3 text-truncate">
+<p class="mb-0 color-800">Brand Photography</p>
+<small class="text-muted">.zip, 30.5 MB</small>
+</div>
+</div>
+</li>
+</ul>
+</div>
+<div class="text-center">
+<button class="btn btn-lg bg-secondary text-light next text-uppercase">Advanced Options
+                            </button>
+</div>
+</div>
+<div class="tab-pane fade" id="step4">
+<div class="card text-center">
+<div class="card-body">
+<h4 class="card-title mb-1">Project Created!</h4>
+<span class="text-muted">If you need more info, please check how to create project</span>
+</div>
+<div class="card-body">
+<button class="btn btn-lg bg-light first text-uppercase">Cretae new project</button>
+<button class="btn btn-lg bg-secondary text-light text-uppercase">View project</button>
+</div>
+<div class="card-body">
+<img alt="" class="img-fluid" src="../assets/admin/assets/img/project-team.svg"/>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="MynotesModal" tabindex="-1">
+<div class="modal-dialog modal-dialog-vertical modal-dialog-scrollable">
+<div class="modal-content">
+<div class="modal-header px-4">
+<h5 class="modal-title">My Notes <span class="badge bg-danger ms-2"></span></h5>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="bg-light px-4 py-3">
+<ul class="nav nav-pills nav-fill" role="tablist">
+<li class="nav-item">
+<a aria-selected="true" class="nav-link active all-notes active" data-bs-toggle="tab" data-url="" href="#Notetab-all" role="tab">All Notes</a>
+</li>
+<li class="nav-item">
+<a aria-selected="false" class="nav-link" data-bs-toggle="tab" href="#Notetab-Business" role="tab">Business</a>
+</li>
+<li class="nav-item">
+<a class="nav-link" data-bs-toggle="tab" href="#Notetab-Social" role="tab">Social</a>
+</li>
+<li class="nav-item">
+<a class="nav-link note-tap" data-bs-toggle="tab" data-url=" " href="#Notetab-Create" role="tab"><i class="fa fa-plus me-2"></i>New</a>
+</li>
+</ul>
+</div>
+<div class="modal-body px-4 custom_scroll">
+<div class="tab-content p-0">
+<div class="tab-pane fade active show" id="Notetab-all" role="tabpanel">
+</div>
+<div class="tab-pane fade" id="Notetab-Business" role="tabpanel">
+<div class="card ribbon mb-2">
+<div class="option-2 bg-warning position-absolute"></div>
+<div class="card-body">
+<span class="text-muted">10 December 2021</span>
+<p class="lead">Meeting with Mr.Lee</p>
+<span>Many desktop publishing packages and web page editors now use Lorem Ipsum as their
+                                default model</span>
+</div>
+<div class="card-footer pt-0 border-0">
+<a class="btn btn-sm btn-outline-secondary" href="#"><i class="fa fa-star favourite-note"></i></a>
+<a class="btn btn-sm btn-outline-secondary" href="#"><i class="fa fa-trash favourite-note"></i></a>
+</div>
+</div>
+<div class="card ribbon mb-2">
+<div class="option-2 bg-danger position-absolute"></div>
+<div class="card-body">
+<span class="text-muted">01 December 2021</span>
+<p class="lead">Change a Design</p>
+<span> It has survived not only five centuries, but also the leap into electronic</span>
+</div>
+<div class="card-footer pt-0 border-0">
+<a class="btn btn-sm btn-outline-secondary" href="#"><i class="fa fa-star favourite-note"></i></a>
+<a class="btn btn-sm btn-outline-secondary" href="#"><i class="fa fa-trash favourite-note"></i></a>
+</div>
+</div>
+</div>
+<div class="tab-pane fade" id="Notetab-Social" role="tabpanel">
+<div class="card ribbon mb-2">
+<div class="option-2 bg-dark position-absolute"></div>
+<div class="card-body">
+<span class="text-muted">22 August 2021</span>
+<p class="lead">Nightout with friends</p>
+<span>Blandit tempus porttitor aasfs. Integer posuere erat a ante venenatis.</span>
+</div>
+<div class="card-footer pt-0 border-0">
+<a class="btn btn-sm btn-outline-secondary" href="#"><i class="fa fa-star favourite-note"></i></a>
+<a class="btn btn-sm btn-outline-secondary" href="#"><i class="fa fa-trash favourite-note"></i></a>
+</div>
+</div>
+</div>
+<div class="tab-pane fade" id="Notetab-Create" role="tabpanel">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="ScheduleModal" tabindex="-1">
+<div class="modal-dialog modal-dialog-vertical modal-dialog-scrollable">
+<div class="modal-content">
+<div class="modal-header bg-secondary rounded-0">
+<h5 class="modal-title text-light">Schedule</h5>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="modal-body custom_scroll">
+<div class="ps-2">
+<div class="timeline-item ti-primary p-3">
+<div class="avatar sm rounded-circle no-thumbnail">
+<i class="fa fa-phone"></i>
+</div>
+<div class="timeline-content ms-3">
+<div>Call Danny at Colby's</div>
+<small class="text-muted">Today - 11:32am</small>
+</div>
+</div>
+<div class="timeline-item ti-info p-3">
+<div class="timeline-icon">
+<img alt="" class="avatar sm rounded-circle" src="../assets/admin/assets/img/xs/avatar1.jpg"/>
+</div>
+<div class="timeline-content ms-3">
+<div>Meeting with Alice</div>
+<small class="text-muted">Today - 12:50pm</small>
+</div>
+</div>
+<div class="timeline-item ti-danger p-3">
+<div class="avatar sm rounded-circle no-thumbnail">
+<i class="fa fa-comment"></i>
+</div>
+<div class="timeline-content ms-3">
+<div>Answer Annie's message</div>
+<small class="text-muted">Today - 01:35pm</small>
+</div>
+</div>
+<div class="timeline-item ti-danger p-3">
+<div class="avatar sm rounded-circle no-thumbnail">
+<i class="fa fa-phone"></i>
+</div>
+<div class="timeline-content ms-3">
+<div>Send new campaign</div>
+<small class="text-muted">Today - 02:40pm</small>
+</div>
+</div>
+<div class="timeline-item ti-primary p-3">
+<div class="avatar sm rounded-circle no-thumbnail">
+<i class="fa fa-smile-o"></i>
+</div>
+<div class="timeline-content ms-3">
+<div>Project review</div>
+<small class="text-muted">Today - 03:15pm</small>
+</div>
+</div>
+<div class="timeline-item ti-warning p-3">
+<div class="avatar sm rounded-circle no-thumbnail">
+<i class="fa fa-phone"></i>
+</div>
+<div class="timeline-content ms-3">
+<div>Call Trisha Jackson</div>
+<small class="text-muted">Today - 05:40pm</small>
+</div>
+</div>
+<div class="timeline-item ti-success p-3">
+<div class="avatar sm rounded-circle no-thumbnail">
+<i class="fa fa-leaf"></i>
+</div>
+<div class="timeline-content ms-3">
+<div>Write proposal for Don</div>
+<small class="text-muted">Today - 06:30pm</small>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="RecentChat" tabindex="-1">
+<div class="modal-dialog modal-dialog-vertical modal-dialog-scrollable">
+<div class="modal-content">
+<div class="d-flex align-items-start">
+<div class="nav flex-column nav-pills p-3 h-100">
+<a class="nav-link rounded-circle p-1 mb-2 active" data-bs-target="#c-user-1" data-bs-toggle="pill" href="javascript:void(0);" title="">
+<img alt="avatar" class="avatar sm rounded-circle border" src="../assets/admin/assets/img/xs/avatar1.jpg"/>
+</a>
+<a class="nav-link rounded-circle p-1 mb-2" data-bs-target="#c-user-2" data-bs-toggle="pill" href="javascript:void(0);" title="">
+<img alt="avatar" class="avatar sm rounded-circle border" src="../assets/admin/assets/img/xs/avatar2.jpg"/>
+</a>
+<a class="nav-link rounded-circle p-1 mb-2" data-bs-target="#c-user-3" data-bs-toggle="pill" href="javascript:void(0);" title="">
+<img alt="avatar" class="avatar sm rounded-circle border" src="../assets/admin/assets/img/xs/avatar3.jpg"/>
+</a>
+<a class="nav-link rounded-circle p-1 mb-2" data-bs-target="#c-user-2" data-bs-toggle="pill" href="javascript:void(0);" title="">
+<img alt="avatar" class="avatar sm rounded-circle border" src="../assets/admin/assets/img/xs/avatar4.jpg"/>
+</a>
+<a class="nav-link rounded-circle p-1 mb-2" data-bs-target="#c-user-5" data-bs-toggle="pill" href="javascript:void(0);" title="">
+<img alt="avatar" class="avatar sm rounded-circle border" src="../assets/admin/assets/img/xs/avatar5.jpg"/>
+</a>
+<a class="nav-link rounded-circle p-1 mb-2" data-bs-target="#c-user-1" data-bs-toggle="pill" href="javascript:void(0);" title="">
+<img alt="avatar" class="avatar sm rounded-circle border" src="../assets/admin/assets/img/xs/avatar6.jpg"/>
+</a>
+<a class="nav-link rounded-circle p-1 mb-2" data-bs-target="#c-user-7" data-bs-toggle="pill" href="javascript:void(0);" title="">
+<img alt="avatar" class="avatar sm rounded-circle border" src="../assets/admin/assets/img/xs/avatar7.jpg"/>
+</a>
+<a class="nav-link rounded-circle p-1 mb-2" data-bs-target="#c-user-3" data-bs-toggle="pill" href="javascript:void(0);" title="">
+<img alt="avatar" class="avatar sm rounded-circle border" src="../assets/admin/assets/img/xs/avatar8.jpg"/>
+</a>
+<a class="nav-link rounded-circle p-1 mb-2" data-bs-target="#c-user-3" data-bs-toggle="pill" href="javascript:void(0);" title="">
+<img alt="avatar" class="avatar sm rounded-circle border" src="../assets/admin/assets/img/xs/avatar9.jpg"/>
+</a>
+<a class="nav-link rounded-circle p-1 mb-2" data-bs-target="#c-user-1" data-bs-toggle="pill" href="javascript:void(0);" title="">
+<img alt="avatar" class="avatar sm rounded-circle border" src="../assets/admin/assets/img/xs/avatar10.jpg"/>
+</a>
+<a class="nav-link rounded-circle p-1 mb-2" data-bs-target="#c-user-1" data-bs-toggle="pill" href="javascript:void(0);" title="">
+<img alt="avatar" class="avatar sm rounded-circle border" src="../assets/admin/assets/img/xs/avatar5.jpg"/>
+</a>
+</div>
+<div class="tab-content shadow-sm">
+<div class="tab-pane fade show active" id="c-user-1" role="tabpanel">
+<div class="card">
+<div class="card-header border-bottom py-3">
+<div class="d-flex">
+<a href="javascript:void(0);" title="">
+<img alt="avatar" class="avatar rounded-circle" src="../assets/admin/assets/img/xs/avatar1.jpg"/>
+</a>
+<div class="ms-3">
+<h6 class="mb-0">Orlando Lentz</h6>
+<small class="text-muted">Last seen: 2 hours ago</small>
+</div>
+</div>
+<div class="dropdown morphing scale-left">
+<a class="nav-link p-2 text-secondary d-none d-xl-inline-block" href="javascript:void(0);"><i class="fa fa-camera"></i></a>
+<a class="nav-link p-2 me-1 text-secondary d-none d-xl-inline-block" href="javascript:void(0);"><i class="fa fa-video-camera"></i></a>
+<a aria-label="Close" class="nav-link py-2 px-3 text-muted d-inline-block d-xl-none" data-bs-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
+<a aria-expanded="false" class="more-icon dropdown-toggle" data-bs-toggle="dropdown" href="#"><i class="fa fa-ellipsis-h"></i></a>
+<ul class="dropdown-menu shadow border-0 p-2">
+<li><a class="dropdown-item" href="#">File Info</a></li>
+<li><a class="dropdown-item" href="#">Copy to</a></li>
+<li><a class="dropdown-item" href="#">Move to</a></li>
+<li><a class="dropdown-item" href="#">Rename</a></li>
+<li><a class="dropdown-item" href="#">Block</a></li>
+<li><a class="dropdown-item" href="#">Delete</a></li>
+</ul>
+</div>
+</div>
+<div class="card-body custom_scroll" style="height: calc(100vh - 141px);">
+<ul class="list-unstyled chat-history flex-grow-1">
+<li class="mb-3 d-flex flex-row align-items-end">
+<div class="max-width-70">
+<div class="user-info mb-1">
+<img alt="avatar" class="avatar xs rounded-circle me-1" src="../assets/admin/assets/img/xs/avatar1.jpg"/>
+<span class="text-muted small">10:10 AM, Today</span>
+</div>
+<div class="card p-3">
+<div class="message"> Hi Aiden, how are you?</div>
+</div>
+</div>
+<div class="btn-group">
+<a aria-expanded="false" class="nav-link py-2 px-3 text-muted" data-bs-toggle="dropdown" href="#"><i class="fa fa-ellipsis-v"></i></a>
+<ul class="dropdown-menu rounded-4 border-0 shadow">
+<li><a class="dropdown-item" href="#">Edit</a></li>
+<li><a class="dropdown-item" href="#">Share</a></li>
+<li><a class="dropdown-item" href="#">Delete</a></li>
+</ul>
+</div>
+</li>
+<li class="mb-3 d-flex flex-row-reverse align-items-end">
+<div class="max-width-70 text-end">
+<div class="user-info mb-1">
+<span class="text-muted small">10:12 AM, Today</span>
+</div>
+<div class="card border-0 p-3 bg-primary text-light">
+<div class="message">Are we meeting today?</div>
+</div>
+</div>
+<div class="btn-group">
+<a aria-expanded="false" class="nav-link py-2 px-3 text-muted" data-bs-toggle="dropdown" href="#"><i class="fa fa-ellipsis-v"></i></a>
+<ul class="dropdown-menu rounded-4 border-0 shadow">
+<li><a class="dropdown-item" href="#">Edit</a></li>
+<li><a class="dropdown-item" href="#">Share</a></li>
+<li><a class="dropdown-item" href="#">Delete</a></li>
+</ul>
+</div>
+</li>
+<li class="mb-3 d-flex flex-row align-items-end">
+<div class="max-width-70">
+<div class="user-info mb-1">
+<img alt="avatar" class="avatar xs rounded-circle me-1" src="../assets/admin/assets/img/xs/avatar1.jpg"/>
+<span class="text-muted small">10:10 AM, Today</span>
+</div>
+<div class="card p-3">
+<div class="message"> It is a long established fact that a reader will
+                                                    be distracted by the readable content of a page when looking at its
+                                                    layout.
+                                                </div>
+</div>
+</div>
+<div class="btn-group">
+<a aria-expanded="false" class="nav-link py-2 px-3 text-muted" data-bs-toggle="dropdown" href="#"><i class="fa fa-ellipsis-v"></i></a>
+<ul class="dropdown-menu rounded-4 border-0 shadow">
+<li><a class="dropdown-item" href="#">Edit</a></li>
+<li><a class="dropdown-item" href="#">Share</a></li>
+<li><a class="dropdown-item" href="#">Delete</a></li>
+</ul>
+</div>
+</li>
+<li class="mb-3 d-flex flex-row align-items-end">
+<div class="max-width-70">
+<div class="user-info mb-1">
+<img alt="avatar" class="avatar xs rounded-circle me-1" src="../assets/admin/assets/img/xs/avatar1.jpg"/>
+<span class="text-muted small">10:10 AM, Today</span>
+</div>
+<div class="card p-3">
+<div class="message"> Contrary to popular belief, Lorem Ipsum is not
+                                                    simply random text.
+                                                </div>
+</div>
+</div>
+<div class="btn-group">
+<a aria-expanded="false" class="nav-link py-2 px-3 text-muted" data-bs-toggle="dropdown" href="#"><i class="fa fa-ellipsis-v"></i></a>
+<ul class="dropdown-menu rounded-4 border-0 shadow">
+<li><a class="dropdown-item" href="#">Edit</a></li>
+<li><a class="dropdown-item" href="#">Share</a></li>
+<li><a class="dropdown-item" href="#">Delete</a></li>
+</ul>
+</div>
+</li>
+<li class="mb-3 d-flex flex-row-reverse align-items-end">
+<div class="max-width-70 text-end">
+<div class="user-info mb-1">
+<span class="text-muted small">10:12 AM, Today</span>
+</div>
+<div class="card border-0 p-3 bg-primary text-light">
+<div class="message">Yes, Orlando Allredy done <br/> There are many
+                                                    variations of passages of Lorem Ipsum available
+                                                </div>
+</div>
+</div>
+<div class="btn-group">
+<a aria-expanded="false" class="nav-link py-2 px-3 text-muted" data-bs-toggle="dropdown" href="#"><i class="fa fa-ellipsis-v"></i></a>
+<ul class="dropdown-menu rounded-4 border-0 shadow">
+<li><a class="dropdown-item" href="#">Edit</a></li>
+<li><a class="dropdown-item" href="#">Share</a></li>
+<li><a class="dropdown-item" href="#">Delete</a></li>
+</ul>
+</div>
+</li>
+<li class="mb-3 d-flex flex-row align-items-end">
+<div class="max-width-70">
+<div class="user-info mb-1">
+<img alt="avatar" class="avatar xs rounded-circle me-1" src="../assets/admin/assets/img/xs/avatar1.jpg"/>
+<span class="text-muted small">10:10 AM, Today</span>
+</div>
+<div class="card p-3">
+<div class="message">
+<p>Please find attached images</p>
+<img alt="" class="w120 img-thumbnail" src="../assets/admin/assets/img/gallery/3.jpg"/>
+<img alt="" class="w120 img-thumbnail" src="../assets/admin/assets/img/gallery/4.jpg"/>
+</div>
+</div>
+</div>
+<div class="btn-group">
+<a aria-expanded="false" class="nav-link py-2 px-3 text-muted" data-bs-toggle="dropdown" href="#"><i class="fa fa-ellipsis-v"></i></a>
+<ul class="dropdown-menu rounded-4 border-0 shadow">
+<li><a class="dropdown-item" href="#">Edit</a></li>
+<li><a class="dropdown-item" href="#">Share</a></li>
+<li><a class="dropdown-item" href="#">Delete</a></li>
+</ul>
+</div>
+</li>
+<li class="mb-3 d-flex flex-row-reverse align-items-end">
+<div class="max-width-70 text-end">
+<div class="user-info mb-1">
+<span class="text-muted small">10:12 AM, Today</span>
+</div>
+<div class="card border-0 p-3 bg-primary text-light">
+<div class="message">Okay, will check and let you know.</div>
+</div>
+</div>
+<div class="btn-group">
+<a aria-expanded="false" class="nav-link py-2 px-3 text-muted" data-bs-toggle="dropdown" href="#"><i class="fa fa-ellipsis-v"></i></a>
+<ul class="dropdown-menu rounded-4 border-0 shadow">
+<li><a class="dropdown-item" href="#">Edit</a></li>
+<li><a class="dropdown-item" href="#">Share</a></li>
+<li><a class="dropdown-item" href="#">Delete</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="card-footer border-top bg-transparent py-3 px-4">
+<div class="input-group">
+<input class="form-control" placeholder="Enter text here..." type="text"/>
+<button class="btn btn-primary" type="button">Send</button>
+</div>
+</div>
+</div>
+</div>
+<div class="tab-pane fade show active" id="c-user-2" role="tabpanel">
+<div class="card">
+<div class="card-header border-bottom py-3">
+<div class="d-flex">
+<a href="javascript:void(0);" title="">
+<img alt="avatar" class="avatar rounded-circle" src="../assets/admin/assets/img/xs/avatar2.jpg"/>
+</a>
+<div class="ms-3">
+<h6 class="mb-0">Orlando Lentz</h6>
+<small class="text-muted">Last seen: 2 hours ago</small>
+</div>
+</div>
+<div class="dropdown morphing scale-left">
+<a class="nav-link p-2 text-secondary d-none d-xl-inline-block" href="javascript:void(0);"><i class="fa fa-camera"></i></a>
+<a class="nav-link p-2 me-1 text-secondary d-none d-xl-inline-block" href="javascript:void(0);"><i class="fa fa-video-camera"></i></a>
+<a aria-label="Close" class="nav-link py-2 px-3 text-muted d-inline-block d-xl-none" data-bs-dismiss="modal" href="#"><i class="fa fa-close"></i></a>
+<a aria-expanded="false" class="more-icon dropdown-toggle" data-bs-toggle="dropdown" href="#"><i class="fa fa-ellipsis-h"></i></a>
+<ul class="dropdown-menu shadow border-0 p-2">
+<li><a class="dropdown-item" href="#">File Info</a></li>
+<li><a class="dropdown-item" href="#">Copy to</a></li>
+<li><a class="dropdown-item" href="#">Move to</a></li>
+<li><a class="dropdown-item" href="#">Rename</a></li>
+<li><a class="dropdown-item" href="#">Block</a></li>
+<li><a class="dropdown-item" href="#">Delete</a></li>
+</ul>
+</div>
+</div>
+<div class="card-body custom_scroll" style="height: calc(100vh - 141px);">
+<ul class="list-unstyled chat-history flex-grow-1">
+<li class="mb-3 d-flex flex-row-reverse align-items-end">
+<div class="max-width-70 text-end">
+<div class="user-info mb-1">
+<span class="text-muted small">10:12 AM, Today</span>
+</div>
+<div class="card border-0 p-3 bg-primary text-light">
+<div class="message">Are we meeting today?</div>
+</div>
+</div>
+<div class="btn-group">
+<a aria-expanded="false" class="nav-link py-2 px-3 text-muted" data-bs-toggle="dropdown" href="#"><i class="fa fa-ellipsis-v"></i></a>
+<ul class="dropdown-menu rounded-4 border-0 shadow">
+<li><a class="dropdown-item" href="#">Edit</a></li>
+<li><a class="dropdown-item" href="#">Share</a></li>
+<li><a class="dropdown-item" href="#">Delete</a></li>
+</ul>
+</div>
+</li>
+<li class="mb-3 d-flex flex-row align-items-end">
+<div class="max-width-70">
+<div class="user-info mb-1">
+<img alt="avatar" class="avatar xs rounded-circle me-1" src="../assets/admin/assets/img/xs/avatar2.jpg"/>
+<span class="text-muted small">10:10 AM, Today</span>
+</div>
+<div class="card p-3">
+<div class="message"> Hi Aiden, how are you?</div>
+</div>
+</div>
+<div class="btn-group">
+<a aria-expanded="false" class="nav-link py-2 px-3 text-muted" data-bs-toggle="dropdown" href="#"><i class="fa fa-ellipsis-v"></i></a>
+<ul class="dropdown-menu rounded-4 border-0 shadow">
+<li><a class="dropdown-item" href="#">Edit</a></li>
+<li><a class="dropdown-item" href="#">Share</a></li>
+<li><a class="dropdown-item" href="#">Delete</a></li>
+</ul>
+</div>
+</li>
+<li class="mb-3 d-flex flex-row-reverse align-items-end">
+<div class="max-width-70 text-end">
+<div class="user-info mb-1">
+<span class="text-muted small">10:12 AM, Today</span>
+</div>
+<div class="card border-0 p-3 bg-primary text-light">
+<div class="message">Yes, Orlando Allredy done <br/> There are many
+                                                    variations of passages of Lorem Ipsum available
+                                                </div>
+</div>
+</div>
+<div class="btn-group">
+<a aria-expanded="false" class="nav-link py-2 px-3 text-muted" data-bs-toggle="dropdown" href="#"><i class="fa fa-ellipsis-v"></i></a>
+<ul class="dropdown-menu rounded-4 border-0 shadow">
+<li><a class="dropdown-item" href="#">Edit</a></li>
+<li><a class="dropdown-item" href="#">Share</a></li>
+<li><a class="dropdown-item" href="#">Delete</a></li>
+</ul>
+</div>
+</li>
+<li class="mb-3 d-flex flex-row align-items-end">
+<div class="max-width-70">
+<div class="user-info mb-1">
+<img alt="avatar" class="avatar xs rounded-circle me-1" src="../assets/admin/assets/img/xs/avatar2.jpg"/>
+<span class="text-muted small">10:10 AM, Today</span>
+</div>
+<div class="card p-3">
+<div class="message">
+<p>Please find attached images</p>
+<img alt="" class="w120 img-thumbnail" src="../assets/admin/assets/img/gallery/1.jpg"/>
+<img alt="" class="w120 img-thumbnail" src="../assets/admin/assets/img/gallery/2.jpg"/>
+</div>
+</div>
+</div>
+<div class="btn-group">
+<a aria-expanded="false" class="nav-link py-2 px-3 text-muted" data-bs-toggle="dropdown" href="#"><i class="fa fa-ellipsis-v"></i></a>
+<ul class="dropdown-menu rounded-4 border-0 shadow">
+<li><a class="dropdown-item" href="#">Edit</a></li>
+<li><a class="dropdown-item" href="#">Share</a></li>
+<li><a class="dropdown-item" href="#">Delete</a></li>
+</ul>
+</div>
+</li>
+<li class="mb-3 d-flex flex-row-reverse align-items-end">
+<div class="max-width-70 text-end">
+<div class="user-info mb-1">
+<span class="text-muted small">10:12 AM, Today</span>
+</div>
+<div class="card border-0 p-3 bg-primary text-light">
+<div class="message">Okay, will check and let you know.</div>
+</div>
+</div>
+<div class="btn-group">
+<a aria-expanded="false" class="nav-link py-2 px-3 text-muted" data-bs-toggle="dropdown" href="#"><i class="fa fa-ellipsis-v"></i></a>
+<ul class="dropdown-menu rounded-4 border-0 shadow">
+<li><a class="dropdown-item" href="#">Edit</a></li>
+<li><a class="dropdown-item" href="#">Share</a></li>
+<li><a class="dropdown-item" href="#">Delete</a></li>
+</ul>
+</div>
+</li>
+<li class="mb-3 d-flex flex-row align-items-end">
+<div class="max-width-70">
+<div class="user-info mb-1">
+<img alt="avatar" class="avatar xs rounded-circle me-1" src="../assets/admin/assets/img/xs/avatar2.jpg"/>
+<span class="text-muted small">10:10 AM, Today</span>
+</div>
+<div class="card p-3">
+<div class="message"> It is a long established fact that a reader will
+                                                    be distracted by the readable content of a page when looking at its
+                                                    layout.
+                                                </div>
+</div>
+</div>
+<div class="btn-group">
+<a aria-expanded="false" class="nav-link py-2 px-3 text-muted" data-bs-toggle="dropdown" href="#"><i class="fa fa-ellipsis-v"></i></a>
+<ul class="dropdown-menu rounded-4 border-0 shadow">
+<li><a class="dropdown-item" href="#">Edit</a></li>
+<li><a class="dropdown-item" href="#">Share</a></li>
+<li><a class="dropdown-item" href="#">Delete</a></li>
+</ul>
+</div>
+</li>
+<li class="mb-3 d-flex flex-row align-items-end">
+<div class="max-width-70">
+<div class="user-info mb-1">
+<img alt="avatar" class="avatar xs rounded-circle me-1" src="../assets/admin/assets/img/xs/avatar2.jpg"/>
+<span class="text-muted small">10:10 AM, Today</span>
+</div>
+<div class="card p-3">
+<div class="message"> Contrary to popular belief, Lorem Ipsum is not
+                                                    simply random text.
+                                                </div>
+</div>
+</div>
+<div class="btn-group">
+<a aria-expanded="false" class="nav-link py-2 px-3 text-muted" data-bs-toggle="dropdown" href="#"><i class="fa fa-ellipsis-v"></i></a>
+<ul class="dropdown-menu rounded-4 border-0 shadow">
+<li><a class="dropdown-item" href="#">Edit</a></li>
+<li><a class="dropdown-item" href="#">Share</a></li>
+<li><a class="dropdown-item" href="#">Delete</a></li>
+</ul>
+</div>
+</li>
+</ul>
+</div>
+<div class="card-footer border-top bg-transparent py-3 px-4">
+<div class="input-group">
+<input class="form-control" placeholder="Enter text here..." type="text"/>
+<button class="btn btn-primary" type="button">Send</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="modal fade" id="SettingsModal" tabindex="-1">
+<div class="modal-dialog modal-dialog-vertical right-side modal-dialog-scrollable">
+<div class="modal-content">
+<div class="px-xl-4 modal-header">
+<h5 class="modal-title">Theme Setting</h5>
+<button aria-label="Close" class="btn-close" data-bs-dismiss="modal" type="button"></button>
+</div>
+<div class="px-xl-4 modal-body custom_scroll">
+<div class="card fieldset border border-primary p-3 setting-theme mb-4">
+<span class="fieldset-tile text-primary bg-card">Color Settings</span>
+<ul class="list-unstyled d-flex choose-skin mb-0">
+<li data-theme="black">
+<div class="black"></div>
+</li>
+<li data-theme="indigo">
+<div class="indigo"></div>
+</li>
+<li data-theme="blue">
+<div class="blue"></div>
+</li>
+<li data-theme="cyan">
+<div class="cyan"></div>
+</li>
+<li data-theme="green">
+<div class="green"></div>
+</li>
+<li data-theme="orange">
+<div class="orange"></div>
+</li>
+<li data-theme="blush">
+<div class="blush"></div>
+</li>
+<li data-theme="red">
+<div class="red"></div>
+</li>
+<li data-theme="dynamic">
+<div class="dynamic"><i class="fa fa-paint-brush"></i></div>
+</li>
+</ul>
+<div class="card fieldset border border-primary p-3 dt-setting mt-4">
+<span class="fieldset-tile text-primary bg-card">Dynamic Color Settings</span>
+<div class="row g-3">
+<div class="col-7">
+<ul class="list-unstyled mb-0">
+<li>
+<button class="btn bg-primary avatar xs me-2" id="primaryColorPicker"></button>
+<label>Primary Color</label>
+</li>
+<li>
+<button class="btn bg-secondary avatar xs me-2" id="secondaryColorPicker"></button>
+<label>Secondary Color</label>
+</li>
+<li>
+<button class="btn btn-outline-secondary bg-body avatar xs me-2" id="BodyColorPicker"></button>
+<label>Site Background</label>
+</li>
+<li>
+<button class="btn btn-outline-secondary bg-card avatar xs me-2" id="CardColorPicker"></button>
+<label>Widget Background</label>
+</li>
+<li>
+<button class="btn btn-outline-secondary bg-card avatar xs me-2" id="BorderColorPicker"></button>
+<label>Border Color</label>
+</li>
+</ul>
+</div>
+<div class="col-5">
+<ul class="list-unstyled mb-0">
+<li>
+<button class="btn chart-color1 avatar xs me-2" id="chartColorPicker1"></button>
+<label>Chart Color 1</label>
+</li>
+<li>
+<button class="btn chart-color2 avatar xs me-2" id="chartColorPicker2"></button>
+<label>Chart Color 2</label>
+</li>
+<li>
+<button class="btn chart-color3 avatar xs me-2" id="chartColorPicker3"></button>
+<label>Chart Color 3</label>
+</li>
+<li>
+<button class="btn chart-color4 avatar xs me-2" id="chartColorPicker4"></button>
+<label>Chart Color 4</label>
+</li>
+<li>
+<button class="btn chart-color5 avatar xs me-2" id="chartColorPicker5"></button>
+<label>Chart Color 5</label>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<div class="card fieldset border setting-mode mb-4">
+<span class="fieldset-tile bg-card">Light/Dark &amp; Contrast Layout</span>
+<div class="c_radio d-flex text-center">
+<label class="m-1 theme-switch" for="theme-switch">
+<input id="theme-switch" type="checkbox"/>
+<span class="card p-2">
+<img alt="Dark Mode" class="img-fluid" src="../assets/admin/assets/img/dark-version.svg"/>
+</span>
+</label>
+<label class="m-1 theme-dark" for="theme-dark">
+<input id="theme-dark" type="checkbox"/>
+<span class="card p-2">
+<img alt="Theme Dark Mode" class="img-fluid" src="../assets/admin/assets/img/dark-theme.svg"/>
+</span>
+</label>
+<label class="m-1 theme-high-contrast" for="theme-high-contrast">
+<input id="theme-high-contrast" type="checkbox"/>
+<span class="card p-2">
+<img alt="High Contrast" class="img-fluid" src="../assets/admin/assets/img/high-version.svg"/>
+</span>
+</label>
+<label class="m-1 theme-rtl" for="theme-rtl">
+<input id="theme-rtl" type="checkbox"/>
+<span class="card p-2">
+<img alt="RTL Mode!" class="img-fluid" src="../assets/admin/assets/img/rtl-version.svg"/>
+</span>
+</label>
+</div>
+</div>
+<div class="card fieldset border setting-font">
+<span class="fieldset-tile bg-card">Google Font Settings</span>
+<div class="c_radio d-flex text-center font_setting">
+<label class="m-1" for="font-opensans">
+<input id="font-opensans" name="font" type="radio" value="font-opensans"/>
+<span class="card p-2">
+<img alt="Dark Mode" class="img-fluid" src="../assets/admin/assets/img/font-opensans.svg"/>
+</span>
+</label>
+<label class="m-1" for="font-quicksand">
+<input id="font-quicksand" name="font" type="radio" value="font-quicksand"/>
+<span class="card p-2">
+<img alt="Dark Mode" class="img-fluid" src="../assets/admin/assets/img/font-quicksand.svg"/>
+</span>
+</label>
+<label class="m-1" for="font-nunito">
+<input checked="" id="font-nunito" name="font" type="radio" value="font-nunito"/>
+<span class="card p-2">
+<img alt="Dark Mode" class="img-fluid" src="../assets/admin/assets/img/font-nunito.svg"/>
+</span>
+</label>
+<label class="m-1" for="font-raleway">
+<input id="font-raleway" name="font" type="radio" value="font-raleway"/>
+<span class="card p-2">
+<img alt="Dark Mode" class="img-fluid" src="../assets/admin/assets/img/font-raleway.svg"/>
+</span>
+</label>
+</div>
+</div>
+<div class="m-1 p-3 bg-body rounded-4 mb-4">
+<p>Dynamic Font Settings</p>
+<div class="mb-2">
+<label class="form-label small text-muted mb-0">Enter font URL</label>
+<input class="form-control" id="font_url" placeholder="http://fonts.cdnfonts.com/css/vonfont" type="text"/>
+</div>
+<div class="mb-3">
+<label class="form-label small text-muted mb-0">Enter font family name</label>
+<input class="form-control" id="font_family" placeholder="vonfont" type="text"/>
+</div>
+<button class="btn btn-primary" id="font_apply" type="submit">Save Changes</button>
+<button class="btn btn-secondary" id="font_cancel" type="submit">Clear Changes</button>
+</div>
+<div class="setting-more mb-4">
+<h6 class="card-title">More Setting</h6>
+<ul class="list-group list-group-flush list-group-custom fs-6">
+<li class="list-group-item">
+<div class="form-check form-switch h-menu-switch mb-1">
+<input class="form-check-input" id="h_menu" type="checkbox"/>
+<label class="form-check-label" for="h_menu">Horizontal Menu Version</label>
+</div>
+</li>
+<li class="list-group-item">
+<div class="form-check form-switch pageheader-switch mb-1">
+<input checked="" class="form-check-input" id="PageHeader" type="checkbox"/>
+<label class="form-check-label" for="PageHeader">Page Header Fix</label>
+</div>
+</li>
+<li class="list-group-item">
+<div class="form-check form-switch pageheader-dark-switch mb-1">
+<input class="form-check-input" id="PageHeader_dark" type="checkbox"/>
+<label class="form-check-label" for="PageHeader_dark">Page Header Dark Mode</label>
+</div>
+</li>
+<li class="list-group-item">
+<div class="form-check form-switch radius-switch mb-1">
+<input class="form-check-input" id="BorderRadius" type="checkbox"/>
+<label class="form-check-label" for="BorderRadius">Border Radius none</label>
+</div>
+</li>
+<li class="list-group-item">
+<div class="form-check form-switch sidebar-v2 mb-1">
+<input class="form-check-input" id="sidebar_v2" type="checkbox"/>
+<label class="form-check-label" for="sidebar_v2">Sidebar Version 2</label>
+</div>
+</li>
+<li class="list-group-item">
+<div class="form-check form-switch sidebardark-switch mb-1">
+<input class="form-check-input" id="SidebarDark" type="checkbox"/>
+<label class="form-check-label" for="SidebarDark">Enable Dark! ( Sidebar )</label>
+</div>
+</li>
+<li class="list-group-item setting-img">
+<div class="form-check form-switch imagebg-switch mb-1">
+<input class="form-check-input" id="CheckImage" type="checkbox"/>
+<label class="form-check-label" for="CheckImage">Background Image (Sidebar)</label>
+</div>
+<div class="bg-images">
+<ul class="list-unstyled d-flex">
+<li class="sidebar-img-1 me-1 sidebar-img-active"><a class="rounded sidebar-img" href="#" id="img-1"><img alt="" src="../assets/admin/assets/img/sidebar-bg/sidebar-1.jpg"/></a></li>
+<li class="sidebar-img-2 me-1"><a class="rounded sidebar-img" href="#" id="img-2"><img alt="" src="../assets/admin/assets/img/sidebar-bg/sidebar-2.jpg"/></a></li>
+<li class="sidebar-img-3 me-1"><a class="rounded sidebar-img" href="#" id="img-3"><img alt="" src="../assets/admin/assets/img/sidebar-bg/sidebar-3.jpg"/></a></li>
+<li class="sidebar-img-4 me-1"><a class="rounded sidebar-img" href="#" id="img-4"><img alt="" src="../assets/admin/assets/img/sidebar-bg/sidebar-4.jpg"/></a></li>
+<li class="sidebar-img-5 me-1"><a class="rounded sidebar-img" href="#" id="img-5"><img alt="" src="../assets/admin/assets/img/sidebar-bg/sidebar-5.jpg"/></a></li>
+</ul>
+</div>
+</li>
+<li class="list-group-item">
+<div class="form-check form-switch fluid-switch mb-1">
+<input checked="" class="form-check-input" id="fluidLayout" type="checkbox"/>
+<label class="form-check-label" for="fluidLayout">Container Fluid</label>
+</div>
+</li>
+<li class="list-group-item">
+<div class="form-check form-switch shadow-switch mb-1">
+<input class="form-check-input" id="card_shadow" type="checkbox"/>
+<label class="form-check-label" for="card_shadow">Card Box-Shadow</label>
+</div>
+</li>
+</ul>
+</div>
+<div class="mb-4">
+<a class="btn lift btn-outline-secondary" href="./marketing/index.html">Marketing page</a>
+<a class="btn lift btn-outline-secondary" href="./onepgae-uikit/onepage.html">Landing page</a>
+<a class="btn lift btn-outline-secondary" href="./onepgae-uikit/index.html">One page Ui Kit
+                        Elements</a>
+</div>
+</div>
+<div class="px-xl-4 modal-footer d-flex justify-content-start text-center">
+<button class="btn flex-fill btn-primary lift" type="button">Save Changes</button>
+<button class="btn flex-fill btn-white border lift" data-bs-dismiss="modal" type="button">Close</button>
+</div>
+</div>
+</div>
+</div>
+<div aria-hidden="true" class="page-scroll-buttons" id="page-scroll-buttons">
+<button aria-label="الانتقال لأعلى الصفحة" class="page-scroll-btn" data-scroll="top" title="الانتقال لأعلى الصفحة" type="button">
+<svg aria-hidden="true" height="20" viewbox="0 0 24 24" width="20">
+<path d="M12 19V5M5 12l7-7 7 7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path>
+</svg>
+</button>
+<button aria-label="الانتقال لأسفل الصفحة" class="page-scroll-btn" data-scroll="bottom" title="الانتقال لأسفل الصفحة" type="button">
+<svg aria-hidden="true" height="20" viewbox="0 0 24 24" width="20">
+<path d="M12 5v14M19 12l-7 7-7-7" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4"></path>
+</svg>
+</button>
+</div>
+<style>
+    .page-scroll-buttons {
+        position: fixed;
+        bottom: 24px;
+        inset-inline-end: 24px;
+        z-index: 1040;
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        pointer-events: none;
+    }
+
+    .page-scroll-btn {
+        width: 44px;
+        height: 44px;
+        border: 0;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: #fff;
+        background: linear-gradient(135deg, var(--primary-color, #007bff), #4f46e5);
+        box-shadow: 0 6px 18px rgba(37, 99, 235, .35);
+        cursor: pointer;
+        opacity: 0;
+        visibility: hidden;
+        transform: translateY(12px) scale(.85);
+        transition: opacity .25s ease, transform .25s ease, visibility .25s, box-shadow .2s ease;
+        pointer-events: auto;
+    }
+
+    .page-scroll-btn.is-visible {
+        opacity: .9;
+        visibility: visible;
+        transform: translateY(0) scale(1);
+    }
+
+    .page-scroll-btn:hover {
+        opacity: 1;
+        transform: translateY(-3px) scale(1.05);
+        box-shadow: 0 10px 24px rgba(37, 99, 235, .45);
+    }
+
+    .page-scroll-btn:focus-visible {
+        outline: 3px solid rgba(79, 70, 229, .4);
+        outline-offset: 2px;
+    }
+
+    .page-scroll-btn:active {
+        transform: scale(.95);
+    }
+
+    @media (max-width: 576px) {
+        .page-scroll-buttons { bottom: 16px; inset-inline-end: 16px; }
+        .page-scroll-btn { width: 40px; height: 40px; }
+    }
+
+    @media  print {
+        .page-scroll-buttons { display: none !important; }
+    }
+</style>
+<script>
+    (function () {
+        var root = document.getElementById('page-scroll-buttons');
+        if (!root) return;
+
+        var upBtn = root.querySelector('[data-scroll="top"]');
+        var downBtn = root.querySelector('[data-scroll="bottom"]');
+        var threshold = 200;
+        var ticking = false;
+
+        // In layout-1 the theme scrolls `.wrapper` (overflow-y:auto; height:100vh), not the window.
+        var wrapper = document.querySelector('.wrapper');
+
+        function scroller() {
+            if (wrapper && wrapper.scrollHeight > wrapper.clientHeight
+                && getComputedStyle(wrapper).overflowY !== 'visible') {
+                return wrapper;
+            }
+            return document.scrollingElement || document.documentElement;
+        }
+
+        function update() {
+            ticking = false;
+            var el = scroller();
+            var top = el.scrollTop;
+            var maxScroll = el.scrollHeight - el.clientHeight;
+
+            upBtn.classList.toggle('is-visible', top > threshold);
+            downBtn.classList.toggle('is-visible', maxScroll > threshold && top < maxScroll - threshold);
+        }
+
+        function requestUpdate() {
+            if (!ticking) {
+                ticking = true;
+                window.requestAnimationFrame(update);
+            }
+        }
+
+        upBtn.addEventListener('click', function () {
+            scroller().scrollTo({top: 0, behavior: 'smooth'});
+        });
+
+        downBtn.addEventListener('click', function () {
+            var el = scroller();
+            el.scrollTo({top: el.scrollHeight, behavior: 'smooth'});
+        });
+
+        window.addEventListener('scroll', requestUpdate, {passive: true});
+        if (wrapper) wrapper.addEventListener('scroll', requestUpdate, {passive: true});
+        window.addEventListener('resize', requestUpdate);
+        window.addEventListener('load', requestUpdate);
+        // Content loaded by AJAX/DataTables changes the page height without scrolling.
+        if (window.ResizeObserver) {
+            var ro = new ResizeObserver(requestUpdate);
+            ro.observe(document.body);
+            if (wrapper && wrapper.firstElementChild) {
+                Array.prototype.forEach.call(wrapper.children, function (child) { ro.observe(child); });
+            }
+        }
+        update();
+    })();
+</script>
+<!------------------------ main -------------------------------------------------->
+<script src="../assets/admin/assets/js/plugins.js"></script>
+<script>window.KIT_FIXTURES={};</script>
+<script src="../kit/kit-mock.js"></script>
+<script src="../assets/admin/assets/js/theme.js"></script>
+<!------------------------ bundle -------------------------------------------------->
+<script src="../assets/admin/assets/js/bundle/sweetalert2.bundle.js"></script>
+<script src="../assets/admin/assets/js/bundle/select2.bundle.js"></script>
+<style>
+    .submission-guard-busy { opacity: .65; cursor: wait !important; }
+</style>
+<script src="../assets/js/submission-guard.js"></script>
+<!------------------------ vendor -------------------------------------------------->
+<script src="../assets/admin/assets/vendor/toster/js/jquery.toast.js"></script>
+<script src="../assets/admin/assets/vendor/jquery_validator/form_validator/jquery.form-validator.min.js"></script>
+<!------------------------ custom -------------------------------------------------->
+<script src="../assets/admin/assets/js/custom.js"></script>
+<!------------------------ dropify -------------------------------------------------->
+<script src="../assets/admin/assets/js/bundle/dropify.bundle.js"></script>
+<script src="../assets/admin/assets/js/jquery.multifield.min.js"></script>
+<script src="../assets/admin/assets/js/jquery.multifield.js"></script>
+<script crossorigin="anonymous" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" src="../assets/admin/assets/js/popper.min.js"></script>
+<script src="https://www.codehim.com/demo/jquery-image-uploader-preview-and-delete/dist/image-uploader.min.js" type="text/javascript"></script>
+<script src="../assets/admin/assets/js/tinymce.min.js"></script>
+<script>
+    $(document).ajaxComplete(function () {
+        tinymce.init({
+            selector: '.mytextarea',
+            plugins: 'ai tinycomments mentions anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount checklist mediaembed casechange export formatpainter pageembed permanentpen footnotes advtemplate advtable advcode editimage tableofcontents mergetags powerpaste tinymcespellchecker autocorrect a11ychecker typography inlinecss textcolor colorpicker',
+            toolbar: 'undo redo | formatselect | fontselect fontsizeselect | forecolor backcolor | bold italic underline strikethrough | align lineheight | tinycomments | checklist numlist bullist indent outdent | emoticons charmap | removeformat',
+        });
+    });
+</script>
+<script>
+
+
+    $.ajaxSetup({
+        headers: {
+            'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+        }
+    });
+
+
+
+    $(function () {
+        if ($.fn.dropify) {
+            $('.dropify').dropify();
+            var drEvent = $('#dropify-event').dropify();
+            drEvent.on('dropify.beforeClear', function (event, element) {
+              return confirm("Do you really want to delete \"" + element.file.name + "\" ?");
+            });
+            drEvent.on('dropify.afterClear', function (event, element) {
+              alert('File deleted');
+            });
+            $('.dropify-fr').dropify({
+              messages: {
+                default: 'Glissez-dÃ©posez un fichier ici ou cliquez',
+                replace: 'Glissez-dÃ©posez un fichier ou cliquez pour remplacer',
+                remove: 'Supprimer',
+                error: 'DÃ©solÃ©, le fichier trop volumineux'
+              }
+            });
+        }
+      });
+
+
+</script>
+<!------------------------ loader -------------------------------------------------->
+<script>
+    (function () {
+        var loaderHidden = false;
+
+        function hidePageLoader() {
+            if (loaderHidden) {
+                return;
+            }
+
+            var loader = document.getElementById('loading-wrapper');
+            if (!loader) {
+                loaderHidden = true;
+                return;
+            }
+
+            loaderHidden = true;
+
+            if (window.jQuery) {
+                window.jQuery(loader).stop(true, true).fadeOut(150);
+                return;
+            }
+
+            loader.style.display = 'none';
+        }
+
+        document.addEventListener('DOMContentLoaded', function () {
+            if (window.requestAnimationFrame) {
+                window.requestAnimationFrame(hidePageLoader);
+                return;
+            }
+
+            hidePageLoader();
+        });
+
+        window.addEventListener('pageshow', hidePageLoader);
+        window.addEventListener('load', hidePageLoader);
+        window.setTimeout(hidePageLoader, 1200);
+    })();
+</script>
+<script>
+(function ($) {
+    if (!$) return;
+    var language = {"sProcessing":"جارٍ التحميل...","sLengthMenu":"عرض _MENU_ سجل","sZeroRecords":"لا يوجد نتائج للبحث","sEmptyTable":"لا توجد بيانات متاحة في الجدول","sInfo":"عرض _START_ إلى _END_ من أصل _TOTAL_ سجل","sInfoEmpty":"لا توجد سجلات","sInfoFiltered":"(منتقاة من أصل _MAX_ سجل)","sSearch":"بحث","sLoadingRecords":"جارٍ تحميل السجلات...","oPaginate":{"sFirst":"الأول","sLast":"الأخير","sNext":"التالي","sPrevious":"السابق"},"oAria":{"sSortAscending":"ترتيب بحسب الاقدم","sSortDescending":"ترتيب بحسب الاحدث"}};
+    var apply = function (dataTable) { if (dataTable && dataTable.defaults) $.extend(true, dataTable.defaults.oLanguage, language); };
+    if ($.fn.dataTable) return apply($.fn.dataTable);
+    var current;
+    Object.defineProperty($.fn, 'dataTable', {
+        configurable: true, enumerable: true,
+        get: function () { return current; },
+        set: function (value) { current = value; apply(value); }, // يبقى الالتقاط دائمًا: بعض الصفحات تحمّل الحزمة أكثر من مرة
+    });
+})(window.jQuery);
+</script>
+<script>
+
+    /*$(document).ready(function(){
+        $.fn.modal.Constructor.prototype.enforceFocus = function() {};
+    });*/
+    var loader = `<div class="linear-background">
+                            <div class="inter-crop"></div>
+                            <div class="inter-right--top"></div>
+                            <div class="inter-right--bottom"></div>
+                        </div>`;
+
+    function showDataTable(url, columns) {
+        //console.log("showDataTable")
+        $("#dataTableObject").DataTable({
+            // dom: 'Bfrtip',
+            responsive: 1,
+            // "lengthChange": false,
+            "ordering": true,
+            "searching": true,
+            'iDisplayLength': 10,
+            "lengthMenu": [[5, 10, 25, 50, -1], [5, 10, 25, 50, "الكل"]],
+            "processing": true,
+            "serverSide": false,
+            "sort": true,
+            "ajax": url,
+            "columns": columns,
+            "language": {
+                "sProcessing": "جارٍ التحميل...",
+                "sLengthMenu": "عرض _MENU_ سجل",
+                "sZeroRecords": "لا يوجد نتائج للبحث",
+                "sInfo": "عرض _START_ إلى _END_ من أصل _TOTAL_ سجل",
+                "sInfoEmpty": "لا توجد سجلات",
+                "sInfoFiltered": "(منتقاة من أصل _MAX_ سجل)",
+                "sInfoPostFix": "",
+                "sSearch": "بحث:",
+                "sUrl": "",
+                "oPaginate": {
+                    "sFirst": "الأول",
+                    "sPrevious": "السابق",
+                    "sNext": "التالي",
+                    "sLast": "الأخير"
+                }
+            },
+            order: [
+                [0, "desc"]
+            ]
+        })
+    }
+
+    function handleErrorResponce(errorObj) {
+        console.log('handleErrorResponce');
+        console.log(errorObj.status);
+        if (errorObj.status == 422 || errorObj.status == 400) {
+            let errorsObj = $.parseJSON(errorObj.responseText);
+            let listObject = errorsObj.data || errorsObj.errors || {};
+            let testArr = [];
+            $.each(listObject, function (errorKey, errorArr) {
+                if (Array.isArray(errorArr)) {
+                    $.each(errorArr, function (key, value) {
+                        testArr.push(value);
+                    });
+                } else {
+                    testArr.push(errorArr);
+                }
+            });
+            validToster('حدث خطأ', testArr.length > 0 ? testArr : ['حدث خطأ في البيانات المدخلة'])
+        } else if (errorObj.status == 500) {
+            let message = 'حدث خطأ في الخادم';
+            try {
+                let errorsObj = $.parseJSON(errorObj.responseText);
+                if (errorsObj.message) {
+                    message = errorsObj.message;
+                }
+            } catch(e) {}
+            errorToster('حدث خطأ', message);
+        } else if (errorObj.status == 419) {
+            errorToster('حدث خطأ', 'انتهت صلاحية الجلسة. حدّث الصفحة ثم أعد إرسال النموذج.');
+        } else if (errorObj.status == 403) {
+            errorToster('حدث خطأ', 'لا تملك صلاحية تنفيذ هذا الإجراء.');
+        } else if (errorObj.status == 413) {
+            errorToster('حدث خطأ', 'حجم الملف المرفوع أكبر من الحد المسموح به على الخادم.');
+        } else {
+            // بدون رقم الحالة تبدو كل الأعطال المتبقية رسالة واحدة غامضة لا تدل على سببها.
+            var statusHint = errorObj.status ? ' (HTTP ' + errorObj.status + ')' : ' (تعذر الوصول إلى الخادم)';
+            errorToster('حدث خطأ', "لا تمتلك الصلاحية " + statusHint);
+        }
+    }
+
+    function handleSuccessResponce(result) {
+        //console.log("handleSuccessResponce" + result.code)
+        console.log(result)
+        if (result.code == 200) {
+            successToster('تم بنجاح', result.message);
+        } else if (result.code == 201) {
+            successToster('تم بنجاح', result.message);
+            // إذا كان هناك URL للتوجيه، استخدمه
+            if (result.data && result.data.url) {
+                setTimeout(function() {
+                    location.href = result.data.url;
+                }, 1500);
+            } else {
+                location.reload();
+            }
+        } else if (result.code == 401) {
+            warningToster('حدث خطأ', result.message)
+        } else {
+            warningToster('حدث خطأ', result.message)
+        }
+    }
+
+    function loadOptionsOnAjax() {
+        // تقييد المحدد بعناصر select الحقيقية غير المهيأة، لأن Select2 يولّد span يحمل نفس الكلاس
+        if ($('select.select2:not(.select2-hidden-accessible)').length > 0) {
+            $('select.select2:not(.select2-hidden-accessible)').select2({
+                dropdownParent: $('#createModal .modal-body'),
+            });
+        }
+        $.validate({
+            ignore: 'input[type=hidden]',
+            modules: 'date, security',
+            lang: 'ar',
+            validateOnEvent: true
+        });
+        if ($('.dropify').length > 0 && $.fn.dropify) {
+            $('.dropify').dropify();
+        }
+        if ($('#json_array').length > 0) {
+            $('#json_array').multifield();
+        }
+        if ($('#json_array2').length > 0) {
+            $('#json_array2').multifield();
+        }
+    }
+
+    function reloadDataTable() {
+        if ($('#dataTableObject').length > 0) {
+            $('#dataTableObject').DataTable().ajax.reload();
+        }
+    }
+
+    $(document).on('click', '.addButton', function (e) {
+        e.preventDefault()
+        $('.modal-body').html(loader)
+        let buttonObj = $(this);
+        let modelRoute = buttonObj.attr("model-route");
+        let modelTitle = buttonObj.attr("model-title");
+        let modalResult = $("#createModal");
+        $(".modal-body", modalResult).html();
+        setTimeout(function () {
+            $.ajax({
+                url: modelRoute,
+                type: 'GET',
+                beforeSend: function () {
+                    // You can add code to handle beforeSend event
+                },
+                complete: function () {
+                    // You can add code to handle complete event
+                },
+                success: function (result) {
+                    $("#exampleModalLgLabel").text(modelTitle);
+                    $(".modal-body", modalResult).html(result.data.html);
+                    loadOptionsOnAjax();
+                },
+                error: function (errorObj, errorText, errorThrown) {
+                    handleErrorResponce(errorObj);
+                }
+            });
+        }, 500);
+    });
+
+    $(document).on('click', '.editButton', function (e) {
+        e.preventDefault()
+        $('.modal-body').html(loader)
+        let buttonObj = $(this);
+        let modelRoute = buttonObj.attr("model-route");
+        let modelTitle = buttonObj.attr("model-title");
+        let modalResult = $("#createModal");
+        $(".modal-body", modalResult).html();
+        setTimeout(function () {
+            $.ajax({
+                url: modelRoute,
+                type: 'GET',
+                beforeSend: function () {
+                },
+                complete: function () {
+                },
+                success: function (result) {
+                    $("#exampleModalLgLabel").text(modelTitle);
+                    $(".modal-body", modalResult).html(result.data.html)
+                    loadOptionsOnAjax();
+                },
+                error: function (errorObj, errorText, errorThrown) {
+                    handleErrorResponce(errorObj);
+                }
+            });
+        }, 700);
+    });
+
+    $(document).on('click', '.deleteButton', function (e) {
+        e.preventDefault()
+        let buttonObj = $(this);
+        let deleteRoute = buttonObj.attr("delete-route");
+        var currentPage = $('#dataTableObject').DataTable().page();
+        swal.fire({
+            title: "هل أنت متأكد من إتمام  هذا الإجراء؟",
+            text: "لا يمكنك التراجع بعد ذلك؟",
+            icon: 'question',
+            showCancelButton: true,
+            confirmButtonColor: "#DD6B55",
+            confirmButtonText: "موافق",
+            cancelButtonText: "الغاء",
+        }).then((result) => {
+            if (result.isConfirmed) {
+                $.ajax({
+                    url: deleteRoute,
+                    type: 'DELETE',
+                    beforeSend: function () {
+                        $('#loading-wrapper').fadeIn();
+                    },
+                    complete: function () {
+                        $('#loading-wrapper').fadeOut();
+                    },
+                    success: function (data) {
+                        Swal.fire({
+                            icon: 'success',
+                            title: "تم الحذف بنجاح",
+                            confirmButtonText: "إغلاق",
+                        });
+                        reloadDataTable();
+                        $('#dataTableObject').DataTable().page(currentPage).draw('page');
+                    },
+                    error: function (errorObj, errorText, errorThrown) {
+                        handleErrorResponce(errorObj);
+                    }
+                });
+            }
+        });
+    });
+
+    $(document).on('submit', '.from-submit-global', function (e) {
+        e.preventDefault();
+        let formData = new FormData(this);
+        let url = $(this).attr('action');
+        let submitButton = $(e.originalEvent.submitter);
+        let buttonText = submitButton.text();
+        let modalResult = $("#createModal");
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            beforeSend: function () {
+                $('#loading-wrapper').fadeIn();
+                submitButton.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ' + buttonText)
+            },
+            complete: function () {
+                $('#loading-wrapper').fadeOut();
+                submitButton.html(buttonText);
+            },
+            success: function (result) {
+                console.log(200)
+                $('.form-alert').html(result.message);
+                handleSuccessResponce(result);
+                reloadDataTable();
+                if (modalResult.is(":visible")) {
+                    modalResult.modal('toggle');
+                }
+                // modalResult.modal('toggle');
+                console.log(modalResult.is(':visible'));
+            },
+            error: function (errorObj, errorText, errorThrown) {
+                console.log(500)
+                console.log(errorObj)
+                handleErrorResponce(errorObj);
+            }
+        });
+
+    });
+
+    $(document).on('submit', '.from-submit-update-global', function (e) {
+        e.preventDefault();
+        let formData = new FormData(this);
+        let url = $(this).attr('action');
+        let submitButton = $(e.originalEvent.submitter);
+        let buttonText = submitButton.text();
+        let modalResult = $("#createModal");
+        $.ajax({
+            url: url,
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            beforeSend: function () {
+                $('#loading-wrapper').fadeIn();
+                submitButton.html('<span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span> ' + buttonText)
+            },
+            complete: function () {
+                $('#loading-wrapper').fadeOut();
+            },
+            success: function (result) {
+                handleSuccessResponce(result);
+                reloadDataTable();
+                submitButton.html(buttonText)
+                modalResult.modal('toggle');
+            },
+            error: function (errorObj, errorText, errorThrown) {
+                handleErrorResponce(errorObj);
+            }
+        });
+
+    });
+
+
+    $(document).on('click', '.remove-tr', function (e) {
+        e.preventDefault()
+        let obj = $(this)
+        let totalTr = $(".remove-tr").length;
+        if (totalTr == 1) {
+            return false;
+        }
+        let parentTr = obj.closest("tr");
+        parentTr.remove();
+    });
+
+</script>
+<script>
+    (function () {
+        var TITLE = 'صلاحية غير متاحة';
+        var FALLBACK = 'لا تملك صلاحية تنفيذ هذا الإجراء. يرجى التواصل مع مسؤول النظام.';
+
+        function showPermissionAlert(message) {
+            if (typeof Swal === 'undefined') {
+                alert(message);
+                return;
+            }
+
+            Swal.fire({
+                icon: 'warning',
+                title: TITLE,
+                text: message,
+                confirmButtonText: 'حسنًا',
+                confirmButtonColor: '#3085d6'
+            });
+        }
+
+        
+        // معالج عام: يلتقط أي رد 403 من ميدلوير الصلاحيات ويعرض سببه.
+        // jQuery يشغّل هذا الحدث بعد معالج error الخاص بالطلب، فتحل
+        // الرسالة الواضحة محل رسائل مثل "حدث خطأ غير متوقع".
+        $(document).ajaxError(function (event, xhr) {
+            if (!xhr || xhr.status !== 403) {
+                return;
+            }
+
+            var payload = xhr.responseJSON || {};
+
+            showPermissionAlert(payload.message || FALLBACK);
+        });
+    })();
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/index.global.min.js"></script>
+<link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.10/main.min.css" rel="stylesheet"/>
+<script>
+$(document).ready(function() {
+    const contractsCtx = document.getElementById('contractsChart').getContext('2d');
+    new Chart(contractsCtx, {
+        type: 'bar',
+        data: {
+            labels: ["\u062f\u064a\u0633\u0645\u0628\u0631","\u064a\u0646\u0627\u064a\u0631","\u0641\u0628\u0631\u0627\u064a\u0631","\u0645\u0627\u0631\u0633","\u0623\u0628\u0631\u064a\u0644","\u0645\u0627\u064a\u0648","\u064a\u0648\u0646\u064a\u0648","\u064a\u0648\u0644\u064a\u0648","\u0623\u063a\u0633\u0637\u0633","\u0633\u0628\u062a\u0645\u0628\u0631","\u0623\u0643\u062a\u0648\u0628\u0631","\u0646\u0648\u0641\u0645\u0628\u0631"],
+            datasets: [{
+                label: 'عقود جديدة',
+                data: [0,0,58,4,17,5,21,66,28,18,0,1],
+                backgroundColor: 'rgba(78, 115, 223, 0.85)',
+                borderColor: '#4e73df',
+                borderWidth: 2,
+                borderRadius: 10,
+                barPercentage: 0.7
+            }, {
+                label: 'عقود مكتملة',
+                data: [0,0,1,0,1,10,11,39,32,8,0,0],
+                backgroundColor: 'rgba(28, 200, 138, 0.9)',
+                borderColor: '#1cc88a',
+                borderWidth: 2,
+                borderRadius: 10,
+                barPercentage: 0.7
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            interaction: {
+                mode: 'index',
+                intersect: false,
+            },
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0,0,0,0.9)',
+                    padding: 12,
+                    rtl: true,
+                    textDirection: "rtl",
+                    callbacks: {
+                        label: function(context) {
+                            return context.dataset.label + ': ' + context.parsed.y + ' عقد';
+                        }
+                    }
+                }
+            },
+            scales: {
+                x: {
+                    grid: {
+                        display: false
+                    },
+                    ticks: {
+                        font: {
+                            size: 11
+                        }
+                    }
+                },
+                y: {
+                    beginAtZero: true,
+                    max: Math.max(...[0,0,58,4,17,5,21,66,28,18,0,1], ...[0,0,1,0,1,10,11,39,32,8,0,0]) * 1.2,
+                    grid: {
+                        borderDash: [3, 3],
+                        color: 'rgba(0,0,0,0.05)'
+                    },
+                    ticks: {
+                        stepSize: 10
+                    }
+                }
+            }
+        }
+    });
+
+    const nationalitiesCtx = document.getElementById('nationalitiesChart').getContext('2d');
+    new Chart(nationalitiesCtx, {
+        type: 'doughnut',
+        data: {
+            labels: ["\u0627\u062b\u064a\u0648\u0628\u064a\u0627","\u0643\u064a\u0646\u064a\u0627","\u0627\u0644\u0641\u0644\u0628\u064a\u0646","\u0627\u0648\u063a\u0646\u062f\u0629","\u0628\u0646\u062c\u0644\u0627\u062f\u064a\u0634"],
+            datasets: [{
+                data: [530,112,70,64,19],
+                backgroundColor: [
+                    'rgba(78, 115, 223, 0.9)',
+                    'rgba(28, 200, 138, 0.9)',
+                    'rgba(54, 185, 204, 0.9)',
+                    'rgba(246, 194, 62, 0.9)',
+                    'rgba(231, 74, 59, 0.9)'
+                ],
+                borderColor: [
+                    '#4e73df',
+                    '#1cc88a',
+                    '#36b9cc',
+                    '#f6c23e',
+                    '#e74a3b'
+                ],
+                borderWidth: 2,
+                hoverOffset: 10
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            cutout: '60%',
+            plugins: {
+                legend: {
+                    display: false
+                },
+                tooltip: {
+                    backgroundColor: 'rgba(0,0,0,0.9)',
+                    padding: 12,
+                    rtl: true,
+                    textDirection: "rtl",
+                    callbacks: {
+                        label: function(context) {
+                            let label = context.label || '';
+                            let value = context.parsed;
+                            let sum = context.dataset.data.reduce((a, b) => a + b, 0);
+                            let percentage = ((value / sum) * 100).toFixed(1);
+                            return label + ': ' + value + ' (' + percentage + '%)';
+                        }
+                    }
+                }
+            }
+        }
+    });
+
+    var calendarEl = document.getElementById('calendar');
+    var calendar = new FullCalendar.Calendar(calendarEl, {
+        locale: "ar",
+        direction: "rtl",
+        initialView: 'dayGridMonth',
+        headerToolbar: {
+            left: 'prev,next today',
+            center: 'title',
+            right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        events: [{"title":"\u0627\u0646\u062a\u0647\u0627\u0621 \u0636\u0645\u0627\u0646 \u0639\u0642\u062f #199","date":"2026-12-01","type":"warning","url":"#\/admin\/RecruitmentContract\/199"},{"title":"\u0627\u0646\u062a\u0647\u0627\u0621 \u0636\u0645\u0627\u0646 \u0639\u0642\u062f #200","date":"2026-12-02","type":"warning","url":"#\/admin\/RecruitmentContract\/200"},{"title":"\u0627\u0646\u062a\u0647\u0627\u0621 \u0636\u0645\u0627\u0646 \u0639\u0642\u062f #201","date":"2026-12-14","type":"warning","url":"#\/admin\/RecruitmentContract\/201"},{"title":"\u0627\u0646\u062a\u0647\u0627\u0621 \u0636\u0645\u0627\u0646 \u0639\u0642\u062f #205","date":"2026-12-15","type":"warning","url":"#\/admin\/RecruitmentContract\/205"},{"title":"\u0639\u0642\u062f \u062c\u062f\u064a\u062f #248","date":"2026-11-10","type":"success","url":"#\/admin\/RecruitmentContract\/248"},{"title":"\u0634\u0643\u0648\u0649 #1 - \u0634\u0643\u0648\u0649 \u0639\u0644\u0649 \u0639\u0627\u0645\u0644\u0629","date":"2026-03-25","type":"danger","url":"#\/admin\/complaints\/1"},{"title":"\u0634\u0643\u0648\u0649 #3 - \u0645\u0634\u0643\u0644\u0629 \u0631\u0641\u0636","date":"2026-03-26","type":"danger","url":"#\/admin\/complaints\/3"},{"title":"\u0634\u0643\u0648\u0649 #4 - \u0634\u0643\u0648\u064a \u062a\u062c\u0631\u064a\u0628\u064a\u0647","date":"2026-03-26","type":"danger","url":"#\/admin\/complaints\/4"},{"title":"\u0634\u0643\u0648\u0649 #6 - \u0627\u0644\u0639\u0627\u0645\u0644\u0629 \u0644\u0627 \u062a\u0639\u0631\u0641 \u0627\u0633\u0627\u0633\u064a\u0627\u062a \u0627\u0644\u0639\u0645\u0644","date":"2026-08-12","type":"danger","url":"#\/admin\/complaints\/6"},{"title":"\u0634\u0643\u0648\u0649 #7 - \u0627\u0644\u0639\u0627\u0645\u0644\u0629 \u0644\u0627 \u062a\u0639\u0631\u0641 \u0627\u0633\u0627\u0633\u064a\u0627\u062a \u0627\u0644\u0639\u0645\u0644","date":"2026-08-18","type":"danger","url":"#\/admin\/complaints\/7"},{"title":"\u0634\u0643\u0648\u0649 #8 - \u0627\u0644\u0639\u0627\u0645\u0644\u0629 \u0644\u0627 \u062a\u0639\u0631\u0641 \u0627\u0633\u0627\u0633\u064a\u0627\u062a \u0627\u0644\u0639\u0645\u0644","date":"2026-08-18","type":"danger","url":"#\/admin\/complaints\/8"},{"title":"\u0634\u0643\u0648\u0649 #9 - \u062a\u062c\u0631\u0628\u0647","date":"2026-09-07","type":"danger","url":"#\/admin\/complaints\/9"},{"title":"\u0634\u0643\u0648\u0649 #10 - \u064a\u064a\u064a\u064a","date":"2026-09-07","type":"danger","url":"#\/admin\/complaints\/10"},{"title":"\u0634\u0643\u0648\u0649 #11 - \u0627\u0644\u0639\u0627\u0645\u0644\u0629 \u0644\u0627 \u062a\u0639\u0631\u0641 \u0627\u0633\u0627\u0633\u064a\u0627\u062a \u0627\u0644\u0639\u0645\u0644","date":"2026-09-07","type":"danger","url":"#\/admin\/complaints\/11"},{"title":"\u0634\u0643\u0648\u0649 #12 - \u0627\u0644\u0639\u0627\u0645\u0644\u0629 \u0644\u0627 \u062a\u0639\u0631\u0641 \u0627\u0633\u0627\u0633\u064a\u0627\u062a \u0627\u0644\u0639\u0645\u0644","date":"2026-09-07","type":"danger","url":"#\/admin\/complaints\/12"},{"title":"\u0634\u0643\u0648\u0649 #22 - ","date":"2026-09-25","type":"danger","url":"#\/admin\/complaints\/22"},{"title":"\u0634\u0643\u0648\u0649 #23 - ","date":"2026-09-25","type":"danger","url":"#\/admin\/complaints\/23"},{"title":"\u0634\u0643\u0648\u0649 #24 - ","date":"2026-09-25","type":"danger","url":"#\/admin\/complaints\/24"}],
+        eventClick: function(info) {
+            if (info.event.extendedProps.url) {
+                window.location.href = info.event.extendedProps.url;
+            }
+        },
+        height: 500
+    });
+    calendar.render();
+
+    if (document.getElementById('operationsChart')) {
+        const operationsCtx = document.getElementById('operationsChart').getContext('2d');
+        new Chart(operationsCtx, {
+            type: 'line',
+            data: {
+                labels: ["\u062f\u064a\u0633\u0645\u0628\u0631","\u064a\u0646\u0627\u064a\u0631","\u0641\u0628\u0631\u0627\u064a\u0631","\u0645\u0627\u0631\u0633","\u0623\u0628\u0631\u064a\u0644","\u0645\u0627\u064a\u0648","\u064a\u0648\u0646\u064a\u0648","\u064a\u0648\u0644\u064a\u0648","\u0623\u063a\u0633\u0637\u0633","\u0633\u0628\u062a\u0645\u0628\u0631","\u0623\u0643\u062a\u0648\u0628\u0631","\u0646\u0648\u0641\u0645\u0628\u0631"],
+                datasets: [{
+                    label: 'الطلبات',
+                    data: [0,0,35,0,0,0,0,0,3,2,0,0],
+                    borderColor: '#4e73df',
+                    backgroundColor: 'rgba(78, 115, 223, 0.2)',
+                    fill: true,
+                    borderWidth: 3,
+                    tension: 0.35,
+                    pointRadius: 3
+                }, {
+                    label: 'الرحلات اللوجستية',
+                    data: [0,0,17,3,14,17,16,43,32,11,0,0],
+                    borderColor: '#f97316',
+                    backgroundColor: 'rgba(249, 115, 22, 0.2)',
+                    fill: true,
+                    borderWidth: 3,
+                    tension: 0.35,
+                    pointRadius: 3
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: true,
+                        position: 'bottom'
+                    },
+                    tooltip: {
+                        rtl: true,
+                        textDirection: "rtl"                    }
+                },
+                scales: {
+                    y: {
+                        beginAtZero: true,
+                        ticks: {
+                            precision: 0
+                        }
+                    }
+                }
+            }
+        });
+    }
+});
+</script>
+<script src="../kit/kit.js"></script>
+</body>
+</html>

@@ -1,0 +1,1036 @@
+/* لوحة التحكم الجديدة (v2) — صفحة الدخول.
+   ملف مستقل تماماً: كل الأصناف تبدأ بـ v2- ولا يعتمد على أي تنسيق من اللوحة القديمة.
+   التخطيط: نموذج الدخول في عمود، وبجانبه واجهة متحركة زخرفية (شفق، شبكة، جزيئات،
+   مدار للأقسام، بطاقة رحلة العقد وإشعارات متتابعة). كل الحركة تتوقف مع reduced-motion. */
+
+@property --v2-spin {
+    syntax: "<angle>";
+    inherits: true;
+    initial-value: 0deg;
+}
+
+:root {
+    --v2-primary: #16233f;
+    --v2-primary-hover: #0e1930;
+    --v2-primary-soft: #eef1f7;
+    --v2-primary-bright: #7ab648;
+    --v2-mint: #a5d47c;
+    --v2-accent: #3f8f2f;
+    --v2-ink: #0d1626;
+    --v2-ink-soft: #5f6c80;
+    --v2-muted: #8a94a6;
+    --v2-line: #dfe4ee;
+    --v2-surface: #ffffff;
+    --v2-surface-alt: #f4f8f8;
+    --v2-field: #f7fafa;
+    --v2-danger: #b42318;
+    --v2-danger-soft: #fef3f2;
+    --v2-success: #067647;
+    --v2-success-soft: #ecfdf3;
+    --v2-night: #061a22;
+    --v2-night-2: #0a2f38;
+    --v2-radius: 12px;
+    --v2-ease: cubic-bezier(.22, 1, .36, 1);
+    --v2-font: "Cairo", "Segoe UI", Tahoma, Arial, sans-serif;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+html, body { margin: 0; padding: 0; height: 100%; }
+
+body {
+    font-family: var(--v2-font);
+    color: var(--v2-ink);
+    background: var(--v2-surface);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.6;
+}
+
+a { color: var(--v2-primary); text-decoration: none; }
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+svg {
+    width: 20px;
+    height: 20px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 1.7;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    flex-shrink: 0;
+}
+
+:focus-visible { outline: 2px solid var(--v2-primary); outline-offset: 3px; border-radius: 6px; }
+
+[hidden] { display: none !important; }
+
+/* ============ التخطيط ============ */
+/* جزء النموذج مطابق لصفحة دخول اللوحة القديمة (التصميم المحدَّث): كحلي، خط Cairo، حقول 50px. */
+.v2-auth {
+    display: grid;
+    grid-template-columns: minmax(460px, 1.05fr) minmax(0, .95fr);
+    min-height: 100vh;
+}
+
+.v2-auth__panel {
+    --ck-navy: #16233f;
+    --ck-ink: #0d1626;
+    --ck-muted: #5f6c80;
+    --ck-line: #dfe4ee;
+    --ck-bg: #f5f7fa;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 72px clamp(28px, 8vw, 96px) 88px;
+    background: #fff;
+    color: var(--ck-ink);
+    font-family: "Cairo", system-ui, sans-serif;
+    z-index: 1;
+}
+[dir="ltr"] .v2-auth__panel { font-family: "IBM Plex Sans", system-ui, sans-serif; }
+
+.v2-auth__content {
+    width: min(100%, 410px);
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.v2-rise {
+    opacity: 0;
+    translate: 0 10px;
+    animation: v2-rise .6s var(--v2-ease) forwards;
+    animation-delay: calc(var(--i, 0) * 60ms + 80ms);
+}
+
+/* ============ الأزرار العلوية ============ */
+.v2-top-actions {
+    position: absolute;
+    z-index: 4;
+    top: 24px;
+    inset-inline-start: 26px;
+    display: inline-flex;
+    flex-direction: row-reverse;
+    align-items: center;
+    gap: 8px;
+}
+
+.v2-lang {
+    display: inline-flex;
+    gap: 2px;
+    padding: 3px;
+    border: 1px solid var(--ck-line);
+    border-radius: 999px;
+    background: var(--ck-bg);
+}
+.v2-lang a {
+    min-width: 43px;
+    height: 29px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 999px;
+    color: var(--ck-muted);
+    font-size: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background-color .2s, color .2s;
+}
+.v2-lang a:hover,
+.v2-lang a.is-active { color: #fff; background: var(--ck-navy); text-decoration: none; }
+
+.v2-icon-btn {
+    width: 37px;
+    height: 37px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid var(--ck-line);
+    border-radius: 50%;
+    background: #fff;
+    color: var(--ck-navy);
+    transition: box-shadow .2s, transform .2s;
+}
+.v2-icon-btn:hover { text-decoration: none; transform: translateY(-1px); box-shadow: 0 8px 18px rgba(22, 35, 63, .12); }
+.v2-icon-btn svg { width: 17px; height: 17px; }
+.v2-icon-btn__solid { fill: currentColor; stroke: none; }
+
+/* ============ الشعار والعنوان ============ */
+.v2-logo { display: flex; justify-content: center; margin-bottom: 2px; }
+.v2-brand { display: grid; justify-items: center; gap: 6px; }
+.v2-brand__name { margin: 0; color: var(--v2-ink); font-size: 15px; font-weight: 800; text-align: center; line-height: 1.5; }
+.v2-logo img { height: 112px; max-width: 285px; width: auto; object-fit: contain; }
+
+.v2-auth__heading { display: flex; flex-direction: column; align-items: center; gap: 8px; text-align: center; }
+.v2-auth__title { margin: 0; font-size: 26px; font-weight: 700; line-height: 1.4; color: var(--ck-ink); }
+.v2-auth__subtitle { margin: 0; max-width: 370px; font-size: 14.5px; color: var(--ck-muted); line-height: 1.6; }
+
+
+/* ============ النموذج ============ */
+.v2-form { display: flex; flex-direction: column; gap: 16px; }
+.v2-form.is-shake { animation: v2-shake .45s cubic-bezier(.36, .07, .19, .97); }
+
+.v2-alert {
+    padding: 12px 14px;
+    border: 1px solid rgba(180, 35, 24, .18);
+    border-radius: 8px;
+    background: rgba(180, 35, 24, .08);
+    color: #9b2c20;
+    font-size: 13px;
+    animation: v2-drop .3s var(--v2-ease);
+}
+.v2-alert.is-success { border-color: rgba(6, 118, 71, .2); background: rgba(6, 118, 71, .08); color: #067647; }
+.v2-alert.is-warning { border-color: rgba(181, 71, 8, .2); background: rgba(247, 144, 9, .1); color: #93370d; animation: none; }
+
+.v2-account {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 11px 14px;
+    border: 1px solid var(--ck-line);
+    border-radius: 8px;
+    background: var(--ck-bg);
+}
+.v2-account__avatar {
+    width: 38px;
+    height: 38px;
+    flex: none;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    background: var(--ck-navy);
+    color: #fff;
+    font-size: 15px;
+    font-weight: 700;
+}
+.v2-account__text { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.45; }
+.v2-account__name { font-size: 14px; font-weight: 700; color: var(--ck-ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.v2-account__id { font-size: 12.5px; color: var(--ck-muted); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+[dir="rtl"] .v2-account__id { text-align: right; }
+.v2-account__badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    flex: none;
+    padding: 3px 10px;
+    border-radius: 999px;
+    background: #e7f5ee;
+    color: #067647;
+    font-size: 11.5px;
+    font-weight: 700;
+}
+.v2-account__badge i { width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+
+.v2-field { display: flex; flex-direction: column; gap: 7px; }
+.v2-field label { font-size: 13px; font-weight: 700; color: var(--ck-ink); }
+
+.v2-input {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    height: 50px;
+    padding: 0 14px;
+    border: 1px solid var(--ck-line);
+    border-radius: 8px;
+    background: #fff;
+    transition: border-color .2s, box-shadow .2s;
+}
+.v2-input:focus-within { border-color: var(--ck-navy); box-shadow: 0 0 0 3px rgba(22, 35, 63, .08); }
+.v2-input.is-invalid { border-color: #b42318; box-shadow: 0 0 0 3px rgba(180, 35, 24, .08); }
+
+.v2-input__icon { display: inline-flex; flex: none; }
+.v2-input__icon img { width: 18px; height: 18px; object-fit: contain; filter: grayscale(1); opacity: .65; }
+
+.v2-input input {
+    flex: 1 1 auto;
+    min-width: 0;
+    height: 48px;
+    border: 0;
+    outline: none;
+    background: transparent;
+    color: var(--ck-ink);
+    font: inherit;
+    font-size: 14px;
+}
+.v2-input input::placeholder { color: #8a94a6; }
+.v2-input__password { direction: ltr; text-align: left; letter-spacing: .04em; }
+.v2-input__password::placeholder { letter-spacing: 0; }
+
+.v2-input__toggle {
+    width: 36px;
+    height: 36px;
+    flex: 0 0 auto;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    border: 0;
+    border-radius: 10px;
+    background: transparent;
+    color: var(--ck-muted);
+    cursor: pointer;
+    transition: background-color .2s, color .2s;
+}
+.v2-input__toggle:hover { background: rgba(22, 35, 63, .06); color: var(--ck-navy); }
+.v2-eye { width: 18px; height: 18px; }
+.v2-eye__shape { fill: currentColor; stroke: none; fill-rule: evenodd; }
+.v2-eye__slash { stroke-width: 2.2; stroke-dasharray: 26; stroke-dashoffset: 26; transition: stroke-dashoffset .3s var(--v2-ease); }
+.v2-input__toggle[aria-pressed="true"] .v2-eye__slash { stroke-dashoffset: 0; }
+
+.v2-check {
+    align-self: flex-start;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: -12px;
+    font-size: 13px;
+    color: var(--ck-muted);
+    cursor: pointer;
+    user-select: none;
+}
+.v2-check input {
+    position: relative;
+    width: 18px;
+    height: 18px;
+    margin: 0;
+    border: 1px solid #c9d0dc;
+    border-radius: 6px;
+    background: #fff;
+    appearance: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+.v2-check input:checked { background: var(--ck-navy); border-color: var(--ck-navy); }
+.v2-check input:checked::after {
+    content: "";
+    position: absolute;
+    inset: 3px 5px 5px;
+    border: 2px solid #fff;
+    border-top: 0;
+    border-left: 0;
+    transform: rotate(45deg);
+}
+.v2-check input:focus-visible { outline: 2px solid var(--ck-navy); outline-offset: 2px; }
+
+/* ============ الزر ============ */
+.v2-btn {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    width: 100%;
+    height: 50px;
+    border: 0;
+    border-radius: 8px;
+    font: inherit;
+    font-size: 15.5px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color .2s;
+}
+.v2-btn--primary { color: #fff; background: var(--ck-navy); }
+.v2-btn--primary:hover { background: #0e1930; }
+
+.v2-btn__spinner {
+    display: none;
+    width: 17px;
+    height: 17px;
+    border: 2px solid rgba(255, 255, 255, .35);
+    border-top-color: #fff;
+    border-radius: 50%;
+    animation: v2-rotate .7s linear infinite;
+}
+.v2-btn__check { display: none; width: 19px; height: 19px; stroke-width: 2.4; stroke-dasharray: 22; stroke-dashoffset: 22; }
+.v2-btn.is-busy { cursor: progress; }
+.v2-btn.is-busy .v2-btn__spinner { display: block; }
+.v2-btn:disabled { opacity: 1; }
+.v2-btn.is-success { background: #067647; }
+.v2-btn.is-success .v2-btn__spinner { display: none; }
+.v2-btn.is-success .v2-btn__check { display: block; animation: v2-draw .45s var(--v2-ease) forwards; }
+
+.v2-btn--ghost { color: var(--ck-navy); background: transparent; border: 1px solid var(--v2-line); }
+.v2-btn--ghost:hover { background: var(--v2-primary-soft); }
+a.v2-btn { text-decoration: none; }
+.v2-btn__icon { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+/* العنوان والنموذج داخل غلاف واحد: مسافة ثابتة بينهما */
+.v2-auth__main { display: flex; flex-direction: column; gap: 20px; }
+.v2-auth__main[hidden], .v2-locked[hidden] { display: none !important; }
+.v2-btn__icon--flip { transform: scaleX(-1); }
+[dir="rtl"] .v2-btn__icon--flip { transform: none; }
+
+/* ============ الدخول على خطوتين ============ */
+.v2-step { display: flex; flex-direction: column; gap: 16px; }
+.v2-step[hidden], .v2-pane[hidden] { display: none !important; }
+.v2-step__lead { margin: -6px 0 0; color: var(--v2-ink-soft); font-size: 13.5px; }
+.v2-pane { display: flex; flex-direction: column; gap: 16px; }
+.v2-field__row { display: flex; align-items: center; justify-content: space-between; gap: 10px; }
+.v2-field__row a { color: var(--ck-navy); font-size: 12.5px; font-weight: 700; text-decoration: none; }
+.v2-field__row a:hover { text-decoration: underline; }
+
+.v2-who { display: flex; align-items: center; gap: 12px; width: 100%; padding: 10px 12px; border: 1px solid var(--v2-line); border-radius: var(--v2-radius);
+    background: var(--v2-surface-alt); font: inherit; text-align: start; cursor: pointer; transition: border-color .2s, background-color .2s; }
+.v2-who:hover, .v2-who:focus-visible { border-color: var(--ck-navy); background: #fff; outline: none; }
+.v2-who__avatar { display: grid; place-items: center; flex: none; width: 38px; height: 38px; border-radius: 50%; color: #fff; background: var(--ck-navy); font-weight: 800; }
+/* المعرّف ونوعه سطران على نفس الحافة (بداية السطر حسب اتجاه الصفحة)، حتى لو المعرّف نفسه لاتيني (dir="ltr") */
+.v2-who__text { display: flex; flex: 1; flex-direction: column; align-items: flex-start; gap: 2px; min-width: 0; line-height: 1.35; }
+.v2-who__text b { max-width: 100%; overflow: hidden; color: var(--v2-ink); font-size: 14px; font-weight: 700; text-overflow: ellipsis; white-space: nowrap; unicode-bidi: plaintext; }
+.v2-who__text small { color: var(--v2-muted); font-size: 12px; }
+.v2-who em { flex: none; }
+.v2-who em { color: var(--ck-navy); font-size: 12.5px; font-style: normal; font-weight: 700; }
+
+.v2-tabs { display: grid; grid-template-columns: 1fr 1fr; gap: 4px; padding: 4px; border-radius: 10px; background: var(--v2-primary-soft); }
+.v2-tab { display: inline-flex; align-items: center; justify-content: center; gap: 7px; height: 40px; border: 0; border-radius: 8px; background: transparent;
+    color: var(--v2-ink-soft); font: inherit; font-size: 13.5px; font-weight: 700; cursor: pointer; transition: background-color .2s, color .2s, box-shadow .2s; }
+.v2-tab svg { width: 17px; height: 17px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.v2-tab.is-active { color: var(--ck-navy); background: #fff; box-shadow: 0 1px 3px rgba(13, 22, 38, .12); }
+.v2-tab:focus-visible { outline: 2px solid var(--ck-navy); outline-offset: 2px; }
+
+.v2-otp-note { margin: 0; padding: 14px; border: 1px dashed var(--v2-line); border-radius: var(--v2-radius); background: var(--v2-surface-alt);
+    color: var(--v2-ink-soft); font-size: 13.5px; line-height: 1.8; }
+.v2-soon { display: inline-block; margin-inline-end: 6px; padding: 1px 9px; border-radius: 999px; background: var(--v2-primary-soft); color: var(--ck-navy);
+    font-size: 11.5px; font-weight: 800; }
+.v2-btn:disabled[aria-disabled="true"] { opacity: .5; cursor: not-allowed; }
+
+/* ============ أول دخول ============ */
+.v2-inline { display: flex; gap: 8px; align-items: stretch; }
+.v2-inline .v2-input { flex: 1; min-width: 0; }
+.v2-inline__btn { width: auto; flex: none; height: auto; min-height: 48px; padding: 0 16px; font-size: 14px; white-space: nowrap; }
+.v2-input__prefix { display: inline-flex; align-items: center; padding-inline: 12px 4px; color: var(--v2-ink-soft); font-weight: 700; font-size: 14px; }
+.v2-input__code { letter-spacing: .4em; font-weight: 700; text-align: center; }
+.v2-hint { margin: 6px 0 0; color: var(--v2-muted); font-size: 12.5px; }
+.v2-hint.is-ok { color: var(--v2-success); }
+.v2-hint.is-error { color: var(--v2-danger); }
+.v2-hint--demo { padding: 8px 10px; border-radius: 8px; background: var(--v2-primary-soft); color: var(--ck-navy); }
+[data-fl-code-field][hidden] { display: none !important; }
+
+/* ============ الدخول برمز لمرة واحدة ============ */
+.v2-otp-stage { display: flex; flex-direction: column; gap: 14px; }
+.v2-otp-stage[hidden] { display: none !important; }
+.v2-otp-title { margin: 0; color: var(--v2-ink); font-size: 18px; font-weight: 800; }
+.v2-otp-lead { margin: -6px 0 0; color: var(--v2-ink-soft); font-size: 13.5px; line-height: 1.8; }
+.v2-otp-lead b { color: var(--v2-ink); unicode-bidi: isolate; }
+.v2-otp { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; }
+.v2-otp input { width: 100%; height: 54px; border: 1px solid var(--ck-line); border-radius: 10px; background: var(--v2-field);
+    color: var(--v2-ink); font: 700 22px/1 "IBM Plex Sans", var(--v2-font); text-align: center; transition: border-color .2s, box-shadow .2s; }
+.v2-otp input:focus { outline: none; border-color: var(--ck-navy); box-shadow: 0 0 0 3px rgba(22, 35, 63, .12); background: #fff; }
+.v2-otp.is-invalid input { border-color: var(--v2-danger); background: var(--v2-danger-soft); }
+.v2-otp-meta { display: flex; align-items: center; justify-content: space-between; gap: 10px; color: var(--v2-muted); font-size: 12.5px; }
+.v2-otp-meta b { color: var(--v2-ink); font-variant-numeric: tabular-nums; }
+.v2-link-btn { align-self: center; padding: 4px 6px; border: 0; background: none; color: var(--ck-navy); font: inherit; font-size: 13px; font-weight: 700; cursor: pointer; }
+.v2-link-btn:hover, .v2-link-btn:focus-visible { text-decoration: underline; outline: none; }
+.v2-link-btn--inline { padding: 0 4px; font-size: 12.5px; }
+.v2-link-btn[hidden] { display: none !important; }
+
+/* ============ استعادة كلمة المرور بالجوال ============ */
+.v2-fp-step { display: flex; flex-direction: column; gap: 16px; }
+.v2-fp-step[hidden] { display: none !important; }
+.v2-input__prefix[hidden] { display: none !important; }
+[dir="rtl"] .v2-input--prefixed { flex-direction: row; }
+.v2-input--prefixed .v2-input__prefix { padding-inline: 0; }
+/* «الرجوع لتسجيل الدخول» فوق العنوان (‎.lg-back‎ في التصميم) */
+.v2-back { display: inline-flex; align-items: center; gap: 6px; align-self: flex-start; margin-bottom: -4px; color: var(--v2-ink-soft); font-size: 13px; font-weight: 700; text-decoration: none; }
+.v2-back svg { width: 16px; height: 16px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+.v2-back:hover, .v2-back:focus-visible { color: var(--ck-navy); text-decoration: underline; outline: none; }
+.v2-steps { display: flex; align-items: center; justify-content: center; gap: 8px; margin: 4px 0 0; padding: 0; list-style: none; color: var(--v2-muted); font-size: 12px; font-weight: 700; }
+.v2-steps li { display: inline-flex; align-items: center; gap: 6px; }
+.v2-steps li + li::before { content: ""; width: 22px; height: 2px; margin-inline-end: 4px; border-radius: 2px; background: var(--v2-line); }
+.v2-steps i { display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: var(--v2-primary-soft); color: var(--v2-ink-soft); font-style: normal; font-size: 11.5px; }
+.v2-steps li.is-on { color: var(--ck-navy); }
+.v2-steps li.is-on i { background: var(--ck-navy); color: #fff; }
+.v2-steps li.is-on + li.is-on::before { background: var(--ck-navy); }
+
+/* ============ التحقق بخطوتين ============ */
+.v2-notice { display: flex; align-items: flex-start; gap: 10px; margin: 0; padding: 12px 14px; border-radius: 10px; background: var(--v2-primary-soft); color: var(--ck-navy); font-size: 13.5px; font-weight: 600; line-height: 1.7; }
+.v2-notice svg { flex: none; width: 20px; height: 20px; margin-top: 2px; fill: none; stroke: currentColor; stroke-width: 1.9; stroke-linecap: round; stroke-linejoin: round; }
+
+/* ============ واتساب ============ */
+.v2-wa { display: inline-flex; align-items: center; justify-content: center; gap: 6px; align-self: center; font-size: 13px; font-weight: 700; }
+.v2-wa__icon { width: 17px; height: 17px; fill: none; stroke: #128c4b; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.v2-wa.is-soon { color: var(--v2-muted); cursor: default; }
+.v2-wa.is-soon .v2-wa__icon { stroke: var(--v2-muted); }
+.v2-wa.is-soon em { padding: 1px 8px; border-radius: 999px; background: var(--v2-primary-soft); color: var(--ck-navy); font-size: 11px; font-style: normal; font-weight: 800; }
+
+/* ============ الدعم الفني والخصوصية ============ */
+.v2-foot-links { display: flex; justify-content: center; gap: 18px; padding: 0 0 8px; }
+.v2-foot-links a, .v2-foot-links__btn { padding: 0; border: 0; background: none; color: var(--v2-ink-soft); font: inherit; font-size: 12.5px; font-weight: 700; text-decoration: none; cursor: pointer; }
+.v2-foot-links a:hover, .v2-foot-links__btn:hover { color: var(--ck-navy); text-decoration: underline; }
+.v2-support { width: min(420px, calc(100vw - 32px)); padding: 20px; border: 0; border-radius: 16px; box-shadow: 0 24px 60px -20px rgba(13, 22, 38, .45); color: var(--v2-ink); font-family: var(--v2-font); }
+.v2-support::backdrop { background: rgba(6, 26, 34, .45); }
+.v2-support__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+.v2-support__head h3 { margin: 0; font-size: 18px; font-weight: 800; }
+.v2-support__head .v2-icon-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.v2-support__lead { margin: 6px 0 14px; color: var(--v2-ink-soft); font-size: 13.5px; }
+.v2-support__list { display: grid; gap: 8px; }
+.v2-support__item { display: flex; align-items: center; gap: 12px; padding: 12px; border: 1px solid var(--v2-line); border-radius: 12px; color: inherit; text-decoration: none; transition: border-color .2s, background-color .2s; }
+.v2-support__item:hover, .v2-support__item:focus-visible { border-color: var(--ck-navy); background: var(--v2-surface-alt); outline: none; }
+.v2-support__ico { display: grid; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 12px; background: var(--v2-primary-soft); color: var(--ck-navy); }
+.v2-support__ico svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.v2-support__text { display: grid; gap: 2px; min-width: 0; }
+.v2-support__text b { font-size: 14px; }
+.v2-support__text small { color: var(--v2-muted); font-size: 12px; }
+.v2-support__state { color: var(--v2-muted); font-weight: 700; }
+.v2-support__state.is-open { color: var(--v2-success); }
+
+/* ============ قفل مؤقت ============ */
+.v2-locked { display: flex; flex-direction: column; align-items: stretch; gap: 12px; text-align: center; animation: v2-drop .35s var(--v2-ease); }
+.v2-locked__icon { display: grid; place-items: center; width: 64px; height: 64px; margin: 4px auto 6px; border-radius: 18px;
+    color: var(--v2-danger); background: var(--v2-danger-soft); box-shadow: 0 0 0 8px rgba(180, 35, 24, .05); }
+.v2-locked__icon svg { width: 30px; height: 30px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; stroke-linejoin: round; }
+.v2-locked--done .v2-locked__icon { color: var(--v2-success); background: var(--v2-success-soft); box-shadow: 0 0 0 8px rgba(6, 118, 71, .06); }
+.v2-locked--done .v2-locked__text { margin-bottom: 10px; }
+.v2-locked--amber .v2-locked__icon { color: #b45309; background: #fff7e6; box-shadow: 0 0 0 8px rgba(180, 83, 9, .06); }
+.v2-contact-card { display: grid; gap: 4px; margin: 0 0 6px; padding: 12px 14px; border: 1px solid var(--v2-line); border-radius: var(--v2-radius); background: var(--v2-surface-alt); text-align: center; }
+.v2-contact-card b { color: var(--v2-ink); font-size: 14px; }
+.v2-contact-card a { color: var(--ck-navy); font-size: 13.5px; font-weight: 600; text-decoration: none; }
+.v2-locked__title { margin: 0; color: var(--v2-ink); font-size: 22px; font-weight: 800; }
+.v2-locked__text { margin: 0 0 4px; color: var(--v2-ink-soft); font-size: 14px; line-height: 1.7; }
+.v2-locked__count { display: grid; gap: 2px; margin: 2px 0 10px; padding: 14px; border: 1px solid var(--v2-line); border-radius: var(--v2-radius); background: var(--v2-surface-alt); }
+.v2-locked__count small { color: var(--v2-muted); font-size: 12.5px; font-weight: 600; }
+.v2-locked__count b { color: var(--v2-ink); font-size: 30px; font-weight: 800; letter-spacing: .04em; font-variant-numeric: tabular-nums; font-family: "IBM Plex Sans", var(--v2-font); }
+
+/* ============ الروابط والتذييل ============ */
+.v2-links { display: flex; justify-content: center; margin-top: -5px; }
+.v2-links a { color: var(--ck-navy); font-size: 13px; font-weight: 700; text-decoration: none; }
+.v2-links a:hover { text-decoration: underline; }
+
+.v2-auth__footer {
+    position: absolute;
+    z-index: 3;
+    bottom: 24px;
+    inset-inline-start: clamp(28px, 8vw, 96px);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px 10px;
+    max-width: calc(100% - 40px);
+    padding: 9px 14px;
+    border: 1px solid rgba(255, 255, 255, .18);
+    border-radius: 999px;
+    background: rgba(15, 27, 45, .38);
+    color: rgba(255, 255, 255, .84);
+    font-size: 12px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+}
+.v2-auth__footer-brand { display: inline-flex; align-items: center; gap: 7px; color: #d1a35d; font-weight: 600; text-decoration: none; }
+.v2-auth__footer-brand:hover { color: #f0c982; text-decoration: none; }
+.v2-auth__footer-brand img { width: 24px; height: 24px; object-fit: contain; padding: 3px; border-radius: 50%; background: rgba(255, 255, 255, .92); }
+
+/* ============ الواجهة المتحركة ============ */
+.v2-stage {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: clamp(28px, 4vw, 56px);
+    background:
+        radial-gradient(120% 90% at 85% 10%, #e7f2dc, transparent 60%),
+        linear-gradient(160deg, #f4f7fb, #fbfcfd 55%, #eceff7);
+    color: var(--v2-ink);
+}
+
+.v2-stage__photo {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: .07;
+    mix-blend-mode: multiply;
+    filter: grayscale(1) contrast(.9);
+    z-index: -3;
+    transform: scale(1.06);
+    animation: v2-drift 30s ease-in-out infinite alternate;
+}
+
+.v2-stage__aurora { position: absolute; inset: 0; z-index: -2; filter: blur(80px); }
+.v2-blob { position: absolute; border-radius: 50%; opacity: .5; }
+.v2-blob--a { width: 46%; aspect-ratio: 1; inset-block-start: -8%; inset-inline-end: -6%; background: #c6e4a8; animation: v2-float-a 18s ease-in-out infinite alternate; }
+.v2-blob--b { width: 38%; aspect-ratio: 1; inset-block-end: 4%; inset-inline-start: -8%; background: #c3cce4; opacity: .6; animation: v2-float-b 22s ease-in-out infinite alternate; }
+.v2-blob--c { width: 30%; aspect-ratio: 1; inset-block-start: 38%; inset-inline-start: 38%; background: #9fcf78; opacity: .25; animation: v2-float-c 16s ease-in-out infinite alternate; }
+
+.v2-stage__grid {
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    background-image:
+        linear-gradient(rgba(22, 35, 63, .07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(22, 35, 63, .07) 1px, transparent 1px);
+    background-size: 44px 44px;
+    mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 30%, transparent 75%);
+    -webkit-mask-image: radial-gradient(ellipse 70% 60% at 50% 45%, #000 30%, transparent 75%);
+    animation: v2-grid 24s linear infinite;
+}
+
+.v2-stage__particles { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; opacity: .8; }
+
+.v2-stage__scene {
+    position: relative;
+    flex: 1;
+    display: grid;
+    place-items: center;
+    min-height: 420px;
+}
+
+/* مدار الأقسام */
+.v2-orbit {
+    --r: min(15.5vw, 230px);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 0;
+    height: 0;
+    animation: v2-spin 70s linear infinite;
+}
+.v2-orbit__ring {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    border-radius: 50%;
+    border: 1px dashed rgba(22, 35, 63, .2);
+    transform: translate(-50%, -50%);
+}
+.v2-orbit__ring--1 { width: calc(var(--r) * 2); height: calc(var(--r) * 2); }
+.v2-orbit__ring--2 { width: calc(var(--r) * 1.4); height: calc(var(--r) * 1.4); border-style: solid; border-color: rgba(22, 35, 63, .08); }
+
+.v2-chip {
+    --a: calc(360deg / var(--total) * var(--n));
+    position: absolute;
+    left: 0;
+    top: 0;
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    padding: 6px 12px;
+    border-radius: 999px;
+    border: 1px solid rgba(22, 35, 63, .14);
+    background: rgba(255, 255, 255, .75);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 8px 20px -12px rgba(22, 35, 63, .35);
+    font-size: 12px;
+    font-weight: 500;
+    color: #16233f;
+    white-space: nowrap;
+    transform: translate(-50%, -50%) rotate(calc(var(--a) + var(--v2-spin))) translateX(var(--r)) rotate(calc(-1 * (var(--a) + var(--v2-spin))));
+}
+.v2-chip i { width: 6px; height: 6px; border-radius: 50%; background: var(--v2-primary-bright); box-shadow: 0 0 8px rgba(122, 182, 72, .6); }
+
+/* البطاقات الزجاجية */
+.v2-card {
+    position: relative;
+    border-radius: 18px;
+    border: 1px solid rgba(255, 255, 255, .9);
+    background: linear-gradient(160deg, rgba(255, 255, 255, .92), rgba(255, 255, 255, .7));
+    backdrop-filter: blur(18px) saturate(1.3);
+    -webkit-backdrop-filter: blur(18px) saturate(1.3);
+    box-shadow: 0 30px 60px -28px rgba(22, 35, 63, .35), 0 2px 6px rgba(22, 35, 63, .05);
+}
+
+.v2-journey {
+    width: min(100%, 400px);
+    padding: 20px 22px 22px;
+    z-index: 2;
+    animation: v2-hover 7s ease-in-out infinite, v2-pop 1s var(--v2-ease) .4s both;
+}
+.v2-card__head { display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 22px; }
+.v2-card__title { font-size: 14px; font-weight: 600; color: var(--v2-ink); }
+.v2-live {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 2px 10px;
+    border-radius: 999px;
+    background: #edf6e4;
+    color: #5f9a33;
+    font-size: 11.5px;
+    font-weight: 600;
+}
+.v2-live i { position: relative; width: 6px; height: 6px; border-radius: 50%; background: currentColor; }
+.v2-live i::after { content: ""; position: absolute; inset: 0; border-radius: 50%; background: currentColor; animation: v2-ping 1.6s var(--v2-ease) infinite; }
+
+.v2-journey__track {
+    --step: 0;
+    --count: 4;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+}
+.v2-journey__track::before,
+.v2-journey__bar {
+    content: "";
+    position: absolute;
+    top: 15px;
+    inset-inline: 30px;
+    height: 3px;
+    border-radius: 3px;
+    background: #e3e7ef;
+}
+.v2-journey__bar {
+    background: linear-gradient(90deg, #7ab648, var(--v2-primary));
+    transform-origin: left center;
+    transform: scaleX(calc(var(--step) / (var(--count) - 1)));
+    transition: transform .9s var(--v2-ease);
+    box-shadow: 0 0 12px rgba(122, 182, 72, .45);
+}
+[dir="rtl"] .v2-journey__bar { transform-origin: right center; background: linear-gradient(270deg, #7ab648, var(--v2-primary)); }
+
+.v2-journey__stage {
+    position: relative;
+    z-index: 1;
+    width: 60px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+.v2-journey__node {
+    width: 33px;
+    height: 33px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 2px solid #d6dce8;
+    background: #fff;
+    transition: background-color .5s, border-color .5s, box-shadow .5s, transform .5s var(--v2-ease);
+}
+.v2-journey__node svg { width: 15px; height: 15px; stroke: #fff; stroke-width: 3; stroke-dasharray: 22; stroke-dashoffset: 22; transition: stroke-dashoffset .5s var(--v2-ease) .15s; }
+.v2-journey__label { font-size: 11.5px; color: var(--v2-muted); transition: color .4s; white-space: nowrap; }
+
+.v2-journey__stage.is-done .v2-journey__node { background: var(--v2-primary); border-color: var(--v2-primary); }
+.v2-journey__stage.is-done .v2-journey__node svg { stroke-dashoffset: 0; }
+.v2-journey__stage.is-done .v2-journey__label { color: var(--v2-ink); font-weight: 500; }
+.v2-journey__stage.is-current .v2-journey__node { transform: scale(1.15); box-shadow: 0 0 0 6px rgba(22, 35, 63, .12), 0 6px 18px rgba(22, 35, 63, .35); }
+
+.v2-journey__lines { display: flex; flex-direction: column; gap: 9px; margin-top: 22px; }
+.v2-journey__lines span {
+    display: block;
+    height: 8px;
+    width: var(--w);
+    border-radius: 6px;
+    background: linear-gradient(90deg, #e8ecf3, #f5f7fa);
+    background-size: 200% 100%;
+    animation: v2-skeleton 2.4s ease-in-out infinite;
+}
+.v2-journey__lines span:nth-child(2) { animation-delay: .2s; }
+.v2-journey__lines span:nth-child(3) { animation-delay: .4s; }
+
+.v2-toast {
+    position: absolute;
+    inset-block-end: 6%;
+    inset-inline-end: 4%;
+    width: min(320px, 70%);
+    height: 68px;
+    z-index: 3;
+    overflow: hidden;
+    animation: v2-hover 8s ease-in-out 1s infinite, v2-pop 1s var(--v2-ease) .9s both;
+}
+.v2-toast__item {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 0 14px;
+    opacity: 0;
+    transform: translateY(100%);
+    transition: opacity .55s var(--v2-ease), transform .7s var(--v2-ease);
+}
+.v2-toast__item.is-active { opacity: 1; transform: translateY(0); }
+.v2-toast__item.is-leaving { opacity: 0; transform: translateY(-100%); }
+.v2-toast__icon {
+    width: 38px;
+    height: 38px;
+    flex: none;
+    display: grid;
+    place-items: center;
+    border-radius: 11px;
+    background: linear-gradient(145deg, #2a3c66, var(--v2-primary));
+    color: #fff;
+}
+.v2-toast__icon svg { width: 18px; height: 18px; stroke-width: 2; }
+.v2-toast__item.is-active .v2-toast__icon svg { animation: v2-ring 1.2s ease .3s; transform-origin: 50% 4px; }
+.v2-toast__body { flex: 1; min-width: 0; display: flex; flex-direction: column; line-height: 1.45; }
+.v2-toast__body b { font-size: 11.5px; font-weight: 600; color: #5f9a33; }
+.v2-toast__body span { font-size: 13px; color: var(--v2-ink); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.v2-toast__time { font-size: 11px; color: var(--v2-muted); align-self: flex-start; margin-top: 14px; }
+
+/* النص الختامي */
+.v2-stage__copy { position: relative; max-width: 520px; }
+.v2-stage__eyebrow {
+    margin: 0 0 12px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    font-size: 12.5px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    color: #65a034;
+    opacity: 0;
+    animation: v2-rise .8s var(--v2-ease) .6s forwards;
+}
+.v2-stage__eyebrow::before { content: ""; width: 28px; height: 2px; border-radius: 2px; background: currentColor; }
+.v2-stage__title {
+    margin: 0 0 12px;
+    font-size: clamp(24px, 2.4vw, 34px);
+    font-weight: 700;
+    line-height: 1.35;
+    text-wrap: balance;
+    color: var(--v2-ink);
+}
+.v2-stage__title span {
+    display: inline-block;
+    opacity: 0;
+    transform: translateY(18px);
+    filter: blur(6px);
+    animation: v2-word .9s var(--v2-ease) forwards;
+    animation-delay: calc(var(--w) * 80ms + 750ms);
+}
+.v2-stage__text {
+    margin: 0;
+    font-size: 14.5px;
+    font-weight: 400;
+    color: var(--v2-ink-soft);
+    opacity: 0;
+    animation: v2-rise .9s var(--v2-ease) 1.5s forwards;
+}
+
+/* ============ الشاشات الصغيرة ============ */
+@media (max-width: 1000px) {
+    .v2-auth { grid-template-columns: 1fr; }
+    .v2-stage { display: none; }
+    .v2-auth__panel { padding-top: 84px; }
+}
+
+@media (max-width: 560px) {
+    .v2-auth__panel { padding-inline: 22px; }
+    .v2-logo img { height: 88px; }
+    .v2-top-actions { inset-inline-start: 18px; }
+    .v2-auth__footer { inset-inline: 20px; }
+    .v2-account__badge { display: none; }
+}
+
+/* ============ تصميم ClickErp-Redesign v1.3.1 (‎#login.lx‎) ============
+   فوق التنسيق السابق ولكل شاشات الدخول: عمود النموذج بخلفية منقّطة وبطاقة بيضاء، هوية المكتب في رأس البطاقة،
+   بطاقة «وكيل خارجي؟»، و«Powered by» في الأسفل. الجانب: صورة المكتب بتدرّج داكن (‎.v2-art‎) أو الواجهة المتحركة. */
+.v2-auth {
+    --lx-bg: #f5f7fa;
+    --lx-line: #dfe4ee;
+    --lx-line-2: #eaeef5;
+    --lx-muted: #5f6c80;
+    --lx-muted-2: #828d9e;
+    --lx-green: #7ab648;
+    --lx-green-d: #65a034;
+    grid-template-columns: minmax(440px, 560px) minmax(0, 1fr);
+    background: #fff;
+}
+
+.v2-auth__panel {
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 24px clamp(24px, 4vw, 56px);
+    background-color: var(--lx-bg);
+    background-image: radial-gradient(circle at 1px 1px, #dde3ed 1px, transparent 0);
+    background-size: 22px 22px;
+}
+
+.v2-top-actions { position: static; align-self: flex-end; }
+
+.v2-auth__content {
+    width: 100%;
+    max-width: 448px;
+    margin: auto;
+    padding: 32px 32px 28px;
+    gap: 18px;
+    background: #fff;
+    border: 1px solid var(--lx-line);
+    border-radius: 20px;
+    box-shadow: 0 1px 2px rgba(16, 26, 46, .04), 0 24px 48px -32px rgba(16, 26, 46, .45);
+}
+
+.v2-brand { gap: 10px; padding-bottom: 22px; border-bottom: 1px solid var(--lx-line-2); }
+.v2-logo {
+    width: 68px;
+    height: 68px;
+    margin: 0;
+    padding: 6px;
+    border-radius: 18px;
+    overflow: hidden;
+    background: #fff;
+    border: 1px solid var(--lx-line-2);
+    box-shadow: 0 14px 28px -18px rgba(22, 35, 63, .8);
+}
+.v2-logo img { width: 100%; height: 100%; max-width: none; object-fit: contain; display: block; }
+.v2-brand__name { color: var(--ck-navy); font-size: 19px; }
+
+.v2-auth__title { font-size: 24px; font-weight: 800; color: var(--ck-navy); }
+.v2-step__lead { margin: -2px 0 4px; text-align: center; font-size: 14px; color: var(--lx-muted); }
+.v2-input { border-width: 1.5px; border-color: #d6dce8; border-radius: 10px; }
+.v2-input:hover { border-color: #b9c3d4; }
+.v2-input:focus-within { border-color: var(--ck-navy); box-shadow: 0 0 0 4px rgba(22, 35, 63, .08); }
+.v2-btn { border-radius: 10px; }
+.v2-btn--primary { box-shadow: 0 12px 24px -16px rgba(22, 35, 63, .9); }
+.v2-btn--primary:hover { background: #22345a; }
+.v2-field label a { color: var(--lx-green-d); }
+.v2-who { border-radius: 999px; padding-block: 8px; padding-inline: 8px 18px; background: var(--lx-bg); }
+.v2-who__avatar { width: 32px; height: 32px; font-size: 13px; }
+.v2-who em { color: var(--lx-green-d); }
+.v2-tabs { border: 1px solid var(--lx-line-2); border-radius: 12px; background: var(--lx-bg); }
+.v2-tab { border-radius: 9px; }
+.v2-tab.is-active svg { color: var(--lx-green-d); }
+
+/* «وكيل خارجي؟» (‎.lx-agent‎) */
+.v2-agent {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 8px;
+    padding: 12px 14px;
+    border: 1px solid var(--lx-line);
+    border-radius: 14px;
+    background: #fff;
+    color: var(--v2-ink);
+    text-decoration: none;
+    transition: border-color .2s;
+}
+.v2-agent:hover, .v2-agent:focus-visible { border-color: var(--lx-green); text-decoration: none; }
+.v2-agent__ic { display: grid; place-items: center; flex: none; width: 40px; height: 40px; border-radius: 11px; background: var(--ck-navy); color: var(--lx-green); }
+.v2-agent__text { display: flex; flex: 1; flex-direction: column; min-width: 0; line-height: 1.4; }
+.v2-agent__text b { font-size: 14px; }
+.v2-agent__text small { color: var(--lx-muted); font-size: 12px; }
+.v2-agent__go { width: 18px; height: 18px; color: var(--lx-muted); }
+[dir="ltr"] .v2-agent__go { transform: scaleX(-1); }
+
+/* الأسفل (‎.lx-foot‎): Powered by في إطار، وتحته روابط الدعم والخصوصية */
+.v2-auth__footer {
+    position: static;
+    flex-direction: column;
+    gap: 10px;
+    max-width: none;
+    padding: 0;
+    border: 0;
+    background: none;
+    color: var(--lx-muted);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    align-self: center;
+}
+.v2-pwb {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 7px 16px;
+    border: 1px solid var(--lx-line);
+    border-radius: 999px;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(16, 26, 46, .05);
+    direction: ltr;
+    text-decoration: none;
+}
+.v2-pwb:hover { border-color: #c3cbda; text-decoration: none; }
+.v2-pwb small { color: var(--lx-muted-2); font-size: 10.5px; font-weight: 700; letter-spacing: .14em; text-transform: uppercase; }
+.v2-pwb img { width: auto; height: 24px; }
+.v2-pwb__sep { width: 1px; height: 18px; background: var(--lx-line); }
+.v2-pwb b { color: var(--ck-navy); font-family: "IBM Plex Sans", var(--v2-font); font-size: 14px; font-weight: 800; }
+.v2-pwb b em { color: var(--lx-green-d); font-style: normal; }
+.v2-foot-links { gap: 16px; padding: 0; }
+.v2-foot-links a, .v2-foot-links__btn { color: var(--lx-muted); font-size: 12px; font-weight: 600; }
+
+/* صورة المكتب (‎.lx-art‎) */
+.v2-art {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    min-height: calc(100vh - 28px);
+    margin: 14px;
+    overflow: hidden;
+    border-radius: 24px;
+    background: var(--ck-navy, #16233f);
+    color: #fff;
+}
+.v2-art > img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.v2-art::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(180deg, rgba(11, 19, 35, .82) 0%, rgba(11, 19, 35, .25) 34%, rgba(11, 19, 35, .35) 58%, rgba(11, 19, 35, .92) 100%);
+}
+.v2-art__cap { position: relative; z-index: 2; padding: 40px 44px 0; font-family: "Cairo", system-ui, sans-serif; }
+.v2-art__cap::before { content: ""; display: block; width: 40px; height: 4px; margin-bottom: 18px; border-radius: 4px; background: var(--lx-green); }
+.v2-art__cap h2 { max-width: 20ch; margin: 0; color: #fff; font-size: clamp(22px, 2.1vw, 30px); font-weight: 800; line-height: 1.4; text-wrap: balance; }
+.v2-art__cap p { max-width: 44ch; margin: 10px 0 0; color: #d5dce8; font-size: 15px; }
+
+/* شارة «بوابة الوكلاء الخارجيين» (‎.lx-badge‎) وبطاقة الرجوع لدخول اللوحة (‎.lx-agent.on‎) */
+.v2-badge { display: inline-flex; align-items: center; gap: 6px; padding: 4px 10px; border-radius: 999px; background: #eef6e6; color: var(--lx-green-d); font-size: 12.5px; font-weight: 700; }
+.v2-badge svg { width: 14px; height: 14px; }
+.v2-agent.is-staff .v2-agent__ic { background: var(--lx-green); color: var(--ck-navy); }
+
+/* «اختر الفرع» (‎login--branch‎) */
+.v2-branch__who { margin: 0; color: var(--lx-muted); font-size: 13.5px; font-weight: 600; }
+.v2-branches { display: grid; gap: 8px; max-height: 360px; overflow: auto; padding: 2px; }
+.v2-branch { position: relative; display: flex; align-items: center; gap: 12px; padding: 12px 14px; border: 1.5px solid var(--lx-line); border-radius: 12px; background: #fff; cursor: pointer; transition: border-color .2s, background-color .2s; }
+.v2-branch:hover { border-color: #b9c3d4; }
+.v2-branch input { position: absolute; opacity: 0; pointer-events: none; }
+.v2-branch:has(input:checked) { border-color: var(--ck-navy); background: var(--lx-bg); box-shadow: 0 0 0 3px rgba(22, 35, 63, .08); }
+.v2-branch:has(input:focus-visible) { outline: 2px solid var(--ck-navy); outline-offset: 2px; }
+.v2-branch__ic { display: grid; place-items: center; flex: none; width: 38px; height: 38px; border-radius: 10px; background: var(--lx-bg); color: var(--ck-navy); }
+.v2-branch:has(input:checked) .v2-branch__ic { background: var(--ck-navy); color: var(--lx-green); }
+.v2-branch__text { display: flex; flex-direction: column; min-width: 0; line-height: 1.4; }
+.v2-branch__text b { font-size: 14px; color: var(--v2-ink); }
+.v2-branch__text small { font-size: 12px; color: var(--lx-muted); }
+
+@media (max-width: 1100px) {
+    /* minmax(0, …) مش 1fr: العمود مايكبرش عن الشاشة بعرض محتواه الطبيعي (زرار «إرسال رمز» وقائمة الشروط) فيظهر تمرير أفقي */
+    .v2-auth { grid-template-columns: minmax(0, 1fr); }
+    .v2-auth__panel { min-width: 0; }
+    .v2-art, .v2-stage { display: none; }
+    .v2-auth__panel { min-height: 100vh; }
+}
+
+@media (max-width: 560px) {
+    .v2-auth__panel { padding: 16px; }
+    .v2-auth__content { padding: 24px 18px; border-radius: 16px; }
+    .v2-pwb small { letter-spacing: .08em; }
+}
+
+/* ============ الحركات ============ */
+@keyframes v2-rise { to { opacity: 1; translate: 0 0; } }
+@keyframes v2-word { to { opacity: 1; transform: none; filter: none; } }
+@keyframes v2-pop { from { opacity: 0; transform: translateY(24px) scale(.96); } to { opacity: 1; } }
+@keyframes v2-drop { from { opacity: 0; transform: translateY(-6px); } }
+@keyframes v2-spin { to { --v2-spin: 360deg; } }
+@keyframes v2-rotate { to { transform: rotate(360deg); } }
+@keyframes v2-ping { 0% { transform: scale(1); opacity: .7; } 80%, 100% { transform: scale(3); opacity: 0; } }
+@keyframes v2-breathe { 50% { transform: scale(1.12) translate(20px, 30px); opacity: .8; } }
+@keyframes v2-sheen { 0%, 100% { background-position: 0% 0; } 50% { background-position: 100% 0; } }
+@keyframes v2-shine { 0%, 60% { transform: translateX(-160%) skewX(-18deg); } 100% { transform: translateX(380%) skewX(-18deg); } }
+@keyframes v2-shine-rtl { 0%, 60% { transform: translateX(160%) skewX(18deg); } 100% { transform: translateX(-380%) skewX(18deg); } }
+@keyframes v2-shake { 10%, 90% { transform: translateX(-1px); } 20%, 80% { transform: translateX(3px); } 30%, 50%, 70% { transform: translateX(-6px); } 40%, 60% { transform: translateX(6px); } }
+@keyframes v2-draw { to { stroke-dashoffset: 0; } }
+@keyframes v2-burst { to { width: 520px; height: 520px; opacity: 0; } }
+@keyframes v2-hover { 0%, 100% { translate: 0 0; } 50% { translate: 0 -10px; } }
+@keyframes v2-float-a { to { transform: translate(-12%, 18%) scale(1.15); } }
+@keyframes v2-float-b { to { transform: translate(22%, -16%) scale(1.1); } }
+@keyframes v2-float-c { to { transform: translate(-30%, 20%) scale(.85); } }
+@keyframes v2-drift { to { transform: scale(1.14) translate(-2%, 1%); } }
+@keyframes v2-grid { to { background-position: 44px 44px, 44px 44px; } }
+@keyframes v2-skeleton { 0%, 100% { background-position: 100% 0; } 50% { background-position: 0 0; } }
+@keyframes v2-ring { 0%, 100% { transform: rotate(0); } 15% { transform: rotate(16deg); } 30% { transform: rotate(-14deg); } 45% { transform: rotate(10deg); } 60% { transform: rotate(-6deg); } 75% { transform: rotate(3deg); } }
+
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        animation-delay: 0ms !important;
+        transition-duration: .01ms !important;
+    }
+    .v2-stage__particles { display: none; }
+}

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html dir="rtl" lang="ar">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<meta content="design-kit" name="csrf-token"/>
+<meta content="noindex, nofollow" name="robots"/>
+<meta content="light" name="color-scheme"/>
+<title>شركة كليك اند مور | تسجيل الدخول</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&amp;family=IBM+Plex+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="../assets/v2-assets/css/auth.css" rel="stylesheet"/>
+</head>
+<body>
+<div class="v2-auth">
+<main class="v2-auth__panel">
+<div class="v2-top-actions">
+<nav aria-label="اللغة" class="v2-lang">
+<a aria-current="true" class="is-active" data-route="/ar/v2/login" href="../screens/login.html" hreflang="ar" lang="ar">AR</a>
+<a class="" data-route="/en/v2/login" href="../screens/login.html" hreflang="en" lang="en">EN</a>
+</nav>
+</div>
+<div class="v2-auth__content">
+<div class="v2-brand v2-rise" style="--i:0">
+<div class="v2-logo">
+<img alt="شعار شركة كليك اند مور" onerror="this.onerror=null;this.src='#\/site\/assets\/images\/fav.png';" src="../assets/storage/images/settings/9ITEgtEGtZ1793874200.webp"/>
+</div>
+<p class="v2-brand__name">شركة كليك اند مور</p>
+</div>
+<div class="v2-auth__main" id="v2LoginMain">
+<div class="v2-auth__heading v2-rise" style="--i:1">
+<h1 class="v2-auth__title">تسجيل الدخول</h1>
+</div>
+<form action="../screens/login.html" class="v2-form v2-rise" data-label-submit="تسجيل الدخول" data-label-submitting="جاري تسجيل الدخول…" data-msg-401="بيانات الدخول غير صحيحة." data-msg-402="كلمة المرور غير صحيحة." data-msg-identifier="اكتب الجوال أو البريد أو اسم المستخدم." data-msg-network="تعذّر الاتصال بالخادم. حاول مرة أخرى." data-msg-required="اكتب بيانات الدخول وكلمة المرور." data-msg-server="حدث خطأ غير متوقع. حاول مرة أخرى." data-msg-success="تم تسجيل الدخول، جاري التحويل…" data-route="/v2/login" id="v2LoginForm" method="POST" novalidate="" style="--i:3">
+<input name="_token" type="hidden" value="design-kit"/>
+<div aria-live="polite" class="v2-alert" hidden="" id="v2LoginAlert" role="alert"></div>
+<div class="v2-step" data-v2-step="1">
+<p class="v2-step__lead">أدخل الجوال أو البريد أو اسم المستخدم للمتابعة</p>
+<div class="v2-field">
+<label for="v2Login">الجوال أو البريد أو اسم المستخدم</label>
+<div class="v2-input">
+<span class="v2-input__icon"><img alt="" src="../assets/admin/login/imgs/email.svg"/></span>
+<input autocapitalize="none" autocomplete="username" autofocus="" id="v2Login" name="login" placeholder="05XXXXXXXX أو user@example.com" required="" spellcheck="false" type="text" value=""/>
+</div>
+</div>
+<button class="v2-btn v2-btn--primary" data-v2-next="" type="submit">
+<span>متابعة</span>
+<svg aria-hidden="true" class="v2-btn__icon v2-btn__icon--flip" viewbox="0 0 24 24"><path d="M19 12H5"></path><path d="m12 19-7-7 7-7"></path></svg>
+</button>
+</div>
+<div class="v2-step" data-v2-step="2" hidden="">
+<button aria-label="تغيير الجوال أو البريد أو اسم المستخدم" class="v2-who" data-v2-change="" type="button">
+<span aria-hidden="true" class="v2-who__avatar" data-v2-who-avatar=""></span>
+<span class="v2-who__text">
+<b data-v2-who="" dir="ltr"></b>
+<small data-type-email="بريد إلكتروني" data-type-phone="رقم جوال" data-type-username="اسم مستخدم" data-v2-who-type=""></small>
+</span>
+<em>تغيير</em>
+</button>
+<div aria-labelledby="v2TabPassword" class="v2-pane" data-v2-pane="password" id="v2PanePassword" role="tabpanel">
+<div class="v2-field">
+<label class="v2-field__row" for="v2Password">
+<span>كلمة المرور*</span>
+<a data-route="/dashboard/forgot-password" href="#">هل نسيت كلمة المرور؟</a>
+</label>
+<div class="v2-input">
+<span class="v2-input__icon"><img alt="" src="../assets/admin/login/imgs/password.svg"/></span>
+<input autocomplete="current-password" class="v2-input__password" id="v2Password" name="password" placeholder="كلمة المرور" required="" type="password"/>
+<button aria-label="إظهار كلمة المرور" aria-pressed="false" class="v2-input__toggle" data-label-hide="إخفاء كلمة المرور" data-label-show="إظهار كلمة المرور" id="v2PasswordToggle" type="button">
+<svg aria-hidden="true" class="v2-eye" viewbox="0 0 24 24"><path class="v2-eye__shape" d="M12 5C6.5 5 2.7 9.2 1.5 12c1.2 2.8 5 7 10.5 7s9.3-4.2 10.5-7C21.3 9.2 17.5 5 12 5Zm0 11a4 4 0 1 1 0-8 4 4 0 0 1 0 8Zm0-6a2 2 0 1 0 0 4 2 2 0 0 0 0-4Z"></path><path class="v2-eye__slash" d="M3 3l18 18"></path></svg>
+</button>
+</div>
+</div>
+<label class="v2-check">
+<input checked="" name="rememberme" type="checkbox" value="1"/>
+<span>تذكرني</span>
+</label>
+<button class="v2-btn v2-btn--primary" id="v2LoginSubmit" type="submit">
+<span class="v2-btn__label">تسجيل الدخول</span>
+<span aria-hidden="true" class="v2-btn__spinner"></span>
+<svg aria-hidden="true" class="v2-btn__check" viewbox="0 0 24 24"><path d="M5 12.5l4.5 4.5L19 7.5"></path></svg>
+</button>
+</div>
+</div>
+</form>
+<a class="v2-agent v2-rise" data-route="/ar/agent/login" href="#" style="--i:4">
+<span aria-hidden="true" class="v2-agent__ic"><svg viewbox="0 0 24 24"><circle cx="12" cy="12" r="9"></circle><path d="M3 12h18"></path><path d="M12 3a14 14 0 0 1 0 18a14 14 0 0 1 0-18"></path></svg></span>
+<span class="v2-agent__text">
+<b>وكيل خارجي؟</b>
+<small>ادخل من بوابة الوكلاء لمتابعة السير والعقود</small>
+</span>
+<svg aria-hidden="true" class="v2-agent__go" viewbox="0 0 24 24"><path d="m15 18-6-6 6-6"></path></svg>
+</a>
+</div>
+<section aria-labelledby="v2StoppedTitle" aria-live="polite" class="v2-locked" hidden="" id="v2Stopped">
+<span aria-hidden="true" class="v2-locked__icon">
+<svg viewbox="0 0 24 24"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="m17 8 5 5"></path><path d="m22 8-5 5"></path></svg>
+</span>
+<h2 class="v2-locked__title" id="v2StoppedTitle">الحساب موقوف</h2>
+<p class="v2-locked__text">أوقف مدير النظام في مكتبك هذا الحساب. تواصل معه لإعادة تفعيله.</p>
+<button class="v2-btn v2-btn--primary" data-v2-stopped-back="" type="button">
+<svg aria-hidden="true" class="v2-btn__icon v2-btn__icon--flip" viewbox="0 0 24 24"><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg>
+<span>رجوع</span>
+</button>
+</section>
+<section aria-labelledby="v2LockedTitle" aria-live="polite" class="v2-locked" data-msg-over="انتهت مدة القفل، تقدر تحاول تاني." hidden="" id="v2Locked">
+<span aria-hidden="true" class="v2-locked__icon">
+<svg viewbox="0 0 24 24"><rect height="10.5" rx="2.5" width="16" x="4" y="10.5"></rect><path d="M8 10.5V7.5a4 4 0 0 1 8 0v3"></path><circle cx="12" cy="15.5" r="1.4"></circle><path d="M12 16.9v1.6"></path></svg>
+</span>
+<h2 class="v2-locked__title" id="v2LockedTitle">تم قفل الحساب مؤقتاً</h2>
+<p class="v2-locked__text">أدخلت بيانات خاطئة 5 مرات. لحمايتك أوقفنا الدخول مؤقتاً.</p>
+<div class="v2-locked__count">
+<small>يمكنك المحاولة بعد</small>
+<b dir="ltr" id="v2LockedTimer" role="timer">15:00</b>
+</div>
+<a class="v2-btn v2-btn--primary" data-route="/dashboard/forgot-password" href="#">
+<svg aria-hidden="true" class="v2-btn__icon" viewbox="0 0 24 24"><circle cx="7.5" cy="15.5" r="4.5"></circle><path d="M10.7 12.3 21 2"></path><path d="m16 7 3 3"></path><path d="m19 4 2 2"></path></svg>
+<span>استعادة كلمة المرور</span>
+</a>
+</section>
+</div>
+<footer class="v2-auth__footer">
+<a class="v2-pwb" href="https://clickandmore.sa" rel="noopener" target="_blank" title="ClickERP — Click &amp; More">
+<small>Powered by</small>
+<img alt="Click &amp; More" onerror="this.remove()" src="../assets/v2-assets/logo-light-tight.png"/>
+<span class="v2-pwb__sep"></span>
+<b>Click<em>ERP</em></b>
+</a>
+</footer>
+</main>
+<aside aria-hidden="true" class="v2-art">
+<img alt="" onerror="this.closest('.v2-art').classList.add('is-empty');this.remove();" src="../assets/v2-assets/login-photo.webp"/>
+<div class="v2-art__cap">
+<h2>منصة واحدة لشغل الفريق ومهامه</h2>
+<p>المهام والحضور والساعات والموافقات والمشاريع من مكان واحد.</p>
+</div>
+</aside>
+</div>
+<script defer="" src="../assets/v2-assets/js/login.js"></script>
+<script src="../kit/kit.js"></script>
+</body>
+</html>

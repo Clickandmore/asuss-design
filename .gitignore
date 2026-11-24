@@ -1,0 +1,12 @@
+# real data used to build the kit: never commit
+raw/
+fixtures/
+names_raw.txt
+ui_vocab.txt
+ui_corpus.txt
+venv/
+.DS_Store
+
+# kept on this machine only: code copied from asuss + extraction scripts
+source/
+tools/
