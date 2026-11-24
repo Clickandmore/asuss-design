@@ -76,38 +76,39 @@
             <p class="auth-footer">© 2026 أسس الإنجاز للاستقدام</p>
         </main>
 
-        <aside class="auth-panel" aria-hidden="true">
-            <svg class="panel-art" viewBox="0 0 480 288" fill="none">
-                <rect x="16" y="200" width="112" height="64" rx="8" fill="#1a5f9e" opacity=".55"/>
-                <rect x="16" y="72" width="112" height="112" rx="8" fill="#eef5fb" opacity=".08"/>
-                <rect x="144" y="56" width="128" height="208" rx="8" fill="#1D70B7" opacity=".5"/>
-                <rect x="288" y="40" width="208" height="264" rx="8" fill="#191936" opacity=".7"/>
-                <g stroke-width="8" stroke-linecap="round" fill="none">
-                    <path d="M168 240 A88 88 0 0 1 256 152" stroke="#eef5fb" opacity=".35"/>
-                    <path d="M168 200 A72 72 0 0 1 240 128" stroke="#eef5fb" opacity=".35"/>
-                    <path d="M320 272 A144 144 0 0 1 464 128" stroke="#1D70B7"/>
-                    <path d="M320 232 A128 128 0 0 1 448 104" stroke="#1D70B7"/>
-                    <path d="M320 192 A112 112 0 0 1 432 80" stroke="#1D70B7"/>
-                    <path d="M320 152 A96 96 0 0 1 416 56" stroke="#1D70B7" opacity=".7"/>
-                </g>
-            </svg>
+        <aside class="auth-panel">
             <div class="panel-inner">
                 <span class="panel-brand">شركة أسس الإنجاز للاستقدام</span>
-                <h2 class="panel-title">لوحة إدارة الاستقدام</h2>
-                <p class="panel-subtitle">كل ما يحتاجه فريقك لإدارة العمل اليومي في مكان واحد.</p>
-                <ul class="panel-features">
-                    <li class="panel-feature">
-                        <span class="panel-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m9 14 2 2 4-4"/></svg></span>
-                        <div><strong>متابعة طلبات الاستقدام</strong><span>حالة كل طلب من التقديم حتى الوصول.</span></div>
-                    </li>
-                    <li class="panel-feature">
-                        <span class="panel-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
-                        <div><strong>إدارة العقود والمدفوعات</strong><span>عقود العملاء والفواتير والتحصيل.</span></div>
-                    </li>
-                    <li class="panel-feature">
-                        <span class="panel-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span>
-                        <div><strong>صلاحيات حسب الدور</strong><span>كل موظف يرى ما يخصّه فقط.</span></div>
-                    </li>
+                <h2 class="panel-title">رحلة كل عاملة، من التعاقد حتى الوصول</h2>
+                <p class="panel-subtitle">تابع العقود والتأشيرات والتذاكر والإيواء من شاشة واحدة، بكل خطوة في وقتها.</p>
+
+                <figure class="journey">
+            <svg class="journey-map" viewBox="0 0 480 300" direction="ltr" role="img" aria-label="مسارات الاستقدام من إثيوبيا وكينيا وأوغندا وبنجلاديش والفلبين إلى الرياض">
+                <defs><pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.3" fill="#fff" opacity=".13"/></pattern></defs>
+                <rect width="480" height="300" fill="url(#dots)"/>
+                <path class="route" style="animation-delay:0.0s" d="M440,150 Q318,36 196,84"/><path class="route" style="animation-delay:0.3s" d="M338,74 Q267,26 196,84"/><path class="route" style="animation-delay:0.6s" d="M150,182 Q120,103 196,84"/><path class="route" style="animation-delay:0.9s" d="M140,252 Q110,138 196,84"/><path class="route" style="animation-delay:1.2s" d="M66,232 Q36,128 196,84"/>
+                <circle class="origin" cx="440" cy="150" r="5"/><text x="440" y="174" text-anchor="middle">الفلبين</text><circle class="origin" cx="338" cy="74" r="5"/><text x="338" y="98" text-anchor="middle">بنجلاديش</text><circle class="origin" cx="150" cy="182" r="5"/><text x="138" y="186" text-anchor="end">إثيوبيا</text><circle class="origin" cx="140" cy="252" r="5"/><text x="140" y="276" text-anchor="middle">كينيا</text><circle class="origin" cx="66" cy="232" r="5"/><text x="66" y="256" text-anchor="middle">أوغندا</text>
+                <circle class="pulse" cx="196" cy="84" r="9"/>
+                <circle class="hub" cx="196" cy="84" r="7"/>
+                <text class="hub-label" x="196" y="66" text-anchor="middle">الرياض</text>
+            </svg>
+                    <div class="journey-card" aria-hidden="true">
+                        <div class="journey-card__top">
+                            <span class="journey-card__id">عقد <b>#248</b></span>
+                            <span class="journey-card__badge">في الوقت</span>
+                        </div>
+                        <p class="journey-card__name">مرحلة التذكرة · الوصول خلال 3 أيام</p>
+                        <ol class="journey-steps">
+                            <li class="done">جديد</li><li class="done">مساند</li><li class="done">التفويض</li><li class="done">التفييز</li><li class="now">التذكرة</li><li>الوصول</li>
+                        </ol>
+                    </div>
+                    <figcaption class="sr-only">مسارات الاستقدام من خمس دول إلى الرياض، وبطاقة عقد في مرحلة التذكرة.</figcaption>
+                </figure>
+
+                <ul class="panel-points">
+                    <li><b>6</b> مراحل واضحة لكل عقد</li>
+                    <li><b>تنبيه</b> قبل أي تأخير</li>
+                    <li><b>صلاحيات</b> حسب الدور</li>
                 </ul>
             </div>
         </aside>

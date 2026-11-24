@@ -110,7 +110,8 @@
 | القائمة في `kit/redesign/build.py` → `MENU` | `resources/views/admin/layout/inc/sidebar.blade.php` | الأعداد تأتي من الاستعلامات الحالية؛ كل عنصر يبقى خلف صلاحيته (`@can`) كما هو |
 | `screens/dashboard.html` | `resources/views/admin/dashboard-new.blade.php` | |
 | `screens/reports.html` | جديدة (مقترح `admin/reports/index.blade.php`) | بيانات كل تقرير من استعلام واحد يرجع `kpis` و`chart` و`table` بنفس الشكل الموجود في الصفحة |
-| `assets/admin/login/css/login.css` + `screens/login.html` | نفس المسار + `admin/auth/login.blade.php` | أُضيف `svg.panel-art` و`span.panel-brand`؛ لا تنقل `kit-login.js` ولا `p.auth-demo` |
+| `assets/admin/login/css/login.css` + `screens/login.html` | نفس المسار + `admin/auth/login.blade.php` | اللوحة الكحلية: `figure.journey` (خريطة SVG + `journey-card`) و`panel-points`؛ لا تنقل `kit-login.js` ولا `p.auth-demo` |
+| `assets/web/assets/images/logo-mark-white.svg` | نفس المسار | العلامة وحدها بالأبيض لشريط الأقسام، مقصوصة من `logoh.svg` بلا تعديل للشكل |
 
 ### القيم
 
@@ -125,7 +126,10 @@
 | المكون | الصنف |
 |---|---|
 | الهيكل | `as-layout` › `as-sidebar` + `as-main` › `as-topbar` + `as-content` |
-| القائمة | `as-nav__group` › `as-nav__label` + `as-nav__item` › `as-nav__link` (`is-active`) + `as-nav__sub` |
+| القائمة | `as-rail` (أقسام: `as-rail__btn[data-dept]`) + `as-panel` › `as-pane[data-dept]` › `as-nav__group` › `as-nav__label` + `as-nav__link`. `body.as-collapsed` يخفي اللوحة |
+| خط اتجاه | `AsUI.spark(el, values)` |
+| مراحل العقد (عمودي) | `as-stages` |
+| الأداء حسب الإدارة | `as-tabs--inset` + `as-dept__stats` + `as-dept__body` |
 | رأس الصفحة | `as-pagehead` |
 | بطاقة | `as-card` › `as-card__head` / `as-card__body` / `as-card__foot` |
 | رقم رئيسي | `as-kpi` |

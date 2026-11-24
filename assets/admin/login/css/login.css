@@ -302,22 +302,10 @@ body {
     overflow: hidden;
 }
 
-/* brand motif: the cover's blocks and arcs (design system → Cover) */
-.panel-art {
-    position: absolute;
-    inset-block-end: 0;
-    inset-inline-end: 0;
-    width: 420px;
-    height: auto;
-    opacity: .9;
-    pointer-events: none;
-}
-[dir="rtl"] .panel-art { transform: scaleX(-1); }
 .panel-brand {
     display: inline-flex;
     align-items: center;
-    gap: 10px;
-    margin-bottom: 40px;
+    margin-bottom: 24px;
     padding: 6px 14px;
     font-size: 14px;
     font-weight: 600;
@@ -327,8 +315,7 @@ body {
     border-radius: 999px;
 }
 
-
-.panel-inner { position: relative; z-index: 1; max-width: 440px; }
+.panel-inner { position: relative; z-index: 1; width: 100%; max-width: 520px; margin: 0 auto; }
 
 .panel-title {
     margin: 0 0 16px;
@@ -343,29 +330,50 @@ body {
     color: rgba(255, 255, 255, .82);
 }
 
-.panel-features { list-style: none; margin: 0; padding: 0; display: grid; gap: 24px; }
-
-.panel-feature { display: flex; align-items: flex-start; gap: 16px; }
-
-.panel-feature-icon {
-    flex: none;
-    width: 48px;
-    height: 48px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 12px;
-    background: rgba(255, 255, 255, .1);
-    border: 1px solid rgba(255, 255, 255, .14);
-    color: #9fcbf0;
+/* ---------- the journey: route map + contract card ---------- */
+.journey { position: relative; margin: 0 0 40px; padding: 0; }
+.journey-map { display: block; width: 100%; height: auto; overflow: visible; }
+.journey-map text { font: 600 13px "IBM Plex Sans Arabic", sans-serif; fill: rgba(255, 255, 255, .78); }
+.journey-map .hub-label { font-size: 15px; font-weight: 700; fill: #fff; }
+.journey-map .route {
+    fill: none; stroke: #5fa3de; stroke-width: 2; stroke-linecap: round;
+    stroke-dasharray: 6 7; animation: route-flow 1.6s linear infinite;
 }
-.panel-feature-icon svg { width: 24px; height: 24px; }
+.journey-map .origin { fill: #191936; stroke: #9fcbf0; stroke-width: 2.5; }
+.journey-map .hub { fill: #1D70B7; stroke: #fff; stroke-width: 3; }
+.journey-map .pulse { fill: none; stroke: #5fa3de; stroke-width: 2; transform-origin: center; transform-box: fill-box; animation: hub-pulse 2.4s ease-out infinite; }
+@keyframes route-flow { to { stroke-dashoffset: -26; } }
+@keyframes hub-pulse { 0% { transform: scale(1); opacity: .9; } 100% { transform: scale(3); opacity: 0; } }
 
-.panel-feature strong { display: block; font-size: 17px; font-weight: 600; color: #fff; }
-.panel-feature span { display: block; margin-top: 2px; font-size: 15px; color: rgba(255, 255, 255, .78); }
+.journey-card {
+    position: absolute; inset-inline-start: 0; bottom: -24px; width: 300px;
+    padding: 14px 16px 16px; color: var(--ink);
+    background: #fff; border-radius: 12px;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, .28);
+}
+.journey-card__top { display: flex; align-items: center; justify-content: space-between; gap: 8px; }
+.journey-card__id { font-size: 14px; color: var(--muted); }
+.journey-card__id b { color: var(--ink); direction: ltr; unicode-bidi: isolate; }
+.journey-card__badge { font-size: 12px; font-weight: 600; padding: 2px 8px; border-radius: 999px; color: var(--success); background: var(--success-bg); border: 1px solid var(--success-border); }
+.journey-card__name { margin: 4px 0 12px; font-size: 15px; font-weight: 700; color: var(--ink); }
+.journey-steps { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(6, 1fr); gap: 4px; }
+.journey-steps li { position: relative; padding-top: 12px; font-size: 11px; color: var(--muted); text-align: center; white-space: nowrap; }
+.journey-steps li::before { content: ""; position: absolute; top: 0; inset-inline: 0; height: 6px; border-radius: 3px; background: #e5e7eb; }
+.journey-steps li.done::before { background: #1D70B7; }
+.journey-steps li.now::before { background: linear-gradient(90deg, #1D70B7 50%, #e5e7eb 50%); }
+[dir="rtl"] .journey-steps li.now::before { background: linear-gradient(270deg, #1D70B7 50%, #e5e7eb 50%); }
+.journey-steps li.now { color: var(--brand); font-weight: 700; }
+
+.panel-points { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 8px; }
+.panel-points li {
+    padding: 6px 12px; font-size: 14px; color: rgba(255, 255, 255, .85);
+    background: rgba(255, 255, 255, .08); border: 1px solid rgba(255, 255, 255, .14); border-radius: 999px;
+}
+.panel-points b { color: #fff; }
 
 @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; }
+    .journey-map .route, .journey-map .pulse { animation: none; }
     .spinner { animation-duration: 1.6s; }
 }
 

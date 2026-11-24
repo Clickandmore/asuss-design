@@ -16,144 +16,192 @@
 <div class="as-layout">
 
 <aside class="as-sidebar" aria-label="القائمة الرئيسية">
-  <div class="as-sidebar__brand">
-    <a href="dashboard.html" aria-label="أسس الإنجاز للاستقدام — لوحة المعلومات"><img src="../assets/web/assets/images/logoh.svg" alt="أسس الإنجاز للاستقدام"></a>
-    <button class="as-iconbtn as-sidebar__close" type="button" data-as-close-nav aria-label="إغلاق القائمة"><i class="fa-solid fa-xmark"></i></button>
+  <div class="as-rail">
+    <a class="as-rail__logo" href="dashboard.html" aria-label="أسس الإنجاز — لوحة المعلومات"><img src="../assets/web/assets/images/logo-mark-white.svg" alt=""></a>
+    <ul class="as-rail__list">
+<li><button class="as-rail__btn is-active" type="button" data-dept="home" aria-pressed="true" title="الرئيسية"><i class="fa-solid fa-house" aria-hidden="true"></i><span>الرئيسية</span></button></li>
+<li><button class="as-rail__btn" type="button" data-dept="rec" aria-pressed="false" title="الاستقدام"><i class="fa-solid fa-file-signature" aria-hidden="true"></i><span>الاستقدام</span><span class="as-rail__dot as-num">4</span></button></li>
+<li><button class="as-rail__btn" type="button" data-dept="rent" aria-pressed="false" title="التأجير"><i class="fa-solid fa-handshake" aria-hidden="true"></i><span>التأجير</span></button></li>
+<li><button class="as-rail__btn" type="button" data-dept="ops" aria-pressed="false" title="التشغيل"><i class="fa-solid fa-truck-fast" aria-hidden="true"></i><span>التشغيل</span></button></li>
+<li><button class="as-rail__btn" type="button" data-dept="care" aria-pressed="false" title="العملاء"><i class="fa-solid fa-headset" aria-hidden="true"></i><span>العملاء</span><span class="as-rail__dot as-num">5</span></button></li>
+<li><button class="as-rail__btn" type="button" data-dept="fin" aria-pressed="false" title="المالية"><i class="fa-solid fa-wallet" aria-hidden="true"></i><span>المالية</span><span class="as-rail__dot as-num">9</span></button></li>
+<li><button class="as-rail__btn" type="button" data-dept="admin" aria-pressed="false" title="الإدارة"><i class="fa-solid fa-sliders" aria-hidden="true"></i><span>الإدارة</span></button></li>
+    </ul>
+    <div class="as-rail__foot">
+      <button class="as-rail__btn as-rail__toggle" type="button" data-as-toggle-panel aria-label="إخفاء أو إظهار القائمة" title="إخفاء أو إظهار القائمة"><i class="fa-solid fa-table-columns" aria-hidden="true"></i></button>
+      <a class="as-rail__me" href="login.html" title="مشرف · تسجيل الخروج"><span class="as-avatar">م</span></a>
+    </div>
   </div>
-  <div class="as-sidebar__search">
-    <label class="as-search">
-      <span class="as-sr">ابحث في القائمة</span>
-      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-      <input id="as-nav-search" type="search" placeholder="ابحث في القائمة" autocomplete="off">
-      <kbd aria-hidden="true">/</kbd>
-    </label>
-  </div>
-  <nav class="as-nav">
-    <ul>
-<li class="as-nav__group"><p class="as-nav__label">عام</p><ul>
-<li class="as-nav__item"><a class="as-nav__link" href="dashboard.html"><span class="as-nav__icon"><i class="fa-solid fa-gauge-high" aria-hidden="true"></i></span><span class="as-nav__text">لوحة المعلومات</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link is-active" href="reports.html" aria-current="page"><span class="as-nav__icon"><i class="fa-solid fa-chart-column" aria-hidden="true"></i></span><span class="as-nav__text">التقارير</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="tasks.html"><span class="as-nav__icon"><i class="fa-solid fa-list-check" aria-hidden="true"></i></span><span class="as-nav__text">المهام</span><span class="as-nav__count as-num">6</span></a></li>
-</ul></li>
-<li class="as-nav__group"><p class="as-nav__label">الاستقدام</p><ul>
-<li class="as-nav__item"><a class="as-nav__link" href="clients.html"><span class="as-nav__icon"><i class="fa-solid fa-user-group" aria-hidden="true"></i></span><span class="as-nav__text">العملاء</span></a></li>
-<li class="as-nav__item"><button class="as-nav__link" type="button" aria-expanded="false" aria-controls="as-sub-1"><span class="as-nav__icon"><i class="fa-solid fa-cart-shopping" aria-hidden="true"></i></span><span class="as-nav__text">طلبات الاستقدام</span><i class="fa-solid fa-chevron-right as-nav__chev" aria-hidden="true"></i></button><ul class="as-nav__sub" id="as-sub-1">
-<li class="as-nav__item"><a class="as-nav__link" href="orders.html"><span class="as-nav__text">جميع الطلبات</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="orders.html"><span class="as-nav__text">الطلبات الجديدة</span><span class="as-nav__count as-num">12</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="orders.html"><span class="as-nav__text">تم التعاقد</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">غير مكتملة</span></a></li>
-</ul></li>
-<li class="as-nav__item"><button class="as-nav__link" type="button" aria-expanded="false" aria-controls="as-sub-2"><span class="as-nav__icon"><i class="fa-solid fa-file-signature" aria-hidden="true"></i></span><span class="as-nav__text">عقود الاستقدام</span><i class="fa-solid fa-chevron-right as-nav__chev" aria-hidden="true"></i></button><ul class="as-nav__sub" id="as-sub-2">
+  <div class="as-panel">
+    <div class="as-panel__head">
+      <img class="as-panel__logo" src="../assets/web/assets/images/logoh.svg" alt="أسس الإنجاز للاستقدام">
+      <button class="as-iconbtn as-sidebar__close" type="button" data-as-close-nav aria-label="إغلاق القائمة"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="as-sidebar__search">
+      <label class="as-search">
+        <span class="as-sr">ابحث في كل الأقسام</span>
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input id="as-nav-search" type="search" placeholder="ابحث في كل الأقسام" autocomplete="off">
+        <kbd aria-hidden="true">/</kbd>
+      </label>
+    </div>
+    <nav class="as-nav" data-current="home">
+<section class="as-pane" data-dept="home" aria-label="الرئيسية">
+<p class="as-pane__title">الرئيسية</p>
+<div class="as-nav__group">
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="dashboard.html"><span class="as-nav__text">لوحة المعلومات</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link is-active" href="reports.html" aria-current="page"><span class="as-nav__text">التقارير</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="tasks.html"><span class="as-nav__text">المهام</span><span class="as-nav__count as-num">6</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">التعاميم</span></a></li>
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">اختصارات</p>
+<ul>
 <li class="as-nav__item"><a class="as-nav__link" href="recruitment-contract-create.html"><span class="as-nav__text">عقد استقدام جديد</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="recruitment-contracts.html"><span class="as-nav__text">جميع العقود</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="client-create.html"><span class="as-nav__text">عميل جديد</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="maid-create.html"><span class="as-nav__text">سيرة ذاتية جديدة</span></a></li>
+</ul></div>
+</section>
+<section class="as-pane" data-dept="rec" hidden aria-label="الاستقدام">
+<p class="as-pane__title">الاستقدام</p>
+<div class="as-nav__group">
+<p class="as-nav__label">العملاء والطلبات</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="clients.html"><span class="as-nav__text">العملاء</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="orders.html"><span class="as-nav__text">طلبات الاستقدام</span><span class="as-nav__count as-num">12</span></a></li>
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">العقود حسب المرحلة</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="recruitment-contracts.html"><span class="as-nav__text">جميع العقود</span><span class="as-nav__count as-num">218</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="recruitment-contracts.html"><span class="as-nav__text">بانتظار الاعتماد</span><span class="as-nav__count as-nav__count--alert as-num">4</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="recruitment-contracts.html"><span class="as-nav__text">مساند</span><span class="as-nav__count as-num">9</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="recruitment-contracts.html"><span class="as-nav__text">التفويض</span><span class="as-nav__count as-num">7</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="recruitment-contracts.html"><span class="as-nav__text">التفييز</span><span class="as-nav__count as-num">5</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="recruitment-contracts.html"><span class="as-nav__text">التذكرة</span><span class="as-nav__count as-num">4</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="recruitment-contracts.html"><span class="as-nav__text">مرحلة الوصول</span><span class="as-nav__count as-num">3</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="recruitment-contracts.html"><span class="as-nav__text">الوصول</span><span class="as-nav__count as-num">3</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="recruitment-contracts.html"><span class="as-nav__text">تحت الضمان</span><span class="as-nav__count as-num">89</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="recruitment-contracts.html"><span class="as-nav__text">المكتملة</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">المرتجعة والملغية</span></a></li>
-</ul></li>
-<li class="as-nav__item"><button class="as-nav__link" type="button" aria-expanded="false" aria-controls="as-sub-3"><span class="as-nav__icon"><i class="fa-solid fa-id-card" aria-hidden="true"></i></span><span class="as-nav__text">السير الذاتية</span><i class="fa-solid fa-chevron-right as-nav__chev" aria-hidden="true"></i></button><ul class="as-nav__sub" id="as-sub-3">
-<li class="as-nav__item"><a class="as-nav__link" href="maid-create.html"><span class="as-nav__text">إضافة سيرة ذاتية</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="maids.html"><span class="as-nav__text">جميع السير</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">السير المتاحة</span><span class="as-nav__count as-num">578</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الحجوزات</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">جلسات الإرسال</span></a></li>
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">السير الذاتية</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="maids.html"><span class="as-nav__text">جميع السير</span><span class="as-nav__count as-num">820</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="maid-create.html"><span class="as-nav__text">إضافة سيرة</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الحجوزات وجلسات الإرسال</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">باك اوت</span></a></li>
-</ul></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__icon"><i class="fa-solid fa-user-tag" aria-hidden="true"></i></span><span class="as-nav__text">المعينات</span></a></li>
-</ul></li>
-<li class="as-nav__group"><p class="as-nav__label">التأجير ونقل الكفالة</p><ul>
-<li class="as-nav__item"><button class="as-nav__link" type="button" aria-expanded="false" aria-controls="as-sub-4"><span class="as-nav__icon"><i class="fa-solid fa-handshake" aria-hidden="true"></i></span><span class="as-nav__text">عقود التأجير</span><i class="fa-solid fa-chevron-right as-nav__chev" aria-hidden="true"></i></button><ul class="as-nav__sub" id="as-sub-4">
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">عقد تأجير جديد</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="rent-contracts.html"><span class="as-nav__text">جميع عقود التأجير</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">المعينات</span></a></li>
+</ul></div>
+</section>
+<section class="as-pane" data-dept="rent" hidden aria-label="التأجير">
+<p class="as-pane__title">التأجير</p>
+<div class="as-nav__group">
+<p class="as-nav__label">عقود التأجير</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="rent-contracts.html"><span class="as-nav__text">جميع عقود التأجير</span><span class="as-nav__count as-num">22</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">طلبات الإيجار</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">سير الإيجار</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">رواتب عاملات التأجير</span></a></li>
-</ul></li>
-<li class="as-nav__item"><button class="as-nav__link" type="button" aria-expanded="false" aria-controls="as-sub-5"><span class="as-nav__icon"><i class="fa-solid fa-right-left" aria-hidden="true"></i></span><span class="as-nav__text">نقل الكفالة</span><i class="fa-solid fa-chevron-right as-nav__chev" aria-hidden="true"></i></button><ul class="as-nav__sub" id="as-sub-5">
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">طلبات نقل الكفالة</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">إضافة طلب نقل</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">رواتب العاملات</span></a></li>
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">نقل الكفالة</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">طلبات النقل</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">فترة التجربة</span><span class="as-nav__count as-num">5</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">تم النقل</span></a></li>
-</ul></li>
-<li class="as-nav__item"><button class="as-nav__link" type="button" aria-expanded="false" aria-controls="as-sub-6"><span class="as-nav__icon"><i class="fa-solid fa-clock" aria-hidden="true"></i></span><span class="as-nav__text">التأجير بالساعة</span><i class="fa-solid fa-chevron-right as-nav__chev" aria-hidden="true"></i></button><ul class="as-nav__sub" id="as-sub-6">
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">التأجير بالساعة</p>
+<ul>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">لوحة الطلبات</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="hourly-visits.html"><span class="as-nav__text">الزيارات</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="hourly-schedule.html"><span class="as-nav__text">جدول الموظفين</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الفرق والسائقون</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الخدمات والباقات</span></a></li>
-</ul></li>
-</ul></li>
-<li class="as-nav__group"><p class="as-nav__label">التشغيل</p><ul>
-<li class="as-nav__item"><button class="as-nav__link" type="button" aria-expanded="false" aria-controls="as-sub-7"><span class="as-nav__icon"><i class="fa-solid fa-house-chimney-user" aria-hidden="true"></i></span><span class="as-nav__text">الإيواء</span><i class="fa-solid fa-chevron-right as-nav__chev" aria-hidden="true"></i></button><ul class="as-nav__sub" id="as-sub-7">
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الفرق والخدمات</span></a></li>
+</ul></div>
+</section>
+<section class="as-pane" data-dept="ops" hidden aria-label="التشغيل">
+<p class="as-pane__title">التشغيل</p>
+<div class="as-nav__group">
+<p class="as-nav__label">الإيواء</p>
+<ul>
 <li class="as-nav__item"><a class="as-nav__link" href="shelter-contracts.html"><span class="as-nav__text">داخل الإيواء</span><span class="as-nav__count as-num">14</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">خارج الإيواء</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">مرحلة الترحيل</span><span class="as-nav__count as-num">3</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">خطابات الترحيل والتمديد</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الترحيل والخطابات</span><span class="as-nav__count as-num">3</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">مقرات الإيواء</span></a></li>
-</ul></li>
-<li class="as-nav__item"><button class="as-nav__link" type="button" aria-expanded="false" aria-controls="as-sub-8"><span class="as-nav__icon"><i class="fa-solid fa-truck" aria-hidden="true"></i></span><span class="as-nav__text">الخدمات اللوجستية</span><i class="fa-solid fa-chevron-right as-nav__chev" aria-hidden="true"></i></button><ul class="as-nav__sub" id="as-sub-8">
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">لوحة اللوجستيك</span></a></li>
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">اللوجستيك والسفر</p>
+<ul>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">طلبات الرحلات</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">حجوزات الطيران</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">توصيل العاملات</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الخدمات الطبية</span></a></li>
-</ul></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__icon"><i class="fa-solid fa-passport" aria-hidden="true"></i></span><span class="as-nav__text">تأشيرات الشركة</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__icon"><i class="fa-solid fa-box-archive" aria-hidden="true"></i></span><span class="as-nav__text">الأرشيف الإلكتروني</span></a></li>
-</ul></li>
-<li class="as-nav__group"><p class="as-nav__label">خدمة العملاء</p><ul>
-<li class="as-nav__item"><a class="as-nav__link" href="complaints.html"><span class="as-nav__icon"><i class="fa-solid fa-triangle-exclamation" aria-hidden="true"></i></span><span class="as-nav__text">الشكاوى</span><span class="as-nav__count as-nav__count--alert as-num">5</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__icon"><i class="fa-solid fa-shuffle" aria-hidden="true"></i></span><span class="as-nav__text">تحويلات العملاء</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__icon"><i class="fa-solid fa-rotate-left" aria-hidden="true"></i></span><span class="as-nav__text">طلبات الاسترجاع</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__icon"><i class="fa-solid fa-star-half-stroke" aria-hidden="true"></i></span><span class="as-nav__text">التقييمات</span></a></li>
-</ul></li>
-<li class="as-nav__group"><p class="as-nav__label">المالية</p><ul>
-<li class="as-nav__item"><a class="as-nav__link" href="finance-claims.html"><span class="as-nav__icon"><i class="fa-solid fa-receipt" aria-hidden="true"></i></span><span class="as-nav__text">التعميدات المالية</span></a></li>
-<li class="as-nav__item"><button class="as-nav__link" type="button" aria-expanded="false" aria-controls="as-sub-9"><span class="as-nav__icon"><i class="fa-solid fa-building-columns" aria-hidden="true"></i></span><span class="as-nav__text">المالية والحسابات</span><i class="fa-solid fa-chevron-right as-nav__chev" aria-hidden="true"></i></button><ul class="as-nav__sub" id="as-sub-9">
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">سجلات</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">تأشيرات الشركة</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الأرشيف الإلكتروني</span></a></li>
+</ul></div>
+</section>
+<section class="as-pane" data-dept="care" hidden aria-label="العملاء">
+<p class="as-pane__title">العملاء</p>
+<div class="as-nav__group">
+<p class="as-nav__label">خدمة ما بعد البيع</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="complaints.html"><span class="as-nav__text">الشكاوى</span><span class="as-nav__count as-nav__count--alert as-num">5</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">شكاوى الخارجية</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">تحويلات العملاء</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">طلبات الاسترجاع</span></a></li>
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">التواصل</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">التقييمات</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الرسائل</span></a></li>
+</ul></div>
+</section>
+<section class="as-pane" data-dept="fin" hidden aria-label="المالية">
+<p class="as-pane__title">المالية</p>
+<div class="as-nav__group">
+<p class="as-nav__label">التعميدات</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="finance-claims.html"><span class="as-nav__text">كل التعميدات</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="finance-claims.html"><span class="as-nav__text">بانتظار الاعتماد</span><span class="as-nav__count as-nav__count--alert as-num">9</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="finance-claims.html"><span class="as-nav__text">الرسوم الحكومية</span></a></li>
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">الحسابات</p>
+<ul>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">مالية العقود</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">مالية التأجير</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">مالية النقل</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">مالية الخارجية</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">مكافآت وخصميات الموظفين</span></a></li>
-</ul></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__icon"><i class="fa-solid fa-credit-card" aria-hidden="true"></i></span><span class="as-nav__text">مدفوعات البوابات</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__icon"><i class="fa-solid fa-laptop" aria-hidden="true"></i></span><span class="as-nav__text">العهد والأصول</span></a></li>
-</ul></li>
-<li class="as-nav__group"><p class="as-nav__label">الإدارة</p><ul>
-<li class="as-nav__item"><a class="as-nav__link" href="employees.html"><span class="as-nav__icon"><i class="fa-solid fa-id-badge" aria-hidden="true"></i></span><span class="as-nav__text">الموظفون</span></a></li>
-<li class="as-nav__item"><button class="as-nav__link" type="button" aria-expanded="false" aria-controls="as-sub-10"><span class="as-nav__icon"><i class="fa-solid fa-user-shield" aria-hidden="true"></i></span><span class="as-nav__text">المستخدمون والصلاحيات</span><i class="fa-solid fa-chevron-right as-nav__chev" aria-hidden="true"></i></button><ul class="as-nav__sub" id="as-sub-10">
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">مالية النقل والخارجية</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">مدفوعات البوابات</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">العهد والأصول</span></a></li>
+</ul></div>
+</section>
+<section class="as-pane" data-dept="admin" hidden aria-label="الإدارة">
+<p class="as-pane__title">الإدارة</p>
+<div class="as-nav__group">
+<p class="as-nav__label">فريق العمل</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="employees.html"><span class="as-nav__text">الموظفون</span><span class="as-nav__count as-num">39</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="admins.html"><span class="as-nav__text">المستخدمون</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الصلاحيات</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">سجل النشاط</span></a></li>
-</ul></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__icon"><i class="fa-solid fa-bullhorn" aria-hidden="true"></i></span><span class="as-nav__text">التعاميم</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__icon"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i></span><span class="as-nav__text">الرسائل</span></a></li>
-<li class="as-nav__item"><button class="as-nav__link" type="button" aria-expanded="false" aria-controls="as-sub-11"><span class="as-nav__icon"><i class="fa-solid fa-database" aria-hidden="true"></i></span><span class="as-nav__text">البيانات الأساسية</span><i class="fa-solid fa-chevron-right as-nav__chev" aria-hidden="true"></i></button><ul class="as-nav__sub" id="as-sub-11">
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الجنسيات</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">المهن</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">مكاتب الاستقدام</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الباقات</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الدول والمدن</span></a></li>
-</ul></li>
-<li class="as-nav__item"><button class="as-nav__link" type="button" aria-expanded="false" aria-controls="as-sub-12"><span class="as-nav__icon"><i class="fa-solid fa-gear" aria-hidden="true"></i></span><span class="as-nav__text">الموقع والإعدادات</span><i class="fa-solid fa-chevron-right as-nav__chev" aria-hidden="true"></i></button><ul class="as-nav__sub" id="as-sub-12">
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">الإعدادات</p>
+<ul>
 <li class="as-nav__item"><a class="as-nav__link" href="settings.html"><span class="as-nav__text">إعدادات النظام</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">البيانات الأساسية</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">محتوى الموقع</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">صفحات التطبيق</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الترجمة والنصوص</span></a></li>
-</ul></li>
-</ul></li>
-    </ul>
-    <p class="as-nav__empty">لا توجد نتيجة. جرّب كلمة أخرى.</p>
-  </nav>
-  <div class="as-sidebar__user">
-    <span class="as-avatar" aria-hidden="true">م</span>
-    <div class="as-sidebar__who"><strong>مشرف</strong><span>مدير النظام</span></div>
-    <a class="as-iconbtn" href="login.html" aria-label="تسجيل الخروج" title="تسجيل الخروج"><i class="fa-solid fa-arrow-right-from-bracket fa-flip-horizontal"></i></a>
+</ul></div>
+</section>
+      <p class="as-nav__empty">لا توجد نتيجة. جرّب كلمة أخرى.</p>
+    </nav>
   </div>
 </aside>
 <div class="as-overlay" aria-hidden="true"></div>
@@ -254,10 +302,10 @@
 
   var GROUPS = [
     { id: 'rec', name: 'الاستقدام', icon: 'fa-file-signature' },
-    { id: 'rent', name: 'التأجير ونقل الكفالة', icon: 'fa-handshake' },
-    { id: 'fin', name: 'المالية', icon: 'fa-building-columns' },
-    { id: 'care', name: 'خدمة العملاء', icon: 'fa-headset' },
-    { id: 'staff', name: 'الموظفون', icon: 'fa-id-badge' }
+    { id: 'rent', name: 'التأجير', icon: 'fa-handshake' },
+    { id: 'fin', name: 'المالية', icon: 'fa-wallet' },
+    { id: 'care', name: 'العملاء', icon: 'fa-headset' },
+    { id: 'staff', name: 'الإدارة', icon: 'fa-sliders' }
   ];
 
   var R = [

@@ -4,16 +4,42 @@
     <p><span id="as-today">الثلاثاء 24 نوفمبر 2026</span> · لديك <strong>23</strong> بندًا يحتاج إجراء اليوم.</p>
   </div>
   <div class="as-pagehead__actions">
-    <a class="as-btn as-btn--secondary" href="clients.html"><i class="fa-solid fa-user-plus"></i>عميل جديد</a>
+    <a class="as-btn as-btn--secondary" href="client-create.html"><i class="fa-solid fa-user-plus"></i>عميل جديد</a>
     <a class="as-btn as-btn--primary" href="recruitment-contract-create.html"><i class="fa-solid fa-plus"></i>عقد استقدام جديد</a>
   </div>
 </div>
 
-<!-- 1. what needs action, then the pipeline -->
-<div class="as-grid as-grid--main">
+<!-- 1. four numbers that answer "how are we doing this month" -->
+<p class="as-eyebrow">هذا الشهر</p>
+<div class="as-grid as-grid--kpi">
+  <a class="as-card as-kpi" href="reports.html#monthly">
+    <div class="as-kpi__top"><span class="as-kpi__label">عقود جديدة</span><span class="as-spark" data-spark="14,18,22,19,25,17,21,23,16,19,16,20"></span></div>
+    <div class="as-kpi__value-wrap"><span class="as-kpi__value as-num">20</span></div>
+    <div class="as-kpi__meta"><span class="as-trend as-trend--up">▲ 25%</span> عن الشهر الماضي (16)</div>
+  </a>
+  <a class="as-card as-kpi" href="reports.html#collections">
+    <div class="as-kpi__top"><span class="as-kpi__label">التحصيل</span><span class="as-spark" data-spark="168,182,205,190,231,176,198,214,187,202,217,250"></span></div>
+    <div class="as-kpi__value-wrap"><span class="as-kpi__value"><span class="as-num">250,000</span><small>ر.س</small></span></div>
+    <div class="as-kpi__meta"><span class="as-trend as-trend--up">▲ 15%</span> عن الشهر الماضي</div>
+  </a>
+  <a class="as-card as-kpi" href="reports.html#stages">
+    <div class="as-kpi__top"><span class="as-kpi__label">عقود جارية</span><span class="as-spark" data-spark="28,30,33,31,36,35,32,34,30,33,31,34"></span></div>
+    <div class="as-kpi__value-wrap"><span class="as-kpi__value as-num">34</span></div>
+    <div class="as-kpi__meta"><span class="as-trend as-trend--down">4 متأخرة</span> · متوسط المدة 47 يومًا</div>
+  </a>
+  <a class="as-card as-kpi" href="reports.html#nationalities">
+    <div class="as-kpi__top"><span class="as-kpi__label">سير ذاتية متاحة</span><span class="as-spark" data-spark="512,530,548,541,560,555,566,571,560,569,574,578"></span></div>
+    <div class="as-kpi__value-wrap"><span class="as-kpi__value as-num">578</span></div>
+    <div class="as-kpi__meta"><span class="as-num">242</span> محجوزة · <span class="as-num">820</span> إجمالًا</div>
+  </a>
+</div>
+
+<!-- 2. today's work next to where the contracts are -->
+<div class="as-grid as-grid--split as-section">
   <section class="as-card" aria-labelledby="h-todo">
     <div class="as-card__head">
-      <div><h3 id="h-todo">يحتاج إجراء اليوم</h3><p>مرتبة حسب الأولوية. اضغط البند لفتح القائمة.</p></div>
+      <div><h3 id="h-todo">يحتاج إجراء اليوم</h3><p>مرتبة حسب الأولوية</p></div>
+      <a class="as-btn as-btn--ghost as-btn--sm" href="tasks.html">مهامي</a>
     </div>
     <ul class="as-todo">
       <li><a href="recruitment-contracts.html">
@@ -43,75 +69,24 @@
     </ul>
   </section>
 
-  <section class="as-card" aria-labelledby="h-ops">
-    <div class="as-card__head"><div><h3 id="h-ops">التأجير والإيواء</h3><p>الوضع الآن</p></div></div>
-    <div class="as-mini">
-      <div><span>عقود تأجير نشطة</span><strong class="as-num">22</strong></div>
-      <div><span>داخل الإيواء</span><strong class="as-num">14</strong></div>
-      <div><span>نقل كفالة في التجربة</span><strong class="as-num">5</strong></div>
-      <div><span>جاهزات للترحيل</span><strong class="as-num">3</strong></div>
-    </div>
-    <div class="as-card__foot">قيمة عقود التأجير المفعّلة: <strong class="as-num">127,148</strong> ر.س</div>
-  </section>
-</div>
-
-<section class="as-card as-section" aria-labelledby="h-pipe">
-  <div class="as-card__head">
-    <div><h3 id="h-pipe">العقود الجارية حسب المرحلة</h3><p><span class="as-num">34</span> عقدًا في الطريق. اضغط المرحلة لعرض عقودها.</p></div>
-    <a class="as-btn as-btn--ghost as-btn--sm" href="recruitment-contracts.html">كل العقود</a>
-  </div>
-  <div class="as-card__body">
-    <div class="as-pipe" id="as-pipe"></div>
-  </div>
-</section>
-
-<!-- 2. headline numbers -->
-<div class="as-grid as-grid--kpi as-section">
-  <a class="as-card as-kpi" href="recruitment-contracts.html">
-    <div class="as-kpi__top"><span class="as-kpi__label">عقود هذا الشهر</span><span class="as-kpi__icon"><i class="fa-solid fa-file-signature"></i></span></div>
-    <div class="as-kpi__value as-num">20</div>
-    <div class="as-kpi__meta"><span class="as-trend as-trend--up">▲ 25%</span> عن الشهر الماضي (16)</div>
-  </a>
-  <a class="as-card as-kpi" href="orders.html">
-    <div class="as-kpi__top"><span class="as-kpi__label">طلبات جديدة</span><span class="as-kpi__icon"><i class="fa-solid fa-cart-shopping"></i></span></div>
-    <div class="as-kpi__value as-num">12</div>
-    <div class="as-kpi__meta">بانتظار التعاقد · من <span class="as-num">40</span> طلبًا</div>
-  </a>
-  <a class="as-card as-kpi" href="maids.html">
-    <div class="as-kpi__top"><span class="as-kpi__label">سير ذاتية متاحة</span><span class="as-kpi__icon"><i class="fa-solid fa-id-card"></i></span></div>
-    <div class="as-kpi__value as-num">578</div>
-    <div class="as-kpi__meta"><span class="as-num">242</span> محجوزة · <span class="as-num">820</span> إجمالًا</div>
-  </a>
-  <a class="as-card as-kpi" href="finance-claims.html">
-    <div class="as-kpi__top"><span class="as-kpi__label">التحصيل هذا الشهر</span><span class="as-kpi__icon"><i class="fa-solid fa-sack-dollar"></i></span></div>
-    <div class="as-kpi__value"><span class="as-num">250,000</span><small>ر.س</small></div>
-    <div class="as-kpi__meta"><span class="as-trend as-trend--up">▲ 15%</span> عن الشهر الماضي</div>
-  </a>
-</div>
-
-<!-- 3. trends -->
-<div class="as-grid as-grid--main as-section">
-  <section class="as-card as-chartbox" aria-labelledby="h-monthly">
+  <section class="as-card" aria-labelledby="h-stages">
     <div class="as-card__head">
-      <div><h3 id="h-monthly">العقود الشهرية</h3><p>آخر 12 شهرًا: الجديدة مقابل المكتملة</p></div>
-      <div class="as-seg" role="group" aria-label="طريقة العرض">
-        <button type="button" data-as-view="chart" aria-pressed="true">رسم</button>
-        <button type="button" data-as-view="table" aria-pressed="false">جدول</button>
-      </div>
+      <div><h3 id="h-stages">أين تقف العقود</h3><p><span class="as-num">34</span> عقدًا جاريًا، من التعاقد حتى الوصول</p></div>
+      <a class="as-btn as-btn--ghost as-btn--sm" href="recruitment-contracts.html">كل العقود</a>
     </div>
-    <div class="as-card__body">
-      <div id="as-legend-monthly" style="margin-bottom:12px"></div>
-      <div id="as-chart-monthly"></div>
-      <div class="as-chart-table" id="as-table-monthly"></div>
-    </div>
-  </section>
-
-  <section class="as-card" aria-labelledby="h-nat">
-    <div class="as-card__head"><div><h3 id="h-nat">السير الذاتية حسب الجنسية</h3><p>أكثر 5 جنسيات</p></div></div>
-    <div class="as-card__body"><ul id="as-nat"></ul></div>
-    <div class="as-card__foot"><a href="reports.html#nationalities">التقرير الكامل</a></div>
+    <ol class="as-stages" id="as-stages"></ol>
   </section>
 </div>
+
+<!-- 3. the same departments as the sidebar rail -->
+<section class="as-card as-section" aria-labelledby="h-depts">
+  <div class="as-card__head as-card__head--tabs">
+    <div><h3 id="h-depts">الأداء حسب الإدارة</h3><p>آخر 12 شهرًا · نفس أقسام القائمة الجانبية</p></div>
+    <a class="as-btn as-btn--ghost as-btn--sm" id="as-dept-report" href="reports.html">التقرير الكامل</a>
+  </div>
+  <div class="as-tabs as-tabs--inset" role="tablist" id="as-dept-tabs"></div>
+  <div class="as-dept" id="as-dept"></div>
+</section>
 
 <!-- 4. latest -->
 <section class="as-card as-section" aria-labelledby="h-latest">
@@ -121,7 +96,7 @@
   </div>
   <div class="as-tablewrap">
     <table class="as-table">
-      <thead><tr><th>العقد</th><th>العميل</th><th>العاملة</th><th>المرحلة</th><th>آخر تحديث</th><th class="is-num">المبلغ</th></tr></thead>
+      <thead><tr><th>العقد</th><th>العميل</th><th>العاملة</th><th>المرحلة</th><th>آخر تحديث</th><th class="is-num">المبلغ (ر.س)</th></tr></thead>
       <tbody>
         <tr><td class="as-strong as-num">#248</td><td>عميل تجريبي 1<span class="as-sub as-num">05X XXX 1024</span></td><td>الفلبين</td><td><span class="as-badge as-badge--info">التذكرة</span></td><td>منذ ساعتين</td><td class="is-num as-num">16,500</td></tr>
         <tr><td class="as-strong as-num">#247</td><td>عميل تجريبي 2<span class="as-sub as-num">05X XXX 3381</span></td><td>كينيا</td><td><span class="as-badge as-badge--danger">متأخر · التفويض</span></td><td>منذ 9 أيام</td><td class="is-num as-num">13,800</td></tr>
@@ -135,43 +110,84 @@
 <!-- scripts -->
 <script>
 (function () {
-  var stages = [
-    { name: 'جديد', n: 6, late: 0 },
-    { name: 'مساند', n: 9, late: 1 },
-    { name: 'التفويض', n: 7, late: 3 },
-    { name: 'التفييز', n: 5, late: 0 },
-    { name: 'التذكرة', n: 4, late: 0 },
-    { name: 'الوصول', n: 3, late: 0 }
-  ];
-  var max = Math.max.apply(null, stages.map(function (s) { return s.n; }));
-  document.getElementById('as-pipe').innerHTML = stages.map(function (s, i) {
-    return '<a class="as-pipe__step" href="recruitment-contracts.html">' +
-      '<span class="as-pipe__idx">المرحلة ' + (i + 1) + '</span>' +
-      '<span class="as-pipe__name">' + s.name + '</span>' +
-      '<span class="as-pipe__n as-num">' + s.n + '</span>' +
-      (s.late ? '<span class="as-pipe__late">' + s.late + ' متأخر</span>' : '<span class="as-pipe__ok">في الوقت</span>') +
-      '<span class="as-pipe__bar"><span style="width:' + (s.n / max * 100) + '%"></span></span></a>';
+  var F = AsUI.fmt;
+  var C1 = '#1D70B7', C2 = '#00AC9A';
+  var MONTHS = ['ديسمبر 2025', 'يناير 2026', 'فبراير 2026', 'مارس 2026', 'أبريل 2026', 'مايو 2026', 'يونيو 2026', 'يوليو 2026', 'أغسطس 2026', 'سبتمبر 2026', 'أكتوبر 2026', 'نوفمبر 2026'];
+  var SHORT = ['ديس', 'ينا', 'فبر', 'مار', 'أبر', 'ماي', 'يون', 'يول', 'أغس', 'سبت', 'أكت', 'نوف'];
+
+  // sparklines
+  document.querySelectorAll('[data-spark]').forEach(function (el) { AsUI.spark(el, el.dataset.spark.split(',').map(Number)); });
+
+  // stages, in order
+  var stages = [['جديد', 6, 0], ['مساند', 9, 1], ['التفويض', 7, 3], ['التفييز', 5, 0], ['التذكرة', 4, 0], ['الوصول', 3, 0]];
+  var smax = Math.max.apply(null, stages.map(function (s) { return s[1]; }));
+  document.getElementById('as-stages').innerHTML = stages.map(function (s, i) {
+    return '<li><a href="recruitment-contracts.html"><span class="as-stages__i as-num">' + (i + 1) + '</span>' +
+      '<span class="as-stages__name">' + s[0] + (s[2] ? ' <span class="as-badge as-badge--danger">' + s[2] + ' متأخر</span>' : '') + '</span>' +
+      '<span class="as-stages__bar"><span style="width:' + (s[1] / smax * 100) + '%"></span></span>' +
+      '<strong class="as-stages__n as-num">' + s[1] + '</strong></a></li>';
   }).join('');
 
-  var monthly = {
-    labels: ['ديسمبر 2025', 'يناير 2026', 'فبراير 2026', 'مارس 2026', 'أبريل 2026', 'مايو 2026', 'يونيو 2026', 'يوليو 2026', 'أغسطس 2026', 'سبتمبر 2026', 'أكتوبر 2026', 'نوفمبر 2026'],
-    short: ['ديس', 'ينا', 'فبر', 'مار', 'أبر', 'ماي', 'يون', 'يول', 'أغس', 'سبت', 'أكت', 'نوف'],
-    series: [
-      { name: 'عقود جديدة', color: '#1D70B7', values: [14, 18, 22, 19, 25, 17, 21, 23, 16, 19, 16, 20] },
-      { name: 'عقود مكتملة', color: '#00AC9A', values: [9, 12, 15, 14, 11, 13, 10, 12, 9, 11, 8, 6] }
-    ],
-    title: 'العقود الشهرية'
-  };
-  function draw() { AsUI.columns(document.getElementById('as-chart-monthly'), monthly); }
-  draw();
-  var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(draw, 150); });
-  AsUI.legend(document.getElementById('as-legend-monthly'), monthly.series);
-  AsUI.chartTable(document.getElementById('as-table-monthly'), monthly);
+  // departments (same order and names as the rail)
+  var D = [
+    { id: 'rec', name: 'الاستقدام', icon: 'fa-file-signature', report: 'monthly',
+      stats: [['عقود جديدة', '230'], ['عقود مكتملة', '130'], ['نسبة الإنجاز', '57%'], ['متوسط المدة', '47 يومًا']],
+      chart: { title: 'العقود الشهرية', series: [{ name: 'جديدة', color: C1, values: [14, 18, 22, 19, 25, 17, 21, 23, 16, 19, 16, 20] }, { name: 'مكتملة', color: C2, values: [9, 12, 15, 14, 11, 13, 10, 12, 9, 11, 8, 6] }] },
+      side: { title: 'السير الذاتية حسب الجنسية', total: 795, items: [['إثيوبيا', 530], ['كينيا', 112], ['الفلبين', 70], ['أوغندا', 64], ['بنجلاديش', 19]] } },
+    { id: 'rent', name: 'التأجير', icon: 'fa-handshake', report: 'rent',
+      stats: [['عقود نشطة', '22'], ['جديدة هذا الشهر', '4'], ['نقل كفالة في التجربة', '5'], ['القيمة المفعّلة', '127,148 ر.س']],
+      chart: { title: 'عقود التأجير الجديدة', series: [{ name: 'عقود جديدة', color: C1, values: [3, 2, 4, 5, 3, 2, 4, 3, 5, 2, 3, 4] }] },
+      side: { title: 'عقود التأجير حسب الحالة', items: [['مكتملة', 41], ['نشطة', 22], ['تم النقل', 6], ['جديدة', 4], ['ملغية', 3]] } },
+    { id: 'ops', name: 'التشغيل', icon: 'fa-truck-fast', report: 'stages',
+      stats: [['داخل الإيواء', '14'], ['جاهزات للترحيل', '3'], ['وصول هذا الشهر', '9'], ['رحلات السنة', '153']],
+      chart: { title: 'وصول العاملات شهريًا', series: [{ name: 'وصول', color: C1, values: [8, 11, 14, 12, 10, 13, 9, 12, 11, 10, 7, 9] }] },
+      side: { title: 'الإيواء الآن', items: [['داخل الإيواء', 14], ['بانتظار النقل', 5], ['مرحلة الترحيل', 3], ['خارج الإيواء', 2]] } },
+    { id: 'care', name: 'العملاء', icon: 'fa-headset', report: 'complaints',
+      stats: [['شكاوى مفتوحة', '5'], ['أُغلقت هذا الشهر', '18'], ['متوسط الإغلاق', '2.4 يوم'], ['عملاء جدد', '450']],
+      chart: { title: 'الشكاوى الواردة شهريًا', series: [{ name: 'شكاوى', color: C1, values: [21, 18, 24, 19, 22, 17, 20, 23, 18, 16, 19, 23] }] },
+      side: { title: 'الشكاوى حسب النوع', items: [['تأخر الوصول', 9], ['سلوك العاملة', 6], ['طلب استبدال', 4], ['مالية', 3], ['أخرى', 1]] } },
+    { id: 'fin', name: 'المالية', icon: 'fa-wallet', report: 'collections',
+      stats: [['التحصيل هذا الشهر', '250,000 ر.س'], ['مستحقات متأخرة', '38,600 ر.س'], ['تعميدات بانتظار الاعتماد', '9'], ['تعميدات الشهر', '64']],
+      chart: { title: 'التحصيل الشهري (ألف ر.س)', unit: ' ألف', series: [{ name: 'التحصيل', color: C1, values: [168, 182, 205, 190, 231, 176, 198, 214, 187, 202, 217, 250] }] },
+      side: { title: 'التعميدات حسب النوع (ر.س)', items: [['رسوم حكومية', 158000], ['خارجية', 96400], ['حجوزات الطيران', 71200], ['المستشفيات', 38500], ['عملاء', 29700]] } },
+    { id: 'admin', name: 'الإدارة', icon: 'fa-sliders', report: 'staff',
+      stats: [['موظفون نشطون', '39'], ['مهام منجزة', '146'], ['مهام متأخرة', '7'], ['مستخدمون', '52']],
+      chart: { title: 'المهام المنجزة شهريًا', series: [{ name: 'مهام منجزة', color: C1, values: [118, 124, 131, 127, 140, 122, 133, 138, 129, 141, 137, 146] }] },
+      side: { title: 'العقود لكل موظف هذا الشهر', items: [['موظف 1', 6], ['موظف 2', 5], ['موظف 3', 4], ['موظف 4', 3], ['موظف 5', 2]] } }
+  ];
 
-  AsUI.meters(document.getElementById('as-nat'), [
-    { label: 'إثيوبيا', value: 530 }, { label: 'كينيا', value: 112 }, { label: 'الفلبين', value: 70 },
-    { label: 'أوغندا', value: 64 }, { label: 'بنجلاديش', value: 19 }
-  ], 795);
+  var tabs = document.getElementById('as-dept-tabs'), host = document.getElementById('as-dept'), cur = D[0];
+  tabs.innerHTML = D.map(function (d, i) {
+    return '<button type="button" role="tab" id="tab-' + d.id + '" aria-controls="as-dept" aria-selected="' + (i ? 'false' : 'true') + '" data-dept-tab="' + d.id + '"><i class="fa-solid ' + d.icon + '" aria-hidden="true"></i>' + d.name + '</button>';
+  }).join('');
+  function render(d) {
+    cur = d;
+    host.setAttribute('aria-labelledby', 'tab-' + d.id);
+    document.getElementById('as-dept-report').href = 'reports.html#' + d.report;
+    var multi = d.chart.series.length > 1;
+    host.innerHTML =
+      '<div class="as-dept__stats">' + d.stats.map(function (s) { return '<div><span>' + s[0] + '</span><strong class="as-num">' + s[1] + '</strong></div>'; }).join('') + '</div>' +
+      '<div class="as-dept__body">' +
+        '<div class="as-chartbox"><div class="as-dept__h"><h4>' + d.chart.title + '</h4>' +
+          '<div class="as-seg" role="group" aria-label="طريقة العرض"><button type="button" data-as-view="chart" aria-pressed="true">رسم</button><button type="button" data-as-view="table" aria-pressed="false">جدول</button></div></div>' +
+          (multi ? '<div class="as-dlegend" style="margin-bottom:8px"></div>' : '') +
+          '<div class="as-dchart as-chart"></div><div class="as-chart-table"></div></div>' +
+        '<div class="as-dept__side"><h4>' + d.side.title + '</h4><ul class="as-dmeters"></ul></div>' +
+      '</div>';
+    var opts = { labels: MONTHS, short: SHORT, series: d.chart.series, unit: d.chart.unit, title: d.chart.title, height: 220 };
+    AsUI.columns(host.querySelector('.as-dchart'), opts);
+    if (multi) AsUI.legend(host.querySelector('.as-dlegend'), d.chart.series);
+    AsUI.chartTable(host.querySelector('.as-chart-table'), opts);
+    var items = d.side.items.map(function (x) { return { label: x[0], value: x[1] }; });
+    AsUI.meters(host.querySelector('.as-dmeters'), items, d.side.total || items.reduce(function (a, x) { return a + x.value; }, 0));
+  }
+  tabs.addEventListener('click', function (e) {
+    var b = e.target.closest('[data-dept-tab]'); if (!b) return;
+    tabs.querySelectorAll('button').forEach(function (x) { x.setAttribute('aria-selected', x === b ? 'true' : 'false'); });
+    render(D.filter(function (d) { return d.id === b.dataset.deptTab; })[0]);
+  });
+  render(cur);
+  var t; window.addEventListener('resize', function () { clearTimeout(t); t = setTimeout(function () { render(cur); }, 150); });
 
   var d = new Date();
   if (d.getHours() >= 12) document.getElementById('as-hello').textContent = 'مساء الخير، مشرف';
