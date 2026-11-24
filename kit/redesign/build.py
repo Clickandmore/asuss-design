@@ -295,14 +295,14 @@ SHELL = '''<!DOCTYPE html>
 '''
 
 SCREENS = {
-    'dashboard': {'title': 'لوحة المعلومات', 'crumbs': ['الرئيسية']},
+    'dashboard': {'title': 'لوحة المعلومات', 'crumbs': ['الرئيسية', 'لوحة المعلومات']},
     'reports': {'title': 'التقارير', 'crumbs': ['الرئيسية', 'التقارير']},
     'patterns': {'title': 'قاعدة التصميم', 'crumbs': ['Design kit', 'قاعدة التصميم'], 'dept': 'home'},
     # one screen for every list; the tab (and the sidebar link) comes from the URL hash
     'records': {'title': 'عقود الاستقدام', 'crumbs': ['الاستقدام', 'عقود الاستقدام'], 'dept': 'rec'},
     # add / edit forms (DESIGN.md → «نموذج الإضافة والتعديل»)
-    'recruitment-contract-create': {'title': 'عقد استقدام جديد', 'crumbs': ['الاستقدام', 'عقود الاستقدام', 'عقد جديد'], 'dept': 'rec', 'nav': 'records.html#recruitment'},
-    'maid-create': {'title': 'سيرة ذاتية جديدة', 'crumbs': ['الاستقدام', 'السير الذاتية', 'سيرة جديدة'], 'dept': 'rec'},
+    'recruitment-contract-create': {'title': 'عقد استقدام جديد', 'crumbs': ['الاستقدام', 'عقود الاستقدام', 'عقد استقدام جديد'], 'dept': 'rec', 'nav': 'records.html#recruitment'},
+    'maid-create': {'title': 'سيرة ذاتية جديدة', 'crumbs': ['الاستقدام', 'السير الذاتية', 'سيرة ذاتية جديدة'], 'dept': 'rec'},
     'client-create': {'title': 'عميل جديد', 'crumbs': ['الاستقدام', 'العملاء', 'عميل جديد'], 'dept': 'rec', 'nav': 'records.html#clients'},
 }
 

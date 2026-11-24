@@ -1250,3 +1250,32 @@ a.as-kpi:hover { border-color: var(--as-border); box-shadow: var(--as-shadow-car
     .as-rec__filters .as-toggle--more { margin-inline-start: 0; }
     .as-rec__moregrid { grid-template-columns: minmax(0, 1fr); }
 }
+
+/* ================= polish (25-11-2026): one title per page, calmer tabs and row actions ================= */
+/* topbar: breadcrumbs only — the page header carries the title (the h1 stays for screen readers) */
+@media (min-width: 768px) {
+    .as-topbar h1 { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+    .as-crumbs { font-size: 14px; }
+    .as-crumbs li:last-child { color: var(--as-ink); font-weight: 500; }
+}
+
+/* list tabs: underline, sized to their text */
+.as-rectabs { gap: 4px; padding: 0; background: none; border-radius: 0; border-bottom: 1px solid var(--as-line); margin-bottom: 20px; }
+.as-rectab { flex: none; height: 44px; padding: 0 14px; border-radius: 0; margin-bottom: -1px; border-bottom: 2px solid transparent; }
+.as-rectab:hover { background: none; border-bottom-color: var(--as-border); }
+.as-rectab.is-active { background: none; box-shadow: none; border-bottom-color: var(--as-brand); }
+.as-rectab.is-active .as-rectab__n { color: var(--as-brand); }
+.as-rectab__n { padding: 1px 7px; border-radius: 999px; background: #eef0f3; font-size: 11.5px; }
+.as-rectab.is-active .as-rectab__n { background: var(--as-tint); }
+
+/* «الإجراء التالي» inside a row: a quiet link-button, solid only on hover */
+.as-rtable .as-btn--soft { height: 30px; padding: 0 10px; background: transparent; border: 1px solid #cfe2f3; font-size: 13px; }
+.as-rtable tr:hover .as-btn--soft, .as-rtable .as-btn--soft:focus-visible { background: var(--as-tint); }
+
+/* page header: title and actions on one baseline, description under the title */
+.as-pagehead { align-items: center; margin-bottom: 20px; }
+.as-pagehead h2 { font-size: 22px; }
+.as-pagehead p { font-size: 14px; }
+.as-chip { height: 30px; gap: 6px; font-size: 13px; }
+.as-chip > .as-num { min-width: 20px; height: 20px; padding: 0 6px; line-height: 20px; font-size: 11.5px; }
+.as-chips__sep { margin: 0; }

@@ -362,7 +362,7 @@
             function chip(s) {
                 var n = count(s), on = st.status === s.id;
                 return '<button type="button" class="as-chip' + (on ? ' is-on' : '') + (s.tone ? ' as-chip--' + s.tone : '') + (s.ids ? ' as-chip--group' : '') + '" data-status="' + s.id + '" aria-pressed="' + on + '"' + (!n && !on ? ' data-zero' : '') + '>' +
-                    (s.id !== 'all' && !s.ids ? '<i class="as-chip__dot" aria-hidden="true"></i>' : '') + esc(s.label) + '<span class="as-num">' + fmt.format(n) + '</span></button>';
+                    (s.id !== 'all' && !s.ids && s.tone && s.tone !== 'info' ? '<i class="as-chip__dot" aria-hidden="true"></i>' : '') + esc(s.label) + '<span class="as-num">' + fmt.format(n) + '</span></button>';
             }
             var main = st.e.statuses.filter(function (s) { return !s.more && !s.hidden; });
             var groups = main.filter(function (s) { return s.ids; }), singles = main.filter(function (s) { return !s.ids; });
@@ -375,6 +375,7 @@
                     return '<button type="button" data-status="' + s.id + '"' + (s.id === st.status ? ' class="is-on"' : '') + '><i class="as-chip__dot as-chip--' + (s.tone || 'neutral') + '" aria-hidden="true"></i>' + esc(s.label) + '<span class="as-num as-dd__n">' + fmt.format(count(s)) + '</span></button>';
                 }).join('') + '</div></div>' : '';
             // «الكل» and the groups first, a thin divider, then each stage, then «المزيد»
+            // (a coloured dot only where the colour means something: done, waiting, late, ended; stages in progress have none)
             el.chips.innerHTML = chip({ id: 'all', label: 'الكل', tone: '' }) + groups.map(chip).join('') +
                 (singles.length ? '<span class="as-chips__sep" aria-hidden="true"></span>' : '') + singles.map(chip).join('') + moreHtml;
         }
