@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول | أسس الإنجاز للاستقدام</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../assets/admin/login/css/login.css">
+
+<script type="text/javascript" class="flasher-js">(function() {    var rootScript = 'https://cdn.jsdelivr.net/npm/@flasher/flasher@1.3.2/dist/flasher.min.js';    var FLASHER_FLASH_BAG_PLACE_HOLDER = {};    var options = mergeOptions([], FLASHER_FLASH_BAG_PLACE_HOLDER);    function mergeOptions(first, second) {        return {            context: merge(first.context || {}, second.context || {}),            envelopes: merge(first.envelopes || [], second.envelopes || []),            options: merge(first.options || {}, second.options || {}),            scripts: merge(first.scripts || [], second.scripts || []),            styles: merge(first.styles || [], second.styles || []),        };    }    function merge(first, second) {        if (Array.isArray(first) && Array.isArray(second)) {            return first.concat(second).filter(function(item, index, array) {                return array.indexOf(item) === index;            });        }        return Object.assign({}, first, second);    }    function renderOptions(options) {        if(!window.hasOwnProperty('flasher')) {            console.error('Flasher is not loaded');            return;        }        requestAnimationFrame(function () {            window.flasher.render(options);        });    }    function render(options) {        if ('loading' !== document.readyState) {            renderOptions(options);            return;        }        document.addEventListener('DOMContentLoaded', function() {            renderOptions(options);        });    }    if (1 === document.querySelectorAll('script.flasher-js').length) {        document.addEventListener('flasher:render', function (event) {            render(event.detail);        });            }    if (window.hasOwnProperty('flasher') || !rootScript || document.querySelector('script[src="' + rootScript + '"]')) {        render(options);    } else {        var tag = document.createElement('script');        tag.setAttribute('src', rootScript);        tag.setAttribute('type', 'text/javascript');        tag.onload = function () {            render(options);        };        document.head.appendChild(tag);    }})();</script>
+</head>
+
+<body>
+    <div class="auth">
+        <main class="auth-main">
+            <div class="auth-form-wrap">
+                <div class="auth-form">
+                                            <img class="auth-logo" src="../assets/web/assets/images/logoh.svg" alt="أسس الإنجاز للاستقدام">
+                    
+                    <h1 class="auth-title">مرحباً بعودتك</h1>
+                    <p class="auth-subtitle">سجّل الدخول لإدارة طلبات الاستقدام والعقود</p>
+
+                                                            <div class="auth-alert auth-alert--error" id="form-alert" role="alert" aria-live="assertive"></div>
+
+                    <form id="loginForm" action="../assets/dashboard/login" method="POST" novalidate>
+                        <input type="hidden" name="_token" value="Tt9rp9yiLX2X7kIx8refvf9SFzdnoxBuPAFNcnlS">
+                        <div class="field " data-field="login">
+                            <label class="field-label" for="email">البريد الإلكتروني</label>
+                            <div class="field-control">
+                                <input class="field-input" type="email" id="email" name="login" dir="ltr"
+                                    value="" placeholder="name@example.com"
+                                    autocomplete="username" inputmode="email" autocapitalize="none" spellcheck="false"
+                                    required autofocus aria-describedby="email-error"
+                                    >
+                                <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                            </div>
+                            <p class="field-error" id="email-error"></p>
+                        </div>
+
+                        <div class="field " data-field="password">
+                            <label class="field-label" for="password">كلمة المرور</label>
+                            <div class="field-control">
+                                <input class="field-input field-input--password" type="password" id="password" name="password"
+                                    autocomplete="current-password" required aria-describedby="password-error"
+                                    >
+                                <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                                <button type="button" class="password-toggle" id="password-toggle" aria-controls="password"
+                                    aria-label="إظهار كلمة المرور" aria-pressed="false"
+                                    data-show="إظهار كلمة المرور" data-hide="إخفاء كلمة المرور">
+                                    <svg class="icon-show" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                    <svg class="icon-hide" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                                </button>
+                            </div>
+                            <p class="field-error" id="password-error"></p>
+                        </div>
+
+                        <div class="auth-row">
+                            <label class="checkbox" for="rememberme">
+                                <input type="checkbox" name="rememberme" id="rememberme" value="1" >
+                                تذكرني
+                            </label>
+                                                    </div>
+
+                        <button type="submit" class="btn-submit" id="login-submit">
+                            <span class="spinner" aria-hidden="true"></span>
+                            <span class="btn-label">تسجيل الدخول</span>
+                        </button>
+                    </form>
+                                    </div>
+            </div>
+
+            <p class="auth-footer">© 2026 أسس الإنجاز للاستقدام</p>
+        </main>
+
+        <aside class="auth-panel" aria-hidden="true">
+            <div class="panel-inner">
+                <h2 class="panel-title">لوحة إدارة الاستقدام</h2>
+                <p class="panel-subtitle">كل ما يحتاجه فريقك لإدارة العمل اليومي في مكان واحد.</p>
+                <ul class="panel-features">
+                    <li class="panel-feature">
+                        <span class="panel-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M9 5H7a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V7a2 2 0 0 0-2-2h-2"/><rect x="9" y="3" width="6" height="4" rx="1"/><path d="m9 14 2 2 4-4"/></svg></span>
+                        <div><strong>متابعة طلبات الاستقدام</strong><span>حالة كل طلب من التقديم حتى الوصول.</span></div>
+                    </li>
+                    <li class="panel-feature">
+                        <span class="panel-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5"/><path d="M9 13h6M9 17h4"/></svg></span>
+                        <div><strong>إدارة العقود والمدفوعات</strong><span>عقود العملاء والفواتير والتحصيل.</span></div>
+                    </li>
+                    <li class="panel-feature">
+                        <span class="panel-feature-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 6v6c0 5 3.5 8 8 9 4.5-1 8-4 8-9V6z"/><path d="m9 12 2 2 4-4"/></svg></span>
+                        <div><strong>صلاحيات حسب الدور</strong><span>كل موظف يرى ما يخصّه فقط.</span></div>
+                    </li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <script src="../assets/admin/assets/js/plugins.js"></script>
+    <script>
+        (function () {
+            var i18n = {"submit":"تسجيل الدخول","submitting":"جارٍ تسجيل الدخول…","redirecting":"تم تسجيل الدخول، جارٍ التحويل…","wrongPassword":"كلمة المرور غير صحيحة.","unknownAccount":"لا يوجد حساب مسجّل بهذا البريد الإلكتروني.","serverError":"تعذّر تسجيل الدخول حالياً، حاول مرة أخرى بعد قليل.","networkError":"تعذّر الاتصال بالخادم، تحقّق من الاتصال وحاول مجدداً."};
+
+            var form = document.getElementById('loginForm');
+            var submit = document.getElementById('login-submit');
+            var label = submit.querySelector('.btn-label');
+            var alertBox = document.getElementById('form-alert');
+            var toggle = document.getElementById('password-toggle');
+            var password = document.getElementById('password');
+
+            toggle.addEventListener('click', function () {
+                var show = password.type === 'password';
+                password.type = show ? 'text' : 'password';
+                toggle.setAttribute('aria-pressed', show ? 'true' : 'false');
+                toggle.setAttribute('aria-label', toggle.getAttribute(show ? 'data-hide' : 'data-show'));
+                password.focus();
+            });
+
+            function setLoading(on, text) {
+                submit.disabled = on;
+                submit.classList.toggle('is-loading', on);
+                submit.setAttribute('aria-busy', on ? 'true' : 'false');
+                label.textContent = text || (on ? i18n.submitting : i18n.submit);
+            }
+
+            function clearErrors() {
+                alertBox.textContent = '';
+                form.querySelectorAll('.field').forEach(function (field) {
+                    field.classList.remove('has-error');
+                    field.querySelector('.field-error').textContent = '';
+                    field.querySelector('.field-input').removeAttribute('aria-invalid');
+                });
+            }
+
+            function fieldError(name, message) {
+                var field = form.querySelector('.field[data-field="' + name + '"]');
+                if (!field) { alertBox.textContent = message; return null; }
+                var input = field.querySelector('.field-input');
+                field.classList.add('has-error');
+                field.querySelector('.field-error').textContent = message;
+                input.setAttribute('aria-invalid', 'true');
+                return input;
+            }
+
+            // remove a field's error as soon as the user edits it
+            form.addEventListener('input', function (e) {
+                var field = e.target.closest('.field');
+                if (field && field.classList.contains('has-error')) {
+                    field.classList.remove('has-error');
+                    field.querySelector('.field-error').textContent = '';
+                    e.target.removeAttribute('aria-invalid');
+                }
+            });
+
+            $(form).on('submit', function (e) {
+                e.preventDefault();
+                if (submit.disabled) return false;
+                clearErrors();
+                setLoading(true);
+
+                $.ajax({
+                    url: form.action,
+                    data: $(form).serialize(),
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (result) {
+                        if (result.code === 200) {
+                            setLoading(true, i18n.redirecting);
+                            window.location.href = result.data.url;
+                            return;
+                        }
+                        setLoading(false);
+                        // the endpoint answers HTTP 200 with the outcome in result.code
+                        if (result.code === 402) {
+                            fieldError('password', i18n.wrongPassword).select();
+                        } else if (result.code === 401) {
+                            fieldError('login', i18n.unknownAccount).focus();
+                        } else {
+                            alertBox.textContent = result.message || i18n.serverError;
+                        }
+                    },
+                    error: function (xhr) {
+                        setLoading(false);
+                        if (xhr.status === 422 && xhr.responseJSON && xhr.responseJSON.errors) {
+                            var first = null;
+                            $.each(xhr.responseJSON.errors, function (name, messages) {
+                                var input = fieldError(name, messages[0]);
+                                first = first || input;
+                            });
+                            if (first) first.focus();
+                        } else if (xhr.status === 419) {
+                            // CSRF token expired while the page sat open
+                            window.location.reload();
+                        } else {
+                            alertBox.textContent = xhr.status === 0 ? i18n.networkError : i18n.serverError;
+                        }
+                    }
+                });
+                return false;
+            });
+        })();
+    </script>
+</body>
+
+</html>

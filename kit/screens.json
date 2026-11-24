@@ -1,0 +1,137 @@
+{
+  "screens": {
+    "login": {
+      "route": "/dashboard/login",
+      "title": "تسجيل الدخول",
+      "view": "resources/views/admin/auth/login.blade.php  (AdminController@formLogin)",
+      "group": "عام",
+      "sample_rows": false
+    },
+    "dashboard": {
+      "route": "/dashboard",
+      "title": "الرئيسية",
+      "view": "resources/views/admin/dashboard-new.blade.php  (DashboardController@professional)",
+      "group": "عام",
+      "sample_rows": false
+    },
+    "recruitment-contracts": {
+      "route": "/admin/RecruitmentContract",
+      "title": "عقود الاستقدام",
+      "view": "resources/views/admin/ingaz/RecruitmentContract/index.blade.php",
+      "group": "العقود",
+      "sample_rows": true
+    },
+    "recruitment-contract-create": {
+      "route": "/admin/RecruitmentContract/create",
+      "title": "عقد استقدام جديد",
+      "view": "resources/views/admin/ingaz/RecruitmentContract/create.blade.php",
+      "group": "العقود",
+      "sample_rows": false
+    },
+    "rent-contracts": {
+      "route": "/admin/RentContract",
+      "title": "عقود الإيجار",
+      "view": "resources/views/admin/ingaz/RentContract/index.blade.php",
+      "group": "العقود",
+      "sample_rows": true
+    },
+    "clients": {
+      "route": "/admin/clients",
+      "title": "العملاء",
+      "view": "resources/views/admin/ingaz/clients/index.blade.php",
+      "group": "العملاء والعاملات",
+      "sample_rows": true
+    },
+    "client-create": {
+      "route": "/admin/clients/create",
+      "title": "إضافة عميل",
+      "view": "resources/views/admin/ingaz/clients/create.blade.php",
+      "group": "العملاء والعاملات",
+      "sample_rows": false
+    },
+    "maids": {
+      "route": "/admin/maids",
+      "title": "العاملات",
+      "view": "resources/views/admin/ingaz/maids/index.blade.php",
+      "group": "العملاء والعاملات",
+      "sample_rows": true
+    },
+    "maid-create": {
+      "route": "/admin/maids/create",
+      "title": "إضافة عاملة",
+      "view": "resources/views/admin/ingaz/maids/create.blade.php",
+      "group": "العملاء والعاملات",
+      "sample_rows": false
+    },
+    "shelter-contracts": {
+      "route": "/admin/ShelterContract",
+      "title": "الإيواء",
+      "view": "resources/views/admin/ingaz/ShelterContract/index.blade.php",
+      "group": "العقود",
+      "sample_rows": true
+    },
+    "complaints": {
+      "route": "/admin/complaints",
+      "title": "الشكاوى",
+      "view": "resources/views/admin/ingaz/complaints/index.blade.php",
+      "group": "التشغيل",
+      "sample_rows": true
+    },
+    "finance-claims": {
+      "route": "/admin/finance-claims",
+      "title": "المطالبات المالية",
+      "view": "resources/views/admin/ingaz/finance-claims/index.blade.php",
+      "group": "التشغيل",
+      "sample_rows": false
+    },
+    "orders": {
+      "route": "/admin/orders",
+      "title": "الطلبات",
+      "view": "resources/views/admin/ingaz/orders/index.blade.php",
+      "group": "العقود",
+      "sample_rows": true
+    },
+    "hourly-schedule": {
+      "route": "/admin/hourly/staff-schedule",
+      "title": "جدول العاملات بالساعة",
+      "view": "resources/views/admin/hourly_schedule/index.blade.php",
+      "group": "التأجير بالساعة",
+      "sample_rows": false
+    },
+    "hourly-visits": {
+      "route": "/admin/hourly/visits",
+      "title": "زيارات الساعة",
+      "view": "resources/views/admin/hourly_visits/index.blade.php",
+      "group": "التأجير بالساعة",
+      "sample_rows": false
+    },
+    "employees": {
+      "route": "/admin/employees",
+      "title": "الموظفون",
+      "view": "resources/views/admin/ingaz/employees/index.blade.php",
+      "group": "الإدارة",
+      "sample_rows": false
+    },
+    "admins": {
+      "route": "/dashboard/admins",
+      "title": "المستخدمون والصلاحيات",
+      "view": "resources/views/admin/auth/admin/index.blade.php",
+      "group": "الإدارة",
+      "sample_rows": false
+    },
+    "tasks": {
+      "route": "/admin/tasks",
+      "title": "المهام",
+      "view": "resources/views/admin/ingaz/tasks/index.blade.php",
+      "group": "التشغيل",
+      "sample_rows": true
+    },
+    "settings": {
+      "route": "/admin/settings",
+      "title": "الإعدادات",
+      "view": "resources/views/admin/ingaz/settings/index.blade.php",
+      "group": "الإدارة",
+      "sample_rows": false
+    }
+  }
+}

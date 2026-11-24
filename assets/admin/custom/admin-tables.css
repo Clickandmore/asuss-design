@@ -1,0 +1,2531 @@
+/*
+=======================================================
+   Admin Tables CSS - تصميم احترافي بسيط للجداول الإدارية
+   مأخوذ من تصميم صفحة العقود - طابع احترافي بسيط
+=======================================================
+*/
+
+/* تحسين مظهر البطاقات الرئيسية */
+.card {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: white;
+}
+
+.card-header {
+    background-color: #f8f9fa;
+    border-bottom: 1px solid #e9ecef;
+    border-radius: 8px 8px 0 0;
+    font-weight: 600;
+    color: #333;
+}
+
+/* تحسين مظهر الفلاتر */
+.filters-section {
+    background: #f8f9fa;
+    padding: 20px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #e9ecef;
+}
+
+.filter-card {
+    border: 1px solid #e9ecef;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    background: white;
+}
+
+.filter-card .card-header {
+    background-color: #f8f9fa;
+    color: #333;
+    border-radius: 8px 8px 0 0;
+    border-bottom: 1px solid #e9ecef;
+}
+
+/* تحسين مظهر عناصر النماذج */
+.form-control, .form-select {
+    border-radius: 6px;
+    border: 1px solid #ced4da;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: #80bdff;
+    box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+}
+
+.form-label {
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.5rem;
+}
+
+/* تحسين مظهر الأزرار */
+.btn {
+    border-radius: 6px;
+    font-weight: 500;
+    transition: all 0.15s ease-in-out;
+    padding: 0.5rem 1rem;
+}
+
+.btn-sm {
+    padding: 0.25rem 0.5rem;
+    font-size: 0.875rem;
+    border-radius: 4px;
+}
+
+.btn-action {
+    margin: 0 2px;
+    transition: all 0.15s ease-in-out;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+}
+
+/* تحسين مظهر الجدول */
+.table-responsive {
+    border-radius: 8px;
+    overflow: auto;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    margin-bottom: 30px;
+    background: white;
+}
+
+.table {
+    margin-bottom: 0;
+    border-radius: 8px;
+}
+
+.table th {
+    background-color: #f8f9fa;
+    border-bottom: 2px solid #dee2e6;
+    font-weight: 600;
+    padding: 1rem 0.75rem;
+    text-align: center;
+    color: #333;
+    border-top: none;
+}
+
+.table th:first-child {
+    border-radius: 8px 0 0 0;
+}
+
+.table th:last-child {
+    border-radius: 0 8px 0 0;
+}
+
+.table td {
+    vertical-align: middle;
+    border-color: #dee2e6;
+    padding: 0.75rem;
+    color: #495057;
+}
+
+.table tbody tr {
+    transition: background-color 0.15s ease-in-out;
+}
+
+.table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.table tbody tr:last-child td:first-child {
+    border-radius: 0 0 0 8px;
+}
+
+.table tbody tr:last-child td:last-child {
+    border-radius: 0 0 8px 0;
+}
+
+/* تحسين مظهر البطاقات المعلوماتية */
+.user-info, .maid-info, .contract-info, .trial-info {
+    background: #f8f9fa;
+    padding: 0.5rem;
+    border-radius: 6px;
+    border-left: 3px solid #6c757d;
+    margin: 0.25rem 0;
+    font-size: 0.85rem;
+    line-height: 1.3;
+}
+
+.user-info {
+    text-align: center;
+    border-left-color: #007bff;
+}
+
+.maid-info {
+    text-align: center;
+    border-left-color: #28a745;
+}
+
+.contract-info {
+    border-left-color: #17a2b8;
+    font-size: 0.75rem;
+    line-height: 1.3;
+}
+
+.trial-info {
+    border-left-color: #ffc107;
+}
+
+.user-info strong, .maid-info strong, .contract-info strong {
+    color: #333;
+    font-size: 0.9rem;
+}
+
+.user-info small, .maid-info small {
+    display: block;
+    margin-top: 3px;
+    font-size: 0.75rem;
+    color: #6c757d;
+}
+
+.contract-info div {
+    margin-bottom: 2px;
+    color: #666;
+}
+
+.contract-info strong {
+    color: #333;
+}
+
+/* تحسين مظهر الشارات */
+.badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.65rem;
+    font-weight: 600;
+    border-radius: 4px;
+}
+
+.status-badge {
+    font-size: 0.8rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 600;
+    display: inline-block;
+}
+
+/* تحسين مظهر الرسائل */
+.alert {
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 0.75rem 1.25rem;
+}
+
+.alert-info {
+    background-color: #d1ecf1;
+    border-color: #bee5eb;
+    color: #0c5460;
+}
+
+.alert-success {
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+    color: #155724;
+}
+
+.alert-warning {
+    background-color: #fff3cd;
+    border-color: #ffeaa7;
+    color: #856404;
+}
+
+.alert-danger {
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+    color: #721c24;
+}
+
+/* تحسين مظهر أيقونات Font Awesome */
+.fas, .fa {
+    text-align: center;
+    /* margin-right: 0.5rem; */
+}
+
+/* تحسين مظهر النصوص */
+.text-muted {
+    color: #6c757d !important;
+    font-size: 0.875rem;
+}
+
+.text-primary {
+    color: #007bff !important;
+}
+
+/* تحسين مظهر أيقونة الفلاتر */
+#filtersIcon {
+    transition: transform 0.3s ease;
+}
+
+#filtersCollapse.collapsing #filtersIcon {
+    transform: rotate(180deg);
+}
+
+/* تحسين مظهر حالات التحميل */
+.loading {
+    opacity: 0.6;
+    pointer-events: none;
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #007bff;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/*
+=======================================================
+   إصلاح مشكلة الـ Dropdown في الجداول - حل جذري بسيط
+=======================================================
+*/
+
+/* تحسين مظهر القائمة المنسدلة */
+.dropdown-menu {
+    position: fixed !important;
+    z-index: 2147483647 !important; /* أعلى z-index ممكن */
+    background-color: white !important;
+    border: 2px solid #007bff !important;
+    border-radius: 8px !important;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15) !important;
+    padding: 0.5rem 0 !important;
+    margin: 0 !important;
+    min-width: 200px !important;
+}
+
+.dropdown-item {
+    padding: 0.75rem 1.25rem;
+    color: #333 !important;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    border: none;
+    background: transparent;
+    cursor: pointer !important;
+}
+
+.dropdown-item:hover {
+    background-color: #007bff !important;
+    color: white !important;
+    transform: translateX(-5px);
+}
+
+.dropdown-item i {
+    margin-left: 0.5rem;
+    width: 16px;
+    text-align: center;
+}
+
+/* ضمان ظهور القائمة فوق كل شيء */
+.actions-dropdown .dropdown-menu {
+    display: none;
+}
+
+.actions-dropdown .dropdown-menu.show {
+    display: block !important;
+}
+
+/* إزالة overflow من الحاويات */
+.table-responsive,
+.container-xxl,
+.container-fluid,
+.card,
+.card-body {
+    overflow: auto !important;
+}
+
+/* منع اختفاء القائمة عند hover */
+.dropdown-menu,
+.dropdown-menu * {
+    pointer-events: auto !important;
+}
+
+/* خفض z-index لباقي العناصر عندما تكون القائمة مفتوحة */
+body:has(.dropdown-menu:visible) .table tbody tr {
+    z-index: 1 !important;
+}
+
+body:has(.dropdown-menu:visible) .actions-dropdown .dropdown-toggle {
+    z-index: 2 !important;
+}
+
+/* التأكد من أن القائمة المفتوحة لها أعلى z-index */
+.dropdown-menu:visible {
+    z-index: 2147483647 !important;
+}
+
+/* منع تداخل الأزرار مع القائمة */
+.table tbody tr td {
+    position: relative;
+    z-index: 1;
+}
+
+/* عندما تكون القائمة مفتوحة، خفض z-index للصفوف الأخرى */
+.dropdown-menu-open tbody tr:not(.active-dropdown-row) {
+    z-index: 0 !important;
+}
+
+.dropdown-menu-open tbody tr.active-dropdown-row {
+    z-index: 2147483646 !important;
+}
+
+/* إصلاح نهائي لضمان ظهور القائمة فوق كل شيء */
+.dropdown-menu {
+    position: fixed !important;
+    z-index: 2147483647 !important;
+    isolation: isolate !important;
+}
+
+/* خفض z-index لجميع الأزرار عندما تكون قائمة مفتوحة */
+.dropdown-menu-open .actions-dropdown .dropdown-toggle {
+    position: relative !important;
+    z-index: 1 !important;
+}
+
+/* رفع z-index للزر النشط فقط */
+.dropdown-menu-open .active-dropdown-row .actions-dropdown .dropdown-toggle {
+    z-index: 2147483646 !important;
+}
+
+/* التأكد من أن القائمة تظهر فوق كل شيء */
+.dropdown-menu.show {
+    position: fixed !important;
+    z-index: 2147483647 !important;
+    pointer-events: auto !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+/* منع أي عنصر من الظهور فوق القائمة */
+* {
+    max-z-index: 2147483646 !important;
+}
+
+.dropdown-menu,
+.dropdown-menu.show {
+    z-index: 2147483647 !important;
+}
+
+/* تأثيرات خاصة لعناصر القائمة */
+.actions-dropdown .dropdown-item:hover,
+.actions-dropdown .dropdown-item:focus {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+    color: white !important;
+    transform: translateX(-8px) !important;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.4) !important;
+    border-radius: 8px !important;
+    margin: 0 0.5rem !important;
+}
+
+/* تأثير لمعان لعناصر القائمة */
+.dropdown-item::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.dropdown-item:hover::before {
+    left: 100%;
+}
+
+.dropdown-item.btn-info {
+    color: #0dcaf0;
+}
+
+.dropdown-item.btn-info:hover {
+    background-color: #0dcaf0;
+    color: white;
+}
+
+.dropdown-item.btn-secondary {
+    color: #6c757d;
+}
+
+.dropdown-item.btn-secondary:hover {
+    background-color: #6c757d;
+    color: white;
+}
+
+.dropdown-item.btn-warning {
+    color: #ffc107;
+}
+
+.dropdown-item.btn-warning:hover {
+    background-color: #ffc107;
+    color: white;
+}
+
+.dropdown-item.btn-primary {
+    color: #0d6efd;
+}
+
+.dropdown-item.btn-primary:hover {
+    background-color: #0d6efd;
+    color: white;
+}
+
+.dropdown-item.btn-success {
+    color: #198754;
+}
+
+.dropdown-item.btn-success:hover {
+    background-color: #198754;
+    color: white;
+}
+
+.dropdown-item.btn-danger {
+    color: #dc3545;
+}
+
+.dropdown-item.btn-danger:hover {
+    background-color: #dc3545;
+    color: white;
+}
+
+/* ضمان ظهور القائمة المنسدلة للصف الواحد */
+.table tbody tr:only-child .dropdown-menu {
+    top: 100% !important;
+    bottom: auto !important;
+    margin-top: 5px;
+    position: absolute !important;
+    z-index: 99999 !important;
+    transform: none !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+/* ضمان ظهور القائمة المنسدلة للصفوف الأخيرة */
+.table tbody tr:last-child:not(:only-child) .dropdown-menu {
+    top: auto !important;
+    bottom: 100% !important;
+    margin-bottom: 10px;
+}
+
+/* ضمان ظهور القائمة المنسدلة للصفوف العادية */
+.table tbody tr:not(:last-child):not(:only-child) .dropdown-menu {
+    top: 100% !important;
+    bottom: auto !important;
+    margin-top: 5px;
+}
+
+/* إضافة مساحة للصف الواحد */
+.table tbody tr:only-child {
+    margin-bottom: 200px !important;
+}
+
+/* ضمان عدم قطع القائمة */
+.table-container {
+    overflow: visible !important;
+}
+
+.table {
+    overflow: visible !important;
+}
+
+.table tbody {
+    overflow: visible !important;
+}
+
+.table-responsive {
+    overflow: auto !important;
+}
+
+/* تحسين تصميم القائمة المنسدلة */
+.dropdown-menu {
+    background-color: white;
+    border: 1px solid #dee2e6;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+    border-radius: 0.375rem;
+    min-width: 160px;
+    padding: 0.5rem 0;
+}
+
+/* إضافة تأثير بصري للقائمة المنسدلة */
+.dropdown-menu.show {
+    animation: dropdownFadeIn 0.2s ease-out;
+}
+
+@keyframes dropdownFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* منع اختفاء القائمة المنسدلة عند hover على صفوف أخرى */
+.dropdown-menu.show {
+    pointer-events: auto !important;
+    z-index: 2147483647 !important;
+}
+
+.dropdown.show .dropdown-menu {
+    display: block !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+}
+
+/* تحسين تأثير hover للصفوف مع القوائم المنسدلة */
+.table tbody tr.table-row-hover {
+    background-color: #f8f9fa;
+    transition: background-color 0.15s ease-in-out;
+}
+
+/* منع تأثير hover عند وجود قائمة منسدلة مفتوحة */
+.table tbody tr:has(.dropdown-menu.show) {
+    background-color: #e3f2fd !important;
+}
+
+.table tbody tr:has(.dropdown-menu.show):hover {
+    background-color: #e3f2fd !important;
+}
+
+/* إصلاح z-index للقائمة المنسدلة */
+.dropdown-menu {
+    z-index: 2147483647 !important;
+    position: fixed !important;
+}
+
+/* ضمان بقاء القائمة مرئية */
+.actions-dropdown .dropdown-menu.show {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    position: fixed !important;
+    z-index: 2147483647 !important;
+    transform: none !important;
+    max-height: none !important;
+    overflow: visible !important;
+}
+
+/* إصلاح مشكلة القطع للجداول */
+.table-responsive {
+    overflow: auto !important;
+}
+
+.table-responsive .table {
+    overflow: auto !important;
+}
+
+.table tbody tr {
+    position: relative;
+}
+
+.table tbody tr .dropdown {
+    position: static;
+}
+
+/* ضمان ظهور القائمة حتى لو كانت خارج حدود الجدول */
+.dropdown-menu.show {
+    position: fixed !important;
+    z-index: 9999999 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    min-height: auto !important;
+    max-height: none !important;
+    overflow: visible !important;
+    clip: none !important;
+    clip-path: none !important;
+    transform: none !important;
+    top: auto !important;
+    left: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    margin: 0 !important;
+    background: white !important;
+    border: 2px solid #007bff !important;
+    box-shadow: 0 10px 40px rgba(0, 123, 255, 0.4) !important;
+    border-radius: 12px !important;
+}
+
+/* إزالة أي تأثيرات قد تخفي القائمة */
+.dropdown-menu.show,
+.dropdown-menu.show * {
+    will-change: auto !important;
+    backface-visibility: visible !important;
+    perspective: none !important;
+    transform-style: flat !important;
+}
+
+/* ضمان عدم تأثير أي عنصر من إخفاء القائمة */
+body:has(.dropdown-menu.show) * {
+    z-index: auto !important;
+}
+
+body:has(.dropdown-menu.show) .dropdown-menu.show {
+    z-index: 9999999 !important;
+}
+
+/* إزالة أي overflow قد يخفي القائمة */
+.table-responsive,
+.container-xxl,
+.container-fluid,
+.card,
+.card-body,
+body,
+html {
+    overflow: auto !important;
+}
+
+/* ضمان عدم تأثير الجدول على القائمة */
+.table {
+    overflow: visible !important;
+    position: relative !important;
+    z-index: auto !important;
+}
+
+.table tbody tr {
+    overflow: visible !important;
+    position: relative !important;
+    z-index: auto !important;
+}
+
+.table tbody tr td {
+    overflow: visible !important;
+    position: relative !important;
+    z-index: auto !important;
+}
+
+/* ضمان ظهور القائمة حتى لو كانت خارج حدود الجدول */
+.actions-dropdown {
+    position: static !important;
+    overflow: visible !important;
+    z-index: auto !important;
+}
+
+.actions-dropdown.show {
+    z-index: 9999998 !important;
+}
+
+/* منع أي عنصر من إخفاء القائمة */
+.dropdown-menu.show {
+    isolation: isolate !important;
+    contain: none !important;
+}
+
+/* إصلاح خاص للـ overlay */
+#dropdown-overlay {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    z-index: 9999998 !important;
+    pointer-events: none !important;
+    background: transparent !important;
+    display: block !important;
+}
+
+/* إصلاح للصفوف القليلة */
+.table tbody tr:nth-last-child(-n+2) .dropdown-menu {
+    position: fixed !important;
+    z-index: 9999999 !important;
+}
+
+/* إصلاح خاص للصف الأول */
+.table tbody tr:first-child .dropdown-menu {
+    position: fixed !important;
+    z-index: 9999999 !important;
+    top: auto !important;
+}
+
+/* إصلاح للصف الأول عندما يكون الوحيد */
+.table tbody tr:first-child:last-child .dropdown-menu {
+    position: fixed !important;
+    z-index: 9999999 !important;
+}
+
+/* إصلاح عام لجميع القوائم المنسدلة في الجداول */
+.table .dropdown-menu {
+    position: fixed !important;
+    z-index: 9999999 !important;
+    white-space: nowrap !important;
+    max-height: 300px !important;
+    overflow-y: auto !important;
+}
+
+/* ضمان عدم قطع القائمة في أي حالة */
+.table tbody tr .dropdown-menu.show {
+    position: fixed !important;
+    z-index: 9999999 !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+    transform: none !important;
+    clip: none !important;
+    clip-path: none !important;
+    overflow: visible !important;
+}
+
+/* تحسين التجاوب للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .table th, .table td {
+        padding: 0.5rem 0.25rem;
+        font-size: 0.875rem;
+    }
+
+    .btn {
+        padding: 0.4rem 0.8rem;
+        font-size: 0.875rem;
+    }
+
+    .btn-sm {
+        padding: 0.25rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .badge {
+        font-size: 0.7rem;
+        padding: 0.3rem 0.6rem;
+    }
+
+    .user-info, .maid-info, .contract-info, .trial-info {
+        padding: 0.5rem;
+        font-size: 0.875rem;
+    }
+
+    .filters-section {
+        padding: 15px;
+    }
+
+    .dropdown-menu {
+        min-width: 140px;
+        font-size: 0.875rem;
+    }
+
+    .dropdown-item {
+        padding: 0.5rem 0.75rem;
+    }
+}
+
+/* تحسين الطباعة */
+@media print {
+    .btn, .dropdown, .filters-section {
+        display: none !important;
+    }
+
+    .table {
+        border: 1px solid #000 !important;
+    }
+
+    .table th, .table td {
+        border: 1px solid #000 !important;
+        color: #000 !important;
+        background: white !important;
+    }
+
+    .card {
+        box-shadow: none !important;
+        border: 1px solid #000 !important;
+    }
+}
+
+/*
+=======================================================
+   تصميم صفحات التفاصيل (Details Pages)
+   مأخوذ من تصميم صفحة تفاصيل العقد
+=======================================================
+*/
+
+/* تحسين المظهر العام لصفحات التفاصيل */
+.details-container {
+    background: #f8f9fa;
+    border-radius: 15px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.details-header {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.details-header h2, .details-header h3 {
+    margin: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.details-header .status-info {
+    background: rgba(255,255,255,0.2);
+    padding: 8px 16px;
+    border-radius: 20px;
+    display: inline-block;
+    margin-top: 10px;
+    font-weight: 600;
+}
+
+/* تحسين البطاقات المعلوماتية */
+.info-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    border-left: 4px solid #007bff;
+    transition: all 0.3s ease;
+}
+
+.info-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.info-card.client-info {
+    border-left-color: #28a745;
+}
+
+.info-card.maid-info {
+    border-left-color: #ffc107;
+}
+
+.info-card.contract-info {
+    border-left-color: #17a2b8;
+}
+
+.info-card.financial-info {
+    border-left-color: #dc3545;
+}
+
+.info-card.trial-info {
+    border-left-color: #6f42c1;
+}
+
+.info-card.sponsor-info {
+    border-left-color: #20c997;
+}
+
+.info-card.history-info {
+    border-left-color: #fd7e14;
+}
+
+.card-title {
+    font-size: 18px;
+    font-weight: bold;
+    color: #495057;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+}
+
+.card-title i {
+    margin-left: 10px;
+    font-size: 20px;
+}
+
+.info-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+    border-bottom: 1px solid #f8f9fa;
+}
+
+.info-row:last-child {
+    border-bottom: none;
+}
+
+.info-label {
+    font-weight: 600;
+    color: #495057;
+    min-width: 150px;
+}
+
+.info-value {
+    color: #212529;
+    text-align: left;
+}
+
+.info-value.highlight {
+    color: #007bff;
+    font-weight: 600;
+}
+
+.info-value.success {
+    color: #28a745;
+    font-weight: 600;
+}
+
+.info-value.warning {
+    color: #ffc107;
+    font-weight: 600;
+}
+
+.info-value.danger {
+    color: #dc3545;
+    font-weight: 600;
+}
+
+.info-value.info {
+    color: #17a2b8;
+    font-weight: 600;
+}
+
+/* تحسين أزرار الإجراءات */
+.action-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    margin-top: 30px;
+    flex-wrap: wrap;
+}
+
+.btn-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+    text-decoration: none;
+    color: white;
+}
+
+.btn-icon:hover {
+    transform: scale(1.1);
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    color: white;
+    text-decoration: none;
+}
+
+.btn-print {
+    background: linear-gradient(135deg, #007bff, #0056b3);
+}
+
+.btn-edit {
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+}
+
+.btn-back {
+    background: linear-gradient(135deg, #6c757d, #545b62);
+}
+
+.btn-delete {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+}
+
+.btn-change-maid {
+    background: linear-gradient(135deg, #ffc107, #e0a800);
+}
+
+.btn-approve {
+    background: linear-gradient(135deg, #28a745, #1e7e34);
+}
+
+.btn-reject {
+    background: linear-gradient(135deg, #dc3545, #c82333);
+}
+
+/* تحسين البادجات في صفحات التفاصيل */
+.details-badge {
+    font-size: 0.9rem;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
+    border-radius: 25px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.details-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* تحسين الجداول في صفحات التفاصيل */
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 15px;
+}
+
+.info-table th {
+    background: #f8f9fa;
+    padding: 12px;
+    text-align: center;
+    font-weight: 600;
+    color: #495057;
+    border: 1px solid #dee2e6;
+}
+
+.info-table td {
+    padding: 12px;
+    text-align: center;
+    border: 1px solid #dee2e6;
+    color: #212529;
+}
+
+.info-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* تصميم Timeline للسجلات */
+.timeline {
+    position: relative;
+    padding-left: 30px;
+    margin-top: 20px;
+}
+
+.timeline::before {
+    content: '';
+    position: absolute;
+    left: 15px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(135deg, #007bff, #0056b3);
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.timeline-marker {
+    position: absolute;
+    left: -22px;
+    top: 5px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid white;
+    box-shadow: 0 0 0 2px #007bff;
+}
+
+.timeline-marker.success {
+    background-color: #28a745;
+    box-shadow: 0 0 0 2px #28a745;
+}
+
+.timeline-marker.danger {
+    background-color: #dc3545;
+    box-shadow: 0 0 0 2px #dc3545;
+}
+
+.timeline-marker.warning {
+    background-color: #ffc107;
+    box-shadow: 0 0 0 2px #ffc107;
+}
+
+.timeline-marker.info {
+    background-color: #17a2b8;
+    box-shadow: 0 0 0 2px #17a2b8;
+}
+
+.timeline-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    border-left: 3px solid #007bff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+}
+
+.timeline-content:hover {
+    transform: translateX(5px);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+.timeline-content.success {
+    border-left-color: #28a745;
+}
+
+.timeline-content.danger {
+    border-left-color: #dc3545;
+}
+
+.timeline-content.warning {
+    border-left-color: #ffc107;
+}
+
+.timeline-content.info {
+    border-left-color: #17a2b8;
+}
+
+.timeline-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #333;
+}
+
+.timeline-text {
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* تحسين التجاوب لصفحات التفاصيل */
+@media (max-width: 768px) {
+    .details-header {
+        padding: 15px;
+    }
+
+    .details-header h2, .details-header h3 {
+        font-size: 20px;
+    }
+
+    .info-card {
+        padding: 15px;
+        margin-bottom: 15px;
+    }
+
+    .card-title {
+        font-size: 16px;
+    }
+
+    .info-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+
+    .info-label {
+        min-width: auto;
+        font-size: 0.9rem;
+    }
+
+    .info-value {
+        font-size: 0.9rem;
+    }
+
+    .btn-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 18px;
+    }
+
+    .action-buttons {
+        gap: 10px;
+    }
+
+    .timeline {
+        padding-left: 25px;
+    }
+
+    .timeline-marker {
+        left: -18px;
+        width: 10px;
+        height: 10px;
+    }
+
+    .timeline-content {
+        padding: 15px;
+    }
+
+    .timeline-title {
+        font-size: 1rem;
+    }
+
+    .timeline-text {
+        font-size: 0.85rem;
+    }
+}
+/* تحسين مظهر بادجات حالات العقود */
+.status-badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    font-weight: 600;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.status-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* تحسين ألوان البادجات لتكون أكثر وضوحاً */
+.badge.bg-primary {
+    background-color: #0d6efd !important;
+    color: white !important;
+}
+
+.badge.bg-success {
+    background-color: #198754 !important;
+    color: white !important;
+}
+
+.badge.bg-warning {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.badge.bg-info {
+    background-color: #2794eb!important;
+    color: white !important;
+}
+
+.badge.bg-danger {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
+.badge.bg-secondary {
+    background-color: #6c757d !important;
+    color: white !important;
+}
+
+.badge.bg-dark {
+    background-color: #212529 !important;
+    color: white !important;
+}
+
+/* تحسين مظهر البادجات في الجداول */
+.table .badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.65rem;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* تحسين مظهر البادجات في البطاقات */
+.card .badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* تأثيرات إضافية للبادجات */
+.badge {
+    position: relative;
+    overflow: hidden;
+}
+
+.badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.badge:hover::before {
+    left: 100%;
+}
+
+/* ألوان مخصصة لحالات محددة */
+.badge.bg-msaned {
+    background-color: #2794eb!important;
+    color: white !important;
+}
+
+.badge.bg-tafwed {
+    background-color: #0d6efd !important;
+    color: white !important;
+}
+
+.badge.bg-taffez {
+    background-color: #198754 !important;
+    color: white !important;
+}
+
+.badge.bg-tazker {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.badge.bg-arrival {
+    background-color: #198754 !important;
+    color: white !important;
+}
+
+.badge.bg-sari {
+    background-color: #0d6efd !important;
+    color: white !important;
+}
+
+.badge.bg-closed {
+    background-color: #6c757d !important;
+    color: white !important;
+}
+
+.badge.bg-shelter {
+    background-color: #212529 !important;
+    color: white !important;
+}
+
+.badge.bg-pending_maid_selection {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+/*
+=======================================================
+   إصلاح مشكلة القائمة الجانبية المعكوسة
+   للصفحات التي تعاني من مشكلة RTL/LTR
+=======================================================
+*/
+
+/* إصلاح عام للقائمة الجانبية */
+body.rtl-fix {
+    direction: rtl !important;
+}
+
+body.rtl-fix .sidebar {
+    right: 0 !important;
+    left: auto !important;
+    direction: rtl !important;
+}
+
+body.rtl-fix .main-content {
+    margin-right: 250px !important;
+    margin-left: 0 !important;
+    direction: rtl !important;
+}
+
+body.rtl-fix .container-xxl {
+    direction: rtl !important;
+}
+
+/* إصلاح عناصر أخرى قد تكون معكوسة */
+body.rtl-fix .card,
+body.rtl-fix .table,
+body.rtl-fix .btn {
+    direction: rtl !important;
+}
+
+body.rtl-fix .dropdown-menu {
+    right: 0 !important;
+    left: auto !important;
+}
+
+/* إصلاح النصوص والأيقونات */
+body.rtl-fix .fas,
+body.rtl-fix .fa {
+    margin-right: 0.5rem !important;
+    margin-left: 0 !important;
+}
+
+/* إصلاح التنقل والروابط */
+body.rtl-fix .breadcrumb {
+    direction: rtl !important;
+}
+
+body.rtl-fix .nav {
+    direction: rtl !important;
+}
+
+/* إصلاح الجداول */
+body.rtl-fix .table th,
+body.rtl-fix .table td {
+    text-align: right !important;
+}
+
+/* إصلاح النماذج */
+body.rtl-fix .form-control,
+body.rtl-fix .form-select {
+    text-align: right !important;
+}
+
+/* إصلاح الأزرار */
+body.rtl-fix .btn {
+    text-align: center !important;
+}
+
+/* إصلاح التجاوب للشاشات الصغيرة */
+@media (max-width: 768px) {
+    body.rtl-fix .main-content {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+
+    body.rtl-fix .sidebar {
+        right: -250px !important;
+        left: auto !important;
+    }
+
+    body.rtl-fix .sidebar.show {
+        right: 0 !important;
+        left: auto !important;
+    }
+}
+
+/* منع تأثير hover على القائمة المنسدلة المفتوحة */
+.dropdown-menu.show {
+    pointer-events: auto !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 2147483647 !important;
+    position: fixed !important;
+}
+
+/* منع اختفاء القائمة عند hover على عناصر أخرى */
+.table tbody tr:has(.dropdown-menu.show) {
+    background-color: #e3f2fd !important;
+}
+
+.table tbody tr:has(.dropdown-menu.show):hover {
+    background-color: #e3f2fd !important;
+}
+
+/* ضمان بقاء القائمة مرئية حتى لو hover على عناصر أخرى */
+.dropdown-menu.show,
+.dropdown-menu.show * {
+    pointer-events: auto !important;
+    user-select: none !important;
+}
+
+/* منع تأثير أي hover على القائمة المفتوحة */
+.actions-dropdown:has(.dropdown-menu.show) {
+    position: relative !important;
+    z-index: 2147483647 !important;
+}
+
+.actions-dropdown:has(.dropdown-menu.show) .dropdown-menu {
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}
+
+/* إزالة تأثير hover من الصفوف الأخرى عند وجود قائمة مفتوحة */
+.table:has(.dropdown-menu.show) tbody tr:not(:has(.dropdown-menu.show)):hover {
+    background-color: transparent !important;
+}
+
+.table:has(.dropdown-menu.show) tbody tr:not(:has(.dropdown-menu.show)) .table-row-hover {
+    background-color: transparent !important;
+}
+
+/*
+=======================================================
+   تحسين تصميم زر الإجراءات
+=======================================================
+*/
+
+/* تصميم زر الإجراءات الأساسي */
+.actions-dropdown .dropdown-toggle {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%) !important;
+    border: 2px solid #5a67d8 !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px !important;
+    font-size: 0.875rem !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+    min-width: 100px !important;
+    text-align: center !important;
+    position: relative !important;
+    overflow: hidden !important;
+}
+
+/* تأثير hover للزر */
+.actions-dropdown .dropdown-toggle:hover {
+    background: linear-gradient(135deg, #5a67d8 0%, #667eea 100%) !important;
+    border-color: #4c51bf !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+    color: white !important;
+}
+
+/* تأثير active/focus للزر */
+.actions-dropdown .dropdown-toggle:active,
+.actions-dropdown .dropdown-toggle:focus,
+.actions-dropdown .dropdown-toggle.show {
+    background: linear-gradient(135deg, #4c51bf 0%, #5a67d8 100%) !important;
+    border-color: #434190 !important;
+    box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.2) !important;
+    color: white !important;
+    outline: none !important;
+}
+
+/* أيقونة الإعدادات */
+.actions-dropdown .dropdown-toggle i {
+    margin-left: 0.5rem !important;
+    font-size: 0.875rem !important;
+    transition: transform 0.3s ease !important;
+}
+
+/* تحريك الأيقونة عند hover */
+.actions-dropdown .dropdown-toggle:hover i {
+    transform: rotate(90deg) !important;
+}
+
+/* تأثير لمعان للزر */
+.actions-dropdown .dropdown-toggle::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+}
+
+.actions-dropdown .dropdown-toggle:hover::before {
+    left: 100%;
+}
+
+/* تصميم بديل للزر (أكثر بساطة) */
+.actions-dropdown .btn-outline-secondary {
+    background: white !important;
+    border: 2px solid #6c757d !important;
+    color: #495057 !important;
+    font-weight: 600 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px !important;
+    font-size: 0.875rem !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+    min-width: 100px !important;
+    text-align: center !important;
+}
+
+.actions-dropdown .btn-outline-secondary:hover {
+    background: #6c757d !important;
+    border-color: #545b62 !important;
+    color: white !important;
+    transform: translateY(-1px) !important;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+.actions-dropdown .btn-outline-secondary:active,
+.actions-dropdown .btn-outline-secondary:focus,
+.actions-dropdown .btn-outline-secondary.show {
+    background: #545b62 !important;
+    border-color: #4e555b !important;
+    color: white !important;
+    box-shadow: 0 0 0 3px rgba(108, 117, 125, 0.2) !important;
+    outline: none !important;
+}
+
+/* تصميم الزر الجديد btn-primary */
+.actions-dropdown .btn-primary.actions-btn {
+    background: linear-gradient(135deg, #007bff 0%, #0056b3 100%) !important;
+    border: 2px solid #0056b3 !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 0.5rem 1rem !important;
+    border-radius: 8px !important;
+    font-size: 0.875rem !important;
+    transition: all 0.3s ease !important;
+    box-shadow: 0 3px 6px rgba(0, 123, 255, 0.2) !important;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1) !important;
+    min-width: 110px !important;
+    text-align: center !important;
+    position: relative !important;
+    overflow: hidden !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+}
+
+/* تأثير hover للزر الجديد */
+.actions-dropdown .btn-primary.actions-btn:hover {
+    background: linear-gradient(135deg, #0056b3 0%, #004085 100%) !important;
+    border-color: #004085 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 5px 12px rgba(0, 123, 255, 0.3) !important;
+    color: white !important;
+}
+
+/* تأثير active/focus للزر الجديد */
+.actions-dropdown .btn-primary.actions-btn:active,
+.actions-dropdown .btn-primary.actions-btn:focus,
+.actions-dropdown .btn-primary.actions-btn.show,
+.actions-dropdown .btn-primary.actions-btn[aria-expanded="true"] {
+    background: linear-gradient(135deg, #004085 0%, #002752 100%) !important;
+    border-color: #002752 !important;
+    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.25), 0 5px 12px rgba(0, 123, 255, 0.3) !important;
+    color: white !important;
+    outline: none !important;
+    transform: translateY(-1px) !important;
+}
+
+/* أيقونة الإعدادات للزر الجديد */
+.actions-dropdown .btn-primary.actions-btn i {
+    font-size: 0.875rem !important;
+    transition: transform 0.3s ease !important;
+}
+
+/* تحريك الأيقونة عند hover للزر الجديد */
+.actions-dropdown .btn-primary.actions-btn:hover i {
+    transform: rotate(180deg) !important;
+}
+
+/* تأثير لمعان للزر الجديد */
+.actions-dropdown .btn-primary.actions-btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.6s ease;
+}
+
+.actions-dropdown .btn-primary.actions-btn:hover::before {
+    left: 100%;
+}
+
+/* تحسين للشاشات الصغيرة */
+@media (max-width: 768px) {
+    .actions-dropdown .dropdown-toggle {
+        padding: 0.4rem 0.8rem !important;
+        font-size: 0.8rem !important;
+        min-width: 80px !important;
+    }
+
+    .actions-dropdown .dropdown-toggle i {
+        font-size: 0.8rem !important;
+    }
+}
+
+/* تحسين موضع الزر في الجدول */
+.table td .actions-dropdown {
+    display: flex !important;
+    justify-content: center !important;
+    align-items: center !important;
+    min-height: 50px !important;
+}
+
+/* ضمان وضوح الزر في الصفوف */
+.table tbody tr td:last-child {
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding: 0.75rem !important;
+}
+
+/* تأثير خاص عند hover على الصف */
+.table tbody tr:hover .actions-dropdown .dropdown-toggle {
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3) !important;
+    border-color: #667eea !important;
+}
+
+/* ضمان ظهور الزر بوضوح */
+.actions-dropdown {
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+/* تحسين النص داخل الزر */
+.actions-dropdown .dropdown-toggle {
+    white-space: nowrap !important;
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 0.5rem !important;
+}
+
+/* تأثير عند فتح القائمة */
+.actions-dropdown.show .dropdown-toggle,
+.actions-dropdown .dropdown-toggle[aria-expanded="true"] {
+    background: linear-gradient(135deg, #4c51bf 0%, #5a67d8 100%) !important;
+    border-color: #434190 !important;
+    box-shadow: 0 0 0 3px rgba(90, 103, 216, 0.2), 0 4px 12px rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-1px) !important;
+}
+
+/* تحسين للوضوح في الخلفيات المختلفة */
+.table-striped tbody tr:nth-of-type(odd) .actions-dropdown .dropdown-toggle {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15) !important;
+}
+
+.table-striped tbody tr:nth-of-type(even) .actions-dropdown .dropdown-toggle {
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1) !important;
+}
+
+/*
+=======================================================
+    بطاقات الإحصائيات - تصميم احترافي
+=======================================================
+*/
+.statistics-card {
+    border: none;
+    border-radius: 10px;
+    transition: all 0.3s ease;
+    background: #fff;
+}
+
+.statistics-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1) !important;
+}
+
+.statistics-card .card-body {
+    padding: 1.5rem;
+}
+
+.statistics-card .text-xs {
+    font-size: 0.875rem;
+    color: #6c757d;
+}
+
+.statistics-card .h5 {
+    font-size: 1.75rem;
+    margin-top: 0.5rem;
+}
+
+.statistics-card i {
+    opacity: 0.3;
+    color: #6c757d;
+}
+
+/* ألوان مخصصة لكل نوع من الإحصائيات */
+.statistics-card.pending-card {
+    border-right: 4px solid #ffc107;
+}
+
+.statistics-card.pending-card i {
+    color: #ffc107;
+}
+
+.statistics-card.trial-card {
+    border-right: 4px solid #007bff;
+}
+
+.statistics-card.trial-card i {
+    color: #007bff;
+}
+
+.statistics-card.transferred-card {
+    border-right: 4px solid #28a745;
+}
+
+.statistics-card.transferred-card i {
+    color: #28a745;
+}
+
+.statistics-card.failed-card {
+    border-right: 4px solid #dc3545;
+}
+
+.statistics-card.failed-card i {
+    color: #dc3545;
+}
+
+/* إحصائيات الإيواء */
+.statistics-card.total-card {
+    border-right: 4px solid #6c757d;
+}
+
+.statistics-card.total-card i {
+    color: #6c757d;
+}
+
+.statistics-card.wants-work-card {
+    border-right: 4px solid #28a745;
+}
+
+.statistics-card.wants-work-card i {
+    color: #28a745;
+}
+
+.statistics-card.deportation-card {
+    border-right: 4px solid #ffc107;
+}
+
+.statistics-card.deportation-card i {
+    color: #ffc107;
+}
+
+.statistics-card.undecided-card {
+    border-right: 4px solid #6c757d;
+}
+
+.statistics-card.undecided-card i {
+    color: #6c757d;
+}
+
+.statistics-card.within-guarantee-card {
+    border-right: 4px solid #17a2b8;
+}
+
+.statistics-card.within-guarantee-card i {
+    color: #17a2b8;
+}
+
+.statistics-card.expired-guarantee-card {
+    border-right: 4px solid #dc3545;
+}
+
+.statistics-card.expired-guarantee-card i {
+    color: #dc3545;
+}
+
+/* إحصائيات مرحلة الترحيل */
+.statistics-card.deportation-total-card {
+    border-right: 4px solid #6c757d;
+}
+
+.statistics-card.deportation-total-card i {
+    color: #6c757d;
+}
+
+.statistics-card.deportation-not-started-card {
+    border-right: 4px solid #ffc107;
+}
+
+.statistics-card.deportation-not-started-card i {
+    color: #ffc107;
+}
+
+.statistics-card.deportation-in-progress-card {
+    border-right: 4px solid #007bff;
+}
+
+.statistics-card.deportation-in-progress-card i {
+    color: #007bff;
+}
+
+.statistics-card.deportation-tickets-booked-card {
+    border-right: 4px solid #28a745;
+}
+
+.statistics-card.deportation-tickets-booked-card i {
+    color: #28a745;
+}
+
+.statistics-card.deportation-completed-card {
+    border-right: 4px solid #dc3545;
+}
+
+.statistics-card.deportation-completed-card i {
+    color: #dc3545;
+}
+
+/*
+=======================================================
+    إصلاح مشكلة الـ Dropdown في الجداول - حل جذري بسيط
+=======================================================
+*/
+
+/* ========================================= */
+/* Enhanced Sidebar Design - Admin Tables Style */
+/* ========================================= */
+
+/* إعادة تعريف الألوان الأساسية */
+:root {
+    --primary-color: #007bff;
+    --secondary-color: #6c757d;
+    --success-color: #28a745;
+    --danger-color: #dc3545;
+    --warning-color: #ffc107;
+    --info-color: #17a2b8;
+    --light-color: #f8f9fa;
+    --dark-color: #343a40;
+    --body-bg: #ffffff;
+    --sidebar-bg: #f8f9fa;
+    --text-color: #333333;
+    --text-muted: #6c757d;
+    --border-color: #e9ecef;
+}
+/* NOTE: the sidebar design system that used to live here was removed.
+ * The sidebar is now styled solely by admin/assets/css/sidebar-custom.css
+ * (two competing stylesheets fought over it: the !important rules here forced
+ *  white-space:nowrap on sub-menu links but flipped to normal on :hover, which
+ *  collapsed nested labels to one word per line). */
+
+
+/*
+=======================================================
+   Clean Modern Loader - النسخة النظيفة الموحدة
+   بدون خطوط طويلة - فقط نقاط أنيقة
+=======================================================
+*/
+
+/* Main Clean Loader */
+.clean-loader {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    width: 80px;
+    height: 80px;
+    margin: 0 auto;
+}
+
+.loader-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, #4a90e2, #50c878);
+    animation: bounce 1.4s ease-in-out infinite both;
+    box-shadow: 0 2px 8px rgba(74, 144, 226, 0.3);
+}
+
+.loader-dot:nth-child(1) { animation-delay: -0.32s; }
+.loader-dot:nth-child(2) { animation-delay: -0.16s; }
+.loader-dot:nth-child(3) { animation-delay: 0s; }
+.loader-dot:nth-child(4) { animation-delay: 0.16s; }
+
+/* Small Loader Variant */
+.clean-loader-small {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 4px;
+}
+
+.loader-dot-small {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #4a90e2;
+    animation: bounce 1.4s ease-in-out infinite both;
+}
+
+.loader-dot-small:nth-child(1) { animation-delay: -0.32s; }
+.loader-dot-small:nth-child(2) { animation-delay: -0.16s; }
+.loader-dot-small:nth-child(3) { animation-delay: 0s; }
+
+/* Extra Small Loader */
+.clean-loader-xs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+}
+
+.loader-dot-xs {
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: #4a90e2;
+    animation: bounce 1.4s ease-in-out infinite both;
+}
+
+.loader-dot-xs:nth-child(1) { animation-delay: -0.32s; }
+.loader-dot-xs:nth-child(2) { animation-delay: -0.16s; }
+.loader-dot-xs:nth-child(3) { animation-delay: 0s; }
+
+/* Clean Bounce Animation - بدون دوران أو خطوط */
+@keyframes bounce {
+    0%, 80%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+    }
+    40% {
+        transform: scale(1.2);
+        opacity: 1;
+    }
+}
+
+/* Loading Overlay Styles */
+.clean-loading-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(74, 144, 226, 0.1), rgba(80, 200, 120, 0.1));
+    backdrop-filter: blur(5px);
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.375rem;
+}
+
+.clean-loading-text {
+    font-size: 16px;
+    font-weight: 600;
+    color: #4a90e2;
+    margin-bottom: 8px;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.clean-loading-subtitle {
+    font-size: 14px;
+    color: #6c757d;
+    font-weight: 400;
+}
+
+/* Color Variants */
+.clean-loader.primary .loader-dot { background: linear-gradient(45deg, #007bff, #0056b3); }
+.clean-loader.success .loader-dot { background: linear-gradient(45deg, #28a745, #1e7e34); }
+.clean-loader.warning .loader-dot { background: linear-gradient(45deg, #ffc107, #e0a800); }
+.clean-loader.danger .loader-dot { background: linear-gradient(45deg, #dc3545, #c82333); }
+.clean-loader.info .loader-dot { background: linear-gradient(45deg, #17a2b8, #138496); }
+
+/* Responsive */
+@media (max-width: 768px) {
+    .clean-loader {
+        width: 60px;
+        height: 60px;
+        gap: 6px;
+    }
+
+    .loader-dot {
+        width: 10px;
+        height: 10px;
+    }
+}
+
+/*
+=======================================================
+   تصميم صفحات إضافة العقود - التصميم الموحد
+   Rental & Recruitment Contracts Forms
+=======================================================
+*/
+
+/* متغيرات الألوان */
+:root {
+    --contract-primary: #2794eb;
+    --contract-primary-dark: #1e7bc8;
+    --contract-primary-light: #e3f2fd;
+    --contract-success: #48bb78;
+    --contract-success-dark: #38a169;
+    --contract-border: #e2e8f0;
+    --contract-text: #2d3748;
+    --contract-text-muted: #718096;
+    --contract-shadow: 0 4px 15px rgba(39, 148, 235, 0.1);
+}
+
+/* رأس العقد */
+.contract-header {
+    background: linear-gradient(135deg, var(--contract-primary), var(--contract-primary-dark));
+    border-radius: 12px;
+    padding: 1.5rem;
+    color: white;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--contract-shadow);
+}
+
+.contract-header h4 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.contract-header p {
+    font-size: 0.9rem;
+    opacity: 0.9;
+    margin: 0;
+}
+
+/* أقسام النموذج */
+.form-section {
+    background: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--contract-shadow);
+    border-left: 4px solid var(--contract-primary);
+    transition: all 0.3s ease;
+}
+
+.form-section:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(39, 148, 235, 0.15);
+}
+
+/* رأس القسم */
+.section-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #f1f3f4;
+}
+
+.section-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--contract-primary);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-left: 8px;
+    color: white;
+    font-size: 16px;
+    margin-left: 12px;
+    box-shadow: 0 2px 8px rgba(39, 148, 235, 0.3);
+}
+
+.section-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--contract-text);
+    margin: 0;
+}
+
+.section-subtitle {
+    color: var(--contract-text-muted);
+    font-size: 0.85rem;
+    margin: 0;
+}
+
+/* حقول النموذج */
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-label {
+    font-weight: 600;
+    color: #4a5568;
+    margin-bottom: 0.4rem;
+    display: flex;
+    align-items: center;
+    font-size: 0.9rem;
+}
+
+.required-star {
+    color: #e53e3e;
+    margin-right: 4px;
+}
+
+/* تحسين عناصر النموذج */
+.form-control, .form-select {
+    border: 1px solid var(--contract-border);
+    border-radius: 8px;
+    padding: .675rem 2.25rem .675rem .75rem;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
+    background-color: #f8f9fa;
+}
+
+.form-control:focus, .form-select:focus {
+    border-color: var(--contract-primary);
+    box-shadow: 0 0 0 3px rgba(39, 148, 235, 0.1);
+    background-color: white;
+}
+
+/* Select2 Customization */
+.select2-container--default .select2-selection--single {
+    height: 40px;
+    border: 1px solid var(--contract-border);
+    border-radius: 8px;
+    padding: 6px 10px;
+    background-color: #f8f9fa;
+}
+
+.select2-container--default .select2-selection--single:focus,
+.select2-container--default.select2-container--focus .select2-selection--single {
+    border-color: var(--contract-primary);
+    box-shadow: 0 0 0 3px rgba(39, 148, 235, 0.1);
+    background-color: white;
+}
+
+.select2-container--default .select2-search--dropdown .select2-search__field {
+    border: 1px solid #ddd;
+    padding: 4px 6px;
+    outline: none;
+    border-radius: 4px;
+}
+
+.select2-dropdown {
+    z-index: 9999 !important;
+    border: 1px solid var(--contract-primary);
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+
+.select2-results__option {
+    padding: 8px 12px;
+    font-size: 0.9rem;
+}
+
+.select2-results__option--highlighted {
+    background-color: var(--contract-primary) !important;
+    color: white !important;
+}
+
+/* معاينة البيانات */
+.client-preview, .maid-preview {
+    background: var(--contract-primary-light);
+    border: 1px solid var(--contract-primary);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-top: 1rem;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.maid-photo {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--contract-primary);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+/* ملخص العقد */
+.contract-summary {
+    background: linear-gradient(135deg, var(--contract-success), var(--contract-success-dark));
+    color: white;
+    border-radius: 12px;
+    padding: 1.5rem;
+    margin: 1.5rem 0;
+    box-shadow: 0 4px 15px rgba(72, 187, 120, 0.3);
+    animation: slideIn 0.4s ease;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateX(-20px); }
+    to { opacity: 1; transform: translateX(0); }
+}
+
+.summary-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 1rem;
+    margin-top: 1rem;
+}
+
+.summary-item {
+    text-align: center;
+    padding: 0.75rem;
+    background: rgba(255,255,255,0.1);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.summary-item:hover {
+    background: rgba(255,255,255,0.2);
+    transform: translateY(-2px);
+}
+
+.summary-value {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.25rem;
+}
+
+.summary-label {
+    font-size: 0.8rem;
+    opacity: 0.9;
+}
+
+/* أزرار الإجراءات */
+.action-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 2rem;
+}
+
+.btn-primary {
+    background: var(--contract-primary);
+    border: none;
+    border-radius: 8px;
+    padding: 12px 30px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(39, 148, 235, 0.3);
+}
+
+.btn-primary:hover {
+    background: var(--contract-primary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(39, 148, 235, 0.4);
+}
+
+.btn-secondary {
+    background: #6c757d;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    padding: 12px 30px;
+    font-weight: 600;
+    font-size: 0.95rem;
+    transition: all 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background: #5a6268;
+    transform: translateY(-2px);
+}
+
+/* رسائل التنبيه */
+.alert-info {
+    background: var(--contract-primary-light);
+    color: var(--contract-primary-dark);
+    border: 1px solid var(--contract-primary);
+    border-radius: 8px;
+    padding: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+/* التجاوب */
+@media (max-width: 768px) {
+    .contract-header {
+        padding: 1rem;
+    }
+
+    .contract-header h4 {
+        font-size: 1.25rem;
+    }
+
+    .form-section {
+        padding: 1rem;
+        margin-bottom: 1rem;
+    }
+
+    .section-icon {
+        width: 35px;
+        height: 35px;
+        font-size: 14px;
+    }
+
+    .section-title {
+        font-size: 1rem;
+    }
+
+    .summary-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .action-buttons {
+        flex-direction: column;
+    }
+
+    .btn-primary, .btn-secondary {
+        width: 100%;
+    }
+}
+
+/* تحسينات إضافية للنماذج */
+/* input[type="date"] {
+    position: relative;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    cursor: pointer;
+} */
+
+textarea.form-control {
+    resize: vertical;
+    min-height: 80px;
+}
+
+/* Loading States */
+.form-control:disabled,
+.form-select:disabled {
+    background-color: #e9ecef;
+    cursor: not-allowed;
+}
+
+/* تحسين مظهر الأرقام */
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+/* تحسين الـ Focus */
+*:focus {
+    outline: none;
+}
+
+/* تحسين التحقق من الصحة */
+.form-control.is-invalid,
+.form-select.is-invalid {
+    border-color: #dc3545;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' width='12' height='12' fill='none' stroke='%23dc3545'%3e%3ccircle cx='6' cy='6' r='4.5'/%3e%3cpath stroke-linejoin='round' d='M5.8 3.6h.4L6 6.5z'/%3e%3ccircle cx='6' cy='8.2' r='.6' fill='%23dc3545' stroke='none'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: left calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    padding-left: calc(1.5em + 0.75rem);
+}
+
+.form-control.is-valid,
+.form-select.is-valid {
+    border-color: #28a745;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3e%3cpath fill='%2328a745' d='M2.3 6.73L.6 4.53c-.4-1.04.46-1.4 1.1-.8l1.1 1.4 3.4-3.8c.6-.63 1.6-.27 1.2.7l-4 4.6c-.43.5-.8.4-1.1.1z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: left calc(0.375em + 0.1875rem) center;
+    background-size: calc(0.75em + 0.375rem) calc(0.75em + 0.375rem);
+    padding-left: calc(1.5em + 0.75rem);
+}
+
+.table-responsive #dataTableObject_wrapper, .table-responsive #travelHistoryTable_wrapper{
+    overflow-x: auto !important;
+}
+
+/*
+=======================================================
+   تثبيت نهائي لقوائم الإجراءات داخل الجداول
+=======================================================
+*/
+
+.actions-dropdown.actions-dropdown-open {
+    position: relative !important;
+    z-index: 2147483646 !important;
+}
+
+.actions-dropdown .dropdown-toggle[data-admin-dropdown="actions"] {
+    touch-action: manipulation;
+}
+
+.admin-actions-dropdown-menu,
+.admin-actions-dropdown-menu.show {
+    position: fixed !important;
+    display: block !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 2147483647 !important;
+    transform: none !important;
+    pointer-events: auto !important;
+    margin: 0 !important;
+    overscroll-behavior: contain;
+    -webkit-backface-visibility: hidden;
+    backface-visibility: hidden;
+}

@@ -1,0 +1,134 @@
+/* تحسين مظهر بادجات حالات العقود */
+.status-badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    font-weight: 600;
+    border-radius: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+.status-badge:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+/* تحسين ألوان البادجات لتكون أكثر وضوحاً */
+.badge.bg-primary {
+    background-color: #0d6efd !important;
+    color: white !important;
+}
+
+.badge.bg-success {
+    background-color: #198754 !important;
+    color: white !important;
+}
+
+.badge.bg-warning {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.badge.bg-info {
+    background-color: #2794eb!important;
+    color: white !important;
+}
+
+.badge.bg-danger {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
+.badge.bg-secondary {
+    background-color: #6c757d !important;
+    color: white !important;
+}
+
+.badge.bg-dark {
+    background-color: #212529 !important;
+    color: white !important;
+}
+
+/* تحسين مظهر البادجات في الجداول */
+.table .badge {
+    font-size: 0.75rem;
+    padding: 0.35rem 0.65rem;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* تحسين مظهر البادجات في البطاقات */
+.card .badge {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    font-weight: 600;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.1);
+}
+
+/* تأثيرات إضافية للبادجات */
+.badge {
+    position: relative;
+    overflow: hidden;
+}
+
+.badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.badge:hover::before {
+    left: 100%;
+}
+
+/* ألوان مخصصة لحالات محددة */
+.badge.bg-msaned {
+    background-color: #2794eb!important;
+    color: white !important;
+}
+
+.badge.bg-tafwed {
+    background-color: #0d6efd !important;
+    color: white !important;
+}
+
+.badge.bg-taffez {
+    background-color: #198754 !important;
+    color: white !important;
+}
+
+.badge.bg-tazker {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+}
+
+.badge.bg-arrival {
+    background-color: #198754 !important;
+    color: white !important;
+}
+
+.badge.bg-sari {
+    background-color: #0d6efd !important;
+    color: white !important;
+}
+
+.badge.bg-closed {
+    background-color: #6c757d !important;
+    color: white !important;
+}
+
+.badge.bg-shelter {
+    background-color: #212529 !important;
+    color: white !important;
+}
+
+.badge.bg-pending_maid_selection {
+    background-color: #ffc107 !important;
+    color: #212529 !important;
+}
