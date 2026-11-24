@@ -13,6 +13,7 @@
     document.querySelectorAll('form').forEach(function (f) {
       f.addEventListener('submit', function (e) { e.preventDefault(); });
     });
+    if (/[?&]clean\b/.test(location.search)) return;   // ?clean = no kit badge (used for screenshots)
     var badge = document.createElement('a');
     badge.href = '../gallery.html';
     badge.textContent = 'Design kit ▸ كل الشاشات';

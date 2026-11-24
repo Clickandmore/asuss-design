@@ -18,7 +18,6 @@
         <main class="auth-main">
             <header class="auth-top">
                 <img class="auth-logo" src="../assets/web/assets/images/logoh.svg" alt="شركة أسس الإنجاز للاستقدام">
-                <a class="auth-lang" href="#" data-route="/lang/en" lang="en">English</a>
             </header>
 
             <div class="auth-form-wrap">
@@ -79,44 +78,32 @@
                 </div>
             </div>
 
-            <footer class="auth-footer">© 2026 شركة أسس الإنجاز للاستقدام</footer>
+            <footer class="auth-footer">
+                <span>© 2026 شركة أسس الإنجاز للاستقدام</span>
+                <a class="auth-lang" href="#" data-route="/lang/en" lang="en"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>English</a>
+            </footer>
         </main>
 
         <aside class="auth-panel">
-            <div class="panel-inner">
-                <img class="panel-logo" src="../assets/web/assets/images/logoh-white.svg" alt="">
+            <div class="panel-copy">
+                <p class="panel-eyebrow">لوحة إدارة الاستقدام</p>
                 <h2 class="panel-title">رحلة كل عاملة، من التعاقد حتى الوصول</h2>
-                <p class="panel-subtitle">تابع العقود والتأشيرات والتذاكر والإيواء من شاشة واحدة، بكل خطوة في وقتها.</p>
-
-                <figure class="journey">
-            <svg class="journey-map" viewBox="0 0 480 300" direction="ltr" role="img" aria-label="مسارات الاستقدام من إثيوبيا وكينيا وأوغندا وبنجلاديش والفلبين إلى الرياض">
-                <defs><pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.3" fill="#fff" opacity=".13"/></pattern></defs>
-                <rect width="480" height="300" fill="url(#dots)"/>
-                <path class="route" style="animation-delay:0.0s" d="M440,150 Q318,36 196,84"/><path class="route" style="animation-delay:0.3s" d="M338,74 Q267,26 196,84"/><path class="route" style="animation-delay:0.6s" d="M150,182 Q120,103 196,84"/><path class="route" style="animation-delay:0.9s" d="M140,252 Q110,138 196,84"/><path class="route" style="animation-delay:1.2s" d="M66,232 Q36,128 196,84"/>
-                <circle class="origin" cx="440" cy="150" r="5"/><text x="440" y="174" text-anchor="middle">الفلبين</text><circle class="origin" cx="338" cy="74" r="5"/><text x="350" y="79" text-anchor="start">بنجلاديش</text><circle class="origin" cx="150" cy="182" r="5"/><text x="138" y="186" text-anchor="end">إثيوبيا</text><circle class="origin" cx="140" cy="252" r="5"/><text x="140" y="276" text-anchor="middle">كينيا</text><circle class="origin" cx="66" cy="232" r="5"/><text x="66" y="256" text-anchor="middle">أوغندا</text>
-                <circle class="pulse" cx="196" cy="84" r="9"/>
-                <circle class="hub" cx="196" cy="84" r="7"/>
-                <text class="hub-label" x="196" y="66" text-anchor="middle">الرياض</text>
-            </svg>
-                    <div class="journey-card" aria-hidden="true">
-                        <div class="journey-card__top">
-                            <span class="journey-card__id">عقد <b>#248</b></span>
-                            <span class="journey-card__badge">في الوقت</span>
-                        </div>
-                        <p class="journey-card__name">مرحلة التذكرة · الوصول خلال 3 أيام</p>
-                        <ol class="journey-steps">
-                            <li class="done">جديد</li><li class="done">مساند</li><li class="done">التفويض</li><li class="done">التفييز</li><li class="now">التذكرة</li><li>الوصول</li>
-                        </ol>
-                    </div>
-                    <figcaption class="sr-only">مسارات الاستقدام من خمس دول إلى الرياض، وبطاقة عقد في مرحلة التذكرة.</figcaption>
-                </figure>
-
-                <ul class="panel-points">
-                    <li><b>6</b> مراحل واضحة لكل عقد</li>
-                    <li><b>تنبيه</b> قبل أي تأخير</li>
-                    <li><b>صلاحيات</b> حسب الدور</li>
-                </ul>
+                <p class="panel-subtitle">العقود والتأشيرات والتذاكر والإيواء في شاشة واحدة، مع تنبيه قبل أي تأخير.</p>
             </div>
+
+            <figure class="panel-shot">
+                <img src="../assets/admin/login/imgs/dashboard-preview.jpg" width="1800" height="1025" alt="لوحة المعلومات في نظام أسس الإنجاز">
+                <div class="journey-card" aria-hidden="true">
+                    <div class="journey-card__top">
+                        <span class="journey-card__id">عقد <b>#248</b></span>
+                        <span class="journey-card__badge">في الوقت</span>
+                    </div>
+                    <p class="journey-card__name">مرحلة التذكرة · الوصول خلال 3 أيام</p>
+                    <ol class="journey-steps">
+                        <li class="done">جديد</li><li class="done">مساند</li><li class="done">التفويض</li><li class="done">التفييز</li><li class="now">التذكرة</li><li>الوصول</li>
+                    </ol>
+                </div>
+            </figure>
         </aside>
     </div>
 

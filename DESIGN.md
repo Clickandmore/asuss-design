@@ -110,7 +110,7 @@
 | القائمة في `kit/redesign/build.py` → `MENU` | `resources/views/admin/layout/inc/sidebar.blade.php` | الأعداد تأتي من الاستعلامات الحالية؛ كل عنصر يبقى خلف صلاحيته (`@can`) كما هو |
 | `screens/dashboard.html` | `resources/views/admin/dashboard-new.blade.php` | |
 | `screens/reports.html` | جديدة (مقترح `admin/reports/index.blade.php`) | بيانات كل تقرير من استعلام واحد يرجع `kpis` و`chart` و`table` بنفس الشكل الموجود في الصفحة |
-| `assets/admin/login/css/login.css` + `screens/login.html` | نفس المسار + `admin/auth/login.blade.php` | `header.auth-top` (شعار للجوال + English)، `a.auth-link` لنسيت كلمة المرور (يحتاج مسارًا في asuss)، `p.auth-help`؛ اللوحة الكحلية: `img.panel-logo` و`figure.journey` (خريطة SVG + `journey-card`) و`panel-points`؛ لا تنقل `kit-login.js` ولا `p.auth-demo` |
+| `assets/admin/login/css/login.css` + `screens/login.html` | نفس المسار + `admin/auth/login.blade.php` | `header.auth-top` (الشعار)، `a.auth-link` لنسيت كلمة المرور (يحتاج مسارًا في asuss)، `p.auth-help`، `footer.auth-footer` (الحقوق + `a.auth-lang`)؛ اللوحة: `div.panel-copy` و`figure.panel-shot` (صورة `admin/login/imgs/dashboard-preview.jpg` + `journey-card`). لا تنقل `kit-login.js` ولا `p.auth-demo`. أعد التقاط الصورة عند تغيّر لوحة المعلومات: `dashboard.html?clean` بعرض 1440 ومضاعفة 2 |
 | `assets/web/assets/images/logoh-white.svg` | نفس المسار | الشعار الكامل بالأبيض للوحة الكحلية في تسجيل الدخول؛ نفس `logoh.svg` بتعبئة بيضاء |
 | `assets/web/assets/images/logo-mark-white.svg` | نفس المسار | العلامة وحدها بالأبيض لشريط الأقسام، مقصوصة من `logoh.svg` بلا تعديل للشكل |
 
