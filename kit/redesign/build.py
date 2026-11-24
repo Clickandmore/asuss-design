@@ -36,7 +36,8 @@ DEPTS = [
             ('الطلبات', 'records.html#orders', None, 12),
         ]),
         ('العقود حسب المرحلة', [
-            ('جميع العقود', 'records.html#recruitment', None, 218),
+            ('العقود النشطة', 'records.html#recruitment', None, 34),
+            ('جميع العقود', 'records.html#recruitment/all', None, 218),
             ('بانتظار الاعتماد', 'records.html#recruitment/approval', None, ('alert', 4)),
             ('مساند', 'records.html#recruitment/msaned', None, 9),
             ('التفويض', 'records.html#recruitment/tafwed', None, 7),
@@ -44,7 +45,7 @@ DEPTS = [
             ('التذكرة', 'records.html#recruitment/tazker', None, 4),
             ('الوصول', 'records.html#recruitment/arrival', None, 3),
             ('تحت الضمان', 'records.html#recruitment/warranty', None, 89),
-            ('المرتجعة والملغية', 'records.html#recruitment/back', None, 12),
+            ('المرتجعة والملغية', 'records.html#recruitment/backcancel', None, 12),
         ]),
         ('السير الذاتية', [
             ('جميع السير', 'records.html#maids', None, 820),

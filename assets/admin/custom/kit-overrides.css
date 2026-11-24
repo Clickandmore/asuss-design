@@ -1180,3 +1180,73 @@ a.as-kpi:hover { border-color: var(--as-border); box-shadow: var(--as-shadow-car
 [dir="ltr"] .as-ref-panel { transform: none; }
 @media (max-width: 1199px) { .as-ref-types { grid-template-columns: repeat(2, minmax(0, 1fr)); } .as-ref-grid { grid-template-columns: minmax(0, 1fr); } }
 @media (max-width: 767px) { .as-ref-types { grid-template-columns: minmax(0, 1fr); } .as-ref-type-scale > div { grid-template-columns: minmax(0, 1fr); gap: 4px; } }
+
+/* ================= filters v2: period, «فلاتر أخرى», status groups (DESIGN.md → «الفلاتر») ================= */
+/* status chips: «الكل» + groups, a divider, each status, «المزيد» */
+.as-chips { align-items: center; }
+.as-chips__sep { width: 1px; height: 20px; margin: 0 2px; background: var(--as-line); }
+.as-chip--group { font-weight: 600; }
+.as-chip i.fa-chevron-down { font-size: 10px; color: #6b7280; margin-inline-start: -2px; }
+.as-chip.is-on i.fa-chevron-down { color: #fff; }
+.as-chipmore .as-dd__menu, .as-range .as-dd__menu { inset-inline-end: auto; inset-inline-start: 0; }
+.as-chipmore .as-dd__menu { min-width: 200px; }
+.as-chipmore .as-dd__menu button.is-on, .as-range__menu button.is-on { color: var(--as-brand) !important; background: var(--as-tint); font-weight: 500; }
+.as-dd__menu .as-chip__dot { width: 8px; height: 8px; flex: none; border-radius: 50%; background: var(--tone, #9ca3af); }
+.as-dd__n { margin-inline-start: auto; font-size: 12px; color: var(--as-muted); }
+
+/* period */
+.as-range__btn { border-style: solid; }
+.as-range__btn i { font-size: 13px; }
+.as-range__caret { font-size: 10px !important; margin-inline-start: 2px; }
+.as-range__btn[aria-pressed="true"] { color: var(--as-brand); background: var(--as-tint); border-color: #b9d5ee; }
+.as-range__btn[aria-pressed="true"] i { color: var(--as-brand); }
+.as-range__menu { min-width: 260px; }
+.as-range__custom { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; padding: 4px 10px 8px; }
+.as-range__custom label { display: grid; gap: 4px; font-size: 12px; color: var(--as-muted); }
+.as-range__custom .as-input { height: 36px; padding: 0 8px; font-size: 13px; }
+.as-range__menu .as-range__apply { width: calc(100% - 20px); margin: 0 10px 6px; justify-content: center; color: #fff !important; background: var(--as-brand); }
+.as-range__menu .as-range__apply:hover { background: var(--as-brand-hover); color: #fff !important; }
+
+/* «فلاتر أخرى» */
+.as-toggle--more { border-style: solid; }
+.as-toggle--more.is-open { color: var(--as-ink); background: var(--as-page); border-color: var(--as-border-hover); }
+.as-toggle__n { min-width: 18px; height: 18px; padding: 0 5px; border-radius: 999px; font-size: 11px; line-height: 18px; text-align: center; color: #fff; background: var(--as-brand); }
+.as-rec__more { margin: 0 20px 12px; padding: 14px 16px; background: var(--as-page); border: 1px solid var(--as-line); border-radius: var(--as-radius-lg); }
+.as-rec__moregrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 12px 16px; }
+.as-rec__moregrid .as-f__label { font-size: 13px; }
+.as-rec__moregrid .as-select { width: 100%; background-color: var(--as-surface); }
+.as-rec__moreacts { display: flex; justify-content: flex-end; margin-top: 8px; }
+@media (max-width: 767px) {
+    .as-rec__more { margin-inline: 16px; }
+    .as-chips__sep { display: none; }
+}
+
+/* toolbar layout: [chips] / [search ……… view tools] / [period · filters · flags · فلاتر أخرى] */
+.as-rec__top { padding: 14px 20px 12px; }
+.as-chips { gap: 6px; }
+.as-chip { padding: 0 5px 0 11px; }
+[dir="rtl"] .as-chip { padding: 0 11px 0 5px; }
+.as-rec__bar { gap: 10px 8px; padding: 12px 20px 14px; }
+.as-rec__search { flex: 1 1 320px; max-width: 480px; }
+.as-rec__bar > .as-rec__tools { margin-inline-start: auto; }
+.as-rec__filters { flex: 1 1 100%; align-items: center; }
+.as-rec__filters .as-toggle--more { margin-inline-start: auto; }
+.as-rec__more { margin-top: -4px; }
+@media (max-width: 767px) {
+    .as-rec__search { flex-basis: 100%; max-width: none; order: -1; }
+    .as-rec__bar > .as-rec__tools { margin-inline-start: 0; }
+    .as-rec__filters .as-toggle--more { margin-inline-start: 0; }
+}
+/* wide screens vs phone for the filter panel */
+.as-on-phone { display: none !important; }
+.as-toggle--more.is-phone { display: none; }
+@media (max-width: 767px) {
+    .as-on-wide { display: none !important; }
+    .as-on-phone { display: inline-flex !important; }
+    .as-rec__moregrid .as-f.as-on-phone { display: flex !important; }
+    .as-toggle--more.is-phone { display: inline-flex; }
+    .as-rec__filters .as-fsel { display: none; }
+    .as-rec__bar > .as-rec__tools { display: none; }
+    .as-rec__filters .as-toggle--more { margin-inline-start: 0; }
+    .as-rec__moregrid { grid-template-columns: minmax(0, 1fr); }
+}

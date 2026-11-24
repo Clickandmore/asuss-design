@@ -22,6 +22,14 @@
   <section class="as-card as-rec__card" aria-live="polite" aria-busy="false">
     <div class="as-rec__top">
       <div class="as-chips" role="group" aria-label="تصفية حسب الحالة" data-rec-chips></div>
+    </div>
+
+    <div class="as-rec__bar">
+      <label class="as-search as-rec__search">
+        <span class="as-sr">بحث في السجلات</span>
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" data-rec-q autocomplete="off">
+      </label>
       <div class="as-rec__tools">
         <div class="as-seg" data-rec-view role="group" aria-label="طريقة العرض" hidden>
           <button type="button" data-view="table" aria-pressed="true" title="جدول"><i class="fa-solid fa-list"></i><span class="as-sr">جدول</span></button>
@@ -36,16 +44,10 @@
           <div class="as-dd__menu as-dd__menu--cols" data-rec-cols></div>
         </div>
       </div>
-    </div>
-
-    <div class="as-rec__bar">
-      <label class="as-search as-rec__search">
-        <span class="as-sr">بحث في السجلات</span>
-        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-        <input type="search" data-rec-q autocomplete="off">
-      </label>
       <div class="as-rec__filters" data-rec-filters></div>
     </div>
+
+    <div class="as-rec__more" id="as-rec-more" data-rec-more hidden></div>
 
     <div class="as-rec__pills" data-rec-pills hidden></div>
 
@@ -113,58 +115,64 @@ document.addEventListener('DOMContentLoaded', function () {
 
   /* ---------- طلبات ---------- */
   var ORDER_ST = [
-    { id: 'new', label: 'جديد', tone: 'info' }, { id: 'review', label: 'قيد المراجعة', tone: 'warning' },
-    { id: 'contracted', label: 'تم التعاقد', tone: 'success' }, { id: 'rejected', label: 'مرفوض', tone: 'danger' },
-    { id: 'expired', label: 'انتهت المهلة', tone: 'neutral' }
+    { id: 'new', label: 'جديد', tone: 'info' }, { id: 'review', label: 'تحت الإجراء', tone: 'warning' },
+    { id: 'contracted', label: 'تم التعاقد', tone: 'success' }, { id: 'refund', label: 'طلبات الاسترجاع', tone: 'danger' },
+    { id: 'nocontract', label: 'تم التعاقد بدون عقد', tone: 'success', more: true }, { id: 'done', label: 'مكتملة', tone: 'neutral', more: true },
+    { id: 'expired', label: 'منتهي', tone: 'neutral', more: true }, { id: 'rejected', label: 'مرفوض', tone: 'danger', more: true }
   ];
   /* ---------- عقود الاستقدام ---------- */
   var STAGES = [
-    { id: 'new', label: 'عقد جديد', tone: 'info' }, { id: 'msaned', label: 'مساند', tone: 'info' },
+    { id: 'new', label: 'جديد', tone: 'info' }, { id: 'msaned', label: 'مساند', tone: 'info' },
     { id: 'tafwed', label: 'التفويض', tone: 'info' }, { id: 'taffez', label: 'التفييز', tone: 'info' },
     { id: 'tazker', label: 'التذكرة', tone: 'info' }, { id: 'arrival', label: 'الوصول', tone: 'info' },
-    { id: 'warranty', label: 'تحت الضمان', tone: 'success' }, { id: 'completed', label: 'مكتمل', tone: 'neutral' },
-    { id: 'back', label: 'مرتجع / ملغي', tone: 'danger' }
+    { id: 'warranty', label: 'تحت الضمان', tone: 'success' }, { id: 'completed', label: 'مكتمل', tone: 'neutral', more: true },
+    { id: 'back', label: 'مرتجع', tone: 'danger', more: true }, { id: 'cancelled', label: 'ملغي', tone: 'danger', more: true },
+    { id: 'closed', label: 'مغلق', tone: 'neutral', more: true }
   ];
   var FLOW = ['new', 'msaned', 'tafwed', 'taffez', 'tazker', 'arrival', 'warranty'];
+  var REC_ST = [{ id: 'active', label: 'النشطة', ids: FLOW.slice(0, 6) }].concat(STAGES, [{ id: 'backcancel', label: 'المرتجعة والملغية', ids: ['back', 'cancelled'], hidden: true }]);
   function nextStage(s) { var i = FLOW.indexOf(s); return i >= 0 && i < FLOW.length - 1 ? statusOf(STAGES, FLOW[i + 1]) : null; }
   function segs(s) {
     var i = FLOW.indexOf(s), done = s === 'completed' ? 7 : i;
-    if (s === 'back') return '<span class="as-segs as-segs--danger" aria-label="ملغي"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>';
+    if (s === 'back' || s === 'cancelled' || s === 'closed') return '<span class="as-segs as-segs--danger" aria-label="ملغي"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>';
     var out = '';
     for (var k = 0; k < 7; k++) out += '<i class="' + (k < done ? 'on' : k === done ? 'now' : '') + '"></i>';
     return '<span class="as-segs" aria-label="المرحلة ' + (Math.min(done, 6) + 1) + ' من 7">' + out + '</span>';
   }
   /* ---------- عقود التأجير ---------- */
   var RENT_ST = [
-    { id: 'sent', label: 'أُرسل للتوقيع', tone: 'info' }, { id: 'signed', label: 'موقّع', tone: 'info' },
-    { id: 'delivered', label: 'تم التسليم', tone: 'info' }, { id: 'trial', label: 'فترة التجربة', tone: 'warning' },
-    { id: 'active', label: 'ساري', tone: 'success' }, { id: 'ended', label: 'منتهي', tone: 'neutral' }
+    { id: 'sent', label: 'تم إرسال العقد', tone: 'info' }, { id: 'signed', label: 'تم توقيع العقد', tone: 'info' },
+    { id: 'delivered', label: 'تم تسليم العاملة', tone: 'info' }, { id: 'active', label: 'نشط', tone: 'success' },
+    { id: 'trial', label: 'داخل إجراءات نقل الكفالة', tone: 'warning' },
+    { id: 'ended', label: 'مكتمل', tone: 'neutral', more: true }, { id: 'transferred', label: 'تم النقل', tone: 'success', more: true },
+    { id: 'cancelled', label: 'ملغي', tone: 'danger', more: true }, { id: 'failed', label: 'فشل', tone: 'danger', more: true }
   ];
-  var PAY = { paid: ['مدفوع', 'success'], partial: ['مدفوع جزئيًا', 'warning'], unpaid: ['غير مدفوع', 'danger'] };
+  var PAY = { paid: ['تم الدفع', 'success'], partial: ['مدفوع جزئيًا', 'warning'], unpaid: ['في انتظار الدفع', 'danger'], later: ['الدفع لاحقًا', 'neutral'], transfer: ['بانتظار التحويل', 'info'] };
   /* ---------- الإيواء ---------- */
   var SHELTER_ST = [
     { id: 'in', label: 'داخل الإيواء', tone: 'info' }, { id: 'ready', label: 'جاهزة للتسليم', tone: 'success' },
     { id: 'transfer', label: 'بانتظار نقل الكفالة', tone: 'warning' }, { id: 'deport', label: 'إجراءات الترحيل', tone: 'danger' },
-    { id: 'out', label: 'غادرت الإيواء', tone: 'neutral' }
+    { id: 'out', label: 'غادرت الإيواء', tone: 'neutral', more: true }
   ];
   /* ---------- السير الذاتية ---------- */
   var MAID_ST = [
     { id: 'available', label: 'متاحة', tone: 'success' }, { id: 'reserved', label: 'محجوزة', tone: 'info' },
-    { id: 'backout', label: 'مستبعدة', tone: 'warning' }, { id: 'suspended', label: 'موقوفة', tone: 'danger' },
-    { id: 'deported', label: 'مرحّلة', tone: 'neutral' }
+    { id: 'backout', label: 'باك اوت', tone: 'warning' }, { id: 'suspended', label: 'موقوفة', tone: 'danger', more: true },
+    { id: 'deported', label: 'مرحّلة', tone: 'neutral', more: true }
   ];
   function years(n) { return n === 0 ? 'بدون خبرة' : n === 1 ? 'سنة' : n === 2 ? 'سنتان' : n <= 10 ? n + ' سنوات' : n + ' سنة'; }
   /* ---------- العملاء ---------- */
   var CLIENT_ST = [{ id: 'active', label: 'مفعّل', tone: 'success' }, { id: 'blocked', label: 'محظور', tone: 'danger' }];
   /* ---------- الشكاوى ---------- */
   var COMP_ST = [
-    { id: 'pending', label: 'جديدة', tone: 'danger' }, { id: 'progress', label: 'قيد المعالجة', tone: 'warning' },
-    { id: 'resolved', label: 'تم الحل', tone: 'success' }, { id: 'closed', label: 'مغلقة', tone: 'neutral' }
+    { id: 'pending', label: 'قيد الانتظار', tone: 'danger' }, { id: 'progress', label: 'قيد المعالجة', tone: 'warning' },
+    { id: 'noreply', label: 'عدم تجاوب العميل', tone: 'warning' }, { id: 'resolved', label: 'تم الحل', tone: 'success' },
+    { id: 'closed', label: 'مغلقة', tone: 'neutral', more: true }, { id: 'rejected', label: 'مرفوضة', tone: 'neutral', more: true }
   ];
   /* ---------- التعميدات ---------- */
   var CLAIM_ST = [
-    { id: 'pending', label: 'بانتظار الاعتماد', tone: 'warning' }, { id: 'approved', label: 'معتمد', tone: 'info' },
-    { id: 'paid', label: 'تم الصرف', tone: 'success' }, { id: 'rejected', label: 'مرفوض', tone: 'danger' }
+    { id: 'pending', label: 'بانتظار الموافقة', tone: 'warning' }, { id: 'approved', label: 'بانتظار السداد', tone: 'info' },
+    { id: 'paid', label: 'مسدد', tone: 'success' }, { id: 'done', label: 'مكتمل', tone: 'neutral', more: true }, { id: 'rejected', label: 'مرفوض', tone: 'danger', more: true }
   ];
   /* ---------- المهام ---------- */
   var TASK_ST = [
@@ -176,7 +184,7 @@ document.addEventListener('DOMContentLoaded', function () {
   var VISIT_ST = [
     { id: 'scheduled', label: 'مجدولة', tone: 'info' }, { id: 'onway', label: 'في الطريق', tone: 'info' },
     { id: 'inprogress', label: 'جارية', tone: 'warning' }, { id: 'done', label: 'منفّذة', tone: 'success' },
-    { id: 'missed', label: 'فات موعدها', tone: 'danger' }, { id: 'cancelled', label: 'ملغاة', tone: 'neutral' }
+    { id: 'missed', label: 'فات موعدها', tone: 'danger' }, { id: 'cancelled', label: 'ملغاة', tone: 'neutral', more: true }
   ];
   var VPAY = { paid: ['مدفوعة', 'success'], partial: ['مدفوعة جزئيًا', 'warning'], unpaid: ['غير مدفوعة', 'danger'], refund: ['مستردة', 'neutral'] };
   function hours(n) { return n === 1 ? 'ساعة' : n === 2 ? 'ساعتان' : n <= 10 ? n + ' ساعات' : n + ' ساعة'; }
@@ -192,12 +200,14 @@ document.addEventListener('DOMContentLoaded', function () {
       searchHint: 'رقم الطلب، اسم العميل أو العاملة',
       create: { label: 'طلب جديد', route: '/admin/orders/create' },
       statuses: ORDER_ST, sort: ['id', 'desc'],
+      range: { label: 'تاريخ الطلب' },
       filters: [
-        { key: 'type', label: 'النوع', all: 'كل الأنواع', options: [['rec', 'استقدام'], ['rent', 'تأجير']] },
-        { key: 'nat', label: 'الجنسية', all: 'كل الجنسيات', options: NAT },
-        { key: 'staff', label: 'المسؤول', all: 'كل الموظفين', options: STAFF }
+        { key: 'timer', label: 'المهلة', all: 'كل المهل', options: [['normal', 'عادي'], ['urgent', 'عاجل (أقل من 6 ساعات)'], ['over', 'تجاوز الموعد']] },
+        { key: 'job', label: 'الوظيفة', all: 'كل الوظائف', options: [['maid', 'عاملة منزلية'], ['driver', 'سائق خاص'], ['nanny', 'مربية أطفال']] },
+        { key: 'staff', label: 'المسؤول', all: 'كل الموظفين', options: STAFF },
+        { key: 'type', label: 'نوع الطلب', all: 'استقدام وتأجير', options: [['rec', 'استقدام'], ['rent', 'تأجير']], more: true },
+        { key: 'nat', label: 'الجنسية', all: 'كل الجنسيات', options: NAT, more: true }
       ],
-      flags: [{ key: 'urgent', label: 'مهلتها أقل من 6 ساعات', icon: 'fa-stopwatch' }],
       bulk: [{ label: 'إسناد إلى موظف', icon: 'fa-user-check' }, { label: 'تصدير المحدد', icon: 'fa-file-excel' }],
       columns: [
         { key: 'ref', label: 'الطلب', fixed: true, primary: true, sort: 'id', render: function (r) { return R.two(r.ref, r.created, { num: true, subNum: true }); } },
@@ -207,6 +217,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { key: 'staff', label: 'المسؤول', render: function (r) { return esc(r.staff); } },
         { key: 'timer', label: 'المهلة', render: function (r) {
           if (r.status !== 'new') return R.none();
+          if (r.hours <= 0) return '<span class="as-timer is-low"><i class="fa-solid fa-circle-exclamation"></i>تجاوز الموعد</span>';
           return '<span class="as-timer' + (r.hours < 6 ? ' is-low' : '') + '"><i class="fa-regular fa-clock"></i>باقي <span class="as-num">' + r.hours + '</span> س</span>';
         } },
         { key: 'status', label: 'الحالة', render: function (r) { return sb(ORDER_ST, r.status); } },
@@ -232,12 +243,19 @@ document.addEventListener('DOMContentLoaded', function () {
       desc: 'كل عقد في مرحلته، من التوقيع حتى انتهاء الضمان. المتأخر عن مدة المرحلة يظهر بالأحمر.',
       searchHint: 'رقم العقد، اسم العميل أو العاملة',
       create: { label: 'عقد استقدام جديد', href: 'recruitment-contract-create.html' },
-      statuses: STAGES, sort: ['id', 'desc'],
+      statuses: REC_ST, defaultStatus: 'active', sort: ['id', 'desc'],
+      range: { label: 'تاريخ العقد' },
       filters: [
-        { key: 'nat', label: 'الجنسية', all: 'كل الجنسيات', options: NAT },
-        { key: 'staff', label: 'المسوّق', all: 'كل المسوّقين', options: STAFF }
+        { key: 'stage', label: 'مدة المرحلة', all: 'كل حالات المدة', options: [['late', 'تجاوزت المدة'], ['within', 'ضمن المدة'], ['none', 'بدون مدة محددة']] },
+        { key: 'nat', label: 'جنسية العاملة', all: 'كل الجنسيات', options: NAT },
+        { key: 'staff', label: 'المسوّق', all: 'كل المسوّقين', options: STAFF },
+        { key: 'office', label: 'المكتب الخارجي', all: 'كل المكاتب', options: [['trust', 'Trust Manpower Agency'], ['golden', 'Golden Hands Agency'], ['bright', 'Bright Future Placement'], ['star', 'Star Overseas Services']], more: true },
+        { key: 'rel', label: 'ديانة العاملة', all: 'كل الديانات', options: [['m', 'مسلمة'], ['c', 'غير مسلمة']], more: true },
+        { key: 'warranty', label: 'حالة الضمان', all: 'كل حالات الضمان', options: [['on', 'نشط'], ['off', 'منتهي'], ['na', 'غير قابل للتطبيق']], more: true },
+        { key: 'pipe', label: 'الهروب والترحيل', all: 'كل العقود', options: [['escape', 'بلاغات الهروب'], ['deport', 'إجراءات الترحيل']], more: true },
+        { key: 'city', label: 'مدينة العميل', all: 'كل المدن', options: [['الرياض', 'الرياض'], ['جدة', 'جدة'], ['الدمام', 'الدمام'], ['الخبر', 'الخبر'], ['مكة المكرمة', 'مكة المكرمة'], ['المدينة المنورة', 'المدينة المنورة']], more: true }
       ],
-      flags: [{ key: 'late', label: 'المتأخرة', icon: 'fa-triangle-exclamation' }, { key: 'approval', label: 'بانتظار الاعتماد', icon: 'fa-stamp' }],
+      flags: [{ key: 'approval', label: 'بانتظار الاعتماد', icon: 'fa-stamp' }, { key: 'nomaid', label: 'بانتظار اختيار العاملة', icon: 'fa-user-clock' }],
       bulk: [{ label: 'نقل للمرحلة التالية', icon: 'fa-arrow-left' }, { label: 'طباعة العقود', icon: 'fa-print' }, { label: 'تصدير المحدد', icon: 'fa-file-excel' }],
       columns: [
         { key: 'ref', label: 'العقد', fixed: true, primary: true, sort: 'id', render: function (r) { return R.two(r.ref, r.created, { num: true, subNum: true }); } },
@@ -268,7 +286,7 @@ document.addEventListener('DOMContentLoaded', function () {
         var left = r.price - r.paid;
         return (r.late ? R.note('<i class="fa-solid fa-circle-exclamation"></i> هذا العقد تجاوز مدة مرحلة «' + statusOf(STAGES, r.status).label + '» بـ ' + R.days(r.lateBy) + '.', 'danger') : '') +
           (r.approval ? R.note('<i class="fa-solid fa-stamp"></i> العقد بانتظار اعتمادك قبل الانتقال إلى مساند.', 'warning') : '') +
-          (r.status === 'back' ? R.note('<i class="fa-solid fa-ban"></i> العقد مرتجع أو ملغي.', 'danger') : R.section('مراحل العقد', R.steps(steps, i, { danger: r.late }))) +
+          (r.status === 'back' || r.status === 'cancelled' || r.status === 'closed' ? R.note('<i class="fa-solid fa-ban"></i> العقد ' + statusOf(STAGES, r.status).label + '.', 'danger') : R.section('مراحل العقد', R.steps(steps, i, { danger: r.late }))) +
           R.section('الأطراف', '<div class="as-dpair"><div class="as-dperson">' + R.avatar(r.client, 'lg') + R.two(r.client, r.phone, { subNum: true }) + '</div><div class="as-dperson">' + R.avatar(r.maid, 'lg') + R.two(r.maid, r.nat) + '</div></div>') +
           R.section('بيانات العقد', R.dl([['رقم مساند', r.msaned ? '<span class="as-num">' + r.msaned + '</span>' : '', true], ['رقم التأشيرة', r.visa ? '<span class="as-num">' + r.visa + '</span>' : '', true], ['جواز العاملة', '<span class="as-num">' + r.passport + '</span>', true], ['المكتب الخارجي', r.office], ['المسوّق', r.staff], ['تاريخ العقد', R.date(r.created), true]])) +
           R.section('المالية', '<div class="as-dmoney"><div><span>قيمة العقد</span>' + R.money(r.price) + '</div><div><span>المدفوع</span>' + R.money(r.paid) + '</div><div><span>المتبقي</span>' + (left ? R.money(left) : '<span class="as-ok"><i class="fa-solid fa-check"></i> مسدد</span>') + '</div></div>' + R.bar(r.paid, r.price, left ? '' : 'success'));
@@ -288,10 +306,12 @@ document.addEventListener('DOMContentLoaded', function () {
       searchHint: 'رقم العقد، اسم العميل أو العاملة',
       create: { label: 'عقد تأجير جديد', route: '/admin/RentContract/create' },
       statuses: RENT_ST, sort: ['id', 'desc'],
+      range: { label: 'تاريخ العقد' },
       filters: [
-        { key: 'pay', label: 'الدفع', all: 'كل حالات الدفع', options: [['paid', 'مدفوع'], ['partial', 'مدفوع جزئيًا'], ['unpaid', 'غير مدفوع']] },
-        { key: 'months', label: 'المدة', all: 'كل المدد', options: [['1', 'شهر'], ['3', '3 أشهر'], ['6', '6 أشهر'], ['12', 'سنة']] },
-        { key: 'nat', label: 'الجنسية', all: 'كل الجنسيات', options: NAT }
+        { key: 'pay', label: 'حالة الدفع', all: 'كل حالات الدفع', options: [['paid', 'تم الدفع'], ['partial', 'مدفوع جزئيًا'], ['unpaid', 'في انتظار الدفع'], ['later', 'الدفع لاحقًا'], ['transfer', 'بانتظار التحويل البنكي']] },
+        { key: 'months', label: 'الباقة', all: 'كل الباقات', options: [['1', 'شهر'], ['3', '3 أشهر'], ['6', '6 أشهر'], ['12', 'سنة']] },
+        { key: 'staff', label: 'المسوّق', all: 'كل المسوّقين', options: STAFF },
+        { key: 'nat', label: 'جنسية العاملة', all: 'كل الجنسيات', options: NAT, more: true }
       ],
       flags: [{ key: 'ending', label: 'ينتهي خلال أسبوع', icon: 'fa-hourglass-end' }],
       bulk: [{ label: 'إرسال تذكير بالدفع', icon: 'fa-bell' }, { label: 'تصدير المحدد', icon: 'fa-file-excel' }],
@@ -301,7 +321,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { key: 'maid', label: 'العاملة', render: function (r) { return R.two(r.maid, r.nat); } },
         { key: 'pkg', label: 'الباقة', render: function (r) { return R.two(r.pkg, r.months === 12 ? 'سنة' : r.months === 1 ? 'شهر' : r.months + ' أشهر'); } },
         { key: 'left', label: 'المدة المتبقية', sort: 'left', w: '170px', render: function (r) {
-          if (r.status === 'ended') return R.none('انتهى');
+          if (r.status === 'ended' || r.status === 'transferred') return R.none('انتهى');
           if (!r.used) return R.none('لم يبدأ');
           return R.bar(r.used, r.total, r.left <= 7 ? 'danger' : '', 'باقي ' + R.days(r.left));
         } },
@@ -311,7 +331,7 @@ document.addEventListener('DOMContentLoaded', function () {
       ],
       drawerTitle: function (r) { return 'عقد <span class="as-num">' + esc(r.ref) + '</span> ' + sb(RENT_ST, r.status); },
       detail: function (r) {
-        var order = ['sent', 'signed', 'delivered', 'trial', 'active', 'ended'], i = order.indexOf(r.status);
+        var order = ['sent', 'signed', 'delivered', 'trial', 'active', 'ended'], i = order.indexOf(r.status === 'transferred' ? 'ended' : r.status);
         return (r.left <= 7 && r.used && r.status !== 'ended' ? R.note('<i class="fa-solid fa-hourglass-end"></i> ينتهي العقد بعد ' + R.days(r.left) + '. تواصل مع العميل للتمديد.', 'warning') : '') +
           R.section('سير العقد', R.steps(RENT_ST.map(function (s) { return { label: s.label }; }), i)) +
           R.section('الأطراف', '<div class="as-dpair"><div class="as-dperson">' + R.avatar(r.client, 'lg') + R.two(r.client, r.phone, { subNum: true }) + '</div><div class="as-dperson">' + R.avatar(r.maid, 'lg') + R.two(r.maid, r.nat) + '</div></div>') +
@@ -334,9 +354,13 @@ document.addEventListener('DOMContentLoaded', function () {
       filters: [
         { key: 'svc', label: 'الخدمة', all: 'كل الخدمات', options: [['hour', 'خدمة بالساعة'], ['villa', 'تنظيف فلل'], ['stay', 'خدمة إقامة']] },
         { key: 'team', label: 'الفريق', all: 'كل الفرق', options: [['t1', 'فريق الرمال'], ['t2', 'فريق النرجس'], ['t3', 'فريق الملقا']] },
-        { key: 'pay', label: 'السداد', all: 'كل حالات السداد', options: [['paid', 'مدفوعة'], ['partial', 'مدفوعة جزئيًا'], ['unpaid', 'غير مدفوعة']] }
+        { key: 'pay', label: 'حالة السداد', all: 'كل حالات السداد', options: [['paid', 'مدفوع'], ['partial', 'جزئي'], ['unpaid', 'غير مدفوع']] },
+        { key: 'part', label: 'فترة اليوم', all: 'كل اليوم', options: [['am', 'قبل الظهر'], ['pm', 'بعد الظهر']], more: true },
+        { key: 'method', label: 'طريقة الدفع', all: 'كل الطرق', options: [['cash', 'نقدًا'], ['card', 'بطاقة'], ['bank', 'تحويل بنكي'], ['wallet', 'رصيد العميل']], more: true },
+        { key: 'src', label: 'مصدر العميل', all: 'كل المصادر', options: [['app', 'التطبيق'], ['web', 'الموقع'], ['admin', 'الإدارة']], more: true }
       ],
-      flags: [{ key: 'today', label: 'زيارات اليوم', icon: 'fa-calendar-day' }, { key: 'noreturn', label: 'لم تعد للإيواء', icon: 'fa-house-circle-exclamation' }],
+      range: { label: 'تاريخ الزيارة' },
+      flags: [{ key: 'noreturn', label: 'لم تعد للإيواء', icon: 'fa-house-circle-exclamation' }],
       bulk: [{ label: 'تغيير الموعد', icon: 'fa-calendar' }, { label: 'تسجيل دفعة', icon: 'fa-money-bill' }, { label: 'إلغاء', icon: 'fa-ban' }],
       columns: [
         { key: 'ref', label: 'الزيارة', fixed: true, primary: true, sort: 'id', render: function (r) { return R.two(r.ref, r.service, { num: true }); } },
@@ -375,10 +399,14 @@ document.addEventListener('DOMContentLoaded', function () {
       searchHint: 'رقم العقد، اسم العاملة أو العميل',
       create: { label: 'إضافة إلى الإيواء', route: '/admin/ShelterContract/create' },
       statuses: SHELTER_ST, sort: ['days', 'desc'],
+      range: { label: 'تاريخ الإضافة للإيواء' },
       filters: [
-        { key: 'shelter', label: 'المقر', all: 'كل المقرات', options: SHELTERS },
-        { key: 'src', label: 'الاستلام', all: 'كل طرق الاستلام', options: [['client', 'من العميل'], ['airport', 'من المطار'], ['escape', 'بلاغ تغيب']] },
-        { key: 'nat', label: 'الجنسية', all: 'كل الجنسيات', options: NAT }
+        { key: 'ctype', label: 'نوع العقد', all: 'كل الأنواع', options: [['rec', 'استقدام'], ['rent', 'تأجير'], ['instant', 'استلام فوري'], ['transfer', 'نقل كفالة']] },
+        { key: 'wants', label: 'رغبة العمل', all: 'كل الحالات', options: [['yes', 'ترغب بالعمل'], ['no', 'لا ترغب بالعمل'], ['unknown', 'غير محدد']] },
+        { key: 'shelter', label: 'مكان الإيواء', all: 'كل المقرات', options: SHELTERS },
+        { key: 'nat', label: 'الجنسية', all: 'كل الجنسيات', options: NAT, more: true },
+        { key: 'warranty', label: 'حالة الضمان', all: 'كل حالات الضمان', options: [['in', 'داخل الضمان'], ['out', 'خارج الضمان']], more: true },
+        { key: 'src', label: 'مصدر الاستلام', all: 'كل المصادر', options: [['client', 'من العميل'], ['airport', 'من المطار'], ['escape', 'بلاغ تغيب']], more: true }
       ],
       flags: [{ key: 'long', label: 'أكثر من 30 يومًا', icon: 'fa-clock' }],
       bulk: [{ label: 'نقل إلى مقر آخر', icon: 'fa-right-left' }, { label: 'تصدير المحدد', icon: 'fa-file-excel' }],
@@ -414,11 +442,14 @@ document.addEventListener('DOMContentLoaded', function () {
       statuses: MAID_ST, sort: ['added', 'desc'],
       filters: [
         { key: 'nat', label: 'الجنسية', all: 'كل الجنسيات', options: NAT },
-        { key: 'job', label: 'نوع العمل', all: 'كل أنواع العمل', options: [['rec', 'استقدام'], ['rent', 'تأجير'], ['hourly', 'بالساعة']] },
-        { key: 'age', label: 'العمر', all: 'كل الأعمار', options: [['a', '21 – 30'], ['b', '31 – 38'], ['c', '39 فأكبر']] },
-        { key: 'rel', label: 'الديانة', all: 'كل الديانات', options: [['m', 'مسلمة'], ['c', 'غير مسلمة']] }
+        { key: 'job', label: 'نوع السيرة', all: 'كل الأنواع', options: [['rec', 'استقدام'], ['rent', 'إيجار عمالة'], ['instant', 'استلام فوري'], ['hourly', 'بالساعة']] },
+        { key: 'exp', label: 'الخبرة', all: 'كل حالات الخبرة', options: [['yes', 'سبق لها العمل'], ['no', 'لم يسبق لها العمل']] },
+        { key: 'shown', label: 'الظهور', all: 'كل حالات الظهور', options: [['yes', 'السير الظاهرة'], ['no', 'السير المخفية']] },
+        { key: 'office', label: 'مكتب الاستقدام', all: 'كل المكاتب', options: [['trust', 'Trust Manpower Agency'], ['golden', 'Golden Hands Agency'], ['bright', 'Bright Future Placement'], ['star', 'Star Overseas Services']], more: true },
+        { key: 'rel', label: 'الديانة', all: 'كل الديانات', options: [['m', 'مسلمة'], ['c', 'غير مسلمة']], more: true },
+        { key: 'age', label: 'العمر', all: 'كل الأعمار', options: [['a', '21 – 30'], ['b', '31 – 38'], ['c', '39 فأكبر']], more: true }
       ],
-      flags: [{ key: 'exp', label: 'لديها خبرة', icon: 'fa-star' }, { key: 'new', label: 'أُضيفت هذا الأسبوع', icon: 'fa-bolt' }],
+      range: { label: 'تاريخ الإضافة' },
       bulk: [{ label: 'إظهار في الموقع', icon: 'fa-eye' }, { label: 'إخفاء من الموقع', icon: 'fa-eye-slash' }, { label: 'تحميل السير PDF', icon: 'fa-file-pdf' }],
       columns: [
         { key: 'name', label: 'العاملة', fixed: true, primary: true, sort: 'id', render: function (r) { return R.person(r.name, r.ref + ' · ' + r.passport, { subNum: true }); } },
@@ -460,11 +491,13 @@ document.addEventListener('DOMContentLoaded', function () {
       searchHint: 'الاسم، رقم العميل أو المدينة',
       create: { label: 'عميل جديد', href: 'client-create.html' },
       statuses: CLIENT_ST, sort: ['id', 'desc'],
+      range: { label: 'تاريخ التسجيل' },
       filters: [
-        { key: 'city', label: 'المدينة', all: 'كل المدن', options: [['الرياض', 'الرياض'], ['جدة', 'جدة'], ['الدمام', 'الدمام'], ['الخبر', 'الخبر'], ['مكة المكرمة', 'مكة المكرمة'], ['المدينة المنورة', 'المدينة المنورة']] },
-        { key: 'src', label: 'التسجيل', all: 'كل طرق التسجيل', options: [['app', 'التطبيق'], ['web', 'الموقع'], ['branch', 'الفرع']] }
+        { key: 'service', label: 'نوع الخدمة', all: 'كل الخدمات', options: [['rec', 'استقدام'], ['rent', 'تأجير'], ['none', 'بدون عقود']] },
+        { key: 'orders', label: 'الطلبات', all: 'كل العملاء', options: [['yes', 'لديه طلبات'], ['no', 'بدون طلبات']] },
+        { key: 'city', label: 'المدينة', all: 'كل المدن', options: [['الرياض', 'الرياض'], ['جدة', 'جدة'], ['الدمام', 'الدمام'], ['الخبر', 'الخبر'], ['مكة المكرمة', 'مكة المكرمة'], ['المدينة المنورة', 'المدينة المنورة']], more: true },
+        { key: 'src', label: 'طريقة التسجيل', all: 'كل الطرق', options: [['app', 'التطبيق'], ['web', 'الموقع'], ['branch', 'الفرع']], more: true }
       ],
-      flags: [{ key: 'active', label: 'لديهم عقود', icon: 'fa-file-signature' }],
       bulk: [{ label: 'إرسال رسالة', icon: 'fa-message' }, { label: 'تصدير المحدد', icon: 'fa-file-excel' }],
       columns: [
         { key: 'name', label: 'العميل', fixed: true, primary: true, sort: 'name', render: function (r) { return R.person(r.name, r.ref, { subNum: true }); } },
@@ -501,6 +534,7 @@ document.addEventListener('DOMContentLoaded', function () {
         { key: 'prio', label: 'الأولوية', all: 'كل الأولويات', options: [['high', 'عالية'], ['medium', 'متوسطة'], ['low', 'منخفضة']] },
         { key: 'staff', label: 'المسؤول', all: 'كل الموظفين', options: STAFF.concat([['none', 'غير مُسندة']]) }
       ],
+      range: { label: 'تاريخ الشكوى' },
       flags: [{ key: 'unassigned', label: 'غير مُسندة', icon: 'fa-user-slash' }],
       bulk: [{ label: 'إسناد إلى موظف', icon: 'fa-user-check' }, { label: 'إغلاق', icon: 'fa-circle-check' }],
       columns: [
@@ -515,7 +549,7 @@ document.addEventListener('DOMContentLoaded', function () {
       ],
       drawerTitle: function (r) { return 'شكوى <span class="as-num">' + esc(r.ref) + '</span> ' + sb(COMP_ST, r.status); },
       detail: function (r) {
-        var order = ['pending', 'progress', 'resolved', 'closed'], i = order.indexOf(r.status);
+        var order = ['pending', 'progress', 'resolved', 'closed'], i = order.indexOf(r.status === 'noreply' ? 'progress' : r.status === 'rejected' ? 'closed' : r.status);
         return (r.noContact ? R.note('<i class="fa-solid fa-phone-slash"></i> مضى ' + R.days(r.age) + ' ولم يُتواصل مع العميل بعد.', 'danger') : '') +
           R.section('نص الشكوى', '<blockquote class="as-quote">' + esc(r.text) + '</blockquote>') +
           R.section('المتابعة', R.steps([{ label: 'استُلمت', note: r.created }, { label: 'قيد المعالجة' }, { label: 'تم الحل' }, { label: 'أُغلقت' }], i, { danger: r.noContact })) +
@@ -534,9 +568,12 @@ document.addEventListener('DOMContentLoaded', function () {
       create: { label: 'تعميد جديد', route: '/admin/finance-claims/create' },
       statuses: CLAIM_ST, sort: ['id', 'desc'],
       filters: [
-        { key: 'type', label: 'النوع', all: 'كل الأنواع', options: [['gov', 'رسوم حكومية'], ['office', 'مكتب خارجي'], ['ticket', 'تذكرة طيران'], ['refund', 'استرجاع عميل'], ['medical', 'فحص طبي']] },
-        { key: 'by', label: 'طالب التعميد', all: 'كل الموظفين', options: STAFF }
+        { key: 'type', label: 'المسار', all: 'كل المسارات', options: [['gov', 'رسوم حكومية'], ['office', 'خارجية'], ['refund', 'عملاء'], ['ticket', 'شركات حجوزات الطيران'], ['medical', 'المستشفيات']] },
+        { key: 'owner', label: 'المشرف', all: 'كل المشرفين', options: [['fm', 'المدير المالي'], ['gm', 'المدير العام'], ['bm', 'مدير الفرع']] },
+        { key: 'office', label: 'المكتب الخارجي', all: 'كل المكاتب', options: [['trust', 'Trust Manpower Agency'], ['golden', 'Golden Hands Agency'], ['bright', 'Bright Future Placement'], ['star', 'Star Overseas Services']], more: true },
+        { key: 'by', label: 'طالب التعميد', all: 'كل الموظفين', options: STAFF, more: true }
       ],
+      range: { label: 'تاريخ الإنشاء' },
       flags: [{ key: 'big', label: '5,000 ر.س فأكثر', icon: 'fa-coins' }],
       bulk: [{ label: 'اعتماد المحدد', icon: 'fa-check' }, { label: 'تصدير المحدد', icon: 'fa-file-excel' }],
       columns: [

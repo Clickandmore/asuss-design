@@ -141,6 +141,7 @@
         document.addEventListener('click', function (e) {
             var t = e.target.closest('[data-as-dd]');
             document.querySelectorAll('.as-dd.is-open').forEach(function (dd) {
+                if (!t && dd.contains(e.target) && e.target.closest('[data-dd-keep]')) return;   // menus with inputs stay open
                 if (!t || dd !== t.parentElement) { dd.classList.remove('is-open'); var b = dd.querySelector('[data-as-dd]'); if (b) b.setAttribute('aria-expanded', 'false'); }
             });
             if (t) {

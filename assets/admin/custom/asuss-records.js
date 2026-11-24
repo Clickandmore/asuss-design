@@ -8,13 +8,25 @@
  * a details panel and its actions. Rows come from one function:
  *
  *   AsRecords.source(entity, query) → Promise<{ rows, total, counts }>
- *     query  = { status, q, filters: {key: value}, flags: {key: true}, sort: {key, dir}, page, size }
+ *     query  = { status, statusIn, q, filters: {key: value}, flags: {key: true}, range: {from, to}, sort: {key, dir}, page, size }
+ *              statusIn: the ids of a status group (e.g. «النشطة») instead of one status
+ *              range:    ISO dates (inclusive) on the entity's date field; null = all time
  *     counts = { all: n, <statusId>: n, … }   status-chip counts, computed WITHOUT the status filter
  *
  * The design kit fills it from kit/records-mock.js. In asuss it calls one JSON route per entity
  * (entity.url) with the same query; the route returns rows already shaped for the render functions.
  *
- * Deep links: records.html#<entity>[/<status | flag | filter value>]…, e.g. #recruitment/tafwed/late.
+ * Entity filters (real asuss logic, DESIGN.md → «الفلاتر»):
+ *   statuses: [{ id, label, tone }]            one chip each, with its count
+ *             { …, ids: [...] }                a group chip (count = sum), e.g. النشطة
+ *             { …, more: true }                folded under «المزيد» (end states)
+ *             { …, hidden: true }              no chip, reachable by link only
+ *   defaultStatus: 'active'                    chip selected when the list opens
+ *   filters:  [{ key, label, all, options }]   select in the bar; more: true → «فلاتر أخرى» panel
+ *   range:    { label: 'تاريخ العقد' }          period filter with presets
+ *   flags:    [{ key, label, icon }]           on/off buttons
+ *
+ * Deep links: records.html#<entity>[/<status | flag | filter value | period>]…, e.g. #recruitment/tafwed/late, #visits/today.
  * Port to asuss as public/admin/custom/asuss-records.js (needs asuss-ui.js first).
  */
 (function () {
@@ -125,6 +137,20 @@
         };
         var drawer = document.querySelector('[data-rec-drawer]');
         var st = null, res = { rows: [], total: 0, counts: {} }, reqId = 0, openId = null;
+        el.more = root.querySelector('[data-rec-more]');
+        var PRESETS = [['all', 'كل الوقت'], ['today', 'اليوم'], ['7d', 'آخر 7 أيام'], ['30d', 'آخر 30 يومًا'], ['month', 'هذا الشهر'], ['lastmonth', 'الشهر الماضي'], ['year', 'هذه السنة']];
+        function today() { return R.today ? R.today() : new Date(); }
+        function isoOf(d) { return new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())).toISOString().slice(0, 10); }
+        function resolveRange(r) {
+            if (!r) return null;
+            if (!r.preset) return { from: r.from || null, to: r.to || null };
+            var t = today(), y = t.getFullYear(), m = t.getMonth(), back = function (n) { return isoOf(new Date(y, m, t.getDate() - n)); };
+            return {
+                today: { from: isoOf(t), to: isoOf(t) }, '7d': { from: back(6), to: isoOf(t) }, '30d': { from: back(29), to: isoOf(t) },
+                month: { from: isoOf(new Date(y, m, 1)), to: isoOf(t) }, lastmonth: { from: isoOf(new Date(y, m - 1, 1)), to: isoOf(new Date(y, m, 0)) },
+                year: { from: isoOf(new Date(y, 0, 1)), to: isoOf(t) }
+            }[r.preset] || null;
+        }
 
         /* ---------- tabs ---------- */
         el.tabs.innerHTML = ents.map(function (e) {
@@ -138,7 +164,7 @@
         function fresh(e) {
             var pref = store('pref:' + e.id) || {};
             return {
-                e: e, status: 'all', q: '', filters: {}, flags: {}, sort: e.sort ? { key: e.sort[0], dir: e.sort[1] } : null,
+                e: e, status: e.defaultStatus || 'all', q: '', filters: {}, flags: {}, range: null, sort: e.sort ? { key: e.sort[0], dir: e.sort[1] } : null,
                 page: 1, size: pref.size || 25, density: pref.density || 'comfortable', view: pref.view || 'table',
                 hidden: pref.hidden || e.columns.filter(function (c) { return c.hidden; }).map(function (c) { return c.key; }),
                 sel: {}
@@ -156,7 +182,9 @@
             st = fresh(e);
             h.slice(1).forEach(function (seg) {
                 if (!seg) return;
-                if (e.statuses.some(function (s) { return s.id === seg; })) st.status = seg;
+                if (seg === 'all') st.status = 'all';
+                else if (e.statuses.some(function (s) { return s.id === seg; })) st.status = seg;
+                else if (e.range && PRESETS.some(function (p) { return p[0] === seg; })) st.range = { preset: seg };
                 else if ((e.flags || []).some(function (f) { return f.key === seg; })) st.flags[seg] = true;
                 else (e.filters || []).forEach(function (f) {
                     if (f.options.some(function (o) { return o[0] === seg; })) st.filters[f.key] = seg;
@@ -180,6 +208,47 @@
             t.classList.toggle('is-overflow', over);
             t.classList.toggle('is-end', over && Math.abs(t.scrollLeft) + t.clientWidth >= t.scrollWidth - 2);
         }
+
+        function closeDd(x) { var d = x.closest('.as-dd.is-open'); if (d) { d.classList.remove('is-open'); var b = d.querySelector('[data-as-dd]'); if (b) b.setAttribute('aria-expanded', 'false'); } }
+        /* ---------- filters ---------- */
+        function selectHtml(f, bare) {
+            var sel = '<select class="as-select as-select--sm" data-filter="' + f.key + '"' + (bare ? '' : ' aria-label="' + esc(f.label) + '"') + '>' +
+                '<option value="">' + esc(f.all) + '</option>' +
+                f.options.map(function (o) { return '<option value="' + esc(o[0]) + '"' + (st.filters[f.key] === o[0] ? ' selected' : '') + '>' + esc(o[1]) + '</option>'; }).join('') + '</select>';
+            return bare ? sel : '<span class="as-fsel">' + sel + '</span>';
+        }
+        function rangeHtml() {
+            return '<div class="as-dd as-range"><button type="button" class="as-toggle as-range__btn" data-as-dd aria-expanded="false" aria-haspopup="true">' +
+                '<i class="fa-regular fa-calendar" aria-hidden="true"></i><span data-range-label></span><i class="fa-solid fa-chevron-down as-range__caret" aria-hidden="true"></i></button>' +
+                '<div class="as-dd__menu as-range__menu" data-dd-keep><p class="as-dd__head">' + esc(st.e.range.label) + '</p>' +
+                PRESETS.map(function (p) { return '<button type="button" data-range="' + p[0] + '">' + esc(p[1]) + '</button>'; }).join('') +
+                '<div class="as-dd__sep"></div><p class="as-dd__head">فترة مخصصة</p><div class="as-range__custom">' +
+                '<label><span>من</span><input type="date" class="as-input" dir="ltr" data-range-from></label>' +
+                '<label><span>إلى</span><input type="date" class="as-input" dir="ltr" data-range-to></label></div>' +
+                '<button type="button" class="as-btn as-btn--primary as-btn--sm as-range__apply" data-range-apply>تطبيق</button></div></div>';
+        }
+        function rangeText() {
+            if (!st.range) return st.e.range.label + ': كل الوقت';
+            if (st.range.preset) return PRESETS.filter(function (p) { return p[0] === st.range.preset; })[0][1];
+            return (st.range.from || '…') + ' ← ' + (st.range.to || '…');
+        }
+        function syncRange() {
+            var b = el.filters.querySelector('.as-range__btn');
+            if (!b) return;
+            b.querySelector('[data-range-label]').textContent = rangeText();
+            b.setAttribute('aria-pressed', st.range ? 'true' : 'false');
+            el.filters.querySelectorAll('[data-range]').forEach(function (x) { x.classList.toggle('is-on', !!(st.range && st.range.preset === x.dataset.range) || (!st.range && x.dataset.range === 'all')); });
+        }
+        function moreCount() {
+            var n = (st.e.filters || []).filter(function (f) { return f.more && st.filters[f.key]; }).length;
+            var all = (st.e.filters || []).filter(function (f) { return st.filters[f.key]; }).length;
+            var b = el.filters.querySelector('[data-more-n]'), a = el.filters.querySelector('[data-all-n]');
+            if (b) { b.hidden = !n; b.textContent = n; }
+            if (a) { a.hidden = !all; a.textContent = all; }
+            // the same filter can sit in the bar and in the panel: keep both in step
+            root.querySelectorAll('[data-filter]').forEach(function (x) { x.value = st.filters[x.dataset.filter] || ''; });
+        }
+        function statusGroup(id) { return st.e.statuses.filter(function (s) { return s.id === id; })[0]; }
 
         /* ---------- per-entity chrome ---------- */
         function setupEntity() {
@@ -213,16 +282,20 @@
             if (crumbs) crumbs.innerHTML = '<li>' + esc(e.dept) + '</li><li>' + esc(e.title) + '</li>';
             document.title = e.title + ' | أسس الإنجاز للاستقدام';
 
-            // filters (selects) + flags (toggle buttons)
-            el.filters.innerHTML = (e.filters || []).map(function (f) {
-                return '<label class="as-fsel"><span class="as-sr">' + esc(f.label) + '</span><select class="as-select as-select--sm" data-filter="' + f.key + '">' +
-                    '<option value="">' + esc(f.all) + '</option>' +
-                    f.options.map(function (o) { return '<option value="' + esc(o[0]) + '"' + (st.filters[f.key] === o[0] ? ' selected' : '') + '>' + esc(o[1]) + '</option>'; }).join('') +
-                    '</select></label>';
-            }).join('') + (e.flags || []).map(function (f) {
+            // period, main filters (selects), flags (toggle buttons), then «فلاتر أخرى»
+            var main = (e.filters || []).filter(function (f) { return !f.more; }), more = (e.filters || []).filter(function (f) { return f.more; });
+            el.filters.innerHTML = (e.range ? rangeHtml() : '') + main.map(function (f) { return selectHtml(f); }).join('') + (e.flags || []).map(function (f) {
                 return '<button type="button" class="as-toggle" data-flag="' + f.key + '" aria-pressed="' + (st.flags[f.key] ? 'true' : 'false') + '">' +
                     '<i class="fa-solid ' + f.icon + '" aria-hidden="true"></i>' + esc(f.label) + '</button>';
-            }).join('');
+            }).join('') + ((e.filters || []).length ? '<button type="button" class="as-toggle as-toggle--more' + (more.length ? '' : ' is-phone') + '" data-more-toggle aria-expanded="false" aria-controls="as-rec-more">' +
+                '<i class="fa-solid fa-sliders" aria-hidden="true"></i><span class="as-on-wide">فلاتر أخرى</span><span class="as-on-phone">الفلاتر</span>' +
+                '<span class="as-toggle__n as-num as-on-wide" data-more-n hidden></span><span class="as-toggle__n as-num as-on-phone" data-all-n hidden></span></button>' : '');
+            // the panel holds the «more» filters; on a phone it also holds the main ones (the bar shows only search + this button)
+            el.more.innerHTML = (e.filters || []).length ? '<div class="as-rec__moregrid">' + main.concat(more).map(function (f) {
+                return '<label class="as-f' + (f.more ? '' : ' as-on-phone') + '"><span class="as-f__label">' + esc(f.label) + '</span>' + selectHtml(f, true) + '</label>';
+            }).join('') + '</div><div class="as-rec__moreacts"><button type="button" class="as-btn as-btn--ghost as-btn--sm" data-more-clear>مسح الفلاتر</button></div>' : '';
+            el.more.hidden = true;
+            moreCount();
 
             el.view.hidden = !e.card;
             if (!e.card) st.view = 'table';
@@ -231,6 +304,7 @@
             }).join('');
             renderColsMenu();
             setSegs();
+            syncRange();
         }
         function setSegs() {
             el.density.querySelectorAll('button').forEach(function (b) { b.setAttribute('aria-pressed', b.dataset.density === st.density ? 'true' : 'false'); });
@@ -247,7 +321,11 @@
 
         /* ---------- load ---------- */
         function query() {
-            return { status: st.status, q: st.q, filters: st.filters, flags: st.flags, sort: st.sort, page: st.page, size: st.size };
+            var g = statusGroup(st.status);
+            return {
+                status: g && g.ids ? 'all' : st.status, statusIn: g && g.ids ? g.ids : null, q: st.q, filters: st.filters, flags: st.flags,
+                range: resolveRange(st.range), sort: st.sort, page: st.page, size: st.size
+            };
         }
         function load() {
             var id = ++reqId;
@@ -280,16 +358,30 @@
         }
         function renderChips() {
             var c = res.counts || {};
-            var items = [{ id: 'all', label: 'الكل', tone: '' }].concat(st.e.statuses);
-            el.chips.innerHTML = items.map(function (s) {
-                var n = c[s.id] || 0, on = st.status === s.id;
-                return '<button type="button" class="as-chip' + (on ? ' is-on' : '') + (s.tone ? ' as-chip--' + s.tone : '') + '" data-status="' + s.id + '" aria-pressed="' + on + '"' + (!n && !on ? ' data-zero' : '') + '>' +
-                    (s.id !== 'all' ? '<i class="as-chip__dot" aria-hidden="true"></i>' : '') + esc(s.label) + '<span class="as-num">' + fmt.format(n) + '</span></button>';
-            }).join('');
+            function count(s) { return s.ids ? s.ids.reduce(function (a, id) { return a + (c[id] || 0); }, 0) : c[s.id] || 0; }
+            function chip(s) {
+                var n = count(s), on = st.status === s.id;
+                return '<button type="button" class="as-chip' + (on ? ' is-on' : '') + (s.tone ? ' as-chip--' + s.tone : '') + (s.ids ? ' as-chip--group' : '') + '" data-status="' + s.id + '" aria-pressed="' + on + '"' + (!n && !on ? ' data-zero' : '') + '>' +
+                    (s.id !== 'all' && !s.ids ? '<i class="as-chip__dot" aria-hidden="true"></i>' : '') + esc(s.label) + '<span class="as-num">' + fmt.format(n) + '</span></button>';
+            }
+            var main = st.e.statuses.filter(function (s) { return !s.more && !s.hidden; });
+            var groups = main.filter(function (s) { return s.ids; }), singles = main.filter(function (s) { return !s.ids; });
+            var more = st.e.statuses.filter(function (s) { return s.more; });
+            var cur = more.filter(function (s) { return s.id === st.status; })[0];
+            var moreHtml = more.length ? '<div class="as-dd as-chipmore"><button type="button" class="as-chip' + (cur ? ' is-on' : '') + '" data-as-dd aria-expanded="false" aria-haspopup="true">' +
+                (cur ? esc(cur.label) + '<span class="as-num">' + fmt.format(count(cur)) + '</span>' : 'المزيد<span class="as-num">' + fmt.format(more.reduce(function (a, s) { return a + count(s); }, 0)) + '</span>') +
+                '<i class="fa-solid fa-chevron-down" aria-hidden="true"></i></button><div class="as-dd__menu">' +
+                more.map(function (s) {
+                    return '<button type="button" data-status="' + s.id + '"' + (s.id === st.status ? ' class="is-on"' : '') + '><i class="as-chip__dot as-chip--' + (s.tone || 'neutral') + '" aria-hidden="true"></i>' + esc(s.label) + '<span class="as-num as-dd__n">' + fmt.format(count(s)) + '</span></button>';
+                }).join('') + '</div></div>' : '';
+            // «الكل» and the groups first, a thin divider, then each stage, then «المزيد»
+            el.chips.innerHTML = chip({ id: 'all', label: 'الكل', tone: '' }) + groups.map(chip).join('') +
+                (singles.length ? '<span class="as-chips__sep" aria-hidden="true"></span>' : '') + singles.map(chip).join('') + moreHtml;
         }
         function renderPills() {
             var e = st.e, pills = [];
             if (st.q) pills.push(['q', '', 'بحث: «' + esc(st.q) + '»']);
+            if (st.range) pills.push(['range', '', esc(e.range.label) + ': ' + esc(rangeText())]);
             (e.filters || []).forEach(function (f) {
                 var v = st.filters[f.key];
                 if (!v) return;
@@ -440,7 +532,13 @@
             var s = ev.target.closest('[data-filter]');
             if (!s) return;
             if (s.value) st.filters[s.dataset.filter] = s.value; else delete st.filters[s.dataset.filter];
-            st.page = 1; load();
+            moreCount(); st.page = 1; load();
+        });
+        el.more.addEventListener('change', function (ev) {
+            var s = ev.target.closest('[data-filter]');
+            if (!s) return;
+            if (s.value) st.filters[s.dataset.filter] = s.value; else delete st.filters[s.dataset.filter];
+            moreCount(); st.page = 1; load();
         });
         el.size.addEventListener('change', function () { st.size = +el.size.value; st.page = 1; savePref(); load(); });
         el.cols.addEventListener('change', function (ev) {
@@ -461,7 +559,30 @@
                 location.hash = x.dataset.id;
                 return;
             }
-            if ((x = t.closest('[data-status]'))) { st.status = x.dataset.status; st.page = 1; load(); return; }
+            if ((x = t.closest('[data-status]'))) { st.status = x.dataset.status; st.page = 1; closeDd(x); load(); return; }
+            if ((x = t.closest('[data-range]'))) {
+                st.range = x.dataset.range === 'all' ? null : { preset: x.dataset.range };
+                closeDd(x); syncRange(); st.page = 1; load(); return;
+            }
+            if ((x = t.closest('[data-range-apply]'))) {
+                var m = x.closest('.as-range__menu'), f = m.querySelector('[data-range-from]').value, to = m.querySelector('[data-range-to]').value;
+                if (f && to && f > to) { var sw = f; f = to; to = sw; }
+                st.range = f || to ? { from: f, to: to } : null;
+                closeDd(x); syncRange(); st.page = 1; load(); return;
+            }
+            if ((x = t.closest('[data-more-toggle]'))) {
+                el.more.hidden = !el.more.hidden;
+                x.setAttribute('aria-expanded', el.more.hidden ? 'false' : 'true');
+                x.classList.toggle('is-open', !el.more.hidden);
+                if (!el.more.hidden) { var first = el.more.querySelector('select'); if (first) first.focus(); }
+                return;
+            }
+            if ((x = t.closest('[data-more-clear]'))) {
+                var phone = window.matchMedia('(max-width: 767px)').matches;
+                (st.e.filters || []).forEach(function (f) { if (f.more || phone) delete st.filters[f.key]; });
+                el.more.querySelectorAll('[data-filter]').forEach(function (s) { s.value = ''; });
+                moreCount(); st.page = 1; load(); return;
+            }
             if ((x = t.closest('[data-flag]'))) {
                 var k = x.dataset.flag;
                 if (st.flags[k]) delete st.flags[k]; else st.flags[k] = true;
@@ -475,12 +596,14 @@
                     if (kind === 'all') st.filters = {}; else delete st.filters[key];
                 }
                 if (kind === 'flag' || kind === 'all') { if (kind === 'all') st.flags = {}; else delete st.flags[key]; }
+                if (kind === 'range' || kind === 'all') st.range = null;
+                syncRange(); moreCount(); el.more.querySelectorAll('[data-filter]').forEach(function (s) { s.value = st.filters[s.dataset.filter] || ''; });
                 el.filters.querySelectorAll('[data-filter]').forEach(function (s) { s.value = st.filters[s.dataset.filter] || ''; });
                 el.filters.querySelectorAll('[data-flag]').forEach(function (b) { b.setAttribute('aria-pressed', st.flags[b.dataset.flag] ? 'true' : 'false'); });
                 st.page = 1; load(); return;
             }
             if (t.closest('[data-rec-reset]')) {
-                st.q = ''; el.q.value = ''; st.filters = {}; st.flags = {}; st.status = 'all'; st.page = 1;
+                st.q = ''; el.q.value = ''; st.filters = {}; st.flags = {}; st.range = null; st.status = st.e.defaultStatus || 'all'; st.page = 1;
                 setupEntity(); load(); return;
             }
             if ((x = t.closest('[data-cols-reset]'))) {
