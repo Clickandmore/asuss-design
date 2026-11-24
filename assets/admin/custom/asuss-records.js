@@ -184,6 +184,14 @@
         /* ---------- per-entity chrome ---------- */
         function setupEntity() {
             var e = st.e;
+            // only the lists of the current department are tabs; a department with one list shows none
+            var mates = 0;
+            el.tabs.querySelectorAll('.as-rectab').forEach(function (t) {
+                var same = byId[t.dataset.id].dept === e.dept;
+                t.hidden = !same;
+                if (same) mates++;
+            });
+            el.tabs.hidden = mates < 2;
             el.tabs.querySelectorAll('.as-rectab').forEach(function (t) {
                 var on = t.dataset.id === e.id;
                 t.setAttribute('aria-selected', on ? 'true' : 'false');

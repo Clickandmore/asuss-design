@@ -1,6 +1,6 @@
 # asuss-admin-design
 
-Static, anonymized design kit of the asuss (Laravel 8) admin panel. Read README.md, DESIGN.md and ISSUES.md first.
+Static, anonymized design kit of the asuss (Laravel 8) admin panel. Read README.md, DESIGN.md and ISSUES.md first. **Every screen follows «قواعد التصميم» at the top of DESIGN.md** (live reference: `screens/patterns.html`): lists are sections of `records.html`, forms use the `.as-form` pattern + `asuss-forms.js`.
 
 ## Rules
 - Never add real data (names, phones, national IDs, passports, emails, personal photos). New captures go through `tools/build_kit.py`, which anonymizes; `raw/`, `fixtures/`, `names_raw.txt`, `ui_vocab.txt`, `ui_corpus.txt` stay out of git.

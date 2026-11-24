@@ -1,0 +1,223 @@
+<div class="as-pagehead">
+  <div>
+    <a class="as-back" href="records.html#recruitment"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i>عقود الاستقدام</a>
+    <h2>عقد استقدام جديد</h2>
+    <p>يبدأ العقد في مرحلة «عقد جديد»، ويتنقل بين المراحل من قائمة العقود.</p>
+  </div>
+</div>
+
+<form class="as-form" data-as-form data-done="records.html#recruitment/new" data-saved="تم إنشاء العقد." action="#" method="post" novalidate>
+  <div class="as-form__main">
+    <section class="as-fsec" id="sec-client" aria-labelledby="sec-client-t">
+      <header class="as-fsec__head">
+        <span class="as-fsec__n">1</span>
+        <div><h3 id="sec-client-t">العميل</h3><p>صاحب التأشيرة.</p></div>
+      </header>
+      <div class="as-fsec__body">
+        <div class="as-choices" role="radiogroup">
+          <label class="as-choice"><input type="radio" name="ctype" value="old" required checked><span class="as-choice__icon"><i class="fa-solid fa-user-check"></i></span><span class="as-choice__txt"><strong>عميل مسجّل</strong><span>ابحث بالاسم أو الجوال أو الهوية.</span></span></label>
+          <label class="as-choice"><input type="radio" name="ctype" value="new" required><span class="as-choice__icon"><i class="fa-solid fa-user-plus"></i></span><span class="as-choice__txt"><strong>عميل جديد</strong><span>يُنشأ ملفه مع العقد.</span></span></label>
+        </div>
+        <div class="as-fgrid" data-show-if="ctype=old">
+          <div class="as-f as-f--full">
+            <label class="as-f__label" for="k-client">العميل <span class="as-req" aria-hidden="true">*</span></label>
+            <input class="as-input" id="k-client" name="client" list="k-clients" required placeholder="اكتب الاسم أو رقم الجوال" autocomplete="off"><datalist id="k-clients"><option value="نوف الغامدي — 052 ••• 1635"><option value="لطيفة الشهري — 056 ••• 3193"><option value="هند السبيعي — 052 ••• 8070"><option value="مشاعل البقمي — 054 ••• 7960"><option value="تركي القحطاني — 058 ••• 6966"></datalist>
+          </div>
+        </div>
+        <div class="as-fgrid" data-show-if="ctype=new">
+          <div class="as-f">
+            <label class="as-f__label" for="k-name">الاسم الكامل <span class="as-req" aria-hidden="true">*</span></label>
+            <input class="as-input" id="k-name" name="client_name" required>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-phone">الجوال <span class="as-req" aria-hidden="true">*</span></label>
+            <div class="as-ig as-ig--pre" dir="ltr"><span class="as-ig__add">+966</span><input class="as-input" id="k-phone" name="client_phone" dir="ltr" inputmode="tel" required data-pattern="5\d{8}" data-err="رقم الجوال 9 أرقام يبدأ بـ 5" placeholder="5X XXX XXXX"></div>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-nid">رقم الهوية <span class="as-req" aria-hidden="true">*</span></label>
+            <input class="as-input" id="k-nid" name="client_nid" dir="ltr" inputmode="numeric" required data-pattern="[12]\d{9}" data-err="رقم الهوية 10 أرقام يبدأ بـ 1 أو 2" placeholder="1XXXXXXXXX">
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-city">مدينة التسليم <span class="as-req" aria-hidden="true">*</span></label>
+            <select class="as-select" id="k-city" name="client_city" required><option value="">اختر المدينة</option><option>الرياض</option><option>جدة</option><option>مكة المكرمة</option><option>المدينة المنورة</option><option>الدمام</option><option>الخبر</option></select>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="as-fsec" id="sec-maid" aria-labelledby="sec-maid-t">
+      <header class="as-fsec__head">
+        <span class="as-fsec__n">2</span>
+        <div><h3 id="sec-maid-t">العاملة</h3><p>اختر طريقة تحديد العاملة.</p></div>
+      </header>
+      <div class="as-fsec__body">
+        <div class="as-choices" role="radiogroup">
+          <label class="as-choice"><input type="radio" name="mtype" value="cv" required checked><span class="as-choice__icon"><i class="fa-solid fa-id-card"></i></span><span class="as-choice__txt"><strong>من السير المتاحة</strong><span>عاملة لها سيرة في النظام.</span></span></label>
+          <label class="as-choice"><input type="radio" name="mtype" value="spec" required><span class="as-choice__icon"><i class="fa-solid fa-sliders"></i></span><span class="as-choice__txt"><strong>بالمواصفات</strong><span>يختار المكتب العاملة لاحقًا.</span></span></label>
+          <label class="as-choice"><input type="radio" name="mtype" value="passport" required><span class="as-choice__icon"><i class="fa-solid fa-passport"></i></span><span class="as-choice__txt"><strong>برقم الجواز</strong><span>عاملة يعرفها العميل.</span></span></label>
+        </div>
+        <div class="as-fgrid" data-show-if="mtype=cv">
+          <div class="as-f as-f--full">
+            <label class="as-f__label" for="k-cv">السيرة الذاتية <span class="as-req" aria-hidden="true">*</span></label>
+            <select class="as-select" id="k-cv" name="cv" required><option value="">اختر من السير المتاحة (578)</option><option>MARIA PERERA · كينيا · 34 سنة · 1,000 ر.س</option><option>RINA ACHIENG · الفلبين · 25 سنة · 1,200 ر.س</option><option>RINA GIRMA · الهند · 43 سنة · 1,300 ر.س</option><option>RINA PERERA · كينيا · 23 سنة · 1,200 ر.س</option></select>
+            <p class="as-f__hint">تُحجز السيرة لهذا العميل عند حفظ العقد.</p>
+          </div>
+        </div>
+        <div class="as-fgrid as-fgrid--3" data-show-if="mtype=spec">
+          <div class="as-f">
+            <label class="as-f__label" for="k-snat">الجنسية <span class="as-req" aria-hidden="true">*</span></label>
+            <select class="as-select" id="k-snat" name="spec_nat" required><option value="">اختر</option><option value="ph">الفلبين</option><option value="ke">كينيا</option><option value="ug">أوغندا</option><option value="et">إثيوبيا</option><option value="bd">بنغلاديش</option><option value="lk">سريلانكا</option><option value="id">إندونيسيا</option><option value="in">الهند</option></select>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-srel">الديانة <span class="as-req" aria-hidden="true">*</span></label>
+            <select class="as-select" id="k-srel" name="spec_rel" required><option value="">اختر</option><option>مسلمة</option><option>مسيحية</option><option>لا يهم</option></select>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-sjob">المهنة</label>
+            <select class="as-select" id="k-sjob" name="spec_job"><option>عاملة منزلية</option><option>مربية أطفال</option><option>طباخة</option></select>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-amin">العمر من <span class="as-req" aria-hidden="true">*</span></label>
+            <input class="as-input" id="k-amin" name="age_min" type="number" min="21" max="55" value="25" dir="ltr" required>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-amax">العمر إلى <span class="as-req" aria-hidden="true">*</span></label>
+            <input class="as-input" id="k-amax" name="age_max" type="number" min="21" max="55" value="40" dir="ltr" required>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-sexp">الخبرة</label>
+            <select class="as-select" id="k-sexp" name="spec_exp"><option>لا يهم</option><option>بدون خبرة</option><option>سنتان على الأقل</option></select>
+          </div>
+          <div class="as-f as-f--full">
+            <label class="as-f__label" for="k-snote">ملاحظات للمكتب</label>
+            <textarea class="as-textarea" id="k-snote" name="spec_note" placeholder="مثال: تجيد الطبخ الخليجي، ولا تمانع رعاية طفل رضيع."></textarea>
+          </div>
+        </div>
+        <div class="as-fgrid" data-show-if="mtype=passport">
+          <div class="as-f">
+            <label class="as-f__label" for="k-ppass">رقم جواز العاملة <span class="as-req" aria-hidden="true">*</span></label>
+            <input class="as-input" id="k-ppass" name="maid_passport" dir="ltr" required data-pattern="[A-Za-z0-9]{6,12}" data-err="من 6 إلى 12 حرفًا أو رقمًا" style="text-transform:uppercase">
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-pnat">الجنسية <span class="as-req" aria-hidden="true">*</span></label>
+            <select class="as-select" id="k-pnat" name="maid_nat" required><option value="">اختر</option><option value="ph">الفلبين</option><option value="ke">كينيا</option><option value="ug">أوغندا</option><option value="et">إثيوبيا</option><option value="bd">بنغلاديش</option><option value="lk">سريلانكا</option><option value="id">إندونيسيا</option><option value="in">الهند</option></select>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="as-fsec" id="sec-visa" aria-labelledby="sec-visa-t">
+      <header class="as-fsec__head">
+        <span class="as-fsec__n">3</span>
+        <div><h3 id="sec-visa-t">مساند والتأشيرة</h3><p>من منصة مساند.</p></div>
+      </header>
+      <div class="as-fsec__body">
+        <div class="as-fgrid">
+          <div class="as-f">
+            <label class="as-f__label" for="k-musaned">رقم عقد مساند <span class="as-req" aria-hidden="true">*</span></label>
+            <input class="as-input" id="k-musaned" name="musaned_no" dir="ltr" inputmode="numeric" required>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-date">تاريخ العقد <span class="as-req" aria-hidden="true">*</span></label>
+            <input class="as-input" id="k-date" name="contract_date" type="date" dir="ltr" value="2026-11-25" required>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-visa">رقم التأشيرة <span class="as-req" aria-hidden="true">*</span></label>
+            <input class="as-input" id="k-visa" name="visa_no" dir="ltr" inputmode="numeric" required>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-vtype">نوع التأشيرة <span class="as-req" aria-hidden="true">*</span></label>
+            <select class="as-select" id="k-vtype" name="visa_type" required><option value="">اختر</option><option>عاملة منزلية</option><option>مربية</option><option>طباخ منزلي</option></select>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-vdate">تاريخ التأشيرة</label>
+            <input class="as-input" id="k-vdate" name="visa_date" type="date" dir="ltr">
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-tafwed">رقم التفويض</label>
+            <input class="as-input" id="k-tafwed" name="tafwed_no" dir="ltr">
+            <p class="as-f__hint">يُضاف لاحقًا في مرحلة التفويض إن لم يتوفر.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="as-fsec" id="sec-money" aria-labelledby="sec-money-t">
+      <header class="as-fsec__head">
+        <span class="as-fsec__n">4</span>
+        <div><h3 id="sec-money-t">المالية والمسوّق</h3><p>قيمة العقد وما دُفع منها.</p></div>
+      </header>
+      <div class="as-fsec__body">
+        <div class="as-fgrid as-fgrid--3">
+          <div class="as-f">
+            <label class="as-f__label" for="k-price">قيمة العقد <span class="as-req" aria-hidden="true">*</span></label>
+            <div class="as-ig"><input class="as-input" id="k-price" name="price" type="number" min="0" step="100" dir="ltr" required><span class="as-ig__add">ر.س</span></div>
+            <p class="as-f__hint">شاملة الضريبة.</p>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-paid">المدفوع الآن</label>
+            <div class="as-ig"><input class="as-input" id="k-paid" name="paid" type="number" min="0" step="100" dir="ltr" value="0"><span class="as-ig__add">ر.س</span></div>
+            <p class="as-f__hint">يُسجَّل به سند قبض تلقائيًا.</p>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-method">طريقة الدفع</label>
+            <select class="as-select" id="k-method" name="method"><option>تحويل بنكي</option><option>مدى</option><option>نقدًا</option><option>تمارا (أقساط)</option></select>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-staff">المسوّق <span class="as-req" aria-hidden="true">*</span></label>
+            <select class="as-select" id="k-staff" name="marketer" required><option value="">اختر</option><option>سارة أحمد</option><option>سلطان الزهراني</option><option>ريم العتيبي</option><option>فهد الدوسري</option><option>نورة الحربي</option></select>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-term">مدة العقد <span class="as-req" aria-hidden="true">*</span></label>
+            <select class="as-select" id="k-term" name="term" required><option value="24" selected>سنتان</option><option value="12">سنة</option></select>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="k-eta">مدة الوصول المتوقعة</label>
+            <div class="as-ig"><input class="as-input" id="k-eta" name="eta_days" type="number" min="15" max="180" value="60" dir="ltr"><span class="as-ig__add">يومًا</span></div>
+            <p class="as-f__hint">يظهر العقد «متأخرًا» بعدها.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <aside class="as-form__aside">
+    <nav class="as-card as-formnav" data-form-nav aria-label="أقسام النموذج">
+      <div class="as-formnav__state"><span>اكتمال البيانات المطلوبة</span><span class="as-num" data-form-pct>0%</span></div>
+      <div class="as-formnav__bar"><div class="as-pbar as-pbar--success"><span class="as-pbar__track"><span style="width:0"></span></span></div></div>
+      <ol></ol>
+    </nav>
+    <div class="as-card as-sum">
+      <h4>ملخص العقد</h4>
+      <dl>
+        <div><dt>العميل</dt><dd data-bind="client+client_name" data-empty="—"></dd></div>
+        <div><dt>العاملة</dt><dd data-bind="cv+spec_nat+maid_passport" data-empty="—"></dd></div>
+        <div><dt>التأشيرة</dt><dd class="as-num" data-bind="visa_no" data-empty="—"></dd></div>
+        <div><dt>المسوّق</dt><dd data-bind="marketer" data-empty="—"></dd></div>
+      </dl>
+      <dl class="as-sum__total">
+        <div><dt>قيمة العقد</dt><dd><span class="as-num" data-bind="price" data-format="num" data-empty="0"></span> ر.س</dd></div>
+        <div><dt>المدفوع</dt><dd><span class="as-num" data-bind="paid" data-format="num" data-empty="0"></span> ر.س</dd></div>
+        <div><dt>المتبقي</dt><dd><strong class="as-num" data-left>0</strong> ر.س</dd></div>
+      </dl>
+    </div>
+  </aside>
+
+  <div class="as-formbar">
+    <span class="as-formbar__state" data-form-state aria-live="polite"></span>
+    <div class="as-formbar__acts">
+      <a class="as-btn as-btn--ghost" href="records.html#recruitment" data-cancel>إلغاء</a>
+      <button class="as-btn as-btn--primary" type="submit"><i class="fa-solid fa-check"></i>إنشاء العقد</button>
+    </div>
+  </div>
+</form>
+<!-- scripts -->
+<script src="../assets/admin/custom/asuss-forms.js"></script>
+<script>
+  // remaining = price − paid, in the summary
+  (function () {
+    var form = document.querySelector('[data-as-form]'), out = document.querySelector('[data-left]');
+    var fmt = new Intl.NumberFormat('en-US');
+    form.addEventListener('input', function () {
+      var left = (+form.price.value || 0) - (+form.paid.value || 0);
+      out.textContent = fmt.format(Math.max(0, left));
+    });
+  })();
+</script>

@@ -1,0 +1,150 @@
+<div class="as-pagehead">
+  <div>
+    <a class="as-back" href="records.html#clients"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i>العملاء</a>
+    <h2>عميل جديد</h2>
+    <p>البيانات الأساسية تكفي للحفظ، والباقي يُكمَل لاحقًا من ملف العميل.</p>
+  </div>
+</div>
+
+<form class="as-form" data-as-form data-done="records.html#clients" data-saved="تم حفظ العميل." action="#" method="post" novalidate>
+  <div class="as-form__main">
+
+    <section class="as-fsec" id="sec-basic" aria-labelledby="sec-basic-t">
+      <header class="as-fsec__head">
+        <span class="as-fsec__n">1</span>
+        <div><h3 id="sec-basic-t">البيانات الأساسية</h3><p>كما في الهوية الوطنية أو الإقامة.</p></div>
+      </header>
+      <div class="as-fsec__body">
+        <div class="as-fgrid">
+          <div class="as-f as-f--full">
+            <label class="as-f__label" for="c-name">الاسم الكامل <span class="as-req" aria-hidden="true">*</span></label>
+            <input class="as-input" id="c-name" name="name" required autocomplete="name" placeholder="الاسم الأول واسم العائلة">
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="c-phone">الجوال <span class="as-req" aria-hidden="true">*</span></label>
+            <div class="as-ig as-ig--pre" dir="ltr">
+              <span class="as-ig__add">+966</span>
+              <input class="as-input" id="c-phone" name="phone" dir="ltr" inputmode="tel" required data-pattern="5\d{8}" data-err="رقم الجوال 9 أرقام يبدأ بـ 5" placeholder="5X XXX XXXX">
+            </div>
+            <p class="as-f__hint">يصل عليه رمز الدخول للتطبيق وتنبيهات العقد.</p>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="c-phone2">جوال آخر</label>
+            <div class="as-ig as-ig--pre" dir="ltr">
+              <span class="as-ig__add">+966</span>
+              <input class="as-input" id="c-phone2" name="phone2" dir="ltr" inputmode="tel" data-pattern="5\d{8}" data-err="رقم الجوال 9 أرقام يبدأ بـ 5" placeholder="5X XXX XXXX">
+            </div>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="c-nid">رقم الهوية <span class="as-req" aria-hidden="true">*</span></label>
+            <input class="as-input" id="c-nid" name="nid" dir="ltr" inputmode="numeric" required data-pattern="[12]\d{9}" data-err="رقم الهوية 10 أرقام يبدأ بـ 1 أو 2" placeholder="1XXXXXXXXX">
+            <p class="as-f__hint">10 أرقام: يبدأ بـ 1 للمواطن و2 للمقيم.</p>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="c-nat">الجنسية <span class="as-req" aria-hidden="true">*</span></label>
+            <select class="as-select" id="c-nat" name="nationality" required>
+              <option value="">اختر</option>
+              <option value="sa" selected>السعودية</option><option value="eg">مصر</option><option value="ye">اليمن</option><option value="sy">سوريا</option><option value="jo">الأردن</option><option value="sd">السودان</option><option value="other">أخرى</option>
+            </select>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="c-birth">تاريخ الميلاد</label>
+            <input class="as-input" id="c-birth" name="birth" type="date" dir="ltr">
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="c-email">البريد الإلكتروني</label>
+            <input class="as-input" id="c-email" name="email" type="email" dir="ltr" autocomplete="email" data-pattern="[^@\s]+@[^@\s]+\.[^@\s]+" data-err="اكتب بريدًا صحيحًا مثل name@example.com" placeholder="name@example.com">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="as-fsec" id="sec-home" aria-labelledby="sec-home-t">
+      <header class="as-fsec__head">
+        <span class="as-fsec__n">2</span>
+        <div><h3 id="sec-home-t">السكن والأسرة</h3><p>تساعد في ترشيح العاملة المناسبة وتحديد مدينة التسليم.</p></div>
+      </header>
+      <div class="as-fsec__body">
+        <div class="as-fgrid">
+          <div class="as-f">
+            <label class="as-f__label" for="c-city">المدينة <span class="as-req" aria-hidden="true">*</span></label>
+            <select class="as-select" id="c-city" name="city" required>
+              <option value="">اختر المدينة</option>
+              <option>الرياض</option><option>جدة</option><option>مكة المكرمة</option><option>المدينة المنورة</option><option>الدمام</option><option>الخبر</option>
+            </select>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="c-job">الوظيفة</label>
+            <input class="as-input" id="c-job" name="job" placeholder="مثال: معلم">
+          </div>
+          <div class="as-f as-f--full">
+            <label class="as-f__label" for="c-address">العنوان</label>
+            <input class="as-input" id="c-address" name="address" placeholder="الحي، الشارع، رقم المبنى">
+          </div>
+        </div>
+        <div class="as-fgrid as-fgrid--3">
+          <div class="as-f">
+            <label class="as-f__label" for="c-rooms">عدد الغرف</label>
+            <input class="as-input" id="c-rooms" name="rooms" type="number" min="1" max="30" inputmode="numeric" dir="ltr">
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="c-family">أفراد الأسرة</label>
+            <input class="as-input" id="c-family" name="family" type="number" min="1" max="40" inputmode="numeric" dir="ltr">
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="c-kids">الأطفال تحت 12 سنة</label>
+            <input class="as-input" id="c-kids" name="kids" type="number" min="0" max="20" inputmode="numeric" dir="ltr">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="as-fsec" id="sec-app" aria-labelledby="sec-app-t">
+      <header class="as-fsec__head">
+        <span class="as-fsec__n">3</span>
+        <div><h3 id="sec-app-t">حساب التطبيق</h3><p>ليتابع العميل عقده ويدفع من التطبيق.</p></div>
+      </header>
+      <div class="as-fsec__body">
+        <label class="as-switch">
+          <span class="as-switch__txt"><strong>إنشاء حساب للعميل في التطبيق</strong><span>يدخل برقم الجوال. تصله رسالة نصية فيها رابط التطبيق.</span></span>
+          <input type="checkbox" role="switch" name="app" value="1" checked>
+        </label>
+        <div class="as-fgrid" data-show-if="app=1">
+          <div class="as-f">
+            <label class="as-f__label" for="c-pass">كلمة المرور <span class="as-req" aria-hidden="true">*</span></label>
+            <input class="as-input" id="c-pass" name="password" type="password" dir="ltr" autocomplete="new-password" required data-pattern=".{8,}" data-err="8 أحرف على الأقل">
+            <p class="as-f__hint">8 أحرف على الأقل. يستطيع العميل تغييرها من التطبيق.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <aside class="as-form__aside">
+    <nav class="as-card as-formnav" data-form-nav aria-label="أقسام النموذج">
+      <div class="as-formnav__state"><span>اكتمال البيانات المطلوبة</span><span class="as-num" data-form-pct>0%</span></div>
+      <div class="as-formnav__bar"><div class="as-pbar as-pbar--success"><span class="as-pbar__track"><span style="width:0"></span></span></div></div>
+      <ol></ol>
+    </nav>
+    <div class="as-card as-sum">
+      <h4>ملخص</h4>
+      <dl>
+        <div><dt>الاسم</dt><dd data-bind="name" data-empty="لم يُكتب بعد"></dd></div>
+        <div><dt>الجوال</dt><dd class="as-num" data-bind="phone" data-empty="—"></dd></div>
+        <div><dt>المدينة</dt><dd data-bind="city" data-empty="—"></dd></div>
+      </dl>
+    </div>
+    <p class="as-card as-help"><strong>بعد الحفظ</strong>يفتح ملف العميل، ومنه تنشئ عقد استقدام أو تأجير مباشرة.</p>
+  </aside>
+
+  <div class="as-formbar">
+    <span class="as-formbar__state" data-form-state aria-live="polite"></span>
+    <div class="as-formbar__acts">
+      <a class="as-btn as-btn--ghost" href="records.html#clients" data-cancel>إلغاء</a>
+      <button class="as-btn as-btn--secondary" type="submit" data-again>حفظ وإضافة آخر</button>
+      <button class="as-btn as-btn--primary" type="submit"><i class="fa-solid fa-check"></i>حفظ العميل</button>
+    </div>
+  </div>
+</form>
+<!-- scripts -->
+<script src="../assets/admin/custom/asuss-forms.js"></script>

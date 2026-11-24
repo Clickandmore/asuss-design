@@ -21,7 +21,7 @@
     <ul class="as-rail__list">
 <li><button class="as-rail__btn" type="button" data-dept="home" aria-pressed="false" title="الرئيسية"><i class="fa-solid fa-house" aria-hidden="true"></i><span>الرئيسية</span></button></li>
 <li><button class="as-rail__btn is-active" type="button" data-dept="rec" aria-pressed="true" title="الاستقدام"><i class="fa-solid fa-file-signature" aria-hidden="true"></i><span>الاستقدام</span><span class="as-rail__dot as-num">4</span></button></li>
-<li><button class="as-rail__btn" type="button" data-dept="rent" aria-pressed="false" title="التأجير"><i class="fa-solid fa-handshake" aria-hidden="true"></i><span>التأجير</span></button></li>
+<li><button class="as-rail__btn" type="button" data-dept="rent" aria-pressed="false" title="التأجير"><i class="fa-solid fa-handshake" aria-hidden="true"></i><span>التأجير</span><span class="as-rail__dot as-num">26</span></button></li>
 <li><button class="as-rail__btn" type="button" data-dept="ops" aria-pressed="false" title="التشغيل"><i class="fa-solid fa-truck-fast" aria-hidden="true"></i><span>التشغيل</span></button></li>
 <li><button class="as-rail__btn" type="button" data-dept="care" aria-pressed="false" title="العملاء"><i class="fa-solid fa-headset" aria-hidden="true"></i><span>العملاء</span><span class="as-rail__dot as-num">5</span></button></li>
 <li><button class="as-rail__btn" type="button" data-dept="fin" aria-pressed="false" title="المالية"><i class="fa-solid fa-wallet" aria-hidden="true"></i><span>المالية</span><span class="as-rail__dot as-num">9</span></button></li>
@@ -115,7 +115,7 @@
 <p class="as-nav__label">التأجير بالساعة</p>
 <ul>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">لوحة الطلبات</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="hourly-visits.html"><span class="as-nav__text">الزيارات</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#visits"><span class="as-nav__text">الزيارات</span><span class="as-nav__count as-nav__count--alert as-num">26</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="hourly-schedule.html"><span class="as-nav__text">جدول الموظفين</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الفرق والخدمات</span></a></li>
 </ul></div>
@@ -186,9 +186,8 @@
 <div class="as-nav__group">
 <p class="as-nav__label">فريق العمل</p>
 <ul>
-<li class="as-nav__item"><a class="as-nav__link" href="employees.html"><span class="as-nav__text">الموظفون</span><span class="as-nav__count as-num">39</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="admins.html"><span class="as-nav__text">المستخدمون</span></a></li>
-<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الصلاحيات</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#employees"><span class="as-nav__text">الموظفون</span><span class="as-nav__count as-num">39</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#users"><span class="as-nav__text">المستخدمون والصلاحيات</span><span class="as-nav__count as-num">24</span></a></li>
 <li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">سجل النشاط</span></a></li>
 </ul></div>
 <div class="as-nav__group">
@@ -433,6 +432,19 @@ document.addEventListener('DOMContentLoaded', function () {
     { id: 'done', label: 'مكتملة', tone: 'success' }
   ];
 
+  /* ---------- الزيارات بالساعة ---------- */
+  var VISIT_ST = [
+    { id: 'scheduled', label: 'مجدولة', tone: 'info' }, { id: 'onway', label: 'في الطريق', tone: 'info' },
+    { id: 'inprogress', label: 'جارية', tone: 'warning' }, { id: 'done', label: 'منفّذة', tone: 'success' },
+    { id: 'missed', label: 'فات موعدها', tone: 'danger' }, { id: 'cancelled', label: 'ملغاة', tone: 'neutral' }
+  ];
+  var VPAY = { paid: ['مدفوعة', 'success'], partial: ['مدفوعة جزئيًا', 'warning'], unpaid: ['غير مدفوعة', 'danger'], refund: ['مستردة', 'neutral'] };
+  function hours(n) { return n === 1 ? 'ساعة' : n === 2 ? 'ساعتان' : n <= 10 ? n + ' ساعات' : n + ' ساعة'; }
+  /* ---------- الموظفون والمستخدمون ---------- */
+  var EMP_ST = [{ id: 'active', label: 'على رأس العمل', tone: 'success' }, { id: 'leave', label: 'في إجازة', tone: 'warning' }, { id: 'ended', label: 'انتهت خدمته', tone: 'neutral' }];
+  var USER_ST = [{ id: 'active', label: 'مفعّل', tone: 'success' }, { id: 'disabled', label: 'معطّل', tone: 'neutral' }];
+  var DEPT_OPT = [['rec', 'الاستقدام'], ['rent', 'التأجير'], ['ops', 'التشغيل'], ['care', 'خدمة العملاء'], ['fin', 'المالية'], ['admin', 'الإدارة']];
+
   var ENTITIES = [
     {
       id: 'orders', tab: 'الطلبات', title: 'الطلبات', one: 'الطلب', dept: 'الاستقدام', icon: 'fa-inbox', total: 64,
@@ -571,6 +583,51 @@ document.addEventListener('DOMContentLoaded', function () {
           : [{ label: 'تمديد العقد', icon: 'fa-calendar-plus' }, { label: 'تسجيل دفعة', icon: 'fa-money-bill' }, { label: 'طباعة', icon: 'fa-print' }];
       },
       more: [{ label: 'إنهاء العقد', icon: 'fa-ban', danger: true, sep: true }]
+    },
+    {
+      id: 'visits', tab: 'الزيارات', title: 'الزيارات بالساعة', one: 'الزيارة', dept: 'التأجير', icon: 'fa-clock', total: 58,
+      alert: { n: 26, label: 'زيارات فات موعدها' },
+      desc: 'زيارات التأجير بالساعة: الموعد والفريق والسداد. التي فات موعدها أو لم تعد عاملاتها للإيواء تظهر بالأحمر.',
+      searchHint: 'رقم الزيارة، العميل، الفريق أو العاملة',
+      create: { label: 'زيارة جديدة', route: '/admin/hourly/visits/create' },
+      statuses: VISIT_ST, sort: ['date', 'desc'],
+      filters: [
+        { key: 'svc', label: 'الخدمة', all: 'كل الخدمات', options: [['hour', 'خدمة بالساعة'], ['villa', 'تنظيف فلل'], ['stay', 'خدمة إقامة']] },
+        { key: 'team', label: 'الفريق', all: 'كل الفرق', options: [['t1', 'فريق الرمال'], ['t2', 'فريق النرجس'], ['t3', 'فريق الملقا']] },
+        { key: 'pay', label: 'السداد', all: 'كل حالات السداد', options: [['paid', 'مدفوعة'], ['partial', 'مدفوعة جزئيًا'], ['unpaid', 'غير مدفوعة']] }
+      ],
+      flags: [{ key: 'today', label: 'زيارات اليوم', icon: 'fa-calendar-day' }, { key: 'noreturn', label: 'لم تعد للإيواء', icon: 'fa-house-circle-exclamation' }],
+      bulk: [{ label: 'تغيير الموعد', icon: 'fa-calendar' }, { label: 'تسجيل دفعة', icon: 'fa-money-bill' }, { label: 'إلغاء', icon: 'fa-ban' }],
+      columns: [
+        { key: 'ref', label: 'الزيارة', fixed: true, primary: true, sort: 'id', render: function (r) { return R.two(r.ref, r.service, { num: true }); } },
+        { key: 'client', label: 'العميل', render: function (r) { return R.person(r.client, r.district); } },
+        { key: 'date', label: 'الموعد', sort: 'date', render: function (r) { return R.two(r.date, r.start + ' · ' + hours(r.hours), { num: true }); } },
+        { key: 'team', label: 'الفريق', render: function (r) { return R.two(r.team, r.maids.length > 1 ? r.maids.length + ' عاملات' : r.leader); } },
+        { key: 'price', label: 'السعر', num: true, sort: 'price', render: function (r) { return R.money(r.price); } },
+        { key: 'pay', label: 'السداد', render: function (r) { var p = VPAY[r.pay]; return R.badge(p[0], p[1]); } },
+        { key: 'status', label: 'الحالة', render: function (r) {
+          var sub = r.status === 'missed' ? '<span class="as-late">منذ ' + R.days(r.dayAgo) + '</span>' : r.noReturn ? '<span class="as-late">لم تعد للإيواء</span>' : '';
+          return '<div class="as-two"><span>' + sb(VISIT_ST, r.status) + '</span>' + (sub ? '<span class="as-two__sub">' + sub + '</span>' : '') + '</div>';
+        } },
+        { key: 'driver', label: 'السائق', hidden: true, render: function (r) { return esc(r.driver.replace('سائق: ', '')); } }
+      ],
+      drawerTitle: function (r) { return 'زيارة <span class="as-num">' + esc(r.ref) + '</span> ' + sb(VISIT_ST, r.status); },
+      detail: function (r) {
+        var p = VPAY[r.pay], flow = ['scheduled', 'onway', 'inprogress', 'done'], i = flow.indexOf(r.status);
+        return (r.status === 'missed' ? R.note('<i class="fa-solid fa-circle-exclamation"></i> فات موعد الزيارة منذ ' + R.days(r.dayAgo) + ' ولم تُنفّذ. غيّر الموعد أو ألغِها.', 'danger') : '') +
+          (r.noReturn ? R.note('<i class="fa-solid fa-house-circle-exclamation"></i> انتهت الزيارة ولم تُسجَّل عودة العاملة للإيواء.', 'danger') : '') +
+          (i >= 0 ? R.section('سير الزيارة', R.steps(flow.map(function (f) { return { label: statusOf(VISIT_ST, f).label }; }), r.status === 'done' ? 4 : i)) : '') +
+          R.section('الموعد', R.dl([['الخدمة', r.service], ['التاريخ', R.date(r.date), true], ['البدء', '<span class="as-num">' + r.start + '</span>', true], ['المدة', hours(r.hours)], ['العنوان', r.district]])) +
+          R.section('العميل', '<div class="as-dperson">' + R.avatar(r.client, 'lg') + R.two(r.client, r.phone, { subNum: true }) + '</div>') +
+          R.section('الفريق', R.dl([['الفريق', r.team], ['قائدة الفريق', r.leader], ['العاملات', r.maids.join('، ')], ['السائق', r.driver.replace('سائق: ', '')]])) +
+          R.section('السداد', '<div class="as-dmoney"><div><span>السعر شامل الضريبة</span>' + R.money(r.price) + '</div><div><span>الحالة</span>' + R.badge(p[0], p[1]) + '</div></div>');
+      },
+      actions: function (r) {
+        if (r.status === 'missed') return [{ label: 'تغيير الموعد', icon: 'fa-calendar' }, { label: 'إلغاء الزيارة', icon: 'fa-ban' }];
+        if (r.noReturn) return [{ label: 'تسجيل العودة للإيواء', icon: 'fa-house' }];
+        if (r.status === 'done' || r.status === 'cancelled') return [{ label: 'طباعة الإيصال', icon: 'fa-print' }];
+        return [{ label: r.pay === 'paid' ? 'تغيير الموعد' : 'تسجيل دفعة', icon: r.pay === 'paid' ? 'fa-calendar' : 'fa-money-bill' }, { label: 'تعديل الفريق', icon: 'fa-people-group' }];
+      }
     },
     {
       id: 'shelter', tab: 'الإيواء', title: 'الإيواء', one: 'سجل الإيواء', dept: 'التشغيل', icon: 'fa-house-user', total: 53,
@@ -797,6 +854,65 @@ document.addEventListener('DOMContentLoaded', function () {
         return r.status === 'done' ? [{ label: 'إعادة فتح', icon: 'fa-rotate-left' }]
           : [{ label: r.status === 'pending' ? 'بدء التنفيذ' : 'تم الإنجاز', icon: r.status === 'pending' ? 'fa-play' : 'fa-check' }, { label: 'إضافة تعليق', icon: 'fa-comment' }];
       }
+    },
+    {
+      id: 'employees', tab: 'الموظفون', title: 'الموظفون', one: 'الموظف', dept: 'الإدارة', icon: 'fa-id-badge', total: 39,
+      desc: 'فريق العمل في كل الفروع: الوظيفة والإدارة والحالة. حساب الدخول للوحة في «المستخدمون».',
+      searchHint: 'الاسم، الرقم الوظيفي أو الوظيفة',
+      create: { label: 'موظف جديد', route: '/admin/employees/create' },
+      statuses: EMP_ST, sort: ['name', 'asc'],
+      filters: [
+        { key: 'dept', label: 'الإدارة', all: 'كل الإدارات', options: DEPT_OPT },
+        { key: 'branch', label: 'الفرع', all: 'كل الفروع', options: [['الرياض — الرئيسي', 'الرياض — الرئيسي'], ['الرياض — الملقا', 'الرياض — الملقا'], ['جدة', 'جدة']] }
+      ],
+      flags: [{ key: 'nouser', label: 'بدون حساب دخول', icon: 'fa-user-slash' }],
+      bulk: [{ label: 'تصدير المحدد', icon: 'fa-file-excel' }],
+      columns: [
+        { key: 'name', label: 'الموظف', fixed: true, primary: true, sort: 'name', render: function (r) { return R.person(r.name, r.ref, { subNum: true }); } },
+        { key: 'job', label: 'الوظيفة', render: function (r) { return R.two(r.job, r.dept); } },
+        { key: 'branch', label: 'الفرع', render: function (r) { return esc(r.branch); } },
+        { key: 'phone', label: 'الجوال', render: function (r) { return '<span class="as-num">' + esc(r.phone) + '</span>'; } },
+        { key: 'nat', label: 'الجنسية', render: function (r) { return esc(r.nat); } },
+        { key: 'joined', label: 'التعيين', sort: 'joined', render: function (r) { return R.date(r.joined); } },
+        { key: 'status', label: 'الحالة', render: function (r) { return r.status === 'leave' ? R.two('', '', { mainHtml: sb(EMP_ST, r.status), subHtml: 'يعود ' + r.leaveBack }) : sb(EMP_ST, r.status); } }
+      ],
+      drawerTitle: function (r) { return esc(r.name) + ' ' + sb(EMP_ST, r.status); },
+      detail: function (r) {
+        return '<div class="as-dperson as-dperson--hero">' + R.avatar(r.name, 'xl') + R.two(r.name, r.job + ' · ' + r.dept) + '</div>' +
+          R.section('الوظيفة', R.dl([['الرقم الوظيفي', '<span class="as-num">' + esc(r.ref) + '</span>', true], ['الإدارة', r.dept], ['الفرع', r.branch], ['تاريخ التعيين', R.date(r.joined), true]])) +
+          R.section('التواصل', R.dl([['الجوال', '<span class="as-num">' + esc(r.phone) + '</span>', true], ['الجنسية', r.nat]])) +
+          R.section('حساب الدخول', r.hasUser ? R.dl([['الحساب', '<span class="as-ok"><i class="fa-solid fa-check"></i> لديه حساب</span>', true]]) : R.note('<i class="fa-solid fa-user-slash"></i> لا يملك حساب دخول للوحة.', 'neutral'));
+      },
+      actions: function (r) { return [{ label: 'تعديل', icon: 'fa-pen' }].concat(r.hasUser ? [] : [{ label: 'إنشاء حساب دخول', icon: 'fa-user-plus' }]); }
+    },
+    {
+      id: 'users', tab: 'المستخدمون', title: 'المستخدمون والصلاحيات', one: 'المستخدم', dept: 'الإدارة', icon: 'fa-user-shield', total: 24,
+      desc: 'من يدخل لوحة التحكم، ودوره، وحد التعميد المالي الذي يعتمده.',
+      searchHint: 'الاسم أو البريد أو الدور',
+      create: { label: 'مستخدم جديد', route: '/admin/admins/create' },
+      statuses: USER_ST, sort: ['seen', 'asc'],
+      filters: [{ key: 'role', label: 'الدور', all: 'كل الأدوار', options: [['admin', 'مدير النظام'], ['manager', 'مدير فرع'], ['staff', 'موظف'], ['finance', 'المالية'], ['viewer', 'اطلاع فقط']] }],
+      flags: [{ key: 'nofa', label: 'بدون تحقق بخطوتين', icon: 'fa-shield-halved' }],
+      bulk: [{ label: 'تعطيل', icon: 'fa-user-lock' }, { label: 'إعادة تعيين كلمة المرور', icon: 'fa-key' }],
+      columns: [
+        { key: 'name', label: 'المستخدم', fixed: true, primary: true, sort: 'name', render: function (r) { return R.person(r.name, r.email); } },
+        { key: 'role', label: 'الدور', render: function (r) { return R.tag(r.role, r.role === 'مدير النظام' ? 'fa-crown' : 'fa-user-shield'); } },
+        { key: 'dept', label: 'الإدارة', render: function (r) { return esc(r.dept); } },
+        { key: 'limit', label: 'حد التعميد', num: true, render: function (r) { return r.limit === 0 ? 'بلا حد' : r.limit < 0 ? R.none('لا يعتمد') : R.money(r.limit); } },
+        { key: 'twofa', label: 'التحقق بخطوتين', render: function (r) { return r.twofa ? '<span class="as-yes"><i class="fa-solid fa-shield-halved"></i> مفعّل</span>' : '<span class="as-no">غير مفعّل</span>'; } },
+        { key: 'seen', label: 'آخر دخول', sort: 'seen', render: function (r) { return esc(R.ago(r.seen)); } },
+        { key: 'status', label: 'الحالة', render: function (r) { return sb(USER_ST, r.status); } },
+        { key: 'phone', label: 'الجوال', hidden: true, render: function (r) { return '<span class="as-num">' + esc(r.phone) + '</span>'; } }
+      ],
+      drawerTitle: function (r) { return esc(r.name) + ' ' + sb(USER_ST, r.status); },
+      detail: function (r) {
+        return '<div class="as-dperson as-dperson--hero">' + R.avatar(r.name, 'xl') + R.two(r.name, r.email) + '</div>' +
+          (r.twofa ? '' : R.note('<i class="fa-solid fa-shield-halved"></i> التحقق بخطوتين غير مفعّل لهذا الحساب.', 'warning')) +
+          R.section('الصلاحيات', R.dl([['الدور', r.role], ['الإدارة', r.dept], ['حد التعميد', r.limit === 0 ? 'بلا حد' : r.limit < 0 ? 'لا يعتمد تعميدات' : R.money(r.limit), r.limit > 0]])) +
+          R.section('الدخول', R.dl([['آخر دخول', R.ago(r.seen)], ['الجوال', '<span class="as-num">' + esc(r.phone) + '</span>', true]]));
+      },
+      actions: function (r) { return [{ label: 'تعديل الصلاحيات', icon: 'fa-user-shield' }, { label: r.status === 'active' ? 'تعطيل' : 'تفعيل', icon: r.status === 'active' ? 'fa-user-lock' : 'fa-user-check' }]; },
+      more: [{ label: 'إعادة تعيين كلمة المرور', icon: 'fa-key' }]
     }
   ];
 

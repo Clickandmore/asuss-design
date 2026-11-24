@@ -205,6 +205,61 @@
                     _q: [id, TITLES[i % TITLES.length], staff[1]].join(' '), _s: { id: id, due: due, prio: { high: 3, medium: 2, low: 1 }[prio] }
                 };
             });
+        },
+        visits: function (r) {
+            // hourly visits: 26 overdue and one not back at the shelter, as on the old screen
+            var st = deal(r, { scheduled: 14, onway: 3, inprogress: 4, done: 8, missed: 26, cancelled: 3 }), noReturn = 1;
+            var SERVICES = [['hour', 'خدمة بالساعة'], ['villa', 'تنظيف فلل'], ['stay', 'خدمة إقامة']];
+            var TEAMS = [['t1', 'فريق الرمال'], ['t2', 'فريق النرجس'], ['t3', 'فريق الملقا']];
+            return st.map(function (s, i) {
+                var n = 5840 - i, c = client(r), svc = pick(r, SERVICES), team = pick(r, TEAMS);
+                var day = s === 'missed' ? int(r, 1, 9) : s === 'done' || s === 'cancelled' ? int(r, 0, 20) : s === 'scheduled' ? -int(r, 0, 6) : 0;
+                var hours = svc[0] === 'villa' ? pick(r, [6, 8]) : svc[0] === 'stay' ? 10 : pick(r, [4, 4, 5, 6]);
+                var start = pick(r, ['08:00', '09:00', '10:00', '13:00', '16:00']);
+                var maidsN = svc[0] === 'villa' ? int(r, 2, 4) : 1, price = hours * maidsN * pick(r, [35, 40, 45]) * 1.15;
+                var pay = s === 'cancelled' ? 'refund' : s === 'done' || r() < .55 ? 'paid' : r() < .5 ? 'partial' : 'unpaid';
+                var nr = s === 'done' && noReturn-- > 0;
+                var maids = []; for (var k = 0; k < maidsN; k++) maids.push(maid(r));
+                return {
+                    id: 'V-' + n, ref: 'V-' + n, status: s, client: c, phone: phone(r), district: pick(r, ['حي الملقا', 'حي النرجس', 'حي الياسمين', 'حي العارض', 'حي الرمال', 'حي قرطبة']),
+                    date: iso(day), dayAgo: day, start: start, hours: hours, price: Math.round(price), pay: pay, service: svc[1], team: team[1],
+                    maids: maids, leader: maids[0], driver: pick(r, ['سائق: أبو أحمد', 'سائق: عمران', 'سائق: راجو']), noReturn: nr,
+                    _tone: s === 'missed' || nr ? 'late' : '',
+                    _f: { svc: svc[0], team: team[0], pay: pay }, _flags: { today: day === 0, noreturn: nr },
+                    _q: [n, c, team[1], maids.join(' ')].join(' '), _s: { id: n, date: -day, price: price }
+                };
+            });
+        },
+        employees: function (r) {
+            var st = deal(r, { active: 33, leave: 4, ended: 2 });
+            var JOBS = [['rec', 'الاستقدام', 'موظفة استقدام'], ['rec', 'الاستقدام', 'مسوّق'], ['rent', 'التأجير', 'منسقة تأجير'], ['ops', 'التشغيل', 'مشرفة إيواء'], ['ops', 'التشغيل', 'سائق'], ['care', 'خدمة العملاء', 'موظفة خدمة عملاء'], ['fin', 'المالية', 'محاسب'], ['admin', 'الإدارة', 'موارد بشرية']];
+            return st.map(function (s, i) {
+                var n = 1039 - i, j = pick(r, JOBS), name = client(r), joined = int(r, 30, 1600);
+                var branch = pick(r, ['الرياض — الرئيسي', 'الرياض — الملقا', 'جدة']), hasUser = j[2] !== 'سائق' && r() < .85;
+                return {
+                    id: 'E-' + n, ref: 'E-' + n, status: s, name: name, job: j[2], dept: j[1], branch: branch, phone: phone(r),
+                    nat: r() < .8 ? 'سعودي' : pick(r, ['مصري', 'سوداني', 'فلبيني', 'هندي']), joined: iso(joined), joinedAgo: joined,
+                    leaveBack: s === 'leave' ? iso(-int(r, 2, 20)) : '', hasUser: hasUser,
+                    _f: { dept: j[0], branch: branch }, _flags: { nouser: !hasUser },
+                    _q: [n, name, j[2], j[1]].join(' '), _s: { id: n, name: name, joined: -joined }
+                };
+            });
+        },
+        users: function (r) {
+            var st = deal(r, { active: 21, disabled: 3 });
+            var ROLES = [['admin', 'مدير النظام'], ['manager', 'مدير فرع'], ['staff', 'موظف'], ['staff', 'موظف'], ['staff', 'موظف'], ['finance', 'المالية'], ['viewer', 'اطلاع فقط']];
+            return st.map(function (s, i) {
+                var n = 224 - i, name = i === 0 ? 'مشرف' : client(r), role = i === 0 ? ROLES[0] : pick(r, ROLES), seen = s === 'disabled' ? int(r, 40, 200) : int(r, 0, 9);
+                var fa = role[0] === 'admin' || r() < .6;
+                var limit = role[0] === 'admin' ? 0 : role[0] === 'manager' ? 20000 : role[0] === 'finance' ? 50000 : role[0] === 'staff' && r() < .3 ? 2000 : -1;
+                return {
+                    id: 'U-' + n, ref: 'U-' + n, status: s, name: name, email: 'user' + n + '@example.com', role: role[1],
+                    dept: pick(r, ['الاستقدام', 'التأجير', 'التشغيل', 'خدمة العملاء', 'المالية', 'الإدارة']), phone: phone(r),
+                    seen: seen, twofa: fa, limit: limit,
+                    _f: { role: role[0] }, _flags: { nofa: !fa },
+                    _q: [n, name, role[1]].join(' '), _s: { id: n, name: name, seen: seen }
+                };
+            });
         }
     };
 

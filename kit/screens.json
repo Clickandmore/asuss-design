@@ -1,5 +1,13 @@
 {
   "screens": {
+    "patterns": {
+      "route": "—",
+      "title": "قاعدة التصميم (مرجع)",
+      "view": "لا يُنقل لـ asuss: مرجع المكونات والقواعد",
+      "group": "عام",
+      "sample_rows": false,
+      "redesign": true
+    },
     "login": {
       "route": "/dashboard/login",
       "title": "تسجيل الدخول",
@@ -26,7 +34,7 @@
     },
     "records": {
       "route": "/admin/records#<قسم>",
-      "title": "السجلات (كل الجداول في شاشة واحدة)",
+      "title": "السجلات (كل الجداول: 12 قسمًا)",
       "view": "جديدة — مقترح: resources/views/admin/records/index.blade.php + مسار JSON لكل قسم (انظر رأس asuss-records.js)",
       "group": "عام",
       "sample_rows": false,
@@ -44,7 +52,8 @@
       "title": "عقد استقدام جديد",
       "view": "resources/views/admin/ingaz/RecruitmentContract/create.blade.php",
       "group": "العقود",
-      "sample_rows": false
+      "sample_rows": false,
+      "redesign": true
     },
     "rent-contracts": {
       "route": "/admin/RentContract",
@@ -65,7 +74,8 @@
       "title": "إضافة عميل",
       "view": "resources/views/admin/ingaz/clients/create.blade.php",
       "group": "العملاء والعاملات",
-      "sample_rows": false
+      "sample_rows": false,
+      "redesign": true
     },
     "maids": {
       "route": "/admin/maids",
@@ -79,7 +89,8 @@
       "title": "إضافة عاملة",
       "view": "resources/views/admin/ingaz/maids/create.blade.php",
       "group": "العملاء والعاملات",
-      "sample_rows": false
+      "sample_rows": false,
+      "redesign": true
     },
     "shelter-contracts": {
       "route": "/admin/ShelterContract",

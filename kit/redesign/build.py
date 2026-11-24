@@ -68,7 +68,7 @@ DEPTS = [
         ]),
         ('التأجير بالساعة', [
             ('لوحة الطلبات', '#', None, None),
-            ('الزيارات', 'hourly-visits.html', 'hourly-visits', None),
+            ('الزيارات', 'records.html#visits', None, ('alert', 26)),
             ('جدول الموظفين', 'hourly-schedule.html', 'hourly-schedule', None),
             ('الفرق والخدمات', '#', None, None),
         ]),
@@ -119,9 +119,8 @@ DEPTS = [
     ]),
     ('admin', 'الإدارة', 'fa-sliders', [
         ('فريق العمل', [
-            ('الموظفون', 'employees.html', 'employees', 39),
-            ('المستخدمون', 'admins.html', 'admins', None),
-            ('الصلاحيات', '#', None, None),
+            ('الموظفون', 'records.html#employees', None, 39),
+            ('المستخدمون والصلاحيات', 'records.html#users', None, 24),
             ('سجل النشاط', '#', None, None),
         ]),
         ('الإعدادات', [
@@ -153,7 +152,7 @@ def dept_of(active):
     return 'home'
 
 
-def sidebar(active, dept=None):
+def sidebar(active, dept=None, nav=None):
     """Rail (departments) + panel (pages of each department, one shown at a time)."""
     cur = dept or dept_of(active)
     rail, panes = [], []
@@ -172,7 +171,7 @@ def sidebar(active, dept=None):
                 out.append(f'<p class="as-nav__label">{e(title)}</p>')
             out.append('<ul>')
             for label, href, key, count in links:
-                is_cur = key == active and key
+                is_cur = (key == active and key) or (nav and href == nav)
                 cls = 'as-nav__link is-active' if is_cur else 'as-nav__link'
                 aria = ' aria-current="page"' if is_cur else ''
                 out.append(f'<li class="as-nav__item"><a class="{cls}" href="{href}"{aria}>'
@@ -297,8 +296,13 @@ SHELL = '''<!DOCTYPE html>
 SCREENS = {
     'dashboard': {'title': 'لوحة المعلومات', 'crumbs': ['الرئيسية']},
     'reports': {'title': 'التقارير', 'crumbs': ['الرئيسية', 'التقارير']},
+    'patterns': {'title': 'قاعدة التصميم', 'crumbs': ['Design kit', 'قاعدة التصميم'], 'dept': 'home'},
     # one screen for every list; the tab (and the sidebar link) comes from the URL hash
     'records': {'title': 'عقود الاستقدام', 'crumbs': ['الاستقدام', 'عقود الاستقدام'], 'dept': 'rec'},
+    # add / edit forms (DESIGN.md → «نموذج الإضافة والتعديل»)
+    'recruitment-contract-create': {'title': 'عقد استقدام جديد', 'crumbs': ['الاستقدام', 'عقود الاستقدام', 'عقد جديد'], 'dept': 'rec', 'nav': 'records.html#recruitment'},
+    'maid-create': {'title': 'سيرة ذاتية جديدة', 'crumbs': ['الاستقدام', 'السير الذاتية', 'سيرة جديدة'], 'dept': 'rec'},
+    'client-create': {'title': 'عميل جديد', 'crumbs': ['الاستقدام', 'العملاء', 'عميل جديد'], 'dept': 'rec', 'nav': 'records.html#clients'},
 }
 
 
@@ -307,7 +311,7 @@ def build():
         src = (PAGES / f'{slug}.html').read_text(encoding='utf-8')
         body, _, scripts = src.partition('<!-- scripts -->')
         crumbs = ''.join(f'<li>{e(c)}</li>' for c in meta['crumbs'])
-        rail, panes, _ = sidebar(slug, meta.get('dept'))
+        rail, panes, _ = sidebar(slug, meta.get('dept'), meta.get('nav'))
         page = SHELL.format(title=e(meta['title']), crumbs=crumbs, rail=rail, panes=panes, cur_dept=meta.get('dept') or dept_of(slug),
                             body=body.strip(), scripts=scripts.strip())
         (ROOT / 'screens' / f'{slug}.html').write_text(page, encoding='utf-8')

@@ -1,0 +1,308 @@
+<div class="as-pagehead">
+  <div>
+    <a class="as-back" href="records.html#maids"><i class="fa-solid fa-arrow-left" aria-hidden="true"></i>السير الذاتية</a>
+    <h2>سيرة ذاتية جديدة</h2>
+    <p>اختر نوع السيرة أولًا: تظهر الأقسام التي يحتاجها هذا النوع فقط.</p>
+  </div>
+</div>
+
+<form class="as-form" data-as-form data-done="records.html#maids" data-saved="تم حفظ السيرة الذاتية." action="#" method="post" novalidate>
+  <div class="as-form__main">
+    <section class="as-fsec" id="sec-kind" aria-labelledby="sec-kind-t">
+      <header class="as-fsec__head">
+        <span class="as-fsec__n">1</span>
+        <div><h3 id="sec-kind-t">نوع السيرة</h3><p>يحدد أين تظهر العاملة وما البيانات المطلوبة.</p></div>
+      </header>
+      <div class="as-fsec__body">
+        <div class="as-choices" role="radiogroup" aria-label="نوع السيرة">
+          <label class="as-choice"><input type="radio" name="kind" value="rec" required checked><span class="as-choice__icon"><i class="fa-solid fa-plane-arrival"></i></span><span class="as-choice__txt"><strong>استقدام</strong><span>عاملة في بلدها، تُرشَّح لعقود الاستقدام.</span></span></label>
+          <label class="as-choice"><input type="radio" name="kind" value="rent" required><span class="as-choice__icon"><i class="fa-solid fa-handshake"></i></span><span class="as-choice__txt"><strong>تأجير</strong><span>عاملة لدى الشركة، تُؤجَّر بعقد شهري أو سنوي.</span></span></label>
+          <label class="as-choice"><input type="radio" name="kind" value="hourly" required><span class="as-choice__icon"><i class="fa-solid fa-clock"></i></span><span class="as-choice__txt"><strong>بالساعة</strong><span>تعمل في زيارات الساعات ضمن فريق.</span></span></label>
+        </div>
+        <div class="as-fgrid">
+          <div class="as-f" data-show-if="kind=rent|hourly">
+            <label class="as-f__label" for="m-src">مصدر العاملة <span class="as-req" aria-hidden="true">*</span></label>
+            <select class="as-select" id="m-src" name="source" required><option value="">اختر</option><option>كفالة الشركة</option><option>نقل كفالة</option><option>منتهية عقد استقدام</option></select>
+          </div>
+          <div class="as-f" data-show-if="kind=rec">
+            <label class="as-f__label" for="m-office">مكتب الاستقدام <span class="as-req" aria-hidden="true">*</span></label>
+            <select class="as-select" id="m-office" name="office" required><option value="">اختر المكتب الخارجي</option><option>Golden Hands Agency</option><option>Trust Manpower Agency</option><option>Blue Nile Recruitment</option></select>
+            <p class="as-f__hint">المكتب الذي أرسل السيرة.</p>
+          </div>
+        </div>
+        <label class="as-switch" data-show-if="kind=rent|hourly">
+          <span class="as-switch__txt"><strong>تسكينها في الإيواء الآن</strong><span>تظهر في «داخل الإيواء» من اليوم.</span></span>
+          <input type="checkbox" role="switch" name="shelter" value="1">
+        </label>
+
+      </div>
+    </section>
+    <section class="as-fsec" id="sec-person" aria-labelledby="sec-person-t">
+      <header class="as-fsec__head">
+        <span class="as-fsec__n">2</span>
+        <div><h3 id="sec-person-t">البيانات الشخصية</h3><p>كما في الجواز.</p></div>
+      </header>
+      <div class="as-fsec__body">
+        <div class="as-fgrid as-fgrid--photo">
+          <div class="as-f">
+            <span class="as-f__label">صورة العاملة</span>
+            <label class="as-drop as-drop--photo"><input type="file" name="photo" accept="image/*"><span class="as-drop__icon"><i class="fa-solid fa-camera"></i></span><span class="as-drop__txt"><strong>صورة شخصية</strong><span>JPG أو PNG، خلفية فاتحة</span></span></label>
+          </div>
+          <div class="as-fgrid as-fgrid--top">
+          <div class="as-f as-f--full">
+            <label class="as-f__label" for="m-name">الاسم بالإنجليزية <span class="as-req" aria-hidden="true">*</span></label>
+            <input class="as-input" id="m-name" name="name" dir="ltr" required placeholder="As in passport" style="text-transform:uppercase">
+            <p class="as-f__hint">كما في الجواز تمامًا.</p>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="m-nat">الجنسية <span class="as-req" aria-hidden="true">*</span></label>
+            <select class="as-select" id="m-nat" name="nat" required><option value="">اختر</option><option value="ph">الفلبين</option><option value="ke">كينيا</option><option value="ug">أوغندا</option><option value="et">إثيوبيا</option><option value="bd">بنغلاديش</option><option value="lk">سريلانكا</option><option value="id">إندونيسيا</option><option value="in">الهند</option></select>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="m-rel">الديانة <span class="as-req" aria-hidden="true">*</span></label>
+            <select class="as-select" id="m-rel" name="religion" required><option value="">اختر</option><option>مسلمة</option><option>مسيحية</option><option>أخرى</option></select>
+          </div>
+          </div>
+        </div>
+        <div class="as-fgrid as-fgrid--3">
+          <div class="as-f">
+            <label class="as-f__label" for="m-birth">تاريخ الميلاد <span class="as-req" aria-hidden="true">*</span></label>
+            <input class="as-input" id="m-birth" name="birth" type="date" dir="ltr" required>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="m-age">العمر</label>
+            <div class="as-ig"><input class="as-input" id="m-age" name="age" dir="ltr" readonly data-age-from="birth" tabindex="-1"><span class="as-ig__add">سنة</span></div>
+            <p class="as-f__hint">يُحسب من تاريخ الميلاد.</p>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="m-marital">الحالة الاجتماعية</label>
+            <select class="as-select" id="m-marital" name="marital"><option value="">اختر</option><option>عزباء</option><option>متزوجة</option><option>مطلقة</option><option>أرملة</option></select>
+          </div>
+        </div>
+        <div class="as-fgrid as-fgrid--3">
+          <div class="as-f">
+            <label class="as-f__label" for="m-kids">عدد الأطفال</label>
+            <input class="as-input" id="m-kids" name="kids" type="number" min="0" max="15" dir="ltr">
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="m-height">الطول</label>
+            <div class="as-ig"><input class="as-input" id="m-height" name="height" type="number" min="120" max="210" dir="ltr"><span class="as-ig__add">سم</span></div>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="m-weight">الوزن</label>
+            <div class="as-ig"><input class="as-input" id="m-weight" name="weight" type="number" min="35" max="150" dir="ltr"><span class="as-ig__add">كجم</span></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <section class="as-fsec" id="sec-docs" aria-labelledby="sec-docs-t">
+      <header class="as-fsec__head">
+        <span class="as-fsec__n">3</span>
+        <div><h3 id="sec-docs-t">الجواز والإقامة</h3><p>الإقامة ورقم الحدود لعاملات التأجير والساعات فقط.</p></div>
+      </header>
+      <div class="as-fsec__body">
+        <div class="as-fgrid">
+          <div class="as-f">
+            <label class="as-f__label" for="m-pass">رقم الجواز <span class="as-req" aria-hidden="true">*</span></label>
+            <input class="as-input" id="m-pass" name="passport" dir="ltr" required data-pattern="[A-Za-z0-9]{6,12}" data-err="من 6 إلى 12 حرفًا أو رقمًا" placeholder="P1234567" style="text-transform:uppercase">
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="m-passexp">تاريخ انتهاء الجواز</label>
+            <input class="as-input" id="m-passexp" name="passport_exp" type="date" dir="ltr">
+          </div>
+        </div>
+        <div class="as-fgrid" data-show-if="kind=rent|hourly">
+          <div class="as-f">
+            <label class="as-f__label" for="m-arrive">تاريخ الوصول للمملكة <span class="as-req" aria-hidden="true">*</span></label>
+            <input class="as-input" id="m-arrive" name="arrived" type="date" dir="ltr" required>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="m-border">رقم الحدود</label>
+            <input class="as-input" id="m-border" name="border_no" dir="ltr" inputmode="numeric">
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="m-iqama">رقم الإقامة <span class="as-req" aria-hidden="true">*</span></label>
+            <input class="as-input" id="m-iqama" name="iqama" dir="ltr" inputmode="numeric" required data-pattern="2\d{9}" data-err="رقم الإقامة 10 أرقام يبدأ بـ 2">
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="m-iqexp">انتهاء الإقامة</label>
+            <input class="as-input" id="m-iqexp" name="iqama_exp" type="date" dir="ltr">
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="m-phone">جوال العاملة</label>
+            <div class="as-ig as-ig--pre" dir="ltr"><span class="as-ig__add">+966</span><input class="as-input" id="m-phone" name="phone" dir="ltr" inputmode="tel" data-pattern="5\d{8}" data-err="9 أرقام يبدأ بـ 5"></div>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <section class="as-fsec" id="sec-work" aria-labelledby="sec-work-t">
+      <header class="as-fsec__head">
+        <span class="as-fsec__n">4</span>
+        <div><h3 id="sec-work-t">العمل والراتب</h3><p>ما يراه العميل في السيرة، والتكلفة الداخلية.</p></div>
+      </header>
+      <div class="as-fsec__body">
+        <div class="as-fgrid">
+          <div class="as-f">
+            <label class="as-f__label" for="m-job">الوظيفة <span class="as-req" aria-hidden="true">*</span></label>
+            <select class="as-select" id="m-job" name="job" required><option value="">اختر</option><option>عاملة منزلية</option><option>مربية أطفال</option><option>طباخة</option><option>رعاية كبار السن</option></select>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="m-salary">الراتب الشهري <span class="as-req" aria-hidden="true">*</span></label>
+            <div class="as-ig"><input class="as-input" id="m-salary" name="salary" type="number" min="0" step="50" dir="ltr" required><span class="as-ig__add">ر.س</span></div>
+            <p class="as-f__hint">يظهر للعميل في السيرة.</p>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="m-cost">التكلفة</label>
+            <div class="as-ig"><input class="as-input" id="m-cost" name="cost" type="number" min="0" step="50" dir="ltr"><span class="as-ig__add">ر.س</span></div>
+            <p class="as-f__hint">للحسابات فقط، لا تظهر للعميل.</p>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="m-video">رابط فيديو تعريفي</label>
+            <input class="as-input" id="m-video" name="video" type="url" dir="ltr" placeholder="https://" data-pattern="https?://.+" data-err="رابط يبدأ بـ https://">
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <section class="as-fsec" id="sec-exp" aria-labelledby="sec-exp-t">
+      <header class="as-fsec__head">
+        <span class="as-fsec__n">5</span>
+        <div><h3 id="sec-exp-t">الخبرة والمهارات</h3><p>تُستخدم في البحث والترشيح.</p></div>
+      </header>
+      <div class="as-fsec__body">
+        <div class="as-f">
+          <span class="as-f__label">الخبرة السابقة <span class="as-req" aria-hidden="true">*</span></span>
+          <div class="as-choices as-choices--sm" role="radiogroup" aria-label="الخبرة السابقة">
+            <label class="as-choice"><input type="radio" name="exp" value="none" required><span class="as-choice__txt"><strong>بدون خبرة</strong></span></label>
+            <label class="as-choice"><input type="radio" name="exp" value="yes" required><span class="as-choice__txt"><strong>لديها خبرة</strong></span></label>
+          </div>
+        </div>
+        <div class="as-f" data-show-if="exp=yes">
+          <span class="as-f__label">الخبرة حسب الدولة</span>
+          <div class="as-repeat" data-repeat="exp">
+            <div class="as-repeat__row">
+              <div class="as-f"><label class="as-f__label" for="m-expc">الدولة</label><select class="as-select" id="m-expc" name="exp_country[]"><option value="">اختر</option><option>السعودية</option><option>الإمارات</option><option>الكويت</option><option>قطر</option><option>الأردن</option><option>لبنان</option></select></div>
+              <div class="as-f"><label class="as-f__label" for="m-expy">السنوات</label><input class="as-input" id="m-expy" name="exp_years[]" type="number" min="1" max="30" dir="ltr"></div>
+              <button class="as-iconbtn" type="button" data-repeat-del aria-label="حذف الدولة"><i class="fa-regular fa-trash-can"></i></button>
+            </div>
+          </div>
+          <template data-for="exp">
+            <div class="as-repeat__row">
+              <div class="as-f"><select class="as-select" name="exp_country[]" aria-label="الدولة"><option value="">اختر</option><option>السعودية</option><option>الإمارات</option><option>الكويت</option><option>قطر</option><option>الأردن</option><option>لبنان</option></select></div>
+              <div class="as-f"><input class="as-input" name="exp_years[]" type="number" min="1" max="30" dir="ltr" aria-label="السنوات"></div>
+              <button class="as-iconbtn" type="button" data-repeat-del aria-label="حذف الدولة"><i class="fa-regular fa-trash-can"></i></button>
+            </div>
+          </template>
+          <div><button class="as-btn as-btn--ghost as-btn--sm" type="button" data-repeat-add="exp"><i class="fa-solid fa-plus"></i>إضافة دولة</button></div>
+        </div>
+        <div class="as-f">
+          <span class="as-f__label">المهارات</span>
+          <div class="as-chipset"><label class="as-chipopt"><input type="checkbox" name="skills" value="التنظيف">التنظيف</label><label class="as-chipopt"><input type="checkbox" name="skills" value="الطبخ">الطبخ</label><label class="as-chipopt"><input type="checkbox" name="skills" value="رعاية الأطفال">رعاية الأطفال</label><label class="as-chipopt"><input type="checkbox" name="skills" value="رعاية كبار السن">رعاية كبار السن</label><label class="as-chipopt"><input type="checkbox" name="skills" value="الكي">الكي</label><label class="as-chipopt"><input type="checkbox" name="skills" value="الغسيل">الغسيل</label><label class="as-chipopt"><input type="checkbox" name="skills" value="العناية بالحيوانات">العناية بالحيوانات</label></div>
+        </div>
+        <div class="as-fgrid as-fgrid--3">
+          <div class="as-f">
+            <label class="as-f__label" for="m-ar">العربية</label>
+            <select class="as-select" id="m-ar" name="lang_ar"><option value="">لا تتحدثها</option><option>مبتدئة</option><option>جيدة</option><option>ممتازة</option></select>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="m-en">الإنجليزية</label>
+            <select class="as-select" id="m-en" name="lang_en"><option value="">لا تتحدثها</option><option>مبتدئة</option><option>جيدة</option><option>ممتازة</option></select>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="m-native">اللغة الأم</label>
+            <input class="as-input" id="m-native" name="lang_native" placeholder="مثال: التاغالوغية">
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <section class="as-fsec" id="sec-hourly" aria-labelledby="sec-hourly-t" data-show-if="kind=hourly">
+      <header class="as-fsec__head">
+        <span class="as-fsec__n">6</span>
+        <div><h3 id="sec-hourly-t">التأجير بالساعة</h3><p>الفريق والخدمات وحساب تطبيق العاملات.</p></div>
+      </header>
+      <div class="as-fsec__body">
+        <div class="as-f">
+          <span class="as-f__label">الخدمات التي تقدمها <span class="as-req" aria-hidden="true">*</span></span>
+          <div class="as-chipset"><label class="as-chipopt"><input type="checkbox" name="services" value="hour" checked required>خدمة بالساعة</label><label class="as-chipopt"><input type="checkbox" name="services" value="villa">تنظيف فلل</label><label class="as-chipopt"><input type="checkbox" name="services" value="stay">خدمة إقامة</label></div>
+        </div>
+        <div class="as-fgrid">
+          <div class="as-f">
+            <label class="as-f__label" for="m-team">الفريق الأساسي <span class="as-req" aria-hidden="true">*</span></label>
+            <select class="as-select" id="m-team" name="team" required><option value="">اختر</option><option>فريق الرمال</option><option>فريق النرجس</option><option>فريق الملقا</option></select>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="m-max">أقصى عدد زيارات في اليوم</label>
+            <input class="as-input" id="m-max" name="max_visits" type="number" min="1" max="4" value="2" dir="ltr">
+          </div>
+        </div>
+        <p class="as-fsub">دخول تطبيق العاملات</p>
+        <div class="as-fgrid">
+          <div class="as-f">
+            <label class="as-f__label" for="m-login">جوال الدخول <span class="as-req" aria-hidden="true">*</span></label>
+            <div class="as-ig as-ig--pre" dir="ltr"><span class="as-ig__add">+966</span><input class="as-input" id="m-login" name="login_phone" dir="ltr" inputmode="tel" required data-pattern="5\d{8}" data-err="9 أرقام يبدأ بـ 5"></div>
+          </div>
+          <div class="as-f">
+            <label class="as-f__label" for="m-pw">كلمة المرور <span class="as-req" aria-hidden="true">*</span></label>
+            <input class="as-input" id="m-pw" name="password" type="password" dir="ltr" autocomplete="new-password" required data-pattern=".{8,}" data-err="8 أحرف على الأقل">
+            <p class="as-f__hint">8 أحرف على الأقل.</p>
+          </div>
+        </div>
+
+      </div>
+    </section>
+    <section class="as-fsec" id="sec-files" aria-labelledby="sec-files-t">
+      <header class="as-fsec__head">
+        <span class="as-fsec__n">7</span>
+        <div><h3 id="sec-files-t">الملفات والظهور</h3><p>المرفقات، وهل تظهر للعملاء.</p></div>
+      </header>
+      <div class="as-fsec__body">
+        <div class="as-fgrid">
+          <div class="as-f">
+            <span class="as-f__label">ملف السيرة من المكتب</span>
+            <label class="as-drop"><input type="file" name="cv_file" accept=".pdf,image/*"><span class="as-drop__icon"><i class="fa-regular fa-file-pdf"></i></span><span class="as-drop__txt"><strong>اسحب الملف هنا أو اختره</strong><span>PDF أو صورة، حتى 10 ميجابايت</span></span></label>
+          </div>
+          <div class="as-f">
+            <span class="as-f__label">صورة الجواز</span>
+            <label class="as-drop"><input type="file" name="passport_file" accept=".pdf,image/*"><span class="as-drop__icon"><i class="fa-regular fa-id-card"></i></span><span class="as-drop__txt"><strong>اسحب الملف هنا أو اختره</strong><span>PDF أو صورة، حتى 10 ميجابايت</span></span></label>
+          </div>
+        </div>
+        <label class="as-switch">
+          <span class="as-switch__txt"><strong>عرضها للعملاء في الموقع والتطبيق</strong><span>تظهر في قائمة السير المتاحة بعد الحفظ مباشرة. يمكنك إخفاؤها في أي وقت.</span></span>
+          <input type="checkbox" role="switch" name="public" value="1" checked>
+        </label>
+
+      </div>
+    </section>
+  </div>
+
+  <aside class="as-form__aside">
+    <nav class="as-card as-formnav" data-form-nav aria-label="أقسام النموذج">
+      <div class="as-formnav__state"><span>اكتمال البيانات المطلوبة</span><span class="as-num" data-form-pct>0%</span></div>
+      <div class="as-formnav__bar"><div class="as-pbar as-pbar--success"><span class="as-pbar__track"><span style="width:0"></span></span></div></div>
+      <ol></ol>
+    </nav>
+    <div class="as-card as-sumcard" aria-label="معاينة بطاقة السيرة">
+      <div class="as-sumcard__photo"><span class="as-ava as-ava--xl" data-photo-of="photo" style="background:#fff center/cover;color:#1a5f9e"><i class="fa-solid fa-user"></i></span></div>
+      <div class="as-sumcard__body">
+        <strong data-bind="name" data-empty="اسم العاملة" style="text-transform:uppercase"></strong>
+        <span data-bind="nat+job" data-empty="الجنسية · الوظيفة"></span>
+        <div style="margin-top:8px"><span class="as-money"><span class="as-num" data-bind="salary" data-format="num" data-empty="—"></span> <small>ر.س / شهريًا</small></span></div>
+      </div>
+      <p class="as-sumcard__tip">هكذا تظهر البطاقة للعميل في الموقع والتطبيق.</p>
+    </div>
+  </aside>
+
+  <div class="as-formbar">
+    <span class="as-formbar__state" data-form-state aria-live="polite"></span>
+    <div class="as-formbar__acts">
+      <a class="as-btn as-btn--ghost" href="records.html#maids" data-cancel>إلغاء</a>
+      <button class="as-btn as-btn--secondary" type="submit" data-again>حفظ وإضافة أخرى</button>
+      <button class="as-btn as-btn--primary" type="submit"><i class="fa-solid fa-check"></i>حفظ السيرة</button>
+    </div>
+  </div>
+</form>
+<!-- scripts -->
+<script src="../assets/admin/custom/asuss-forms.js"></script>
