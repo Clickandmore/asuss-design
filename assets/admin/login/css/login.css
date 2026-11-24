@@ -430,3 +430,121 @@ body {
     background: #eef5fb;
     border-radius: 8px;
 }
+
+/* =====================================================================
+   Variant A (.auth--center): one centred card on the navy brand ground.
+   ===================================================================== */
+.auth.auth--center {
+    position: relative;
+    display: flex;
+    height: auto;
+    min-height: 100vh;
+    min-height: 100dvh;
+    overflow: hidden;
+    background:
+        radial-gradient(900px 600px at 85% -10%, rgba(29, 112, 183, .55), transparent 60%),
+        linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+}
+/* the logo mark as a large, faint watermark */
+.auth--center::before {
+    content: "";
+    position: absolute;
+    inset-block-end: -20vh;
+    inset-inline-start: -8vh;
+    width: 70vh;
+    height: 140vh;
+    background: url("../../../web/assets/images/logo-mark-white.svg") no-repeat center / contain;
+    opacity: .04;
+    pointer-events: none;
+}
+.center-wrap {
+    position: relative;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px 16px 24px;
+}
+.center-card {
+    width: 100%;
+    max-width: 440px;
+    padding: 40px;
+    background: var(--surface);
+    border-radius: 20px;
+    box-shadow: 0 24px 64px rgba(0, 0, 0, .35);
+}
+.center-logo { display: block; height: 72px; width: auto; margin: 0 auto 28px; }
+.center-card .auth-title { text-align: center; font-size: 24px; }
+.center-card .auth-subtitle { text-align: center; margin-bottom: 28px; }
+.center-wrap .auth-footer {
+    width: 100%;
+    max-width: 440px;
+    margin-top: 24px;
+    color: rgba(255, 255, 255, .7);
+}
+.center-wrap .auth-lang { color: rgba(255, 255, 255, .85); }
+.center-wrap .auth-lang:hover { color: #fff; }
+@media (max-width: 479px) {
+    .center-card { padding: 28px 20px; border-radius: 16px; }
+    .center-logo { height: 60px; }
+}
+
+/* =====================================================================
+   Variant B (.auth--split): white form half with a centred logo,
+   navy brand half with the mark, the name and three short points.
+   ===================================================================== */
+.auth.auth--split { display: grid; grid-template-columns: 1fr; height: auto; min-height: 100vh; overflow: visible; }
+.split-main {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    min-height: 100dvh;
+    padding: 24px 16px;
+    background: var(--surface);
+}
+.split-center { flex: 1; display: flex; align-items: center; justify-content: center; padding: 24px 0; }
+.split-form { width: 100%; max-width: 400px; }
+.split-logo { display: block; height: 72px; width: auto; margin: 0 auto 32px; }
+.split-form .auth-title { text-align: center; font-size: 26px; }
+.split-form .auth-subtitle { text-align: center; }
+.split-brand { display: none; }
+@media (min-width: 1024px) {
+    .auth.auth--split { grid-template-columns: 1fr 1fr; height: 100vh; overflow: hidden; }
+    .split-main { padding: 32px 64px; }
+    .split-brand {
+        position: relative;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 64px;
+        color: #fff;
+        background:
+            radial-gradient(700px 500px at 50% 0%, rgba(29, 112, 183, .5), transparent 65%),
+            linear-gradient(160deg, var(--navy) 0%, var(--navy-2) 100%);
+        overflow: hidden;
+    }
+    .split-brand::before {
+        content: "";
+        position: absolute;
+        inset-block-end: -25%;
+        inset-inline-end: -12%;
+        width: 70%;
+        height: 120%;
+        background: url("../../../web/assets/images/logo-mark-white.svg") no-repeat center / contain;
+        opacity: .05;
+    }
+}
+.split-brand__in { position: relative; max-width: 420px; text-align: center; }
+.split-mark { display: block; height: 120px; width: auto; margin: 0 auto 28px; }
+.split-name { margin: 0 0 8px; font-size: 28px; font-weight: 600; line-height: 1.4; }
+.split-slogan { margin: 0 0 36px; font-size: 16px; color: rgba(255, 255, 255, .75); }
+.split-points {
+    list-style: none; margin: 0 auto; padding: 24px 0 0; display: grid; gap: 14px;
+    border-top: 1px solid rgba(255, 255, 255, .14); text-align: start; max-width: 340px;
+}
+.split-points li { position: relative; padding-inline-start: 32px; font-size: 15px; color: rgba(255, 255, 255, .88); }
+.split-points li::before {
+    content: ""; position: absolute; inset-inline-start: 0; top: 3px; width: 20px; height: 20px; border-radius: 50%;
+    background: rgba(95, 163, 222, .2) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%239fcbf0' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 12 4 4 8-8'/%3E%3C/svg%3E") no-repeat center / 12px;
+}

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>تسجيل الدخول | أسس الإنجاز للاستقدام</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="../assets/admin/login/css/login-c.css">
+
+<script type="text/javascript" class="flasher-js">(function() {    var rootScript = 'https://cdn.jsdelivr.net/npm/@flasher/flasher@1.3.2/dist/flasher.min.js';    var FLASHER_FLASH_BAG_PLACE_HOLDER = {};    var options = mergeOptions([], FLASHER_FLASH_BAG_PLACE_HOLDER);    function mergeOptions(first, second) {        return {            context: merge(first.context || {}, second.context || {}),            envelopes: merge(first.envelopes || [], second.envelopes || []),            options: merge(first.options || {}, second.options || {}),            scripts: merge(first.scripts || [], second.scripts || []),            styles: merge(first.styles || [], second.styles || []),        };    }    function merge(first, second) {        if (Array.isArray(first) && Array.isArray(second)) {            return first.concat(second).filter(function(item, index, array) {                return array.indexOf(item) === index;            });        }        return Object.assign({}, first, second);    }    function renderOptions(options) {        if(!window.hasOwnProperty('flasher')) {            console.error('Flasher is not loaded');            return;        }        requestAnimationFrame(function () {            window.flasher.render(options);        });    }    function render(options) {        if ('loading' !== document.readyState) {            renderOptions(options);            return;        }        document.addEventListener('DOMContentLoaded', function() {            renderOptions(options);        });    }    if (1 === document.querySelectorAll('script.flasher-js').length) {        document.addEventListener('flasher:render', function (event) {            render(event.detail);        });            }    if (window.hasOwnProperty('flasher') || !rootScript || document.querySelector('script[src="' + rootScript + '"]')) {        render(options);    } else {        var tag = document.createElement('script');        tag.setAttribute('src', rootScript);        tag.setAttribute('type', 'text/javascript');        tag.onload = function () {            render(options);        };        document.head.appendChild(tag);    }})();</script>
+</head>
+
+<body>
+    <div class="auth">
+        <main class="auth-main">
+            <header class="auth-top">
+                <img class="auth-logo" src="../assets/web/assets/images/logoh.svg" alt="شركة أسس الإنجاز للاستقدام">
+                <a class="auth-lang" href="#" data-route="/lang/en" lang="en">English</a>
+            </header>
+
+            <div class="auth-form-wrap">
+                <div class="auth-form">
+                    <h1 class="auth-title">تسجيل الدخول</h1>
+                    <p class="auth-subtitle">أهلًا بعودتك. أدخل بيانات حسابك للمتابعة.</p>
+
+                    <div class="auth-alert auth-alert--error" id="form-alert" role="alert" aria-live="assertive"></div>
+
+                    <form id="loginForm" action="../assets/dashboard/login" method="POST" novalidate>
+                        <input type="hidden" name="_token" value="Tt9rp9yiLX2X7kIx8refvf9SFzdnoxBuPAFNcnlS">
+                        <div class="field " data-field="login">
+                            <label class="field-label" for="email">البريد الإلكتروني</label>
+                            <div class="field-control">
+                                <input class="field-input" type="email" id="email" name="login" dir="ltr"
+                                    value="" placeholder="name@example.com"
+                                    autocomplete="username" inputmode="email" autocapitalize="none" spellcheck="false"
+                                    required autofocus aria-describedby="email-error"
+                                    >
+                                <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="m3 7 9 6 9-6"/></svg>
+                            </div>
+                            <p class="field-error" id="email-error"></p>
+                        </div>
+
+                        <div class="field " data-field="password">
+                            <label class="field-label" for="password">كلمة المرور</label>
+                            <div class="field-control">
+                                <input class="field-input field-input--password" type="password" id="password" name="password"
+                                    autocomplete="current-password" required aria-describedby="password-error"
+                                    >
+                                <svg class="field-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="4" y="11" width="16" height="10" rx="2"/><path d="M8 11V7a4 4 0 0 1 8 0v4"/></svg>
+                                <button type="button" class="password-toggle" id="password-toggle" aria-controls="password"
+                                    aria-label="إظهار كلمة المرور" aria-pressed="false"
+                                    data-show="إظهار كلمة المرور" data-hide="إخفاء كلمة المرور">
+                                    <svg class="icon-show" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+                                    <svg class="icon-hide" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94"/><path d="M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19"/><path d="M14.12 14.12a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg>
+                                </button>
+                            </div>
+                            <p class="field-error" id="password-error"></p>
+                        </div>
+
+                        <div class="auth-row">
+                            <label class="checkbox" for="rememberme">
+                                <input type="checkbox" name="rememberme" id="rememberme" value="1" >
+                                تذكرني
+                            </label>
+                            <a class="auth-link" href="#" data-route="/dashboard/password/reset">نسيت كلمة المرور؟</a>
+                                                    </div>
+
+                        <button type="submit" class="btn-submit" id="login-submit">
+                            <span class="spinner" aria-hidden="true"></span>
+                            <span class="btn-label">تسجيل الدخول</span>
+                        </button>
+                    </form>
+
+                    <p class="auth-help">تواجه مشكلة في الدخول؟ تواصل مع مدير النظام في فرعك.</p>
+                    <p class="auth-demo" id="kit-demo-note">نسخة العرض: البيانات معبّأة، اضغط «تسجيل الدخول».</p>
+                </div>
+            </div>
+
+            <footer class="auth-footer">© 2026 شركة أسس الإنجاز للاستقدام</footer>
+        </main>
+
+        <aside class="auth-panel">
+            <div class="panel-inner">
+                <img class="panel-logo" src="../assets/web/assets/images/logoh-white.svg" alt="">
+                <h2 class="panel-title">رحلة كل عاملة، من التعاقد حتى الوصول</h2>
+                <p class="panel-subtitle">تابع العقود والتأشيرات والتذاكر والإيواء من شاشة واحدة، بكل خطوة في وقتها.</p>
+
+                <figure class="journey">
+            <svg class="journey-map" viewBox="0 0 480 300" direction="ltr" role="img" aria-label="مسارات الاستقدام من إثيوبيا وكينيا وأوغندا وبنجلاديش والفلبين إلى الرياض">
+                <defs><pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.3" fill="#fff" opacity=".13"/></pattern></defs>
+                <rect width="480" height="300" fill="url(#dots)"/>
+                <path class="route" style="animation-delay:0.0s" d="M440,150 Q318,36 196,84"/><path class="route" style="animation-delay:0.3s" d="M338,74 Q267,26 196,84"/><path class="route" style="animation-delay:0.6s" d="M150,182 Q120,103 196,84"/><path class="route" style="animation-delay:0.9s" d="M140,252 Q110,138 196,84"/><path class="route" style="animation-delay:1.2s" d="M66,232 Q36,128 196,84"/>
+                <circle class="origin" cx="440" cy="150" r="5"/><text x="440" y="174" text-anchor="middle">الفلبين</text><circle class="origin" cx="338" cy="74" r="5"/><text x="350" y="79" text-anchor="start">بنجلاديش</text><circle class="origin" cx="150" cy="182" r="5"/><text x="138" y="186" text-anchor="end">إثيوبيا</text><circle class="origin" cx="140" cy="252" r="5"/><text x="140" y="276" text-anchor="middle">كينيا</text><circle class="origin" cx="66" cy="232" r="5"/><text x="66" y="256" text-anchor="middle">أوغندا</text>
+                <circle class="pulse" cx="196" cy="84" r="9"/>
+                <circle class="hub" cx="196" cy="84" r="7"/>
+                <text class="hub-label" x="196" y="66" text-anchor="middle">الرياض</text>
+            </svg>
+                    <div class="journey-card" aria-hidden="true">
+                        <div class="journey-card__top">
+                            <span class="journey-card__id">عقد <b>#248</b></span>
+                            <span class="journey-card__badge">في الوقت</span>
+                        </div>
+                        <p class="journey-card__name">مرحلة التذكرة · الوصول خلال 3 أيام</p>
+                        <ol class="journey-steps">
+                            <li class="done">جديد</li><li class="done">مساند</li><li class="done">التفويض</li><li class="done">التفييز</li><li class="now">التذكرة</li><li>الوصول</li>
+                        </ol>
+                    </div>
+                    <figcaption class="sr-only">مسارات الاستقدام من خمس دول إلى الرياض، وبطاقة عقد في مرحلة التذكرة.</figcaption>
+                </figure>
+
+                <ul class="panel-points">
+                    <li><b>6</b> مراحل واضحة لكل عقد</li>
+                    <li><b>تنبيه</b> قبل أي تأخير</li>
+                    <li><b>صلاحيات</b> حسب الدور</li>
+                </ul>
+            </div>
+        </aside>
+    </div>
+
+    <script src="../assets/admin/assets/js/plugins.js"></script>
+    <script src="../kit/kit-login.js"></script>
+    <script>
+        (function () {
+            var i18n = {"submit":"تسجيل الدخول","submitting":"جارٍ تسجيل الدخول…","redirecting":"تم تسجيل الدخول، جارٍ التحويل…","wrongPassword":"كلمة المرور غير صحيحة.","unknownAccount":"لا يوجد حساب مسجّل بهذا البريد الإلكتروني.","serverError":"تعذّر تسجيل الدخول حالياً، حاول مرة أخرى بعد قليل.","networkError":"تعذّر الاتصال بالخادم، تحقّق من الاتصال وحاول مجدداً."};
+
+            var form = document.getElementById('loginForm');
+            var submit = document.getElementById('login-submit');
+            var label = submit.querySelector('.btn-label');
+            var alertBox = document.getElementById('form-alert');
+            var toggle = document.getElementById('password-toggle');
+            var password = document.getElementById('password');
+
+            toggle.addEventListener('click', function () {
+                var show = password.type === 'password';
+                password.type = show ? 'text' : 'password';
+                toggle.setAttribute('aria-pressed', show ? 'true' : 'false');
+                toggle.setAttribute('aria-label', toggle.getAttribute(show ? 'data-hide' : 'data-show'));
+                password.focus();
+            });
+
+            function setLoading(on, text) {
+                submit.disabled = on;
+                submit.classList.toggle('is-loading', on);
+                submit.setAttribute('aria-busy', on ? 'true' : 'false');
+                label.textContent = text || (on ? i18n.submitting : i18n.submit);
+            }
+
+            function clearErrors() {
+                alertBox.textContent = '';
+                form.querySelectorAll('.field').forEach(function (field) {
+                    field.classList.remove('has-error');
+                    field.querySelector('.field-error').textContent = '';
+                    field.querySelector('.field-input').removeAttribute('aria-invalid');
+                });
+            }
+
+            function fieldError(name, message) {
+                var field = form.querySelector('.field[data-field="' + name + '"]');
+                if (!field) { alertBox.textContent = message; return null; }
+                var input = field.querySelector('.field-input');
+                field.classList.add('has-error');
+                field.querySelector('.field-error').textContent = message;
+                input.setAttribute('aria-invalid', 'true');
+                return input;
+            }
+
+            // remove a field's error as soon as the user edits it
+            form.addEventListener('input', function (e) {
+                var field = e.target.closest('.field');
+                if (field && field.classList.contains('has-error')) {
+                    field.classList.remove('has-error');
+                    field.querySelector('.field-error').textContent = '';
+                    e.target.removeAttribute('aria-invalid');
+                }
+            });
+
+            $(form).on('submit', function (e) {
+                e.preventDefault();
+                if (submit.disabled) return false;
+                clearErrors();
+                setLoading(true);
+
+                $.ajax({
+                    url: form.action,
+                    data: $(form).serialize(),
+                    type: 'POST',
+                    dataType: 'json',
+                    success: function (result) {
+                        if (result.code === 200) {
+                            setLoading(true, i18n.redirecting);
+                            window.location.href = result.data.url;
+                            return;
+                        }
+                        setLoading(false);
+                        // the endpoint answers HTTP 200 with the outcome in result.code
+                        if (result.code === 402) {
+                            fieldError('password', i18n.wrongPassword).select();
+                        } else if (result.code === 401) {
+                            fieldError('login', i18n.unknownAccount).focus();
+                        } else {
+                            alertBox.textContent = result.message || i18n.serverError;
+                        }
+                    },
+                    error: function (xhr) {
+                        setLoading(false);
+                        if (xhr.status === 422 && xhr.responseJSON && xhr.responseJSON.errors) {
+                            var first = null;
+                            $.each(xhr.responseJSON.errors, function (name, messages) {
+                                var input = fieldError(name, messages[0]);
+                                first = first || input;
+                            });
+                            if (first) first.focus();
+                        } else if (xhr.status === 419) {
+                            // CSRF token expired while the page sat open
+                            window.location.reload();
+                        } else {
+                            alertBox.textContent = xhr.status === 0 ? i18n.networkError : i18n.serverError;
+                        }
+                    }
+                });
+                return false;
+            });
+        })();
+    </script>
+</body>
+
+</html>

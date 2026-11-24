@@ -14,15 +14,11 @@
 </head>
 
 <body>
-    <div class="auth">
-        <main class="auth-main">
-            <header class="auth-top">
-                <img class="auth-logo" src="../assets/web/assets/images/logoh.svg" alt="شركة أسس الإنجاز للاستقدام">
-            </header>
-
-            <div class="auth-form-wrap">
-                <div class="auth-form">
-                    <h1 class="auth-title">تسجيل الدخول</h1>
+    <div class="auth auth--center">
+        <main class="center-wrap">
+            <div class="center-card">
+                <img class="center-logo" src="../assets/web/assets/images/logoh.svg" alt="شركة أسس الإنجاز للاستقدام">
+                <h1 class="auth-title">تسجيل الدخول</h1>
                     <p class="auth-subtitle">أهلًا بعودتك. أدخل بيانات حسابك للمتابعة.</p>
 
                     <div class="auth-alert auth-alert--error" id="form-alert" role="alert" aria-live="assertive"></div>
@@ -73,38 +69,15 @@
                         </button>
                     </form>
 
-                    <p class="auth-help">تواجه مشكلة في الدخول؟ تواصل مع مدير النظام في فرعك.</p>
-                    <p class="auth-demo" id="kit-demo-note">نسخة العرض: البيانات معبّأة، اضغط «تسجيل الدخول».</p>
-                </div>
-            </div>
+                    <p class="auth-help">تواجه مشكلة؟ تواصل مع مدير النظام.</p>
 
+                    <p class="auth-demo" id="kit-demo-note">نسخة العرض: البيانات معبّأة، اضغط «تسجيل الدخول».</p>
+            </div>
             <footer class="auth-footer">
                 <span>© 2026 شركة أسس الإنجاز للاستقدام</span>
                 <a class="auth-lang" href="#" data-route="/lang/en" lang="en"><svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.7 3.8 5.7 3.8 9s-1.3 6.3-3.8 9c-2.5-2.7-3.8-5.7-3.8-9S9.5 5.7 12 3z"/></svg>English</a>
             </footer>
         </main>
-
-        <aside class="auth-panel">
-            <div class="panel-copy">
-                <p class="panel-eyebrow">لوحة إدارة الاستقدام</p>
-                <h2 class="panel-title">رحلة كل عاملة، من التعاقد حتى الوصول</h2>
-                <p class="panel-subtitle">العقود والتأشيرات والتذاكر والإيواء في شاشة واحدة، مع تنبيه قبل أي تأخير.</p>
-            </div>
-
-            <figure class="panel-shot">
-                <img src="../assets/admin/login/imgs/dashboard-preview.jpg" width="1800" height="1025" alt="لوحة المعلومات في نظام أسس الإنجاز">
-                <div class="journey-card" aria-hidden="true">
-                    <div class="journey-card__top">
-                        <span class="journey-card__id">عقد <b>#248</b></span>
-                        <span class="journey-card__badge">في الوقت</span>
-                    </div>
-                    <p class="journey-card__name">مرحلة التذكرة · الوصول خلال 3 أيام</p>
-                    <ol class="journey-steps">
-                        <li class="done">جديد</li><li class="done">مساند</li><li class="done">التفويض</li><li class="done">التفييز</li><li class="now">التذكرة</li><li>الوصول</li>
-                    </ol>
-                </div>
-            </figure>
-        </aside>
     </div>
 
     <script src="../assets/admin/assets/js/plugins.js"></script>
