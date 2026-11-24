@@ -110,8 +110,13 @@
 | القائمة في `kit/redesign/build.py` → `MENU` | `resources/views/admin/layout/inc/sidebar.blade.php` | الأعداد تأتي من الاستعلامات الحالية؛ كل عنصر يبقى خلف صلاحيته (`@can`) كما هو |
 | `screens/dashboard.html` | `resources/views/admin/dashboard-new.blade.php` | |
 | `screens/reports.html` | جديدة (مقترح `admin/reports/index.blade.php`) | بيانات كل تقرير من استعلام واحد يرجع `kpis` و`chart` و`table` بنفس الشكل الموجود في الصفحة |
-| `assets/admin/login/css/login.css` + `screens/login.html` | نفس المسار + `admin/auth/login.blade.php` | اللوحة الكحلية: `figure.journey` (خريطة SVG + `journey-card`) و`panel-points`؛ لا تنقل `kit-login.js` ولا `p.auth-demo` |
+| `assets/admin/login/css/login.css` + `screens/login.html` | نفس المسار + `admin/auth/login.blade.php` | `header.auth-top` (شعار للجوال + English)، `a.auth-link` لنسيت كلمة المرور (يحتاج مسارًا في asuss)، `p.auth-help`؛ اللوحة الكحلية: `img.panel-logo` و`figure.journey` (خريطة SVG + `journey-card`) و`panel-points`؛ لا تنقل `kit-login.js` ولا `p.auth-demo` |
+| `assets/web/assets/images/logoh-white.svg` | نفس المسار | الشعار الكامل بالأبيض للوحة الكحلية في تسجيل الدخول؛ نفس `logoh.svg` بتعبئة بيضاء |
 | `assets/web/assets/images/logo-mark-white.svg` | نفس المسار | العلامة وحدها بالأبيض لشريط الأقسام، مقصوصة من `logoh.svg` بلا تعديل للشكل |
+
+### الخط
+
+**Readex Pro** (Google Fonts، أوزان 400 و500 و600) بدل IBM Plex Sans Arabic، بطلب صاحب المشروع: عربي ولاتيني بتصميم واحد، وأرقام واضحة. الأوزان: 400 للمتن، 500 للتسميات والأزرار والروابط، 600 للعناوين والأرقام. لا نستخدم 700 لأنه ثقيل في هذا الخط. المقارنة مع الخيارات الأخرى في `kit/fonts.html`. **يحتاج تحديث نظام التصميم** (`tokens.json` → `type.families.sans`).
 
 ### القيم
 

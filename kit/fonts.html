@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>مقارنة الخطوط — أسس الإنجاز</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;600;700&family=Readex+Pro:wght@400;500;600;700&family=Noto+Kufi+Arabic:wght@400;500;600;700&family=Tajawal:wght@400;500;700&family=Almarai:wght@400;700&family=Alexandria:wght@400;500;600;700&family=Cairo:wght@400;600;700&display=swap">
+<style>
+body{margin:0;background:#f5f7fa;color:#111827;padding:24px}
+.grid{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+.c{background:#fff;border:1px solid #e5e7eb;border-radius:12px;padding:20px}
+.n{font:600 12px system-ui;color:#1a5f9e;direction:ltr;text-align:right;margin-bottom:8px}
+h1{font-size:26px;margin:0 0 6px;font-weight:700}
+p{margin:0 0 14px;color:#4b5563;font-size:15px}
+label{display:block;font-weight:600;font-size:14px;margin-bottom:6px}
+.i{height:44px;border:1px solid #d1d5db;border-radius:8px;margin-bottom:12px;display:flex;align-items:center;padding:0 12px;color:#9ca3af;font-size:15px}
+.b{height:44px;border-radius:8px;background:#1a5f9e;color:#fff;display:grid;place-items:center;font-weight:600;font-size:15px}
+.k{margin-top:14px;display:flex;justify-content:space-between;font-size:14px}
+.k b{font-size:24px}
+</style></head><body><div class="grid" id="g"></div>
+<script>
+['IBM Plex Sans Arabic','Readex Pro','Noto Kufi Arabic','Alexandria','Tajawal','Almarai','Cairo'].forEach(function(f){
+ document.getElementById('g').insertAdjacentHTML('beforeend','<div class="c" style="font-family:\''+f+'\'"><div class="n">'+f+'</div><h1>مرحباً بعودتك</h1><p>سجّل الدخول لإدارة طلبات الاستقدام والعقود</p><label>البريد الإلكتروني</label><div class="i">name@example.com</div><label>كلمة المرور</label><div class="i">••••••••</div><div class="b">تسجيل الدخول</div><div class="k"><span>عقود جارية</span><b>1,250 ر.س</b></div><p style="margin-top:10px">رحلة كل عاملة، من التعاقد حتى الوصول · التفويض والتفييز</p></div>');
+});
+</script></body></html>

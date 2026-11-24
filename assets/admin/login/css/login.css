@@ -27,7 +27,7 @@ html, body { height: 100%; }
 
 body {
     margin: 0;
-    font-family: "IBM Plex Sans Arabic", "Segoe UI", Tahoma, sans-serif;
+    font-family: "Readex Pro", "Segoe UI", Tahoma, sans-serif;
     font-size: 16px;
     line-height: 1.6;
     color: var(--text);
@@ -66,19 +66,42 @@ body {
 
 .auth-form {
     width: 100%;
-    max-width: 420px;
+    max-width: 400px;
 }
+
+/* top bar of the form column: logo + language */
+.auth-top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex: none;
+}
+.auth-lang {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--muted);
+    text-decoration: none;
+    padding: 6px 12px;
+    border: 1px solid var(--border);
+    border-radius: 999px;
+}
+.auth-lang:hover { color: var(--brand); border-color: var(--brand); }
+.auth-lang:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
 
 .auth-panel { display: none; }
 
 @media (min-width: 1024px) {
     .auth { grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); height: 100vh; overflow: hidden; }
+    .auth-top { justify-content: flex-end; }
+    .auth-top .auth-logo { display: none; }   /* the white logo on the panel carries the brand */
     .auth-main { padding: 32px 48px; }
     .auth-panel { display: flex; }
 }
 
 @media (max-width: 1023px) {
     .auth-main { background: var(--page); }
+    .auth-logo { height: 44px; }
     .auth-form {
         background: var(--surface);
         padding: 32px 24px;
@@ -91,18 +114,16 @@ body {
 /* ---------- brand + heading ---------- */
 .auth-logo {
     display: block;
-    height: 56px;
+    height: 52px;
     width: auto;
-    max-width: 220px;
-    object-fit: contain;
-    margin-bottom: 32px;
 }
 
 .auth-title {
     margin: 0 0 8px;
-    font-size: 28px;
+    font-size: 30px;
     line-height: 1.3;
-    font-weight: 700;
+    font-weight: 600;
+    letter-spacing: 0;
     color: var(--ink);
 }
 
@@ -126,13 +147,13 @@ body {
 .auth-alert--success { color: var(--success); background: var(--success-bg); border-color: var(--success-border); }
 
 /* ---------- fields ---------- */
-.field { margin-bottom: 24px; }
+.field { margin-bottom: 20px; }
 
 .field-label {
     display: block;
     margin-bottom: 8px;
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 500;
     color: var(--ink);
 }
 
@@ -160,7 +181,7 @@ body {
     color: var(--ink);
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: var(--radius);
+    border-radius: 10px;
     transition: border-color .15s, box-shadow .15s;
 }
 .field-input::placeholder { color: #9ca3af; }
@@ -215,14 +236,14 @@ body {
     align-items: center;
     justify-content: space-between;
     gap: 16px;
-    margin: -8px 0 24px;
+    margin: -4px 0 24px;
 }
 
 .checkbox {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    font-size: 15px;
+    font-size: 14px;
     color: var(--text);
     cursor: pointer;
     user-select: none;
@@ -237,8 +258,8 @@ body {
 .checkbox input:focus-visible { outline: 2px solid var(--brand); outline-offset: 2px; }
 
 .auth-link {
-    font-size: 15px;
-    font-weight: 600;
+    font-size: 14px;
+    font-weight: 500;
     color: var(--brand);
     text-decoration: none;
 }
@@ -256,11 +277,11 @@ body {
     padding: 0 24px;
     font: inherit;
     font-size: 16px;
-    font-weight: 600;
+    font-weight: 500;
     color: #fff;
     background: var(--brand);
     border: 0;
-    border-radius: var(--radius);
+    border-radius: 10px;
     box-shadow: 0 1px 2px rgba(16, 24, 40, .08);
     cursor: pointer;
     transition: background-color .15s, box-shadow .15s;
@@ -283,11 +304,21 @@ body {
 
 @keyframes spin { to { transform: rotate(360deg); } }
 
+/* ---------- help ---------- */
+.auth-help {
+    margin: 24px 0 0;
+    padding-top: 20px;
+    border-top: 1px solid #e5e7eb;
+    font-size: 14px;
+    color: var(--muted);
+    text-align: center;
+}
+
 /* ---------- footer ---------- */
 .auth-footer {
+    flex: none;
     margin: 24px 0 0;
-    text-align: center;
-    font-size: 14px;
+    font-size: 13px;
     color: var(--muted);
 }
 
@@ -302,26 +333,21 @@ body {
     overflow: hidden;
 }
 
-.panel-brand {
-    display: inline-flex;
-    align-items: center;
-    margin-bottom: 24px;
-    padding: 6px 14px;
-    font-size: 14px;
-    font-weight: 600;
-    color: rgba(255, 255, 255, .9);
-    background: rgba(255, 255, 255, .08);
-    border: 1px solid rgba(255, 255, 255, .14);
-    border-radius: 999px;
+.panel-logo {
+    display: block;
+    height: 64px;
+    width: auto;
+    margin-bottom: 40px;
 }
 
 .panel-inner { position: relative; z-index: 1; width: 100%; max-width: 520px; margin: 0 auto; }
 
 .panel-title {
-    margin: 0 0 16px;
-    font-size: 32px;
-    line-height: 1.3;
-    font-weight: 700;
+    margin: 0 0 12px;
+    font-size: 28px;
+    line-height: 1.4;
+    font-weight: 600;
+    text-wrap: balance;
 }
 
 .panel-subtitle {
@@ -333,7 +359,7 @@ body {
 /* ---------- the journey: route map + contract card ---------- */
 .journey { position: relative; margin: 0 0 40px; padding: 0; }
 .journey-map { display: block; width: 100%; height: auto; overflow: visible; }
-.journey-map text { font: 600 13px "IBM Plex Sans Arabic", sans-serif; fill: rgba(255, 255, 255, .78); }
+.journey-map text { font: 500 13px "Readex Pro", sans-serif; fill: rgba(255, 255, 255, .78); }
 .journey-map .hub-label { font-size: 15px; font-weight: 700; fill: #fff; }
 .journey-map .route {
     fill: none; stroke: #5fa3de; stroke-width: 2; stroke-linecap: round;
@@ -398,10 +424,11 @@ body {
 
 /* Kit note under the form (static design kit only). */
 .auth-demo {
-    margin: 16px 0 0;
-    padding: 10px 14px;
-    font-size: 14px;
+    margin: 12px 0 0;
+    padding: 8px 12px;
+    font-size: 13px;
+    text-align: center;
     color: var(--brand);
     background: #eef5fb;
-    border-radius: var(--radius);
+    border-radius: 8px;
 }

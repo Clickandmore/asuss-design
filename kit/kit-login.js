@@ -7,6 +7,13 @@
     if (!form) return;
     var email = document.getElementById('email');
     var password = document.getElementById('password');
+    document.addEventListener('click', function (e) {
+      var a = e.target.closest('a[href="#"]');
+      if (!a) return;
+      e.preventDefault();
+      var note = document.getElementById('kit-demo-note');
+      if (note) note.textContent = 'هذا الرابط يعمل في النظام (' + (a.dataset.route || '') + ')، لا في نسخة العرض.';
+    });
     email.value = 'admin@example.com';
     password.value = 'demo-password';
 

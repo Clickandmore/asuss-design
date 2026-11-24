@@ -7,7 +7,7 @@
     <title>تسجيل الدخول | أسس الإنجاز للاستقدام</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap">
     <link rel="stylesheet" href="../assets/admin/login/css/login.css">
 
 <script type="text/javascript" class="flasher-js">(function() {    var rootScript = 'https://cdn.jsdelivr.net/npm/@flasher/flasher@1.3.2/dist/flasher.min.js';    var FLASHER_FLASH_BAG_PLACE_HOLDER = {};    var options = mergeOptions([], FLASHER_FLASH_BAG_PLACE_HOLDER);    function mergeOptions(first, second) {        return {            context: merge(first.context || {}, second.context || {}),            envelopes: merge(first.envelopes || [], second.envelopes || []),            options: merge(first.options || {}, second.options || {}),            scripts: merge(first.scripts || [], second.scripts || []),            styles: merge(first.styles || [], second.styles || []),        };    }    function merge(first, second) {        if (Array.isArray(first) && Array.isArray(second)) {            return first.concat(second).filter(function(item, index, array) {                return array.indexOf(item) === index;            });        }        return Object.assign({}, first, second);    }    function renderOptions(options) {        if(!window.hasOwnProperty('flasher')) {            console.error('Flasher is not loaded');            return;        }        requestAnimationFrame(function () {            window.flasher.render(options);        });    }    function render(options) {        if ('loading' !== document.readyState) {            renderOptions(options);            return;        }        document.addEventListener('DOMContentLoaded', function() {            renderOptions(options);        });    }    if (1 === document.querySelectorAll('script.flasher-js').length) {        document.addEventListener('flasher:render', function (event) {            render(event.detail);        });            }    if (window.hasOwnProperty('flasher') || !rootScript || document.querySelector('script[src="' + rootScript + '"]')) {        render(options);    } else {        var tag = document.createElement('script');        tag.setAttribute('src', rootScript);        tag.setAttribute('type', 'text/javascript');        tag.onload = function () {            render(options);        };        document.head.appendChild(tag);    }})();</script>
@@ -16,14 +16,17 @@
 <body>
     <div class="auth">
         <main class="auth-main">
+            <header class="auth-top">
+                <img class="auth-logo" src="../assets/web/assets/images/logoh.svg" alt="شركة أسس الإنجاز للاستقدام">
+                <a class="auth-lang" href="#" data-route="/lang/en" lang="en">English</a>
+            </header>
+
             <div class="auth-form-wrap">
                 <div class="auth-form">
-                                            <img class="auth-logo" src="../assets/web/assets/images/logoh.svg" alt="أسس الإنجاز للاستقدام">
-                    
-                    <h1 class="auth-title">مرحباً بعودتك</h1>
-                    <p class="auth-subtitle">سجّل الدخول لإدارة طلبات الاستقدام والعقود</p>
+                    <h1 class="auth-title">تسجيل الدخول</h1>
+                    <p class="auth-subtitle">أهلًا بعودتك. أدخل بيانات حسابك للمتابعة.</p>
 
-                                                            <div class="auth-alert auth-alert--error" id="form-alert" role="alert" aria-live="assertive"></div>
+                    <div class="auth-alert auth-alert--error" id="form-alert" role="alert" aria-live="assertive"></div>
 
                     <form id="loginForm" action="../assets/dashboard/login" method="POST" novalidate>
                         <input type="hidden" name="_token" value="Tt9rp9yiLX2X7kIx8refvf9SFzdnoxBuPAFNcnlS">
@@ -62,6 +65,7 @@
                                 <input type="checkbox" name="rememberme" id="rememberme" value="1" >
                                 تذكرني
                             </label>
+                            <a class="auth-link" href="#" data-route="/dashboard/password/reset">نسيت كلمة المرور؟</a>
                                                     </div>
 
                         <button type="submit" class="btn-submit" id="login-submit">
@@ -69,16 +73,18 @@
                             <span class="btn-label">تسجيل الدخول</span>
                         </button>
                     </form>
-                    <p class="auth-demo" id="kit-demo-note">نسخة العرض: البيانات معبّأة، اضغط «تسجيل الدخول» للدخول إلى لوحة المعلومات.</p>
-                                    </div>
+
+                    <p class="auth-help">تواجه مشكلة في الدخول؟ تواصل مع مدير النظام في فرعك.</p>
+                    <p class="auth-demo" id="kit-demo-note">نسخة العرض: البيانات معبّأة، اضغط «تسجيل الدخول».</p>
+                </div>
             </div>
 
-            <p class="auth-footer">© 2026 أسس الإنجاز للاستقدام</p>
+            <footer class="auth-footer">© 2026 شركة أسس الإنجاز للاستقدام</footer>
         </main>
 
         <aside class="auth-panel">
             <div class="panel-inner">
-                <span class="panel-brand">شركة أسس الإنجاز للاستقدام</span>
+                <img class="panel-logo" src="../assets/web/assets/images/logoh-white.svg" alt="">
                 <h2 class="panel-title">رحلة كل عاملة، من التعاقد حتى الوصول</h2>
                 <p class="panel-subtitle">تابع العقود والتأشيرات والتذاكر والإيواء من شاشة واحدة، بكل خطوة في وقتها.</p>
 
@@ -87,7 +93,7 @@
                 <defs><pattern id="dots" width="14" height="14" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.3" fill="#fff" opacity=".13"/></pattern></defs>
                 <rect width="480" height="300" fill="url(#dots)"/>
                 <path class="route" style="animation-delay:0.0s" d="M440,150 Q318,36 196,84"/><path class="route" style="animation-delay:0.3s" d="M338,74 Q267,26 196,84"/><path class="route" style="animation-delay:0.6s" d="M150,182 Q120,103 196,84"/><path class="route" style="animation-delay:0.9s" d="M140,252 Q110,138 196,84"/><path class="route" style="animation-delay:1.2s" d="M66,232 Q36,128 196,84"/>
-                <circle class="origin" cx="440" cy="150" r="5"/><text x="440" y="174" text-anchor="middle">الفلبين</text><circle class="origin" cx="338" cy="74" r="5"/><text x="338" y="98" text-anchor="middle">بنجلاديش</text><circle class="origin" cx="150" cy="182" r="5"/><text x="138" y="186" text-anchor="end">إثيوبيا</text><circle class="origin" cx="140" cy="252" r="5"/><text x="140" y="276" text-anchor="middle">كينيا</text><circle class="origin" cx="66" cy="232" r="5"/><text x="66" y="256" text-anchor="middle">أوغندا</text>
+                <circle class="origin" cx="440" cy="150" r="5"/><text x="440" y="174" text-anchor="middle">الفلبين</text><circle class="origin" cx="338" cy="74" r="5"/><text x="350" y="79" text-anchor="start">بنجلاديش</text><circle class="origin" cx="150" cy="182" r="5"/><text x="138" y="186" text-anchor="end">إثيوبيا</text><circle class="origin" cx="140" cy="252" r="5"/><text x="140" y="276" text-anchor="middle">كينيا</text><circle class="origin" cx="66" cy="232" r="5"/><text x="66" y="256" text-anchor="middle">أوغندا</text>
                 <circle class="pulse" cx="196" cy="84" r="9"/>
                 <circle class="hub" cx="196" cy="84" r="7"/>
                 <text class="hub-label" x="196" y="66" text-anchor="middle">الرياض</text>
