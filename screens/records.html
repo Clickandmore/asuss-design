@@ -1,0 +1,807 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>عقود الاستقدام | أسس الإنجاز للاستقدام</title>
+<link rel="icon" href="../assets/admin/assets/img/favicon.ico">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Readex+Pro:wght@400;500;600;700&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<link rel="stylesheet" href="../assets/admin/custom/kit-overrides.css">
+</head>
+<body class="as-app">
+<a class="as-sr" href="#as-content">تخطَّ إلى المحتوى</a>
+<div class="as-layout">
+
+<aside class="as-sidebar" aria-label="القائمة الرئيسية">
+  <div class="as-rail">
+    <a class="as-rail__logo" href="dashboard.html" aria-label="أسس الإنجاز — لوحة المعلومات"><img src="../assets/web/assets/images/logo-mark-white.svg" alt=""></a>
+    <ul class="as-rail__list">
+<li><button class="as-rail__btn" type="button" data-dept="home" aria-pressed="false" title="الرئيسية"><i class="fa-solid fa-house" aria-hidden="true"></i><span>الرئيسية</span></button></li>
+<li><button class="as-rail__btn is-active" type="button" data-dept="rec" aria-pressed="true" title="الاستقدام"><i class="fa-solid fa-file-signature" aria-hidden="true"></i><span>الاستقدام</span><span class="as-rail__dot as-num">4</span></button></li>
+<li><button class="as-rail__btn" type="button" data-dept="rent" aria-pressed="false" title="التأجير"><i class="fa-solid fa-handshake" aria-hidden="true"></i><span>التأجير</span></button></li>
+<li><button class="as-rail__btn" type="button" data-dept="ops" aria-pressed="false" title="التشغيل"><i class="fa-solid fa-truck-fast" aria-hidden="true"></i><span>التشغيل</span></button></li>
+<li><button class="as-rail__btn" type="button" data-dept="care" aria-pressed="false" title="العملاء"><i class="fa-solid fa-headset" aria-hidden="true"></i><span>العملاء</span><span class="as-rail__dot as-num">5</span></button></li>
+<li><button class="as-rail__btn" type="button" data-dept="fin" aria-pressed="false" title="المالية"><i class="fa-solid fa-wallet" aria-hidden="true"></i><span>المالية</span><span class="as-rail__dot as-num">9</span></button></li>
+<li><button class="as-rail__btn" type="button" data-dept="admin" aria-pressed="false" title="الإدارة"><i class="fa-solid fa-sliders" aria-hidden="true"></i><span>الإدارة</span></button></li>
+    </ul>
+    <div class="as-rail__foot">
+      <button class="as-rail__btn as-rail__toggle" type="button" data-as-toggle-panel aria-label="إخفاء أو إظهار القائمة" title="إخفاء أو إظهار القائمة"><i class="fa-solid fa-table-columns" aria-hidden="true"></i></button>
+      <a class="as-rail__me" href="login.html" title="مشرف · تسجيل الخروج"><span class="as-avatar">م</span></a>
+    </div>
+  </div>
+  <div class="as-panel">
+    <div class="as-panel__head">
+      <img class="as-panel__logo" src="../assets/web/assets/images/logoh.svg" alt="أسس الإنجاز للاستقدام">
+      <button class="as-iconbtn as-sidebar__close" type="button" data-as-close-nav aria-label="إغلاق القائمة"><i class="fa-solid fa-xmark"></i></button>
+    </div>
+    <div class="as-sidebar__search">
+      <label class="as-search">
+        <span class="as-sr">ابحث في كل الأقسام</span>
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input id="as-nav-search" type="search" placeholder="ابحث في كل الأقسام" autocomplete="off">
+        <kbd aria-hidden="true">/</kbd>
+      </label>
+    </div>
+    <nav class="as-nav" data-current="rec">
+<section class="as-pane" data-dept="home" hidden aria-label="الرئيسية">
+<p class="as-pane__title">الرئيسية</p>
+<div class="as-nav__group">
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="dashboard.html"><span class="as-nav__text">لوحة المعلومات</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="reports.html"><span class="as-nav__text">التقارير</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#tasks"><span class="as-nav__text">المهام</span><span class="as-nav__count as-num">6</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">التعاميم</span></a></li>
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">اختصارات</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="recruitment-contract-create.html"><span class="as-nav__text">عقد استقدام جديد</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="client-create.html"><span class="as-nav__text">عميل جديد</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="maid-create.html"><span class="as-nav__text">سيرة ذاتية جديدة</span></a></li>
+</ul></div>
+</section>
+<section class="as-pane" data-dept="rec" aria-label="الاستقدام">
+<p class="as-pane__title">الاستقدام</p>
+<div class="as-nav__group">
+<p class="as-nav__label">العملاء والطلبات</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#clients"><span class="as-nav__text">العملاء</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#orders"><span class="as-nav__text">الطلبات</span><span class="as-nav__count as-num">12</span></a></li>
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">العقود حسب المرحلة</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#recruitment"><span class="as-nav__text">جميع العقود</span><span class="as-nav__count as-num">218</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#recruitment/approval"><span class="as-nav__text">بانتظار الاعتماد</span><span class="as-nav__count as-nav__count--alert as-num">4</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#recruitment/msaned"><span class="as-nav__text">مساند</span><span class="as-nav__count as-num">9</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#recruitment/tafwed"><span class="as-nav__text">التفويض</span><span class="as-nav__count as-num">7</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#recruitment/taffez"><span class="as-nav__text">التفييز</span><span class="as-nav__count as-num">5</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#recruitment/tazker"><span class="as-nav__text">التذكرة</span><span class="as-nav__count as-num">4</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#recruitment/arrival"><span class="as-nav__text">الوصول</span><span class="as-nav__count as-num">3</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#recruitment/warranty"><span class="as-nav__text">تحت الضمان</span><span class="as-nav__count as-num">89</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#recruitment/back"><span class="as-nav__text">المرتجعة والملغية</span><span class="as-nav__count as-num">12</span></a></li>
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">السير الذاتية</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#maids"><span class="as-nav__text">جميع السير</span><span class="as-nav__count as-num">820</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="maid-create.html"><span class="as-nav__text">إضافة سيرة</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#maids/reserved"><span class="as-nav__text">المحجوزة</span><span class="as-nav__count as-num">200</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#maids/backout"><span class="as-nav__text">باك اوت</span><span class="as-nav__count as-num">24</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">المعينات</span></a></li>
+</ul></div>
+</section>
+<section class="as-pane" data-dept="rent" hidden aria-label="التأجير">
+<p class="as-pane__title">التأجير</p>
+<div class="as-nav__group">
+<p class="as-nav__label">عقود التأجير</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#rent"><span class="as-nav__text">جميع عقود التأجير</span><span class="as-nav__count as-num">22</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">طلبات الإيجار</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">سير الإيجار</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">رواتب العاملات</span></a></li>
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">نقل الكفالة</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">طلبات النقل</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">فترة التجربة</span><span class="as-nav__count as-num">5</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">تم النقل</span></a></li>
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">التأجير بالساعة</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">لوحة الطلبات</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="hourly-visits.html"><span class="as-nav__text">الزيارات</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="hourly-schedule.html"><span class="as-nav__text">جدول الموظفين</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الفرق والخدمات</span></a></li>
+</ul></div>
+</section>
+<section class="as-pane" data-dept="ops" hidden aria-label="التشغيل">
+<p class="as-pane__title">التشغيل</p>
+<div class="as-nav__group">
+<p class="as-nav__label">الإيواء</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#shelter/in"><span class="as-nav__text">داخل الإيواء</span><span class="as-nav__count as-num">14</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#shelter/out"><span class="as-nav__text">غادرت الإيواء</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#shelter/deport"><span class="as-nav__text">الترحيل والخطابات</span><span class="as-nav__count as-num">3</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">مقرات الإيواء</span></a></li>
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">اللوجستيك والسفر</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">طلبات الرحلات</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">حجوزات الطيران</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">توصيل العاملات</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الخدمات الطبية</span></a></li>
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">سجلات</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">تأشيرات الشركة</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الأرشيف الإلكتروني</span></a></li>
+</ul></div>
+</section>
+<section class="as-pane" data-dept="care" hidden aria-label="العملاء">
+<p class="as-pane__title">العملاء</p>
+<div class="as-nav__group">
+<p class="as-nav__label">خدمة ما بعد البيع</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#complaints"><span class="as-nav__text">الشكاوى</span><span class="as-nav__count as-nav__count--alert as-num">5</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">شكاوى الخارجية</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">تحويلات العملاء</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">طلبات الاسترجاع</span></a></li>
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">التواصل</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">التقييمات</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الرسائل</span></a></li>
+</ul></div>
+</section>
+<section class="as-pane" data-dept="fin" hidden aria-label="المالية">
+<p class="as-pane__title">المالية</p>
+<div class="as-nav__group">
+<p class="as-nav__label">التعميدات</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#claims"><span class="as-nav__text">كل التعميدات</span><span class="as-nav__count as-num">60</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#claims/pending"><span class="as-nav__text">بانتظار الاعتماد</span><span class="as-nav__count as-nav__count--alert as-num">9</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="records.html#claims/gov"><span class="as-nav__text">الرسوم الحكومية</span></a></li>
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">الحسابات</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">مالية العقود</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">مالية التأجير</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">مالية النقل والخارجية</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">مدفوعات البوابات</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">العهد والأصول</span></a></li>
+</ul></div>
+</section>
+<section class="as-pane" data-dept="admin" hidden aria-label="الإدارة">
+<p class="as-pane__title">الإدارة</p>
+<div class="as-nav__group">
+<p class="as-nav__label">فريق العمل</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="employees.html"><span class="as-nav__text">الموظفون</span><span class="as-nav__count as-num">39</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="admins.html"><span class="as-nav__text">المستخدمون</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الصلاحيات</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">سجل النشاط</span></a></li>
+</ul></div>
+<div class="as-nav__group">
+<p class="as-nav__label">الإعدادات</p>
+<ul>
+<li class="as-nav__item"><a class="as-nav__link" href="settings.html"><span class="as-nav__text">إعدادات النظام</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">البيانات الأساسية</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">محتوى الموقع</span></a></li>
+<li class="as-nav__item"><a class="as-nav__link" href="#"><span class="as-nav__text">الترجمة والنصوص</span></a></li>
+</ul></div>
+</section>
+      <p class="as-nav__empty">لا توجد نتيجة. جرّب كلمة أخرى.</p>
+    </nav>
+  </div>
+</aside>
+<div class="as-overlay" aria-hidden="true"></div>
+
+<div class="as-main">
+  <header class="as-topbar">
+    <button class="as-iconbtn as-topbar__menu" type="button" data-as-open-nav aria-label="فتح القائمة"><i class="fa-solid fa-bars"></i></button>
+    <div class="as-topbar__title">
+      <ol class="as-crumbs"><li>الاستقدام</li><li>عقود الاستقدام</li></ol>
+      <h1>عقود الاستقدام</h1>
+    </div>
+    <label class="as-search as-topbar__search">
+      <span class="as-sr">بحث عام</span>
+      <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+      <input type="search" placeholder="ابحث برقم العقد أو اسم العميل أو الجوال">
+    </label>
+    <div class="as-topbar__actions">
+      <div class="as-dd">
+        <button class="as-btn as-btn--primary as-topbar__new" type="button" data-as-dd aria-expanded="false" aria-haspopup="true"><i class="fa-solid fa-plus"></i><span>جديد</span></button>
+        <div class="as-dd__menu">
+          <a href="recruitment-contract-create.html"><i class="fa-solid fa-file-signature"></i>عقد استقدام</a>
+          <a href="#" data-route="/admin/RentContract/create"><i class="fa-solid fa-handshake"></i>عقد تأجير</a>
+          <a href="client-create.html"><i class="fa-solid fa-user-plus"></i>عميل</a>
+          <a href="maid-create.html"><i class="fa-solid fa-id-card"></i>سيرة ذاتية</a>
+          <div class="as-dd__sep"></div>
+          <a href="#" data-route="/admin/complaints/create"><i class="fa-solid fa-triangle-exclamation"></i>شكوى</a>
+          <a href="#" data-route="/admin/tasks/create"><i class="fa-solid fa-list-check"></i>مهمة</a>
+        </div>
+      </div>
+      <div class="as-dd">
+        <button class="as-iconbtn" type="button" data-as-dd aria-expanded="false" aria-label="الإشعارات، 3 جديدة"><i class="fa-regular fa-bell"></i><span class="as-dot"></span></button>
+        <div class="as-dd__menu" style="min-width:300px">
+          <p class="as-dd__head">الإشعارات</p>
+          <a href="records.html#recruitment/approval"><i class="fa-solid fa-file-signature"></i>4 عقود بانتظار اعتمادك</a>
+          <a href="records.html#complaints/pending"><i class="fa-solid fa-triangle-exclamation"></i>شكوى جديدة على عقد #241</a>
+          <a href="records.html#tasks/mine"><i class="fa-solid fa-list-check"></i>أُسندت إليك مهمتان جديدتان</a>
+        </div>
+      </div>
+      <div class="as-dd">
+        <button class="as-iconbtn" type="button" data-as-dd aria-expanded="false" aria-label="حسابي"><span class="as-avatar" style="width:32px;height:32px;font-size:13px">م</span></button>
+        <div class="as-dd__menu">
+          <p class="as-dd__head">مشرف · مدير النظام</p>
+          <a href="#" data-route="/admin/profile"><i class="fa-regular fa-user"></i>ملفي الشخصي</a>
+          <a href="settings.html"><i class="fa-solid fa-gear"></i>الإعدادات</a>
+          <a href="#" data-route="/lang/en"><i class="fa-solid fa-language"></i>English</a>
+          <div class="as-dd__sep"></div>
+          <a href="login.html"><i class="fa-solid fa-arrow-right-from-bracket fa-flip-horizontal"></i>تسجيل الخروج</a>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <main class="as-content" id="as-content">
+<div class="as-rec" data-as-records>
+  <div class="as-pagehead as-rec__head">
+    <div>
+      <h2 data-rec-title>السجلات</h2>
+      <p data-rec-desc></p>
+    </div>
+    <div class="as-pagehead__actions">
+      <div class="as-dd">
+        <button class="as-btn as-btn--secondary" type="button" data-as-dd aria-expanded="false" aria-haspopup="true"><i class="fa-solid fa-arrow-up-from-bracket"></i>تصدير</button>
+        <div class="as-dd__menu">
+          <button type="button" data-export="Excel"><i class="fa-solid fa-file-excel"></i>Excel</button>
+          <button type="button" data-export="PDF"><i class="fa-solid fa-file-pdf"></i>PDF</button>
+          <button type="button" data-export="print"><i class="fa-solid fa-print"></i>طباعة</button>
+        </div>
+      </div>
+      <a class="as-btn as-btn--primary" href="#" data-rec-new><i class="fa-solid fa-plus"></i><span>جديد</span></a>
+    </div>
+  </div>
+
+  <nav class="as-rectabs" role="tablist" aria-label="السجلات" data-rec-tabs></nav>
+
+  <section class="as-card as-rec__card" aria-live="polite" aria-busy="false">
+    <div class="as-chips" role="group" aria-label="تصفية حسب الحالة" data-rec-chips></div>
+
+    <div class="as-rec__bar">
+      <label class="as-search as-rec__search">
+        <span class="as-sr">بحث في السجلات</span>
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" data-rec-q autocomplete="off">
+      </label>
+      <div class="as-rec__filters" data-rec-filters></div>
+      <span class="as-spacer"></span>
+      <div class="as-rec__tools">
+        <div class="as-seg" data-rec-view role="group" aria-label="طريقة العرض" hidden>
+          <button type="button" data-view="table" aria-pressed="true" title="جدول"><i class="fa-solid fa-list"></i><span class="as-sr">جدول</span></button>
+          <button type="button" data-view="cards" aria-pressed="false" title="بطاقات"><i class="fa-solid fa-grip"></i><span class="as-sr">بطاقات</span></button>
+        </div>
+        <div class="as-seg" data-rec-density role="group" aria-label="كثافة الصفوف">
+          <button type="button" data-density="comfortable" aria-pressed="true" title="مريح"><i class="fa-solid fa-bars"></i><span class="as-sr">مريح</span></button>
+          <button type="button" data-density="compact" aria-pressed="false" title="مضغوط"><i class="fa-solid fa-align-justify"></i><span class="as-sr">مضغوط</span></button>
+        </div>
+        <div class="as-dd">
+          <button class="as-btn as-btn--secondary as-btn--icon" type="button" data-as-dd aria-expanded="false" aria-haspopup="true" title="الأعمدة"><i class="fa-solid fa-table-columns"></i><span class="as-sr">الأعمدة</span></button>
+          <div class="as-dd__menu as-dd__menu--cols" data-rec-cols></div>
+        </div>
+      </div>
+    </div>
+
+    <div class="as-rec__pills" data-rec-pills hidden></div>
+
+    <div class="as-rec__bulk" data-rec-bulk hidden>
+      <strong><span class="as-num" data-rec-selcount>0</span> محدد</strong>
+      <div class="as-rec__bulkacts" data-rec-bulkacts></div>
+      <button type="button" class="as-btn as-btn--sm as-btn--ghost" data-rec-clearsel>إلغاء التحديد</button>
+    </div>
+
+    <div class="as-rec__scroll" data-rec-scroll>
+      <table class="as-table as-rtable" data-rec-table><thead></thead><tbody></tbody></table>
+      <div class="as-rcards" data-rec-cards hidden></div>
+      <div class="as-rec__empty" data-rec-empty hidden>
+        <span class="as-rec__emptyicon"><i class="fa-solid fa-magnifying-glass"></i></span>
+        <strong>لا توجد سجلات مطابقة</strong>
+        <p>جرّب كلمة بحث أخرى أو أزل بعض الفلاتر.</p>
+        <button type="button" class="as-btn as-btn--secondary" data-rec-reset><i class="fa-solid fa-rotate-left"></i>مسح البحث والفلاتر</button>
+      </div>
+    </div>
+
+    <div class="as-rec__foot">
+      <span data-rec-range></span>
+      <label class="as-rec__size">صفوف الصفحة
+        <select class="as-select as-select--sm" data-rec-size>
+          <option value="10">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option>
+        </select>
+      </label>
+      <nav class="as-pager" aria-label="الصفحات" data-rec-pager></nav>
+    </div>
+  </section>
+</div>
+
+<!-- details of one record: opens from the row, ↑ ↓ move between rows, Esc closes -->
+<div class="as-drawer" data-rec-drawer hidden>
+  <div class="as-drawer__veil" aria-hidden="true"></div>
+  <aside class="as-drawer__panel" role="dialog" aria-modal="true" aria-labelledby="as-drawer-title">
+    <header class="as-drawer__head">
+      <div class="as-drawer__nav">
+        <button type="button" class="as-iconbtn as-iconbtn--sm" data-drawer-prev aria-label="السجل السابق" title="السابق (↑)"><i class="fa-solid fa-chevron-up"></i></button>
+        <button type="button" class="as-iconbtn as-iconbtn--sm" data-drawer-next aria-label="السجل التالي" title="التالي (↓)"><i class="fa-solid fa-chevron-down"></i></button>
+        <span class="as-drawer__pos" data-drawer-pos></span>
+      </div>
+      <button type="button" class="as-iconbtn" data-drawer-close aria-label="إغلاق التفاصيل"><i class="fa-solid fa-xmark"></i></button>
+    </header>
+    <div class="as-drawer__title">
+      <p data-drawer-eyebrow></p>
+      <h3 id="as-drawer-title" data-drawer-title></h3>
+    </div>
+    <div class="as-drawer__body" data-drawer-body></div>
+    <footer class="as-drawer__foot" data-drawer-foot></footer>
+  </aside>
+</div>
+  </main>
+  <footer class="as-footer">© <span data-as-year>2026</span> شركة أسس الإنجاز للاستقدام</footer>
+</div>
+</div>
+<script src="../assets/admin/custom/asuss-ui.js"></script>
+<script src="../assets/admin/custom/asuss-records.js"></script>
+<script src="../kit/records-mock.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  var R = AsRecords, esc = R.esc, M = R.mock;
+
+  // shared option lists (in asuss: from the nationalities / employees / shelters tables)
+  var NAT = M.NAT, STAFF = M.STAFF, SHELTERS = M.SHELTERS;
+  function statusOf(list, id) { return list.filter(function (s) { return s.id === id; })[0] || { label: id, tone: 'neutral' }; }
+  function sb(list, id) { var s = statusOf(list, id); return R.badge(s.label, s.tone); }
+  function link(entity, id, label) { return '<a class="as-ref as-num" href="#' + entity + '" data-ref>' + esc(label || ('#' + id)) + '</a>'; }
+
+  /* ---------- طلبات ---------- */
+  var ORDER_ST = [
+    { id: 'new', label: 'جديد', tone: 'info' }, { id: 'review', label: 'قيد المراجعة', tone: 'warning' },
+    { id: 'contracted', label: 'تم التعاقد', tone: 'success' }, { id: 'rejected', label: 'مرفوض', tone: 'danger' },
+    { id: 'expired', label: 'انتهت المهلة', tone: 'neutral' }
+  ];
+  /* ---------- عقود الاستقدام ---------- */
+  var STAGES = [
+    { id: 'new', label: 'عقد جديد', tone: 'info' }, { id: 'msaned', label: 'مساند', tone: 'info' },
+    { id: 'tafwed', label: 'التفويض', tone: 'info' }, { id: 'taffez', label: 'التفييز', tone: 'info' },
+    { id: 'tazker', label: 'التذكرة', tone: 'info' }, { id: 'arrival', label: 'الوصول', tone: 'info' },
+    { id: 'warranty', label: 'تحت الضمان', tone: 'success' }, { id: 'completed', label: 'مكتمل', tone: 'neutral' },
+    { id: 'back', label: 'مرتجع / ملغي', tone: 'danger' }
+  ];
+  var FLOW = ['new', 'msaned', 'tafwed', 'taffez', 'tazker', 'arrival', 'warranty'];
+  function nextStage(s) { var i = FLOW.indexOf(s); return i >= 0 && i < FLOW.length - 1 ? statusOf(STAGES, FLOW[i + 1]) : null; }
+  function segs(s) {
+    var i = FLOW.indexOf(s), done = s === 'completed' ? 7 : i;
+    if (s === 'back') return '<span class="as-segs as-segs--danger" aria-label="ملغي"><i></i><i></i><i></i><i></i><i></i><i></i><i></i></span>';
+    var out = '';
+    for (var k = 0; k < 7; k++) out += '<i class="' + (k < done ? 'on' : k === done ? 'now' : '') + '"></i>';
+    return '<span class="as-segs" aria-label="المرحلة ' + (Math.min(done, 6) + 1) + ' من 7">' + out + '</span>';
+  }
+  /* ---------- عقود التأجير ---------- */
+  var RENT_ST = [
+    { id: 'sent', label: 'أُرسل للتوقيع', tone: 'info' }, { id: 'signed', label: 'موقّع', tone: 'info' },
+    { id: 'delivered', label: 'تم التسليم', tone: 'info' }, { id: 'trial', label: 'فترة التجربة', tone: 'warning' },
+    { id: 'active', label: 'ساري', tone: 'success' }, { id: 'ended', label: 'منتهي', tone: 'neutral' }
+  ];
+  var PAY = { paid: ['مدفوع', 'success'], partial: ['مدفوع جزئيًا', 'warning'], unpaid: ['غير مدفوع', 'danger'] };
+  /* ---------- الإيواء ---------- */
+  var SHELTER_ST = [
+    { id: 'in', label: 'داخل الإيواء', tone: 'info' }, { id: 'ready', label: 'جاهزة للتسليم', tone: 'success' },
+    { id: 'transfer', label: 'بانتظار نقل الكفالة', tone: 'warning' }, { id: 'deport', label: 'إجراءات الترحيل', tone: 'danger' },
+    { id: 'out', label: 'غادرت الإيواء', tone: 'neutral' }
+  ];
+  /* ---------- السير الذاتية ---------- */
+  var MAID_ST = [
+    { id: 'available', label: 'متاحة', tone: 'success' }, { id: 'reserved', label: 'محجوزة', tone: 'info' },
+    { id: 'backout', label: 'مستبعدة', tone: 'warning' }, { id: 'suspended', label: 'موقوفة', tone: 'danger' },
+    { id: 'deported', label: 'مرحّلة', tone: 'neutral' }
+  ];
+  function years(n) { return n === 0 ? 'بدون خبرة' : n === 1 ? 'سنة' : n === 2 ? 'سنتان' : n <= 10 ? n + ' سنوات' : n + ' سنة'; }
+  /* ---------- العملاء ---------- */
+  var CLIENT_ST = [{ id: 'active', label: 'مفعّل', tone: 'success' }, { id: 'blocked', label: 'محظور', tone: 'danger' }];
+  /* ---------- الشكاوى ---------- */
+  var COMP_ST = [
+    { id: 'pending', label: 'جديدة', tone: 'danger' }, { id: 'progress', label: 'قيد المعالجة', tone: 'warning' },
+    { id: 'resolved', label: 'تم الحل', tone: 'success' }, { id: 'closed', label: 'مغلقة', tone: 'neutral' }
+  ];
+  /* ---------- التعميدات ---------- */
+  var CLAIM_ST = [
+    { id: 'pending', label: 'بانتظار الاعتماد', tone: 'warning' }, { id: 'approved', label: 'معتمد', tone: 'info' },
+    { id: 'paid', label: 'تم الصرف', tone: 'success' }, { id: 'rejected', label: 'مرفوض', tone: 'danger' }
+  ];
+  /* ---------- المهام ---------- */
+  var TASK_ST = [
+    { id: 'pending', label: 'لم تبدأ', tone: 'neutral' }, { id: 'progress', label: 'قيد التنفيذ', tone: 'info' },
+    { id: 'done', label: 'مكتملة', tone: 'success' }
+  ];
+
+  var ENTITIES = [
+    {
+      id: 'orders', tab: 'الطلبات', title: 'الطلبات', one: 'الطلب', dept: 'الاستقدام', icon: 'fa-inbox', total: 64,
+      desc: 'كل طلب يصل من التطبيق أو الموقع أو الفرع، من وصوله حتى يصبح عقدًا.',
+      searchHint: 'رقم الطلب، اسم العميل أو العاملة',
+      create: { label: 'طلب جديد', route: '/admin/orders/create' },
+      statuses: ORDER_ST, sort: ['id', 'desc'],
+      filters: [
+        { key: 'type', label: 'النوع', all: 'كل الأنواع', options: [['rec', 'استقدام'], ['rent', 'تأجير']] },
+        { key: 'nat', label: 'الجنسية', all: 'كل الجنسيات', options: NAT },
+        { key: 'staff', label: 'المسؤول', all: 'كل الموظفين', options: STAFF }
+      ],
+      flags: [{ key: 'urgent', label: 'مهلتها أقل من 6 ساعات', icon: 'fa-stopwatch' }],
+      bulk: [{ label: 'إسناد إلى موظف', icon: 'fa-user-check' }, { label: 'تصدير المحدد', icon: 'fa-file-excel' }],
+      columns: [
+        { key: 'ref', label: 'الطلب', fixed: true, primary: true, sort: 'id', render: function (r) { return R.two(r.ref, r.created, { num: true, subNum: true }); } },
+        { key: 'client', label: 'العميل', render: function (r) { return R.person(r.client, r.phone, { subNum: true }); } },
+        { key: 'type', label: 'النوع', render: function (r) { return R.tag(r.type, r.type === 'استقدام' ? 'fa-plane-arrival' : 'fa-handshake'); } },
+        { key: 'maid', label: 'العاملة المطلوبة', render: function (r) { return r.maid ? R.two(r.maid, r.nat) : R.two('لم تُختر بعد', r.nat, { mainHtml: '<span class="as-none">لم تُختر بعد</span>' }); } },
+        { key: 'staff', label: 'المسؤول', render: function (r) { return esc(r.staff); } },
+        { key: 'timer', label: 'المهلة', render: function (r) {
+          if (r.status !== 'new') return R.none();
+          return '<span class="as-timer' + (r.hours < 6 ? ' is-low' : '') + '"><i class="fa-regular fa-clock"></i>باقي <span class="as-num">' + r.hours + '</span> س</span>';
+        } },
+        { key: 'status', label: 'الحالة', render: function (r) { return sb(ORDER_ST, r.status); } },
+        { key: 'contract', label: 'العقد', render: function (r) { return r.contract ? link('recruitment', r.contract) : R.none('بدون عقد'); } },
+        { key: 'channel', label: 'المصدر', hidden: true, render: function (r) { return esc(r.channel); } },
+        { key: 'created', label: 'التاريخ', hidden: true, sort: 'created', render: function (r) { return R.two(R.ago(r.age), r.created, { subNum: true }); } }
+      ],
+      drawerTitle: function (r) { return 'طلب <span class="as-num">' + esc(r.ref) + '</span> ' + sb(ORDER_ST, r.status); },
+      detail: function (r) {
+        return (r.status === 'new' ? R.note('<i class="fa-regular fa-clock"></i> تنتهي مهلة الرد على هذا الطلب بعد <strong class="as-num">' + r.hours + '</strong> ساعة.', r.hours < 6 ? 'danger' : 'warning') : '') +
+          R.section('العميل', '<div class="as-dperson">' + R.avatar(r.client, 'lg') + R.two(r.client, r.phone, { subNum: true }) + '</div>') +
+          R.section('الطلب', R.dl([['النوع', r.type], ['العاملة المطلوبة', r.maid || 'لم تُختر بعد'], ['الجنسية', r.nat], ['المصدر', r.channel], ['المسؤول', r.staff], ['تاريخ الطلب', R.date(r.created), true], ['العقد', r.contract ? link('recruitment', r.contract) : 'بدون عقد', true]]));
+      },
+      actions: function (r) {
+        return r.status === 'contracted' ? [{ label: 'فتح العقد', icon: 'fa-file-signature' }, { label: 'مراسلة العميل', icon: 'fa-message' }]
+          : r.status === 'new' || r.status === 'review' ? [{ label: 'تحويل إلى عقد', icon: 'fa-file-signature' }, { label: 'رفض الطلب', icon: 'fa-xmark' }]
+          : [{ label: 'إعادة فتح الطلب', icon: 'fa-rotate-left' }];
+      }
+    },
+    {
+      id: 'recruitment', tab: 'الاستقدام', title: 'عقود الاستقدام', one: 'عقد الاستقدام', dept: 'الاستقدام', icon: 'fa-file-signature', total: 218,
+      alert: { n: 4, label: 'بانتظار الاعتماد' },
+      desc: 'كل عقد في مرحلته، من التوقيع حتى انتهاء الضمان. المتأخر عن مدة المرحلة يظهر بالأحمر.',
+      searchHint: 'رقم العقد، اسم العميل أو العاملة',
+      create: { label: 'عقد استقدام جديد', href: 'recruitment-contract-create.html' },
+      statuses: STAGES, sort: ['id', 'desc'],
+      filters: [
+        { key: 'nat', label: 'الجنسية', all: 'كل الجنسيات', options: NAT },
+        { key: 'staff', label: 'المسوّق', all: 'كل المسوّقين', options: STAFF }
+      ],
+      flags: [{ key: 'late', label: 'المتأخرة', icon: 'fa-triangle-exclamation' }, { key: 'approval', label: 'بانتظار الاعتماد', icon: 'fa-stamp' }],
+      bulk: [{ label: 'نقل للمرحلة التالية', icon: 'fa-arrow-left' }, { label: 'طباعة العقود', icon: 'fa-print' }, { label: 'تصدير المحدد', icon: 'fa-file-excel' }],
+      columns: [
+        { key: 'ref', label: 'العقد', fixed: true, primary: true, sort: 'id', render: function (r) { return R.two(r.ref, r.created, { num: true, subNum: true }); } },
+        { key: 'client', label: 'العميل', sort: 'client', render: function (r) { return R.person(r.client, r.phone, { subNum: true }); } },
+        { key: 'maid', label: 'العاملة', render: function (r) { return R.two(r.maid, r.nat + ' · ' + r.passport); } },
+        { key: 'stage', label: 'المرحلة', sort: 'inStage', render: function (r) {
+          var sub = FLOW.indexOf(r.status) >= 0 && r.status !== 'warranty'
+            ? (r.late ? '<span class="as-late"><i class="fa-solid fa-circle-exclamation"></i>متأخر ' + R.days(r.lateBy) + '</span>' : 'منذ ' + R.days(r.inStage || 1))
+            : r.status === 'warranty' ? 'باقي ' + R.days(r.warrantyLeft) : '';
+          return '<div class="as-two">' + '<span>' + sb(STAGES, r.status) + (r.approval ? ' <span class="as-flag" title="بانتظار الاعتماد"><i class="fa-solid fa-stamp"></i></span>' : '') + '</span>' + (sub ? '<span class="as-two__sub">' + sub + '</span>' : '') + '</div>';
+        } },
+        { key: 'progress', label: 'التقدم', render: function (r) { return segs(r.status); } },
+        { key: 'staff', label: 'المسوّق', render: function (r) { return esc(r.staff); } },
+        { key: 'next', label: 'الإجراء التالي', render: function (r) {
+          var n = nextStage(r.status);
+          return n ? '<button type="button" class="as-btn as-btn--sm as-btn--soft" data-rec-act="نقل إلى ' + n.label + '">نقل إلى ' + esc(n.label) + '<i class="fa-solid fa-arrow-left"></i></button>' : R.none();
+        } },
+        { key: 'numbers', label: 'مساند / التأشيرة', hidden: true, render: function (r) { return R.two(r.msaned || '—', r.visa || '—', { num: true, subNum: true }); } },
+        { key: 'price', label: 'قيمة العقد', num: true, hidden: true, render: function (r) { return R.money(r.price); } }
+      ],
+      drawerTitle: function (r) { return 'عقد <span class="as-num">' + esc(r.ref) + '</span> ' + sb(STAGES, r.status); },
+      detail: function (r) {
+        var i = r.status === 'completed' ? 7 : FLOW.indexOf(r.status);
+        var steps = FLOW.map(function (id, k) {
+          var s = statusOf(STAGES, id);
+          return { label: s.label, note: k < i ? 'تم' : k === i ? (r.late ? '<span class="as-late">متأخر ' + R.days(r.lateBy) + '</span>' : id === 'warranty' ? 'باقي ' + R.days(r.warrantyLeft) : 'منذ ' + R.days(r.inStage || 1)) : '' };
+        });
+        var left = r.price - r.paid;
+        return (r.late ? R.note('<i class="fa-solid fa-circle-exclamation"></i> هذا العقد تجاوز مدة مرحلة «' + statusOf(STAGES, r.status).label + '» بـ ' + R.days(r.lateBy) + '.', 'danger') : '') +
+          (r.approval ? R.note('<i class="fa-solid fa-stamp"></i> العقد بانتظار اعتمادك قبل الانتقال إلى مساند.', 'warning') : '') +
+          (r.status === 'back' ? R.note('<i class="fa-solid fa-ban"></i> العقد مرتجع أو ملغي.', 'danger') : R.section('مراحل العقد', R.steps(steps, i, { danger: r.late }))) +
+          R.section('الأطراف', '<div class="as-dpair"><div class="as-dperson">' + R.avatar(r.client, 'lg') + R.two(r.client, r.phone, { subNum: true }) + '</div><div class="as-dperson">' + R.avatar(r.maid, 'lg') + R.two(r.maid, r.nat) + '</div></div>') +
+          R.section('بيانات العقد', R.dl([['رقم مساند', r.msaned ? '<span class="as-num">' + r.msaned + '</span>' : '', true], ['رقم التأشيرة', r.visa ? '<span class="as-num">' + r.visa + '</span>' : '', true], ['جواز العاملة', '<span class="as-num">' + r.passport + '</span>', true], ['المكتب الخارجي', r.office], ['المسوّق', r.staff], ['تاريخ العقد', R.date(r.created), true]])) +
+          R.section('المالية', '<div class="as-dmoney"><div><span>قيمة العقد</span>' + R.money(r.price) + '</div><div><span>المدفوع</span>' + R.money(r.paid) + '</div><div><span>المتبقي</span>' + (left ? R.money(left) : '<span class="as-ok"><i class="fa-solid fa-check"></i> مسدد</span>') + '</div></div>' + R.bar(r.paid, r.price, left ? '' : 'success'));
+      },
+      actions: function (r) {
+        var n = nextStage(r.status), out = [];
+        if (r.approval) out.push({ label: 'اعتماد العقد', icon: 'fa-stamp' });
+        else if (n) out.push({ label: 'نقل إلى ' + n.label, icon: 'fa-arrow-left' });
+        out.push({ label: 'طباعة العقد', icon: 'fa-print' }, { label: 'الملف الكامل', icon: 'fa-up-right-from-square' });
+        return out;
+      },
+      more: [{ label: 'تعديل', icon: 'fa-pen' }, { label: 'إلغاء العقد', icon: 'fa-ban', danger: true, sep: true }]
+    },
+    {
+      id: 'rent', tab: 'التأجير', title: 'عقود التأجير', one: 'عقد التأجير', dept: 'التأجير', icon: 'fa-handshake', total: 22,
+      desc: 'عقود تأجير العاملات: التوقيع والتسليم وفترة التجربة والمدة المتبقية والدفع.',
+      searchHint: 'رقم العقد، اسم العميل أو العاملة',
+      create: { label: 'عقد تأجير جديد', route: '/admin/RentContract/create' },
+      statuses: RENT_ST, sort: ['id', 'desc'],
+      filters: [
+        { key: 'pay', label: 'الدفع', all: 'كل حالات الدفع', options: [['paid', 'مدفوع'], ['partial', 'مدفوع جزئيًا'], ['unpaid', 'غير مدفوع']] },
+        { key: 'months', label: 'المدة', all: 'كل المدد', options: [['1', 'شهر'], ['3', '3 أشهر'], ['6', '6 أشهر'], ['12', 'سنة']] },
+        { key: 'nat', label: 'الجنسية', all: 'كل الجنسيات', options: NAT }
+      ],
+      flags: [{ key: 'ending', label: 'ينتهي خلال أسبوع', icon: 'fa-hourglass-end' }],
+      bulk: [{ label: 'إرسال تذكير بالدفع', icon: 'fa-bell' }, { label: 'تصدير المحدد', icon: 'fa-file-excel' }],
+      columns: [
+        { key: 'ref', label: 'العقد', fixed: true, primary: true, sort: 'id', render: function (r) { return R.two(r.ref, r.created, { num: true, subNum: true }); } },
+        { key: 'client', label: 'العميل', render: function (r) { return R.person(r.client, r.phone, { subNum: true }); } },
+        { key: 'maid', label: 'العاملة', render: function (r) { return R.two(r.maid, r.nat); } },
+        { key: 'pkg', label: 'الباقة', render: function (r) { return R.two(r.pkg, r.months === 12 ? 'سنة' : r.months === 1 ? 'شهر' : r.months + ' أشهر'); } },
+        { key: 'left', label: 'المدة المتبقية', sort: 'left', w: '170px', render: function (r) {
+          if (r.status === 'ended') return R.none('انتهى');
+          if (!r.used) return R.none('لم يبدأ');
+          return R.bar(r.used, r.total, r.left <= 7 ? 'danger' : '', 'باقي ' + R.days(r.left));
+        } },
+        { key: 'pay', label: 'الدفع', render: function (r) { var p = PAY[r.pay]; return '<div class="as-two"><span>' + R.badge(p[0], p[1]) + '</span><span class="as-two__sub">' + R.money(r.paidAmount) + ' من ' + R.money(r.amount) + '</span></div>'; } },
+        { key: 'status', label: 'الحالة', render: function (r) { return sb(RENT_ST, r.status); } },
+        { key: 'amount', label: 'القيمة', num: true, sort: 'amount', hidden: true, render: function (r) { return R.money(r.amount); } }
+      ],
+      drawerTitle: function (r) { return 'عقد <span class="as-num">' + esc(r.ref) + '</span> ' + sb(RENT_ST, r.status); },
+      detail: function (r) {
+        var order = ['sent', 'signed', 'delivered', 'trial', 'active', 'ended'], i = order.indexOf(r.status);
+        return (r.left <= 7 && r.used && r.status !== 'ended' ? R.note('<i class="fa-solid fa-hourglass-end"></i> ينتهي العقد بعد ' + R.days(r.left) + '. تواصل مع العميل للتمديد.', 'warning') : '') +
+          R.section('سير العقد', R.steps(RENT_ST.map(function (s) { return { label: s.label }; }), i)) +
+          R.section('الأطراف', '<div class="as-dpair"><div class="as-dperson">' + R.avatar(r.client, 'lg') + R.two(r.client, r.phone, { subNum: true }) + '</div><div class="as-dperson">' + R.avatar(r.maid, 'lg') + R.two(r.maid, r.nat) + '</div></div>') +
+          R.section('المدة', R.dl([['الباقة', r.pkg], ['المدة', R.days(r.total), true], ['المستخدم', R.days(r.used || 0), true], ['المتبقي', r.status === 'ended' ? 'انتهى' : R.days(r.left), true]])) +
+          R.section('الدفع', '<div class="as-dmoney"><div><span>القيمة</span>' + R.money(r.amount) + '</div><div><span>المدفوع</span>' + R.money(r.paidAmount) + '</div><div><span>المتبقي</span>' + R.money(r.amount - r.paidAmount) + '</div></div>' + R.bar(r.paidAmount, r.amount, r.pay === 'paid' ? 'success' : ''));
+      },
+      actions: function (r) {
+        return r.status === 'ended' ? [{ label: 'تجديد العقد', icon: 'fa-rotate' }, { label: 'طباعة', icon: 'fa-print' }]
+          : [{ label: 'تمديد العقد', icon: 'fa-calendar-plus' }, { label: 'تسجيل دفعة', icon: 'fa-money-bill' }, { label: 'طباعة', icon: 'fa-print' }];
+      },
+      more: [{ label: 'إنهاء العقد', icon: 'fa-ban', danger: true, sep: true }]
+    },
+    {
+      id: 'shelter', tab: 'الإيواء', title: 'الإيواء', one: 'سجل الإيواء', dept: 'التشغيل', icon: 'fa-house-user', total: 53,
+      desc: 'العاملات في مقرات الإيواء: من أين وصلت، كم بقيت، وما الخطوة التالية لها.',
+      searchHint: 'رقم العقد، اسم العاملة أو العميل',
+      create: { label: 'إضافة إلى الإيواء', route: '/admin/ShelterContract/create' },
+      statuses: SHELTER_ST, sort: ['days', 'desc'],
+      filters: [
+        { key: 'shelter', label: 'المقر', all: 'كل المقرات', options: SHELTERS },
+        { key: 'src', label: 'الاستلام', all: 'كل طرق الاستلام', options: [['client', 'من العميل'], ['airport', 'من المطار'], ['escape', 'بلاغ تغيب']] },
+        { key: 'nat', label: 'الجنسية', all: 'كل الجنسيات', options: NAT }
+      ],
+      flags: [{ key: 'long', label: 'أكثر من 30 يومًا', icon: 'fa-clock' }],
+      bulk: [{ label: 'نقل إلى مقر آخر', icon: 'fa-right-left' }, { label: 'تصدير المحدد', icon: 'fa-file-excel' }],
+      columns: [
+        { key: 'maid', label: 'العاملة', fixed: true, primary: true, render: function (r) { return R.person(r.maid, r.nat + ' · ' + r.passport); } },
+        { key: 'ref', label: 'العقد', sort: 'id', render: function (r) { return R.two(r.ref, 'مساند ' + r.msaned, { num: true }); } },
+        { key: 'client', label: 'العميل', render: function (r) { return R.two(r.client, r.phone, { subNum: true }); } },
+        { key: 'shelter', label: 'المقر', render: function (r) { return esc(r.shelter); } },
+        { key: 'days', label: 'مدة الإيواء', sort: 'days', render: function (r) { return R.two(R.days(r.days), 'منذ ' + r.since, { mainHtml: r.days > 30 && r.status !== 'out' ? '<span class="as-late">' + R.days(r.days) + '</span>' : '' }); } },
+        { key: 'src', label: 'الاستلام', render: function (r) { return esc(r.src); } },
+        { key: 'warranty', label: 'الضمان', render: function (r) { return r.warranty ? R.badge('باقي ' + R.days(r.warrantyLeft), 'success') : R.badge('منتهي', 'neutral'); } },
+        { key: 'wants', label: 'ترغب بالعمل', render: function (r) { return r.wants ? '<span class="as-yes"><i class="fa-solid fa-check"></i>نعم</span>' : '<span class="as-no"><i class="fa-solid fa-xmark"></i>لا</span>'; } },
+        { key: 'status', label: 'الحالة', render: function (r) { return r.status === 'deport' ? '<div class="as-two"><span>' + sb(SHELTER_ST, r.status) + '</span>' + R.bar(r.deport, 100, 'danger', '<span class="as-num">' + r.deport + '%</span>') + '</div>' : sb(SHELTER_ST, r.status); } }
+      ],
+      drawerTitle: function (r) { return esc(r.maid) + ' ' + sb(SHELTER_ST, r.status); },
+      detail: function (r) {
+        return (r.days > 30 && r.status !== 'out' ? R.note('<i class="fa-solid fa-clock"></i> في الإيواء منذ ' + R.days(r.days) + '. حدّد الخطوة التالية: تسليم أو نقل كفالة أو ترحيل.', 'warning') : '') +
+          R.section('العاملة', '<div class="as-dperson">' + R.avatar(r.maid, 'lg') + R.two(r.maid, r.nat + ' · ' + r.passport) + '</div>') +
+          R.section('الإيواء', R.dl([['المقر', r.shelter], ['تاريخ الدخول', R.date(r.since), true], ['المدة', R.days(r.days), true], ['الاستلام', r.src], ['ترغب بالعمل', r.wants ? 'نعم' : 'لا'], ['الضمان', r.warranty ? 'ساري، باقي ' + R.days(r.warrantyLeft) : 'منتهي']])) +
+          R.section('العقد والعميل', R.dl([['العقد', link('recruitment', r.id), true], ['رقم مساند', '<span class="as-num">' + r.msaned + '</span>', true], ['العميل', r.client], ['الجوال', '<span class="as-num">' + r.phone + '</span>', true]])) +
+          (r.status === 'deport' ? R.section('الترحيل', R.bar(r.deport, 100, 'danger', 'اكتمل <span class="as-num">' + r.deport + '%</span> من الإجراءات')) : '');
+      },
+      actions: function (r) {
+        return r.status === 'out' ? [{ label: 'السجل الكامل', icon: 'fa-up-right-from-square' }]
+          : [{ label: 'تسليم لعميل', icon: 'fa-handshake' }, { label: 'نقل كفالة', icon: 'fa-right-left' }, { label: 'بدء الترحيل', icon: 'fa-plane-departure' }];
+      }
+    },
+    {
+      id: 'maids', tab: 'السير الذاتية', title: 'السير الذاتية', one: 'السيرة الذاتية', dept: 'الاستقدام', icon: 'fa-id-card', total: 820,
+      desc: 'كل العاملات المتاحات للاستقدام والتأجير. اعرضها جدولًا أو بطاقات.',
+      searchHint: 'الاسم، رقم السيرة أو الجنسية',
+      create: { label: 'سيرة ذاتية جديدة', href: 'maid-create.html' },
+      statuses: MAID_ST, sort: ['added', 'desc'],
+      filters: [
+        { key: 'nat', label: 'الجنسية', all: 'كل الجنسيات', options: NAT },
+        { key: 'job', label: 'نوع العمل', all: 'كل أنواع العمل', options: [['rec', 'استقدام'], ['rent', 'تأجير'], ['hourly', 'بالساعة']] },
+        { key: 'age', label: 'العمر', all: 'كل الأعمار', options: [['a', '21 – 30'], ['b', '31 – 38'], ['c', '39 فأكبر']] },
+        { key: 'rel', label: 'الديانة', all: 'كل الديانات', options: [['m', 'مسلمة'], ['c', 'غير مسلمة']] }
+      ],
+      flags: [{ key: 'exp', label: 'لديها خبرة', icon: 'fa-star' }, { key: 'new', label: 'أُضيفت هذا الأسبوع', icon: 'fa-bolt' }],
+      bulk: [{ label: 'إظهار في الموقع', icon: 'fa-eye' }, { label: 'إخفاء من الموقع', icon: 'fa-eye-slash' }, { label: 'تحميل السير PDF', icon: 'fa-file-pdf' }],
+      columns: [
+        { key: 'name', label: 'العاملة', fixed: true, primary: true, sort: 'id', render: function (r) { return R.person(r.name, r.ref + ' · ' + r.passport, { subNum: true }); } },
+        { key: 'nat', label: 'الجنسية', render: function (r) { return esc(r.nat); } },
+        { key: 'age', label: 'العمر', sort: 'age', render: function (r) { return R.n(r.age); } },
+        { key: 'religion', label: 'الديانة', hidden: true, render: function (r) { return esc(r.religion); } },
+        { key: 'job', label: 'نوع العمل', render: function (r) { return R.tag(r.job, r.job === 'استقدام' ? 'fa-plane-arrival' : r.job === 'تأجير' ? 'fa-handshake' : 'fa-clock'); } },
+        { key: 'exp', label: 'الخبرة', sort: 'exp', render: function (r) { return r.exp ? esc(years(r.exp)) : R.none('بدون خبرة'); } },
+        { key: 'salary', label: 'الراتب', num: true, sort: 'salary', render: function (r) { return R.money(r.salary); } },
+        { key: 'status', label: 'الحالة', render: function (r) { return sb(MAID_ST, r.status); } },
+        { key: 'shown', label: 'في الموقع', render: function (r) { return r.shown ? '<span class="as-yes"><i class="fa-solid fa-eye"></i>ظاهرة</span>' : '<span class="as-none"><i class="fa-solid fa-eye-slash"></i> مخفية</span>'; } },
+        { key: 'added', label: 'أُضيفت', sort: 'added', hidden: true, render: function (r) { return R.two(R.ago(r.addedAgo), r.added, { subNum: true }); } }
+      ],
+      card: function (r) {
+        return '<div class="as-rcard__photo">' + R.avatar(r.name, 'xl') + '<span class="as-rcard__status">' + sb(MAID_ST, r.status) + '</span>' +
+          (r.shown ? '' : '<span class="as-rcard__hidden" title="مخفية من الموقع"><i class="fa-solid fa-eye-slash"></i></span>') + '</div>' +
+          '<div class="as-rcard__body"><h4>' + esc(r.name) + '</h4><p>' + esc(r.nat) + ' · <span class="as-num">' + r.age + '</span> سنة</p>' +
+          '<div class="as-rcard__tags">' + R.tag(r.job) + R.tag(r.exp ? years(r.exp) + ' خبرة' : 'بدون خبرة') + '</div>' +
+          '<div class="as-rcard__foot"><span>' + R.money(r.salary) + '<small> / شهريًا</small></span>' +
+          (r.status === 'available' ? '<button type="button" class="as-btn as-btn--sm as-btn--soft" data-rec-act="حجز لعميل"><i class="fa-regular fa-bookmark"></i>حجز</button>' : '') + '</div></div>';
+      },
+      drawerTitle: function (r) { return esc(r.name) + ' ' + sb(MAID_ST, r.status); },
+      detail: function (r) {
+        return '<div class="as-dcv">' + R.avatar(r.name, 'xxl') + '<div class="as-dcv__facts">' +
+          '<div><span>الجنسية</span><strong>' + esc(r.nat) + '</strong></div><div><span>العمر</span><strong class="as-num">' + r.age + '</strong></div>' +
+          '<div><span>الديانة</span><strong>' + esc(r.religion) + '</strong></div><div><span>الخبرة</span><strong>' + esc(years(r.exp)) + '</strong></div>' +
+          '<div><span>نوع العمل</span><strong>' + esc(r.job) + '</strong></div><div><span>الراتب</span><strong>' + R.money(r.salary) + '</strong></div></div></div>' +
+          R.section('المهارات', '<div class="as-rcard__tags">' + r.skills.map(function (s) { return R.tag(s); }).join('') + '</div>') +
+          R.section('البيانات', R.dl([['رقم السيرة', '<span class="as-num">' + r.ref + '</span>', true], ['الجواز', '<span class="as-num">' + r.passport + '</span>', true], ['اللغات', r.langs], ['المكتب الخارجي', r.office], ['في الموقع', r.shown ? 'ظاهرة للعملاء' : 'مخفية'], ['أُضيفت', R.date(r.added) + ' · ' + R.ago(r.addedAgo), true]]));
+      },
+      actions: function (r) {
+        return (r.status === 'available' ? [{ label: 'حجز لعميل', icon: 'fa-bookmark' }] : []).concat([{ label: 'تحميل السيرة PDF', icon: 'fa-file-pdf' }, { label: 'تعديل', icon: 'fa-pen' }]);
+      },
+      more: [{ label: 'إخفاء من الموقع', icon: 'fa-eye-slash', sep: true }, { label: 'استبعاد (باك اوت)', icon: 'fa-user-xmark', danger: true }]
+    },
+    {
+      id: 'clients', tab: 'العملاء', title: 'العملاء', one: 'العميل', dept: 'الاستقدام', icon: 'fa-users', total: 3364,
+      desc: 'كل عملاء الشركة، وعقودهم وطلباتهم في مكان واحد.',
+      searchHint: 'الاسم، رقم العميل أو المدينة',
+      create: { label: 'عميل جديد', href: 'client-create.html' },
+      statuses: CLIENT_ST, sort: ['id', 'desc'],
+      filters: [
+        { key: 'city', label: 'المدينة', all: 'كل المدن', options: [['الرياض', 'الرياض'], ['جدة', 'جدة'], ['الدمام', 'الدمام'], ['الخبر', 'الخبر'], ['مكة المكرمة', 'مكة المكرمة'], ['المدينة المنورة', 'المدينة المنورة']] },
+        { key: 'src', label: 'التسجيل', all: 'كل طرق التسجيل', options: [['app', 'التطبيق'], ['web', 'الموقع'], ['branch', 'الفرع']] }
+      ],
+      flags: [{ key: 'active', label: 'لديهم عقود', icon: 'fa-file-signature' }],
+      bulk: [{ label: 'إرسال رسالة', icon: 'fa-message' }, { label: 'تصدير المحدد', icon: 'fa-file-excel' }],
+      columns: [
+        { key: 'name', label: 'العميل', fixed: true, primary: true, sort: 'name', render: function (r) { return R.person(r.name, r.ref, { subNum: true }); } },
+        { key: 'phone', label: 'الجوال', render: function (r) { return '<span class="as-num">' + esc(r.phone) + '</span>'; } },
+        { key: 'nid', label: 'الهوية', render: function (r) { return '<span class="as-num">' + esc(r.nid) + '</span>'; } },
+        { key: 'city', label: 'المدينة', render: function (r) { return esc(r.city); } },
+        { key: 'contracts', label: 'العقود', sort: 'rec', render: function (r) {
+          if (!r.rec && !r.rentN) return R.none('لا توجد');
+          return '<span class="as-counts">' + (r.rec ? '<span>استقدام <b class="as-num">' + r.rec + '</b></span>' : '') + (r.rentN ? '<span>تأجير <b class="as-num">' + r.rentN + '</b></span>' : '') + '</span>';
+        } },
+        { key: 'orders', label: 'الطلبات', num: true, render: function (r) { return r.orders ? R.n(r.orders) : R.none('0'); } },
+        { key: 'src', label: 'التسجيل', render: function (r) { return R.two(r.src, R.ago(r.regAgo)); } },
+        { key: 'status', label: 'الحالة', render: function (r) { return sb(CLIENT_ST, r.status); } },
+        { key: 'wallet', label: 'المحفظة', num: true, hidden: true, render: function (r) { return r.wallet ? R.money(r.wallet) : R.none('0'); } }
+      ],
+      drawerTitle: function (r) { return esc(r.name) + ' ' + sb(CLIENT_ST, r.status); },
+      detail: function (r) {
+        return '<div class="as-dperson as-dperson--hero">' + R.avatar(r.name, 'xl') + R.two(r.name, 'عميل ' + r.ref + ' · ' + r.city) + '</div>' +
+          '<div class="as-dstats"><div><strong class="as-num">' + r.rec + '</strong><span>عقود استقدام</span></div><div><strong class="as-num">' + r.rentN + '</strong><span>عقود تأجير</span></div><div><strong class="as-num">' + r.orders + '</strong><span>طلبات</span></div></div>' +
+          R.section('التواصل', R.dl([['الجوال', '<span class="as-num">' + esc(r.phone) + '</span>', true], ['الهوية', '<span class="as-num">' + esc(r.nid) + '</span>', true], ['المدينة', r.city], ['التسجيل', r.src + ' · ' + r.reg], ['رصيد المحفظة', r.wallet ? R.money(r.wallet) : '0', true]]));
+      },
+      actions: function (r) { return [{ label: 'عقد استقدام جديد', icon: 'fa-file-signature' }, { label: 'مراسلة', icon: 'fa-message' }, { label: 'تعديل', icon: 'fa-pen' }]; },
+      more: [{ label: 'حظر العميل', icon: 'fa-ban', danger: true, sep: true }]
+    },
+    {
+      id: 'complaints', tab: 'الشكاوى', title: 'الشكاوى', one: 'الشكوى', dept: 'العملاء', icon: 'fa-triangle-exclamation', total: 16,
+      alert: { n: 5, label: 'شكاوى جديدة' },
+      desc: 'شكاوى العملاء وخدمة ما بعد البيع. الجديدة التي لم يُتواصل فيها مع العميل تظهر أولًا.',
+      searchHint: 'رقم الشكوى، اسم العميل أو الموضوع',
+      create: { label: 'تسجيل شكوى', route: '/admin/complaints/create' },
+      statuses: COMP_ST, sort: ['age', 'asc'],
+      filters: [
+        { key: 'type', label: 'الموضوع', all: 'كل المواضيع', options: [['escape', 'تغيب العاملة'], ['delay', 'تأخر الوصول'], ['behaviour', 'سلوك العاملة'], ['refund', 'استرجاع مبلغ'], ['health', 'صحة العاملة']] },
+        { key: 'prio', label: 'الأولوية', all: 'كل الأولويات', options: [['high', 'عالية'], ['medium', 'متوسطة'], ['low', 'منخفضة']] },
+        { key: 'staff', label: 'المسؤول', all: 'كل الموظفين', options: STAFF.concat([['none', 'غير مُسندة']]) }
+      ],
+      flags: [{ key: 'unassigned', label: 'غير مُسندة', icon: 'fa-user-slash' }],
+      bulk: [{ label: 'إسناد إلى موظف', icon: 'fa-user-check' }, { label: 'إغلاق', icon: 'fa-circle-check' }],
+      columns: [
+        { key: 'ref', label: 'الشكوى', fixed: true, primary: true, sort: 'id', render: function (r) { return R.two(r.ref, r.created, { num: true, subNum: true }); } },
+        { key: 'client', label: 'العميل', render: function (r) { return R.person(r.client, r.phone, { subNum: true }); } },
+        { key: 'type', label: 'الموضوع', render: function (r) { return R.two(r.type, r.contract ? 'عقد #' + r.contract : 'بدون عقد'); } },
+        { key: 'prio', label: 'الأولوية', sort: 'prio', render: function (r) { return R.dots(r.prio); } },
+        { key: 'staff', label: 'المسؤول', render: function (r) { return r.staff ? esc(r.staff) : '<span class="as-late"><i class="fa-solid fa-user-slash"></i>غير مُسندة</span>'; } },
+        { key: 'age', label: 'منذ', sort: 'age', render: function (r) { return R.two(R.ago(r.age), r.noContact ? '' : '', { subHtml: r.noContact ? '<span class="as-late">لم يُتواصل مع العميل</span>' : '' }); } },
+        { key: 'status', label: 'الحالة', render: function (r) { return sb(COMP_ST, r.status); } },
+        { key: 'channel', label: 'القناة', hidden: true, render: function (r) { return esc(r.channel); } }
+      ],
+      drawerTitle: function (r) { return 'شكوى <span class="as-num">' + esc(r.ref) + '</span> ' + sb(COMP_ST, r.status); },
+      detail: function (r) {
+        var order = ['pending', 'progress', 'resolved', 'closed'], i = order.indexOf(r.status);
+        return (r.noContact ? R.note('<i class="fa-solid fa-phone-slash"></i> مضى ' + R.days(r.age) + ' ولم يُتواصل مع العميل بعد.', 'danger') : '') +
+          R.section('نص الشكوى', '<blockquote class="as-quote">' + esc(r.text) + '</blockquote>') +
+          R.section('المتابعة', R.steps([{ label: 'استُلمت', note: r.created }, { label: 'قيد المعالجة' }, { label: 'تم الحل' }, { label: 'أُغلقت' }], i, { danger: r.noContact })) +
+          R.section('التفاصيل', R.dl([['العميل', r.client], ['الجوال', '<span class="as-num">' + r.phone + '</span>', true], ['الموضوع', r.type], ['العقد', r.contract ? link('recruitment', r.contract) : 'بدون عقد', true], ['الأولوية', R.dots(r.prio), true], ['المسؤول', r.staff || 'غير مُسندة'], ['القناة', r.channel]]));
+      },
+      actions: function (r) {
+        return r.status === 'closed' || r.status === 'resolved' ? [{ label: 'إعادة فتح', icon: 'fa-rotate-left' }]
+          : [{ label: 'الرد على الشكوى', icon: 'fa-reply' }, { label: r.staff ? 'تغيير المسؤول' : 'إسناد', icon: 'fa-user-check' }, { label: 'إغلاق', icon: 'fa-circle-check' }];
+      }
+    },
+    {
+      id: 'claims', tab: 'التعميدات', title: 'التعميدات المالية', one: 'التعميد', dept: 'المالية', icon: 'fa-money-check-dollar', total: 60,
+      alert: { n: 9, label: 'بانتظار الاعتماد' },
+      desc: 'طلبات الصرف: الرسوم الحكومية والمكاتب الخارجية والتذاكر والاسترجاع، ومن يعتمدها.',
+      searchHint: 'رقم التعميد، العميل أو الجهة',
+      create: { label: 'تعميد جديد', route: '/admin/finance-claims/create' },
+      statuses: CLAIM_ST, sort: ['id', 'desc'],
+      filters: [
+        { key: 'type', label: 'النوع', all: 'كل الأنواع', options: [['gov', 'رسوم حكومية'], ['office', 'مكتب خارجي'], ['ticket', 'تذكرة طيران'], ['refund', 'استرجاع عميل'], ['medical', 'فحص طبي']] },
+        { key: 'by', label: 'طالب التعميد', all: 'كل الموظفين', options: STAFF }
+      ],
+      flags: [{ key: 'big', label: '5,000 ر.س فأكثر', icon: 'fa-coins' }],
+      bulk: [{ label: 'اعتماد المحدد', icon: 'fa-check' }, { label: 'تصدير المحدد', icon: 'fa-file-excel' }],
+      columns: [
+        { key: 'ref', label: 'التعميد', fixed: true, primary: true, sort: 'id', render: function (r) { return R.two(r.ref, r.created, { num: true, subNum: true }); } },
+        { key: 'type', label: 'النوع والجهة', render: function (r) { return R.two(r.type, r.benef); } },
+        { key: 'client', label: 'العميل / العقد', render: function (r) { return R.two(r.client, 'عقد #' + r.contract); } },
+        { key: 'amount', label: 'المبلغ', num: true, sort: 'amount', render: function (r) { return '<strong>' + R.money(r.amount) + '</strong>'; } },
+        { key: 'by', label: 'طالب التعميد', render: function (r) { return esc(r.by); } },
+        { key: 'stuck', label: 'متوقف عند', render: function (r) { return r.stuck ? '<span class="as-wait"><i class="fa-regular fa-hourglass-half"></i>' + esc(r.stuck) + '</span>' : R.none(); } },
+        { key: 'status', label: 'الحالة', render: function (r) { return sb(CLAIM_ST, r.status); } }
+      ],
+      drawerTitle: function (r) { return 'تعميد <span class="as-num">' + esc(r.ref) + '</span> ' + sb(CLAIM_ST, r.status); },
+      detail: function (r) {
+        var i = { pending: 1, approved: 3, paid: 4, rejected: 1 }[r.status];
+        return '<div class="as-damount"><span>المبلغ</span>' + R.money(r.amount) + '<small>' + esc(r.type) + ' · ' + esc(r.benef) + '</small></div>' +
+          R.section('الاعتماد', R.steps([{ label: 'طلب التعميد', note: esc(r.by) }, { label: 'اعتماد مدير الفرع' }, { label: 'اعتماد المدير المالي' }, { label: 'الصرف' }], i, { danger: r.status === 'rejected' })) +
+          R.section('التفاصيل', R.dl([['العميل', r.client], ['العقد', link('recruitment', r.contract), true], ['تاريخ الطلب', R.date(r.created), true], ['متوقف عند', r.stuck || '—']]));
+      },
+      actions: function (r) {
+        return r.status === 'pending' ? [{ label: 'اعتماد', icon: 'fa-check' }, { label: 'رفض', icon: 'fa-xmark' }, { label: 'طباعة', icon: 'fa-print' }]
+          : r.status === 'approved' ? [{ label: 'تسجيل الصرف', icon: 'fa-money-bill-transfer' }, { label: 'طباعة', icon: 'fa-print' }]
+          : [{ label: 'طباعة السند', icon: 'fa-print' }];
+      }
+    },
+    {
+      id: 'tasks', tab: 'المهام', title: 'المهام', one: 'المهمة', dept: 'الرئيسية', icon: 'fa-list-check', total: 22,
+      desc: 'مهام فريق العمل ومواعيدها. المتأخرة تظهر بالأحمر.',
+      searchHint: 'عنوان المهمة أو اسم الموظف',
+      create: { label: 'مهمة جديدة', route: '/admin/tasks/create' },
+      statuses: TASK_ST, sort: ['due', 'asc'],
+      filters: [
+        { key: 'to', label: 'المكلّف', all: 'كل الموظفين', options: STAFF },
+        { key: 'prio', label: 'الأولوية', all: 'كل الأولويات', options: [['high', 'عالية'], ['medium', 'متوسطة'], ['low', 'منخفضة']] }
+      ],
+      flags: [{ key: 'mine', label: 'مهامي', icon: 'fa-user' }, { key: 'late', label: 'المتأخرة', icon: 'fa-triangle-exclamation' }],
+      bulk: [{ label: 'تم الإنجاز', icon: 'fa-check' }, { label: 'إعادة إسناد', icon: 'fa-user-check' }],
+      columns: [
+        { key: 'title', label: 'المهمة', fixed: true, primary: true, sort: 'id', render: function (r) { return R.two(r.title, r.ref, { subNum: true }); } },
+        { key: 'prio', label: 'الأولوية', sort: 'prio', render: function (r) { return R.dots(r.prio); } },
+        { key: 'to', label: 'المكلّف', render: function (r) { return R.person(r.to, ''); } },
+        { key: 'by', label: 'أنشأها', render: function (r) { return esc(r.by); } },
+        { key: 'due', label: 'الاستحقاق', sort: 'due', render: function (r) {
+          var sub = r.status === 'done' ? 'أُنجزت' : r.late ? '<span class="as-late">متأخرة ' + R.days(-r.dueIn) + '</span>' : r.dueIn === 0 ? 'اليوم' : 'باقي ' + R.days(r.dueIn);
+          return R.two(r.due, '', { num: true, subHtml: sub });
+        } },
+        { key: 'status', label: 'الحالة', render: function (r) { return sb(TASK_ST, r.status); } }
+      ],
+      drawerTitle: function (r) { return esc(r.title) + ' ' + sb(TASK_ST, r.status); },
+      detail: function (r) {
+        return (r.late ? R.note('<i class="fa-solid fa-circle-exclamation"></i> تجاوزت المهمة موعدها بـ ' + R.days(-r.dueIn) + '.', 'danger') : '') +
+          R.section('المهمة', R.dl([['المكلّف', r.to], ['أنشأها', r.by], ['الأولوية', R.dots(r.prio), true], ['الاستحقاق', R.date(r.due), true], ['أُنشئت', R.date(r.created), true]])) +
+          R.section('المتابعة', R.steps([{ label: 'لم تبدأ' }, { label: 'قيد التنفيذ' }, { label: 'مكتملة' }], { pending: 0, progress: 1, done: 2 }[r.status] + (r.status === 'done' ? 1 : 0), { danger: r.late }));
+      },
+      actions: function (r) {
+        return r.status === 'done' ? [{ label: 'إعادة فتح', icon: 'fa-rotate-left' }]
+          : [{ label: r.status === 'pending' ? 'بدء التنفيذ' : 'تم الإنجاز', icon: r.status === 'pending' ? 'fa-play' : 'fa-check' }, { label: 'إضافة تعليق', icon: 'fa-comment' }];
+      }
+    }
+  ];
+
+  R.init({ entities: ENTITIES, default: 'recruitment' });
+});
+</script>
+<script src="../kit/kit.js"></script>
+</body>
+</html>

@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Build the redesigned screens (screens/dashboard.html, screens/reports.html).
+"""Build the redesigned screens (screens/dashboard.html, reports.html, records.html).
 
 The sidebar and topbar are defined once here and written into each page as
 static HTML, so every screen stays a plain file that maps to one Blade view.
@@ -21,7 +21,7 @@ DEPTS = [
         (None, [
             ('لوحة المعلومات', 'dashboard.html', 'dashboard', None),
             ('التقارير', 'reports.html', 'reports', None),
-            ('المهام', 'tasks.html', 'tasks', 6),
+            ('المهام', 'records.html#tasks', None, 6),
             ('التعاميم', '#', None, None),
         ]),
         ('اختصارات', [
@@ -32,31 +32,31 @@ DEPTS = [
     ]),
     ('rec', 'الاستقدام', 'fa-file-signature', [
         ('العملاء والطلبات', [
-            ('العملاء', 'clients.html', 'clients', None),
-            ('طلبات الاستقدام', 'orders.html', 'orders', 12),
+            ('العملاء', 'records.html#clients', None, None),
+            ('الطلبات', 'records.html#orders', None, 12),
         ]),
         ('العقود حسب المرحلة', [
-            ('جميع العقود', 'recruitment-contracts.html', 'recruitment-contracts', 218),
-            ('بانتظار الاعتماد', 'recruitment-contracts.html', None, ('alert', 4)),
-            ('مساند', 'recruitment-contracts.html', None, 9),
-            ('التفويض', 'recruitment-contracts.html', None, 7),
-            ('التفييز', 'recruitment-contracts.html', None, 5),
-            ('التذكرة', 'recruitment-contracts.html', None, 4),
-            ('الوصول', 'recruitment-contracts.html', None, 3),
-            ('تحت الضمان', 'recruitment-contracts.html', None, 89),
-            ('المرتجعة والملغية', '#', None, None),
+            ('جميع العقود', 'records.html#recruitment', None, 218),
+            ('بانتظار الاعتماد', 'records.html#recruitment/approval', None, ('alert', 4)),
+            ('مساند', 'records.html#recruitment/msaned', None, 9),
+            ('التفويض', 'records.html#recruitment/tafwed', None, 7),
+            ('التفييز', 'records.html#recruitment/taffez', None, 5),
+            ('التذكرة', 'records.html#recruitment/tazker', None, 4),
+            ('الوصول', 'records.html#recruitment/arrival', None, 3),
+            ('تحت الضمان', 'records.html#recruitment/warranty', None, 89),
+            ('المرتجعة والملغية', 'records.html#recruitment/back', None, 12),
         ]),
         ('السير الذاتية', [
-            ('جميع السير', 'maids.html', 'maids', 820),
+            ('جميع السير', 'records.html#maids', None, 820),
             ('إضافة سيرة', 'maid-create.html', 'maid-create', None),
-            ('الحجوزات وجلسات الإرسال', '#', None, None),
-            ('باك اوت', '#', None, None),
+            ('المحجوزة', 'records.html#maids/reserved', None, 200),
+            ('باك اوت', 'records.html#maids/backout', None, 24),
             ('المعينات', '#', None, None),
         ]),
     ]),
     ('rent', 'التأجير', 'fa-handshake', [
         ('عقود التأجير', [
-            ('جميع عقود التأجير', 'rent-contracts.html', 'rent-contracts', 22),
+            ('جميع عقود التأجير', 'records.html#rent', None, 22),
             ('طلبات الإيجار', '#', None, None),
             ('سير الإيجار', '#', None, None),
             ('رواتب العاملات', '#', None, None),
@@ -75,9 +75,9 @@ DEPTS = [
     ]),
     ('ops', 'التشغيل', 'fa-truck-fast', [
         ('الإيواء', [
-            ('داخل الإيواء', 'shelter-contracts.html', 'shelter-contracts', 14),
-            ('خارج الإيواء', '#', None, None),
-            ('الترحيل والخطابات', '#', None, 3),
+            ('داخل الإيواء', 'records.html#shelter/in', None, 14),
+            ('غادرت الإيواء', 'records.html#shelter/out', None, None),
+            ('الترحيل والخطابات', 'records.html#shelter/deport', None, 3),
             ('مقرات الإيواء', '#', None, None),
         ]),
         ('اللوجستيك والسفر', [
@@ -93,7 +93,7 @@ DEPTS = [
     ]),
     ('care', 'العملاء', 'fa-headset', [
         ('خدمة ما بعد البيع', [
-            ('الشكاوى', 'complaints.html', 'complaints', ('alert', 5)),
+            ('الشكاوى', 'records.html#complaints', None, ('alert', 5)),
             ('شكاوى الخارجية', '#', None, None),
             ('تحويلات العملاء', '#', None, None),
             ('طلبات الاسترجاع', '#', None, None),
@@ -105,9 +105,9 @@ DEPTS = [
     ]),
     ('fin', 'المالية', 'fa-wallet', [
         ('التعميدات', [
-            ('كل التعميدات', 'finance-claims.html', 'finance-claims', None),
-            ('بانتظار الاعتماد', 'finance-claims.html', None, ('alert', 9)),
-            ('الرسوم الحكومية', 'finance-claims.html', None, None),
+            ('كل التعميدات', 'records.html#claims', None, 60),
+            ('بانتظار الاعتماد', 'records.html#claims/pending', None, ('alert', 9)),
+            ('الرسوم الحكومية', 'records.html#claims/gov', None, None),
         ]),
         ('الحسابات', [
             ('مالية العقود', '#', None, None),
@@ -153,9 +153,9 @@ def dept_of(active):
     return 'home'
 
 
-def sidebar(active):
+def sidebar(active, dept=None):
     """Rail (departments) + panel (pages of each department, one shown at a time)."""
-    cur = dept_of(active)
+    cur = dept or dept_of(active)
     rail, panes = [], []
     for dept, name, icon, sections in DEPTS:
         on = dept == cur
@@ -262,9 +262,9 @@ SHELL = '''<!DOCTYPE html>
         <button class="as-iconbtn" type="button" data-as-dd aria-expanded="false" aria-label="الإشعارات، 3 جديدة"><i class="fa-regular fa-bell"></i><span class="as-dot"></span></button>
         <div class="as-dd__menu" style="min-width:300px">
           <p class="as-dd__head">الإشعارات</p>
-          <a href="recruitment-contracts.html"><i class="fa-solid fa-file-signature"></i>4 عقود بانتظار اعتمادك</a>
-          <a href="complaints.html"><i class="fa-solid fa-triangle-exclamation"></i>شكوى جديدة على عقد #241</a>
-          <a href="tasks.html"><i class="fa-solid fa-list-check"></i>أُسندت إليك مهمتان جديدتان</a>
+          <a href="records.html#recruitment/approval"><i class="fa-solid fa-file-signature"></i>4 عقود بانتظار اعتمادك</a>
+          <a href="records.html#complaints/pending"><i class="fa-solid fa-triangle-exclamation"></i>شكوى جديدة على عقد #241</a>
+          <a href="records.html#tasks/mine"><i class="fa-solid fa-list-check"></i>أُسندت إليك مهمتان جديدتان</a>
         </div>
       </div>
       <div class="as-dd">
@@ -297,6 +297,8 @@ SHELL = '''<!DOCTYPE html>
 SCREENS = {
     'dashboard': {'title': 'لوحة المعلومات', 'crumbs': ['الرئيسية']},
     'reports': {'title': 'التقارير', 'crumbs': ['الرئيسية', 'التقارير']},
+    # one screen for every list; the tab (and the sidebar link) comes from the URL hash
+    'records': {'title': 'عقود الاستقدام', 'crumbs': ['الاستقدام', 'عقود الاستقدام'], 'dept': 'rec'},
 }
 
 
@@ -305,8 +307,8 @@ def build():
         src = (PAGES / f'{slug}.html').read_text(encoding='utf-8')
         body, _, scripts = src.partition('<!-- scripts -->')
         crumbs = ''.join(f'<li>{e(c)}</li>' for c in meta['crumbs'])
-        rail, panes, _ = sidebar(slug)
-        page = SHELL.format(title=e(meta['title']), crumbs=crumbs, rail=rail, panes=panes, cur_dept=dept_of(slug),
+        rail, panes, _ = sidebar(slug, meta.get('dept'))
+        page = SHELL.format(title=e(meta['title']), crumbs=crumbs, rail=rail, panes=panes, cur_dept=meta.get('dept') or dept_of(slug),
                             body=body.strip(), scripts=scripts.strip())
         (ROOT / 'screens' / f'{slug}.html').write_text(page, encoding='utf-8')
         print('wrote screens/%s.html' % slug)

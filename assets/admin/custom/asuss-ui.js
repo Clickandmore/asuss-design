@@ -46,6 +46,18 @@
             nav.querySelectorAll('.as-pane').forEach(function (p) { p.hidden = p.dataset.dept !== dept; });
             nav.scrollTop = 0;
         }
+        // screens that switch content in place (records.html#…) mark their link here: first href found wins
+        AsUI.setActiveNav = function (hrefs) {
+            var link = null;
+            hrefs.some(function (h) { return (link = nav.querySelector('.as-nav__link[href="' + h + '"]')); });
+            nav.querySelectorAll('.as-nav__link.is-active').forEach(function (a) { a.classList.remove('is-active'); a.removeAttribute('aria-current'); });
+            if (!link) return;
+            link.classList.add('is-active');
+            link.setAttribute('aria-current', 'page');
+            var pane = link.closest('.as-pane');
+            if (pane && pane.hidden) showDept(pane.dataset.dept);
+            if (link.offsetTop > nav.scrollTop + nav.clientHeight - 60 || link.offsetTop < nav.scrollTop) nav.scrollTop = link.offsetTop - nav.clientHeight / 2;
+        };
         document.addEventListener('click', function (e) {
             var b = e.target.closest('.as-rail__btn[data-dept]');
             if (b) {
