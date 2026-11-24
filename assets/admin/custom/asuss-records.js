@@ -174,6 +174,13 @@
             AsUI.setActiveNav([base + key, base + key.split('/')[0]]);
         }
 
+        // fade the cut edge of the tab strip only while there is more to scroll to
+        function tabEdge() {
+            var t = el.tabs, over = t.scrollWidth > t.clientWidth + 1;
+            t.classList.toggle('is-overflow', over);
+            t.classList.toggle('is-end', over && Math.abs(t.scrollLeft) + t.clientWidth >= t.scrollWidth - 2);
+        }
+
         /* ---------- per-entity chrome ---------- */
         function setupEntity() {
             var e = st.e;
@@ -183,6 +190,7 @@
                 t.classList.toggle('is-active', on);
                 if (on && t.scrollIntoView && el.tabs.scrollWidth > el.tabs.clientWidth) t.scrollIntoView({ block: 'nearest', inline: 'center' });
             });
+            tabEdge();
             el.title.textContent = e.title;
             el.desc.textContent = e.desc;
             el.newBtn.querySelector('span').textContent = e.create.label;
@@ -530,7 +538,8 @@
             }
             if (!t.closest('[data-rowmenu]')) closeMenu();
         });
-        window.addEventListener('resize', closeMenu);
+        window.addEventListener('resize', function () { closeMenu(); tabEdge(); });
+        el.tabs.addEventListener('scroll', tabEdge, { passive: true });
         el.scroll.addEventListener('scroll', closeMenu, { passive: true });
 
         if (drawer) {

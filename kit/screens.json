@@ -24,6 +24,14 @@
       "sample_rows": false,
       "redesign": true
     },
+    "records": {
+      "route": "/admin/records#<قسم>",
+      "title": "السجلات (كل الجداول في شاشة واحدة)",
+      "view": "جديدة — مقترح: resources/views/admin/records/index.blade.php + مسار JSON لكل قسم (انظر رأس asuss-records.js)",
+      "group": "عام",
+      "sample_rows": false,
+      "redesign": true
+    },
     "recruitment-contracts": {
       "route": "/admin/RecruitmentContract",
       "title": "عقود الاستقدام",

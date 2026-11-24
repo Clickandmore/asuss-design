@@ -20,16 +20,8 @@
   <nav class="as-rectabs" role="tablist" aria-label="السجلات" data-rec-tabs></nav>
 
   <section class="as-card as-rec__card" aria-live="polite" aria-busy="false">
-    <div class="as-chips" role="group" aria-label="تصفية حسب الحالة" data-rec-chips></div>
-
-    <div class="as-rec__bar">
-      <label class="as-search as-rec__search">
-        <span class="as-sr">بحث في السجلات</span>
-        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
-        <input type="search" data-rec-q autocomplete="off">
-      </label>
-      <div class="as-rec__filters" data-rec-filters></div>
-      <span class="as-spacer"></span>
+    <div class="as-rec__top">
+      <div class="as-chips" role="group" aria-label="تصفية حسب الحالة" data-rec-chips></div>
       <div class="as-rec__tools">
         <div class="as-seg" data-rec-view role="group" aria-label="طريقة العرض" hidden>
           <button type="button" data-view="table" aria-pressed="true" title="جدول"><i class="fa-solid fa-list"></i><span class="as-sr">جدول</span></button>
@@ -44,6 +36,15 @@
           <div class="as-dd__menu as-dd__menu--cols" data-rec-cols></div>
         </div>
       </div>
+    </div>
+
+    <div class="as-rec__bar">
+      <label class="as-search as-rec__search">
+        <span class="as-sr">بحث في السجلات</span>
+        <i class="fa-solid fa-magnifying-glass" aria-hidden="true"></i>
+        <input type="search" data-rec-q autocomplete="off">
+      </label>
+      <div class="as-rec__filters" data-rec-filters></div>
     </div>
 
     <div class="as-rec__pills" data-rec-pills hidden></div>
