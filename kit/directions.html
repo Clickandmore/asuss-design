@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>تصور التصميم: ثلاثة اتجاهات | أسس الإنجاز</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+Arabic:wght@400;500;600&family=Tajawal:wght@400;500;700;800&family=Noto+Kufi+Arabic:wght@500;600;700&family=Noto+Sans+Arabic:wght@400;500;600&family=Alexandria:wght@400;500;600&family=Cairo:wght@400;600;700&family=Readex+Pro:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+<style>
+/* Design kit only: a static comparison of three visual directions. Not a screen, not ported to asuss. */
+*, *::before, *::after { box-sizing: border-box; }
+body { margin: 0; font-family: "IBM Plex Sans Arabic", sans-serif; color: #1f2937; background: #eceef2; }
+.page { max-width: 1320px; margin: 0 auto; padding: 32px 20px 64px; }
+.intro h1 { margin: 0 0 6px; font-size: 26px; }
+.intro p { margin: 0 0 4px; color: #4b5563; line-height: 1.7; max-width: 860px; }
+.jump { display: flex; flex-wrap: wrap; gap: 8px; margin: 18px 0 8px; }
+.jump a { padding: 8px 14px; border-radius: 999px; background: #fff; color: #111827; text-decoration: none; font-size: 14px; border: 1px solid #d1d5db; }
+.dir { margin-top: 40px; }
+.dir__head { display: flex; align-items: flex-end; justify-content: space-between; gap: 16px; flex-wrap: wrap; margin-bottom: 12px; }
+.dir__head h2 { margin: 0; font-size: 22px; }
+.dir__head h2 span { display: inline-grid; place-items: center; width: 34px; height: 34px; margin-inline-end: 8px; border-radius: 50%; background: #191936; color: #fff; font-size: 16px; }
+.dir__head p { margin: 4px 0 0; color: #4b5563; font-size: 14.5px; max-width: 760px; line-height: 1.7; }
+.traits { display: flex; flex-wrap: wrap; gap: 6px; }
+.traits b { padding: 4px 10px; border-radius: 6px; background: #fff; border: 1px solid #d1d5db; font-size: 12.5px; font-weight: 500; }
+.frame { overflow-x: auto; border-radius: 14px; box-shadow: 0 1px 2px rgba(0,0,0,.06), 0 18px 48px -18px rgba(16,24,40,.35); }
+.frame > div { min-width: 1180px; }
+.num { direction: ltr; unicode-bidi: isolate; font-variant-numeric: tabular-nums; }
+
+/* ======================= A — هادئ مؤسسي ======================= */
+.dA { display: grid; grid-template-columns: 232px 1fr; height: 720px; font-family: "IBM Plex Sans Arabic", sans-serif; background: #fff; color: #374151; font-size: 14px; }
+.dA aside { border-inline-start: 0; border-inline-end: 1px solid #eef0f3; padding: 20px 14px; background: #fbfbfc; }
+.dA .logo { height: 34px; margin: 0 6px 22px; }
+.dA nav p { margin: 18px 10px 6px; font-size: 11.5px; letter-spacing: .02em; color: #9aa4b2; }
+.dA nav a { display: flex; align-items: center; gap: 10px; padding: 8px 10px; border-radius: 7px; color: #4b5563; text-decoration: none; }
+.dA nav a i { width: 16px; color: #9aa4b2; font-size: 13px; }
+.dA nav a.on { background: #fff; color: #111827; font-weight: 500; box-shadow: 0 0 0 1px #e5e7eb, 0 1px 2px rgba(16,24,40,.05); }
+.dA nav a.on i { color: #1a5f9e; }
+.dA nav a em { margin-inline-start: auto; font-style: normal; font-size: 12px; color: #9aa4b2; }
+.dA main { padding: 0 36px; overflow: hidden; }
+.dA .top { display: flex; align-items: center; justify-content: space-between; height: 60px; border-bottom: 1px solid #f0f1f4; color: #6b7280; font-size: 13px; }
+.dA .top .search { width: 320px; height: 34px; border-radius: 7px; background: #f6f7f9; display: flex; align-items: center; gap: 8px; padding: 0 12px; color: #9aa4b2; }
+.dA h1 { margin: 26px 0 4px; font-size: 22px; font-weight: 600; color: #111827; }
+.dA .sub { color: #6b7280; font-size: 13.5px; }
+.dA .hd { display: flex; justify-content: space-between; align-items: flex-end; }
+.dA .btn { height: 36px; padding: 0 14px; border-radius: 7px; border: 1px solid #d1d5db; background: #fff; font: inherit; font-size: 13.5px; font-weight: 500; color: #111827; }
+.dA .btn.p { background: #191936; border-color: #191936; color: #fff; }
+.dA .pipe { display: grid; grid-template-columns: repeat(6, 1fr); margin: 24px 0 18px; border: 1px solid #eef0f3; border-radius: 10px; overflow: hidden; }
+.dA .pipe div { padding: 12px 16px; border-inline-start: 1px solid #eef0f3; }
+.dA .pipe div:first-child { border: 0; }
+.dA .pipe span { display: block; font-size: 12.5px; color: #6b7280; }
+.dA .pipe strong { font-size: 20px; font-weight: 600; color: #111827; }
+.dA .pipe .late { color: #b42318; font-size: 12px; margin-inline-start: 6px; font-weight: 500; }
+.dA .pipe .on { background: #f7f9fc; box-shadow: inset 0 -2px 0 #191936; }
+.dA .bar { display: flex; gap: 8px; align-items: center; margin-bottom: 10px; }
+.dA .f { height: 32px; padding: 0 12px; border-radius: 7px; border: 1px solid #e5e7eb; display: inline-flex; align-items: center; gap: 8px; font-size: 13px; color: #4b5563; }
+.dA .f.on { border-color: #191936; color: #191936; }
+.dA table { width: 100%; border-collapse: collapse; }
+.dA th { text-align: start; font-size: 12px; font-weight: 500; color: #9aa4b2; padding: 10px 12px; border-bottom: 1px solid #eef0f3; }
+.dA td { padding: 13px 12px; border-bottom: 1px solid #f3f4f6; vertical-align: middle; }
+.dA td small { display: block; color: #9aa4b2; font-size: 12px; }
+.dA td b { font-weight: 500; color: #111827; }
+.dA .st { display: inline-flex; align-items: center; gap: 7px; font-size: 13px; }
+.dA .st::before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #1D70B7; }
+.dA .st.red { color: #b42318; } .dA .st.red::before { background: #f04438; }
+.dA .st.green::before { background: #12b76a; }
+.dA .go { color: #1a5f9e; font-size: 13px; font-weight: 500; }
+
+/* ======================= B — ناعم وعصري ======================= */
+.dB { display: grid; grid-template-columns: 1fr 250px; height: 720px; padding: 16px; gap: 16px; font-family: "Tajawal", sans-serif; background: #f2f4f9; color: #2a2f45; font-size: 15px; direction: ltr; }
+.dB > * { direction: rtl; }
+.dB aside { grid-column: 2; grid-row: 1; border-radius: 22px; background: linear-gradient(170deg, #1d2457, #191936 60%); color: #c9cde6; padding: 22px 16px; }
+.dB .logo { height: 34px; margin: 0 8px 26px; }
+.dB nav a { display: flex; align-items: center; gap: 12px; padding: 11px 14px; border-radius: 14px; color: #c9cde6; text-decoration: none; font-weight: 500; }
+.dB nav a i { width: 18px; font-size: 15px; }
+.dB nav a.on { background: rgba(255,255,255,.1); color: #fff; }
+.dB nav a em { margin-inline-start: auto; font-style: normal; font-size: 12px; padding: 1px 8px; border-radius: 999px; background: #ef4444; color: #fff; }
+.dB .help { margin-top: 30px; padding: 16px; border-radius: 16px; background: rgba(255,255,255,.07); font-size: 13.5px; line-height: 1.6; }
+.dB main { grid-column: 1; grid-row: 1; overflow: hidden; }
+.dB .top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 18px; }
+.dB h1 { margin: 0; font-size: 28px; font-weight: 800; color: #191936; }
+.dB .hello { color: #6b7086; font-size: 14px; }
+.dB .btn { height: 44px; padding: 0 20px; border-radius: 14px; border: 0; font: inherit; font-weight: 700; background: #1D70B7; color: #fff; box-shadow: 0 8px 20px -8px rgba(29,112,183,.7); }
+.dB .tabs { display: flex; gap: 10px; margin-bottom: 16px; }
+.dB .tabs span { display: inline-flex; align-items: center; gap: 8px; padding: 10px 16px; border-radius: 14px; background: #fff; font-weight: 500; box-shadow: 0 1px 2px rgba(20,24,60,.05); }
+.dB .tabs span b { font-size: 13px; padding: 1px 8px; border-radius: 999px; background: #eef2fb; color: #1D70B7; }
+.dB .tabs span.on { background: #191936; color: #fff; }
+.dB .tabs span.on b { background: rgba(255,255,255,.18); color: #fff; }
+.dB .list { display: grid; gap: 10px; }
+.dB .row { display: grid; grid-template-columns: 70px 1.3fr 1.3fr 1.1fr 1fr 130px; align-items: center; gap: 12px; padding: 14px 18px; border-radius: 18px; background: #fff; box-shadow: 0 1px 2px rgba(20,24,60,.04), 0 10px 24px -18px rgba(20,24,60,.3); }
+.dB .row.late { box-shadow: inset -4px 0 0 #ef4444, 0 10px 24px -18px rgba(20,24,60,.3); }
+.dB .id { font-weight: 800; color: #191936; }
+.dB .who { display: flex; align-items: center; gap: 10px; }
+.dB .av { width: 38px; height: 38px; border-radius: 12px; display: grid; place-items: center; font-weight: 700; font-size: 14px; }
+.dB small { display: block; color: #8a8fa6; font-size: 12.5px; }
+.dB .ring { --p: 40; width: 40px; height: 40px; border-radius: 50%; background: conic-gradient(#1D70B7 calc(var(--p)*1%), #e7ebf5 0); display: grid; place-items: center; }
+.dB .ring::after { content: attr(data-t); width: 30px; height: 30px; border-radius: 50%; background: #fff; display: grid; place-items: center; font-size: 11px; font-weight: 700; color: #191936; }
+.dB .stage { display: flex; align-items: center; gap: 10px; }
+.dB .pill { padding: 4px 12px; border-radius: 999px; font-size: 13px; font-weight: 700; background: #eaf2fb; color: #1D70B7; }
+.dB .pill.red { background: #fdecec; color: #c52a1d; }
+.dB .act { justify-self: end; padding: 8px 14px; border-radius: 12px; background: #f2f6fc; color: #1D70B7; font-weight: 700; font-size: 13.5px; }
+
+/* ======================= C — تشغيلي (لوحة مراحل) ======================= */
+.dC { height: 720px; font-family: "Noto Sans Arabic", sans-serif; background: #f6f7f9; color: #334155; font-size: 13.5px; display: flex; flex-direction: column; }
+.dC h1, .dC h3, .dC .k { font-family: "Noto Kufi Arabic", sans-serif; }
+.dC header { display: flex; align-items: center; gap: 28px; height: 56px; padding: 0 24px; background: #191936; color: #aeb4d6; }
+.dC header .logo { height: 28px; }
+.dC header nav { display: flex; gap: 4px; }
+.dC header nav a { padding: 7px 12px; border-radius: 6px; color: #aeb4d6; text-decoration: none; font-size: 13.5px; }
+.dC header nav a.on { background: #1D70B7; color: #fff; }
+.dC header .s { margin-inline-start: auto; width: 280px; height: 32px; border-radius: 6px; background: rgba(255,255,255,.08); display: flex; align-items: center; gap: 8px; padding: 0 10px; color: #8a90b8; }
+.dC .sub { display: flex; align-items: center; gap: 14px; padding: 14px 24px; background: #fff; border-bottom: 1px solid #e5e7eb; }
+.dC h1 { margin: 0; font-size: 18px; font-weight: 700; color: #0f172a; }
+.dC .views { display: flex; border: 1px solid #e2e8f0; border-radius: 6px; overflow: hidden; }
+.dC .views span { padding: 5px 12px; font-size: 12.5px; }
+.dC .views span.on { background: #0f172a; color: #fff; }
+.dC .chip { padding: 5px 10px; border-radius: 6px; border: 1px solid #e2e8f0; font-size: 12.5px; background: #fff; }
+.dC .chip.red { border-color: #fecaca; background: #fef2f2; color: #b42318; font-weight: 600; }
+.dC .btn { margin-inline-start: auto; height: 34px; padding: 0 14px; border: 0; border-radius: 6px; background: #1D70B7; color: #fff; font: inherit; font-weight: 600; }
+.dC .board { flex: 1; display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; padding: 16px 24px; overflow: hidden; }
+.dC .col { display: flex; flex-direction: column; gap: 8px; min-width: 0; }
+.dC .col h3 { display: flex; align-items: center; justify-content: space-between; margin: 0 0 2px; padding: 0 2px; font-size: 13px; font-weight: 600; color: #0f172a; }
+.dC .col h3 span { font-family: "Noto Sans Arabic", sans-serif; font-size: 12px; color: #64748b; font-weight: 500; }
+.dC .col h3 em { font-style: normal; color: #b42318; font-size: 11.5px; }
+.dC .card { padding: 10px 11px; border-radius: 8px; background: #fff; border: 1px solid #e5e7eb; }
+.dC .card.late { border-color: #fca5a5; background: #fffafa; }
+.dC .card .t { display: flex; justify-content: space-between; font-weight: 600; color: #0f172a; }
+.dC .card .t span { font-weight: 500; color: #94a3b8; font-size: 12px; }
+.dC .card p { margin: 3px 0 0; font-size: 12.5px; color: #64748b; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.dC .card .m { display: flex; justify-content: space-between; align-items: center; margin-top: 8px; font-size: 12px; color: #64748b; }
+.dC .card .m b { color: #b42318; font-weight: 600; }
+.dC .bar { height: 4px; border-radius: 2px; background: #eef2f7; margin-top: 8px; overflow: hidden; }
+.dC .bar i { display: block; height: 100%; background: #1D70B7; }
+.dC .card.late .bar i { background: #ef4444; }
+
+/* ======================= fonts ======================= */
+.fonts { display: grid; grid-template-columns: repeat(auto-fill, minmax(380px, 1fr)); gap: 14px; }
+.font { background: #fff; border-radius: 12px; padding: 18px 20px; border: 1px solid #dfe2e8; }
+.font header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 10px; font-family: "IBM Plex Sans Arabic", sans-serif; }
+.font header b { font-size: 15px; }
+.font header span { font-size: 12px; color: #6b7280; }
+.font .h { font-size: 24px; font-weight: 600; color: #111827; margin: 0 0 4px; }
+.font .b { font-size: 15px; color: #374151; margin: 0 0 10px; line-height: 1.7; }
+.font .r { display: flex; justify-content: space-between; padding: 8px 0; border-top: 1px solid #f0f1f4; font-size: 14px; }
+.font .r b { font-weight: 600; }
+.note { margin-top: 14px; padding: 14px 16px; border-radius: 10px; background: #fff; border: 1px dashed #c3c8d2; color: #4b5563; font-size: 14px; line-height: 1.7; }
+.next { margin-top: 40px; padding: 22px 24px; border-radius: 14px; background: #191936; color: #dfe3f7; line-height: 1.8; }
+.next h2 { margin: 0 0 6px; color: #fff; font-size: 20px; }
+.next ol { margin: 0; padding-inline-start: 20px; }
+</style>
+</head>
+<body>
+<div class="page">
+  <div class="intro">
+    <h1>تصوّر: نفس الشاشة بثلاثة اتجاهات مختلفة</h1>
+    <p>هذه صور ثابتة للمقارنة فقط، وليست شاشات تعمل. الشاشة في الثلاثة هي نفسها: «عقود الاستقدام» بنفس البيانات. المختلف هو الخط والألوان والمسافات وطريقة العرض.</p>
+    <p>اختر اتجاهًا، أو قل: «خذ كذا من هذا وكذا من ذاك». بعدها نكمّل التصميم على Figma قبل أي كود.</p>
+    <div class="jump"><a href="#a">أ — هادئ مؤسسي</a><a href="#b">ب — ناعم وعصري</a><a href="#c">ج — تشغيلي (لوحة مراحل)</a><a href="#fonts">مقارنة الخطوط</a></div>
+  </div>
+
+  <!-- ============ A ============ -->
+  <section class="dir" id="a">
+    <div class="dir__head">
+      <div><h2><span>أ</span>هادئ مؤسسي</h2><p>أبيض، خطوط رفيعة، لون واحد للتمييز (الكحلي). الأرقام في شريط مراحل أعلى الجدول، والحالة نص بنقطة بدل الشارات. مثل أنظمة البنوك والشركات الكبيرة: يرتاح فيه من يعمل عليه طوال اليوم.</p></div>
+      <div class="traits"><b>خط IBM Plex</b><b>مسافات واسعة</b><b>جدول</b><b>قائمة جانبية فاتحة</b></div>
+    </div>
+    <div class="frame"><div class="dA">
+      <aside>
+        <img class="logo" src="../assets/web/assets/images/logoh.svg" alt="">
+        <nav>
+          <a href="#"><i class="fa-solid fa-house"></i>الرئيسية</a>
+          <p>الاستقدام</p>
+          <a href="#"><i class="fa-solid fa-inbox"></i>الطلبات<em class="num">12</em></a>
+          <a class="on" href="#"><i class="fa-solid fa-file-signature"></i>عقود الاستقدام<em class="num">34</em></a>
+          <a href="#"><i class="fa-solid fa-id-card"></i>السير الذاتية<em class="num">820</em></a>
+          <a href="#"><i class="fa-solid fa-users"></i>العملاء</a>
+          <p>التأجير</p>
+          <a href="#"><i class="fa-solid fa-handshake"></i>عقود التأجير</a>
+          <a href="#"><i class="fa-solid fa-clock"></i>الزيارات</a>
+          <p>التشغيل</p>
+          <a href="#"><i class="fa-solid fa-house-chimney"></i>الإيواء</a>
+          <a href="#"><i class="fa-solid fa-headset"></i>الشكاوى<em class="num">5</em></a>
+          <a href="#"><i class="fa-solid fa-wallet"></i>التعميدات</a>
+        </nav>
+      </aside>
+      <main>
+        <div class="top"><span>الاستقدام / عقود الاستقدام</span><span class="search"><i class="fa-solid fa-magnifying-glass"></i>بحث برقم العقد أو الجوال</span></div>
+        <div class="hd">
+          <div><h1>عقود الاستقدام</h1><div class="sub"><span class="num">34</span> عقدًا نشطًا · <span class="num">4</span> متأخرة عن مدة المرحلة</div></div>
+          <div style="display:flex;gap:8px"><button class="btn">تصدير</button><button class="btn p">+ عقد جديد</button></div>
+        </div>
+        <div class="pipe">
+          <div><span>جديد</span><strong class="num">6</strong></div>
+          <div><span>مساند</span><strong class="num">9</strong><span class="late" style="display:inline">1 متأخر</span></div>
+          <div class="on"><span>التفويض</span><strong class="num">7</strong><span class="late" style="display:inline">3 متأخرة</span></div>
+          <div><span>التفييز</span><strong class="num">5</strong></div>
+          <div><span>التذكرة</span><strong class="num">4</strong></div>
+          <div><span>الوصول</span><strong class="num">3</strong></div>
+        </div>
+        <div class="bar"><span class="f"><i class="fa-regular fa-calendar"></i>كل الوقت</span><span class="f on">مدة المرحلة: تجاوزت المدة ✕</span><span class="f">الجنسية</span><span class="f">المسوّق</span><span class="f">+ فلتر</span></div>
+        <table>
+          <thead><tr><th>العقد</th><th>العميل</th><th>العاملة</th><th>المرحلة</th><th>المسوّق</th><th></th></tr></thead>
+          <tbody>
+            <tr><td><b class="num">#335</b><small class="num">2026-10-19</small></td><td><b>العنود الحربي</b><small class="num">056 ••• 1139</small></td><td><b>FATIMA MENDOZA</b><small>إندونيسيا</small></td><td><span class="st red">التفويض · متأخر 7 أيام</span></td><td>سلطان الزهراني</td><td class="go">نقل إلى التفييز ←</td></tr>
+            <tr><td><b class="num">#284</b><small class="num">2026-10-30</small></td><td><b>عبير الشهري</b><small class="num">056 ••• 7572</small></td><td><b>HELEN CRUZ</b><small>سريلانكا</small></td><td><span class="st red">التفويض · متأخر 4 أيام</span></td><td>ريم العتيبي</td><td class="go">نقل إلى التفييز ←</td></tr>
+            <tr><td><b class="num">#277</b><small class="num">2026-10-20</small></td><td><b>تركي القحطاني</b><small class="num">058 ••• 6966</small></td><td><b>JOY TESFAYE</b><small>كينيا</small></td><td><span class="st red">التفويض · متأخر 8 أيام</span></td><td>نورة الحربي</td><td class="go">نقل إلى التفييز ←</td></tr>
+            <tr><td><b class="num">#246</b><small class="num">2026-10-25</small></td><td><b>ماجد السهلي</b><small class="num">050 ••• 3461</small></td><td><b>HANA WANJIRU</b><small>إثيوبيا</small></td><td><span class="st">التفويض · منذ 5 أيام</span></td><td>فهد الدوسري</td><td class="go">نقل إلى التفييز ←</td></tr>
+            <tr><td><b class="num">#222</b><small class="num">2026-10-19</small></td><td><b>خالد الشهري</b><small class="num">057 ••• 4183</small></td><td><b>MARIA SANTOS</b><small>كينيا</small></td><td><span class="st">التفويض · منذ 7 أيام</span></td><td>سارة أحمد</td><td class="go">نقل إلى التفييز ←</td></tr>
+            <tr><td><b class="num">#201</b><small class="num">2026-11-13</small></td><td><b>سلمان السبيعي</b><small class="num">054 ••• 9621</small></td><td><b>HANA REYES</b><small>الفلبين</small></td><td><span class="st">التفويض · منذ يومين</span></td><td>ريم العتيبي</td><td class="go">نقل إلى التفييز ←</td></tr>
+          </tbody>
+        </table>
+      </main>
+    </div></div>
+  </section>
+
+  <!-- ============ B ============ -->
+  <section class="dir" id="b">
+    <div class="dir__head">
+      <div><h2><span>ب</span>ناعم وعصري</h2><p>زوايا دائرية كبيرة، قائمة جانبية كحلية عائمة، وكل عقد في بطاقة صف مستقلة مع دائرة تقدّم. خط Tajawal المنتشر في التطبيقات السعودية. أقرب لشكل تطبيقات الجوال الحديثة، ويبدو ودودًا أكثر.</p></div>
+      <div class="traits"><b>خط Tajawal</b><b>بطاقات صفوف</b><b>ألوان أوضح</b><b>قائمة كحلية</b></div>
+    </div>
+    <div class="frame"><div class="dB">
+      <aside>
+        <img class="logo" src="../assets/web/assets/images/logoh-white.svg" alt="">
+        <nav>
+          <a href="#"><i class="fa-solid fa-house"></i>الرئيسية</a>
+          <a class="on" href="#"><i class="fa-solid fa-file-signature"></i>الاستقدام<em class="num">4</em></a>
+          <a href="#"><i class="fa-solid fa-handshake"></i>التأجير</a>
+          <a href="#"><i class="fa-solid fa-truck-fast"></i>التشغيل</a>
+          <a href="#"><i class="fa-solid fa-headset"></i>العملاء<em class="num">5</em></a>
+          <a href="#"><i class="fa-solid fa-wallet"></i>المالية</a>
+          <a href="#"><i class="fa-solid fa-sliders"></i>الإدارة</a>
+        </nav>
+        <div class="help"><b style="color:#fff">4 عقود متأخرة</b><br>في التفويض ومساند. راجعها اليوم.</div>
+      </aside>
+      <main>
+        <div class="top">
+          <div><div class="hello">الاستقدام</div><h1>عقود الاستقدام</h1></div>
+          <button class="btn">+ عقد استقدام جديد</button>
+        </div>
+        <div class="tabs">
+          <span>النشطة <b class="num">34</b></span><span>جديد <b class="num">6</b></span><span>مساند <b class="num">9</b></span><span class="on">التفويض <b class="num">7</b></span><span>التفييز <b class="num">5</b></span><span>التذكرة <b class="num">4</b></span><span>الوصول <b class="num">3</b></span>
+        </div>
+        <div class="list">
+          <div class="row late"><span class="id num">#335</span><div class="who"><span class="av" style="background:#e9f8ef;color:#067647">ع</span><div>العنود الحربي<small class="num">056 ••• 1139</small></div></div><div>FATIMA MENDOZA<small>إندونيسيا</small></div><div class="stage"><span class="ring" style="--p:43" data-t="3/7"></span><span class="pill red">متأخر 7 أيام</span></div><div>سلطان الزهراني<small>المسوّق</small></div><span class="act">نقل للتفييز</span></div>
+          <div class="row late"><span class="id num">#284</span><div class="who"><span class="av" style="background:#fdf0f7;color:#c11574">ع</span><div>عبير الشهري<small class="num">056 ••• 7572</small></div></div><div>HELEN CRUZ<small>سريلانكا</small></div><div class="stage"><span class="ring" style="--p:43" data-t="3/7"></span><span class="pill red">متأخر 4 أيام</span></div><div>ريم العتيبي<small>المسوّق</small></div><span class="act">نقل للتفييز</span></div>
+          <div class="row"><span class="id num">#246</span><div class="who"><span class="av" style="background:#eef4fd;color:#1a5f9e">م</span><div>ماجد السهلي<small class="num">050 ••• 3461</small></div></div><div>HANA WANJIRU<small>إثيوبيا</small></div><div class="stage"><span class="ring" style="--p:43" data-t="3/7"></span><span class="pill">منذ 5 أيام</span></div><div>فهد الدوسري<small>المسوّق</small></div><span class="act">نقل للتفييز</span></div>
+          <div class="row"><span class="id num">#222</span><div class="who"><span class="av" style="background:#fff6e8;color:#b54708">خ</span><div>خالد الشهري<small class="num">057 ••• 4183</small></div></div><div>MARIA SANTOS<small>كينيا</small></div><div class="stage"><span class="ring" style="--p:43" data-t="3/7"></span><span class="pill">منذ 7 أيام</span></div><div>سارة أحمد<small>المسوّق</small></div><span class="act">نقل للتفييز</span></div>
+          <div class="row"><span class="id num">#201</span><div class="who"><span class="av" style="background:#f3f1ff;color:#5925dc">س</span><div>سلمان السبيعي<small class="num">054 ••• 9621</small></div></div><div>HANA REYES<small>الفلبين</small></div><div class="stage"><span class="ring" style="--p:43" data-t="3/7"></span><span class="pill">منذ يومين</span></div><div>ريم العتيبي<small>المسوّق</small></div><span class="act">نقل للتفييز</span></div>
+        </div>
+      </main>
+    </div></div>
+  </section>
+
+  <!-- ============ C ============ -->
+  <section class="dir" id="c">
+    <div class="dir__head">
+      <div><h2><span>ج</span>تشغيلي: لوحة مراحل</h2><p>لا قائمة جانبية: الأقسام في شريط علوي كحلي، والعقود أعمدة حسب المرحلة (مثل لوحة المهام). ترى سير العمل كله في نظرة واحدة، والمتأخر ظاهر بالأحمر في عموده. العناوين بخط Noto Kufi والنص Noto Sans. يناسب فريق التشغيل الذي ينقل العقود بين المراحل يوميًا، مع إمكانية التبديل إلى الجدول.</p></div>
+      <div class="traits"><b>Noto Kufi + Noto Sans</b><b>أعمدة مراحل</b><b>كثيف</b><b>شريط علوي</b></div>
+    </div>
+    <div class="frame"><div class="dC">
+      <header>
+        <img class="logo" src="../assets/web/assets/images/logoh-white.svg" alt="">
+        <nav><a href="#">الرئيسية</a><a class="on" href="#">الاستقدام</a><a href="#">التأجير</a><a href="#">التشغيل</a><a href="#">العملاء</a><a href="#">المالية</a><a href="#">الإدارة</a></nav>
+        <span class="s"><i class="fa-solid fa-magnifying-glass"></i>بحث…</span>
+      </header>
+      <div class="sub">
+        <h1>عقود الاستقدام</h1>
+        <div class="views"><span class="on">لوحة المراحل</span><span>جدول</span></div>
+        <span class="chip">كل الجنسيات</span><span class="chip">كل المسوّقين</span><span class="chip red">4 متأخرة</span>
+        <button class="btn">+ عقد جديد</button>
+      </div>
+      <div class="board">
+        <div class="col"><h3>جديد <span class="num">6</span></h3>
+          <div class="card"><div class="t"><span class="num">#351</span>ريم الحربي</div><p>RUTH PERERA · سريلانكا</p><div class="m"><span>منذ 3 أيام</span><span>سلطان</span></div><div class="bar"><i style="width:60%"></i></div></div>
+          <div class="card"><div class="t"><span class="num">#339</span>لطيفة السبيعي</div><p>AMINA TESFAYE · إثيوبيا</p><div class="m"><span>منذ يومين</span><span>فهد</span></div><div class="bar"><i style="width:40%"></i></div></div>
+          <div class="card"><div class="t"><span class="num">#298</span>عبدالله العمري</div><p>JANE AMINAH · إندونيسيا</p><div class="m"><span>منذ يوم</span><span>سارة</span></div><div class="bar"><i style="width:20%"></i></div></div>
+        </div>
+        <div class="col"><h3>مساند <span class="num">9 · <em>1 متأخر</em></span></h3>
+          <div class="card late"><div class="t"><span class="num">#291</span>نوف السهلي</div><p>SITI MENDOZA · أوغندا</p><div class="m"><b>متأخر 3 أيام</b><span>نورة</span></div><div class="bar"><i style="width:100%"></i></div></div>
+          <div class="card"><div class="t"><span class="num">#288</span>فيصل العنزي</div><p>GRACE OTIENO · كينيا</p><div class="m"><span>منذ 6 أيام</span><span>ريم</span></div><div class="bar"><i style="width:60%"></i></div></div>
+          <div class="card"><div class="t"><span class="num">#270</span>هند الدوسري</div><p>ROSE CRUZ · الفلبين</p><div class="m"><span>منذ 4 أيام</span><span>سلطان</span></div><div class="bar"><i style="width:40%"></i></div></div>
+        </div>
+        <div class="col"><h3>التفويض <span class="num">7 · <em>3 متأخرة</em></span></h3>
+          <div class="card late"><div class="t"><span class="num">#335</span>العنود الحربي</div><p>FATIMA MENDOZA · إندونيسيا</p><div class="m"><b>متأخر 7 أيام</b><span>سلطان</span></div><div class="bar"><i style="width:100%"></i></div></div>
+          <div class="card late"><div class="t"><span class="num">#277</span>تركي القحطاني</div><p>JOY TESFAYE · كينيا</p><div class="m"><b>متأخر 8 أيام</b><span>نورة</span></div><div class="bar"><i style="width:100%"></i></div></div>
+          <div class="card late"><div class="t"><span class="num">#284</span>عبير الشهري</div><p>HELEN CRUZ · سريلانكا</p><div class="m"><b>متأخر 4 أيام</b><span>ريم</span></div><div class="bar"><i style="width:100%"></i></div></div>
+          <div class="card"><div class="t"><span class="num">#246</span>ماجد السهلي</div><p>HANA WANJIRU · إثيوبيا</p><div class="m"><span>منذ 5 أيام</span><span>فهد</span></div><div class="bar"><i style="width:70%"></i></div></div>
+        </div>
+        <div class="col"><h3>التفييز <span class="num">5</span></h3>
+          <div class="card"><div class="t"><span class="num">#297</span>عبدالله السبيعي</div><p>RINA OTIENO · إندونيسيا</p><div class="m"><span>منذ 8 أيام</span><span>سارة</span></div><div class="bar"><i style="width:80%"></i></div></div>
+          <div class="card"><div class="t"><span class="num">#262</span>منى القحطاني</div><p>LILY BEGUM · بنغلاديش</p><div class="m"><span>منذ 3 أيام</span><span>ريم</span></div><div class="bar"><i style="width:30%"></i></div></div>
+        </div>
+        <div class="col"><h3>التذكرة <span class="num">4</span></h3>
+          <div class="card"><div class="t"><span class="num">#255</span>بندر الشمري</div><p>MERCY ACHIENG · كينيا</p><div class="m"><span>منذ يومين</span><span>فهد</span></div><div class="bar"><i style="width:30%"></i></div></div>
+          <div class="card"><div class="t"><span class="num">#249</span>سارة المطيري</div><p>NUR RAHMAN · بنغلاديش</p><div class="m"><span>منذ 5 أيام</span><span>نورة</span></div><div class="bar"><i style="width:70%"></i></div></div>
+        </div>
+        <div class="col"><h3>الوصول <span class="num">3</span></h3>
+          <div class="card"><div class="t"><span class="num">#312</span>لطيفة السبيعي</div><p>ANNA ACHIENG · الفلبين</p><div class="m"><span>منذ 5 أيام</span><span>سلطان</span></div><div class="bar"><i style="width:100%"></i></div></div>
+        </div>
+      </div>
+    </div></div>
+  </section>
+
+  <!-- ============ fonts ============ -->
+  <section class="dir" id="fonts">
+    <div class="dir__head"><div><h2><span>خ</span>مقارنة الخطوط</h2><p>نفس النص بنفس المقاسات. اختر الخط بعينك، أو اكتب اسم خط رأيته وأعجبك.</p></div></div>
+    <div class="fonts">
+      <div class="font" style="font-family:'IBM Plex Sans Arabic'"><header><b>IBM Plex Sans Arabic</b><span>مجاني · المستخدم الآن</span></header><p class="h">عقود الاستقدام</p><p class="b">العقد #335 تجاوز مدة مرحلة التفويض بـ 7 أيام.</p><div class="r"><span>قيمة العقد</span><b><span class="num">21,000</span> ر.س</b></div><div class="r"><span>العنود الحربي</span><span class="num">056 ••• 1139</span></div></div>
+      <div class="font" style="font-family:'Tajawal'"><header><b>Tajawal</b><span>مجاني · منتشر في التطبيقات السعودية</span></header><p class="h" style="font-weight:700">عقود الاستقدام</p><p class="b">العقد #335 تجاوز مدة مرحلة التفويض بـ 7 أيام.</p><div class="r"><span>قيمة العقد</span><b><span class="num">21,000</span> ر.س</b></div><div class="r"><span>العنود الحربي</span><span class="num">056 ••• 1139</span></div></div>
+      <div class="font" style="font-family:'Noto Sans Arabic'"><header><b>Noto Kufi (عناوين) + Noto Sans</b><span>مجاني · من Google</span></header><p class="h" style="font-family:'Noto Kufi Arabic'">عقود الاستقدام</p><p class="b">العقد #335 تجاوز مدة مرحلة التفويض بـ 7 أيام.</p><div class="r"><span>قيمة العقد</span><b><span class="num">21,000</span> ر.س</b></div><div class="r"><span>العنود الحربي</span><span class="num">056 ••• 1139</span></div></div>
+      <div class="font" style="font-family:'Alexandria'"><header><b>Alexandria</b><span>مجاني · هندسي حديث</span></header><p class="h">عقود الاستقدام</p><p class="b">العقد #335 تجاوز مدة مرحلة التفويض بـ 7 أيام.</p><div class="r"><span>قيمة العقد</span><b><span class="num">21,000</span> ر.س</b></div><div class="r"><span>العنود الحربي</span><span class="num">056 ••• 1139</span></div></div>
+      <div class="font" style="font-family:'Cairo'"><header><b>Cairo</b><span>مجاني · عريض وواضح</span></header><p class="h" style="font-weight:700">عقود الاستقدام</p><p class="b">العقد #335 تجاوز مدة مرحلة التفويض بـ 7 أيام.</p><div class="r"><span>قيمة العقد</span><b><span class="num">21,000</span> ر.س</b></div><div class="r"><span>العنود الحربي</span><span class="num">056 ••• 1139</span></div></div>
+      <div class="font" style="font-family:'Readex Pro'"><header><b>Readex Pro</b><span>مجاني · الخط السابق</span></header><p class="h">عقود الاستقدام</p><p class="b">العقد #335 تجاوز مدة مرحلة التفويض بـ 7 أيام.</p><div class="r"><span>قيمة العقد</span><b><span class="num">21,000</span> ر.س</b></div><div class="r"><span>العنود الحربي</span><span class="num">056 ••• 1139</span></div></div>
+    </div>
+    <p class="note">خطوط مدفوعة شائعة في الشركات والجهات السعودية، مثل <b>GE SS Two</b> و<b>29LT Bukra</b>، لا يمكن عرضها هنا بدون رخصة. إن كانت لديكم رخصة لأحدها أو تريدون شراءها، نجربها على نفس النص.</p>
+  </section>
+
+  <div class="next">
+    <h2>الخطوة التالية</h2>
+    <ol>
+      <li>اختر اتجاهًا (أ، ب، ج) أو امزج بينها، واختر خطًا.</li>
+      <li>أبني الاتجاه المختار على Figma لثلاث شاشات: قائمة العقود، تفاصيل العقد، ونموذج الإضافة. تعلّق عليها هناك حتى نتفق.</li>
+      <li>نثبّت القواعد (خط، ألوان، مقاسات، مكونات) في Figma، ثم كود مرة واحدة مطابق لها. منطق الحالات والفلاتر الحالي يبقى كما هو.</li>
+    </ol>
+  </div>
+</div>
+</body>
+</html>
