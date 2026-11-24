@@ -5,14 +5,24 @@
       "title": "تسجيل الدخول",
       "view": "resources/views/admin/auth/login.blade.php  (AdminController@formLogin)",
       "group": "عام",
-      "sample_rows": false
+      "sample_rows": false,
+      "redesign": true
     },
     "dashboard": {
       "route": "/dashboard",
-      "title": "الرئيسية",
+      "title": "لوحة المعلومات",
       "view": "resources/views/admin/dashboard-new.blade.php  (DashboardController@professional)",
       "group": "عام",
-      "sample_rows": false
+      "sample_rows": false,
+      "redesign": true
+    },
+    "reports": {
+      "route": "/admin/reports",
+      "title": "التقارير",
+      "view": "جديدة — لا يوجد Blade بعد (مقترح: resources/views/admin/reports/index.blade.php)",
+      "group": "عام",
+      "sample_rows": false,
+      "redesign": true
     },
     "recruitment-contracts": {
       "route": "/admin/RecruitmentContract",

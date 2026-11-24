@@ -14,7 +14,7 @@
       f.addEventListener('submit', function (e) { e.preventDefault(); });
     });
     var badge = document.createElement('a');
-    badge.href = '../index.html';
+    badge.href = '../gallery.html';
     badge.textContent = 'Design kit ▸ كل الشاشات';
     badge.setAttribute('style', 'position:fixed;bottom:12px;left:12px;z-index:99999;background:#111827;color:#fff;' +
       'font:600 12px/1 system-ui,sans-serif;padding:8px 12px;border-radius:999px;text-decoration:none;opacity:.85');

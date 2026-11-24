@@ -1,4 +1,8 @@
-# نظام التصميم الحالي — لوحة تحكم أسس
+# نظام التصميم — لوحة تحكم أسس
+
+> **التصميم الجديد (من 24-11-2026):** المرجع هو نظام التصميم «أسس الإنجاز» (claude.ai artifact، `tokens.json`). طُبّق على تسجيل الدخول ولوحة المعلومات والتقارير والقائمة الجانبية، في `assets/admin/custom/kit-overrides.css` و`asuss-ui.js`. انظر القسم الأخير «التصميم الجديد». باقي هذا الملف يصف التصميم القديم الذي ما زال في بقية الشاشات.
+
+# التصميم الحالي (القديم)
 
 وصف لما هو موجود فعلًا في asuss اليوم (24-11-2026)، وليس لما يجب أن يكون. هو نقطة البداية للتصحيح.
 
@@ -94,3 +98,40 @@
 | `assets/admin/...` | `public/admin/...` |
 | `source/views/layout/...` | `resources/views/admin/layout/...` |
 | `screens/<slug>.html` | ملف الـ Blade المذكور في `kit/screens.json` → `view` |
+
+## التصميم الجديد (المرحلة 1)
+
+### الملفات والنقل إلى asuss
+
+| في الكيت | في asuss | ملاحظة |
+|---|---|---|
+| `assets/admin/custom/kit-overrides.css` | `public/admin/custom/kit-overrides.css` | كل الأصناف تبدأ بـ`as-`؛ الشاشة الجديدة تضع `class="as-app"` على `body` ولا تحمّل Luno |
+| `assets/admin/custom/asuss-ui.js` | `public/admin/custom/asuss-ui.js` | القائمة (فتح/بحث/درج الجوال)، القوائم المنسدلة، الرسوم (`AsUI.columns`، `AsUI.meters`، `AsUI.chartTable`) |
+| القائمة في `kit/redesign/build.py` → `MENU` | `resources/views/admin/layout/inc/sidebar.blade.php` | الأعداد تأتي من الاستعلامات الحالية؛ كل عنصر يبقى خلف صلاحيته (`@can`) كما هو |
+| `screens/dashboard.html` | `resources/views/admin/dashboard-new.blade.php` | |
+| `screens/reports.html` | جديدة (مقترح `admin/reports/index.blade.php`) | بيانات كل تقرير من استعلام واحد يرجع `kpis` و`chart` و`table` بنفس الشكل الموجود في الصفحة |
+| `assets/admin/login/css/login.css` + `screens/login.html` | نفس المسار + `admin/auth/login.blade.php` | أُضيف `svg.panel-art` و`span.panel-brand`؛ لا تنقل `kit-login.js` ولا `p.auth-demo` |
+
+### القيم
+
+من `tokens.json`: `navy` للعنصر النشط في القائمة، `brand` للأزرار والروابط فقط، `blue` للأيقونات والرسوم، `tint` لمربعات الأيقونات، `page` للخلفية، `radius-lg` 8px للبطاقات والأزرار والحقول.
+
+إضافات غير موجودة في نظام التصميم بعد (تستحق الإضافة إليه):
+- **تحذير:** `#b54708` على `#fffaeb` بحد `#fedf89` (للمتأخر قليلًا وبانتظار الاعتماد).
+- **سلسلة الرسم الثانية:** `#00AC9A` (فيروزي أسس القديم) مع `#1D70B7`. فُحص الزوج بأداة dataviz: تمييز عمى الألوان ΔE 19؛ تباين الفيروزي مع الأبيض 2.8:1، لذلك كل رسم له تلميح عند المرور وعرض جدول.
+
+### المكونات
+
+| المكون | الصنف |
+|---|---|
+| الهيكل | `as-layout` › `as-sidebar` + `as-main` › `as-topbar` + `as-content` |
+| القائمة | `as-nav__group` › `as-nav__label` + `as-nav__item` › `as-nav__link` (`is-active`) + `as-nav__sub` |
+| رأس الصفحة | `as-pagehead` |
+| بطاقة | `as-card` › `as-card__head` / `as-card__body` / `as-card__foot` |
+| رقم رئيسي | `as-kpi` |
+| قائمة المهام العاجلة | `as-todo` |
+| مراحل العقد | `as-pipe` |
+| جدول | `as-table` (الأرقام `is-num`) |
+| شارة حالة | `as-badge--info / success / warning / danger / neutral` |
+| أزرار | `as-btn--primary / secondary / ghost`، `as-iconbtn` |
+| اختيار مقطّع / تبويب | `as-seg` / `as-tabs` |

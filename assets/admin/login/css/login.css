@@ -91,7 +91,7 @@ body {
 /* ---------- brand + heading ---------- */
 .auth-logo {
     display: block;
-    height: 64px;
+    height: 56px;
     width: auto;
     max-width: 220px;
     object-fit: contain;
@@ -302,18 +302,31 @@ body {
     overflow: hidden;
 }
 
-/* one quiet shape, no imagery */
-.auth-panel::after {
-    content: "";
+/* brand motif: the cover's blocks and arcs (design system → Cover) */
+.panel-art {
     position: absolute;
-    inset-block-end: -160px;
-    inset-inline-end: -160px;
+    inset-block-end: 0;
+    inset-inline-end: 0;
     width: 420px;
-    height: 420px;
-    border-radius: 50%;
-    border: 64px solid rgba(29, 112, 183, .18);
+    height: auto;
+    opacity: .9;
     pointer-events: none;
 }
+[dir="rtl"] .panel-art { transform: scaleX(-1); }
+.panel-brand {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 40px;
+    padding: 6px 14px;
+    font-size: 14px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, .9);
+    background: rgba(255, 255, 255, .08);
+    border: 1px solid rgba(255, 255, 255, .14);
+    border-radius: 999px;
+}
+
 
 .panel-inner { position: relative; z-index: 1; max-width: 440px; }
 
@@ -349,7 +362,7 @@ body {
 .panel-feature-icon svg { width: 24px; height: 24px; }
 
 .panel-feature strong { display: block; font-size: 17px; font-weight: 600; color: #fff; }
-.panel-feature span { display: flex; justify-content:center; align-items: center; margin-top: 2px; font-size: 15px; color: rgba(255, 255, 255, .78); }
+.panel-feature span { display: block; margin-top: 2px; font-size: 15px; color: rgba(255, 255, 255, .78); }
 
 @media (prefers-reduced-motion: reduce) {
     * { transition: none !important; }
@@ -374,3 +387,13 @@ body {
 }
 .btn-driver-portal:hover { background: #eef3fb; }
 .btn-driver-portal:focus-visible { outline: 2px solid currentColor; outline-offset: 3px; }
+
+/* Kit note under the form (static design kit only). */
+.auth-demo {
+    margin: 16px 0 0;
+    padding: 10px 14px;
+    font-size: 14px;
+    color: var(--brand);
+    background: #eef5fb;
+    border-radius: var(--radius);
+}
